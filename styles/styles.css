@@ -1,0 +1,274 @@
+.wrapper{
+	height: 100vh;
+	position: relative;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: 1200px;
+}
+
+body {
+	margin: 0;
+}
+
+html {
+  background-color: #fdec59;
+  color: #222;
+  font-weight: 100;
+  font-size: 1em; /* ~16px; */
+  font-family: 'Gloria Hallelujah', cursive;
+  line-height: 1.375; /* ~22px */
+}
+
+/*Construct the beach background divs*/
+.sky-background{
+  position: absolute;
+  height: 620px;
+  background-color: #bce0f7;
+  width: 100%;
+}
+
+.water-background{
+  position: absolute;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+
+    background-color: #7dc3ef;
+   animation: waveFrames linear 4s;
+  -webkit-animation: waveFrames linear 4s;
+  -moz-animation: waveFrames linear 4s;
+  -o-animation: waveFrames linear 4s;
+  -ms-animation: waveFrames linear 4s;
+
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes waveFrames{
+  0% {
+    transform:  translate(0px,0px)  ;
+  }
+  50% {
+    transform:  translate(0px,-6px)  ;
+  }
+  100% {
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@-moz-keyframes waveFrames{
+  0% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    -moz-transform:  translate(0px,-6px)  ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-webkit-keyframes waveFrames {
+  0% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    -webkit-transform:  translate(0px,-6px)  ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-o-keyframes waveFrames {
+  0% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    -o-transform:  translate(0px,-6px)  ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  ;
+  }
+}
+
+@-ms-keyframes waveFrames {
+  0% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    -ms-transform:  translate(0px,-6px)  ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  ;
+  }
+}
+
+.sand-horizon-background{
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+}
+
+.palm-tree-background, .small-palm-background{
+  height: 640px;
+  position: absolute;
+}
+
+.small-palm-background{
+  height: 340px;
+  bottom: 0;
+  padding: 0 13%;
+}
+
+.f-left{
+  left: 0;
+}
+
+.f-right{
+  right: 0;
+}
+
+h1 {
+  color: #ff6699;
+  font-family: 'Bangers', cursive;
+  -webkit-text-stroke: 1px white;
+  letter-spacing: 3px;
+  font-size: 4em;
+  margin: 0;
+}
+
+/* FROM HEADER.SCSS*/
+.banner {
+  height: 100px;
+  text-align: right;
+  width: 340px;
+  margin: 0 auto;
+}
+
+.banner-title {
+  margin: 0;
+  padding: 8px;
+  position: absolute;
+
+  font-weight: normal;
+  font-size: 3em;
+  line-height: 0.85em;
+  font-family: 'Bangers', cursive;
+  -webkit-text-stroke: 1.75px white;
+  letter-spacing: 1.75px;
+}
+
+.banner-desc {
+  padding: 0;
+  font-size: 1.25em;
+}
+
+.banner-logo{
+  height: 100%;
+  float: right;
+  position: relative;
+}
+
+/* FROM HOME.SCSS*/
+
+/* Birthday Input */
+.birthday-input{
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.plunder-button{
+  border: 1px solid #ee5588;
+  width: 200px;
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ff6699;
+}
+
+.plunder-button:hover{
+  background-color: #ee5588;
+}
+
+.date-input-field{
+  width: 50px;
+}
+
+.postcode-input-field{
+  width: 80px;
+}
+
+.date-input-field, .postcode-input-field{
+  margin: 5px;
+  text-align: center;
+  color: #000;
+  outline: none;
+}
+
+.date-input-field:focus, .postcode-input-field:focus{
+  border: 1px solid #fff;
+  box-shadow: 0 0 10px #fff;
+  margin: 6px;
+}
+
+/* Plunder Results */
+
+.plunder-results-container{
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+.plunder-message{
+  width: 100%;
+  color: white;
+  margin: 40px 0 20px 0;
+}
+
+.content-container{
+  text-align: center;
+  float: left;
+  position: relative;
+  width: 100%;
+  height: 720px;
+  margin: 20px 0;
+}
+
+.plunder-map{
+  position: absolute;
+  width: 70%;
+  height: 68%;
+  top: 8%;
+  left: 15%;
+}
+
+.sign-board{
+  height: 100%;
+  width: 100%;
+  left: 0;
+}
+
+.sign-board, .sand-mound{
+  position: absolute;
+
+}
+
+.sand-mound{
+	width: 50%;
+	z-index: 100;
+	width: 50%;
+	bottom: 0;
+}

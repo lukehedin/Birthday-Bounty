@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Birthday Bounty</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+
+	<meta name=viewport content='width=1024'>
+
+	<!-- Include Google APIS (Jquery, fonts) -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+
+	<!-- Include the AngularJS library -->
+    <script src="../scripts/angular.min.js"></script>
+</head>
+
+<body ng-app="BirthdayBountyApp">
+	<div class="wrapper" ng-controller="MainController">
+      <div class="root">
+	    <div class="sky-background">
+			<div class="water-background"></div>
+		    <img class="small-palm-background f-right" src="images/smallpalm1.svg" />
+		    <img class="small-palm-background f-left" src="images/smallpalm2.svg" />
+		    <img class="sand-horizon-background" src="images/sand_horizon.svg" />
+		</div>
+		<img class="palm-tree-background f-left" src="images/palmtree1.svg" />
+		<img class="palm-tree-background f-right" src="images/palmtree2.svg" />
+        <div class="container">
+            <div class="banner">
+	          <img class="banner-logo" src="images/flag.svg" />
+	          <h1 class="banner-title">Birthday<br/>Bounty</h1>
+	        </div>
+          	<div ng-if="!dob">
+			   <div class="content-container">
+			        <!-- <div>Enter ye postcode:</div>
+			        <input placeholder="Postcode" />-->
+			        <div>Enter ye birthday:</div>
+			        <input id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
+			        <input id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
+			        <input id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
+			        <div class="plunder-button" ng-click="submitBirthday()">
+			            Plunder my Birthday Bounty!
+			        </div>
+				</div>
+			</div>
+			<div ng-if="dob">
+	          <div class="content-container">
+	            <img class="sign-board" src="images/sign.svg" />
+	            <img class="sand-mound f-left" src="images/sandmound1.svg" />
+	            <img class="sand-mound f-right" src="images/sandmound2.svg" />
+	            <div class="plunder-map">
+	              <div id='bounty-map-container' class="bounty-map-container"></div>
+	            </div>
+	          </div>
+		    </div>
+        </div>
+      </div>
+	</div>
+	
+    <!-- Modules -->
+    <script src="scripts/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="scripts/controllers/MainController.js"></script>
+	
+    <!-- Directives-->
+
+	<!-- Templates for Directives -->
+</body>
+
+</html>
