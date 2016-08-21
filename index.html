@@ -3,6 +3,7 @@
 <head>
     <title>Birthday Bounty</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+	<link rel="stylesheet" type="text/css" href="styles/animations.css" />
 
 	<meta name=viewport content='width=1024'>
 
@@ -10,8 +11,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8_BmspjUEdbPYMx7FCRJRO4t_Tbx8ObM"
-    async defer></script>
+
 
 	<!-- Include the AngularJS library -->
     <script src="../scripts/angular.min.js"></script>
@@ -48,12 +48,15 @@
 			</div>
 			<div ng-if="dob">
 	          <div class="content-container">
-	            <img class="sign-board" src="images/sign.svg" />
-	            <img class="sand-mound f-left" src="images/sandmound1.svg" />
-	            <img class="sand-mound f-right" src="images/sandmound2.svg" />
+	            <img class="sign-board" src="images/sign_long.svg" />
+	            <img class="sand-mound f-left" src="images/sandmound2.svg" />
+	            <img class="sand-mound f-right" src="images/sandmound1.svg" />
 	            <div class="plunder-map">
 	              <div id='bountyMapContainer' class="bounty-map-container"></div>
 	            </div>
+	          </div>
+	          <div ng-click="clearBirthday()">
+	            Arrrgh! I want to use a different date of birth!
 	          </div>
 		    </div>
         </div>
