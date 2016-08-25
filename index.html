@@ -20,14 +20,18 @@
 <body ng-app="BirthdayBountyApp">
 	<div class="wrapper" ng-controller="MainController">
       <div class="root">
-	    <div class="sky-background">
+      	<div>
+      		<div class="sky-background">
+			<img class="cloud-a f-left" src="images/cloud1.svg" />
+			<img class="cloud-b f-right" src="images/cloud3.svg" />
 			<div class="water-background"></div>
 		    <img class="small-palm-background f-right" src="images/smallpalm1.svg" />
 		    <img class="small-palm-background f-left" src="images/smallpalm2.svg" />
 		    <img class="sand-horizon-background" src="images/sand_horizon.svg" />
-		</div>
-		<img class="palm-tree-background f-left" src="images/palmtree1.svg" />
-		<img class="palm-tree-background f-right" src="images/palmtree2.svg" />
+			</div>
+			<img class="palm-tree-background f-left" src="images/palmtree1.svg" />
+			<img class="palm-tree-background f-right" src="images/palmtree2.svg" />
+      	</div>
         <div class="container">
             <div class="banner">
 	          <img class="banner-logo" src="images/flag.svg" />
@@ -37,12 +41,15 @@
 			   <div class="content-container">
 			        <!-- <div>Enter ye postcode:</div>
 			        <input placeholder="Postcode" />-->
-			        <div>Enter ye birthday:</div>
+			        <h1>Ahoy there, matey!</h1>
+			        <div>
+			        Enter ye date of birth:
+			        </div>
 			        <input id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
 			        <input id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
 			        <input id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
 			        <div class="plunder-button" ng-click="submitBirthday()">
-			            Plunder my Birthday Bounty!
+			            Plunder me Birthday Bounty!
 			        </div>
 				</div>
 			</div>
@@ -51,12 +58,96 @@
 	            <img class="sign-board" src="images/sign_long.svg" />
 	            <img class="sand-mound f-left" src="images/sandmound2.svg" />
 	            <img class="sand-mound f-right" src="images/sandmound1.svg" />
-	            <div class="plunder-map">
-	              <div id='bountyMapContainer' class="bounty-map-container"></div>
+	            <div class="plunder-board">
+	              <div id="bountyMapContainer" class="bounty-map-container f-left"></div>
+	              <div class="plunder-board-right f-right">
+	              	<div id="bountyDetailsContainer" class="plunder-board-details">
+	              		<div ng-if="!activeBountyItem">
+	              			<div class="initial-details-text">
+				              <span>Shiver me timbers! Plunderin' between 23/04/16-20/05/16 will earn ye </span>
+				              <h1>{{ getPlunderPrice() | currency }}</h1>
+				              <span>worth o' free birthday bounty!</span>
+				              <br>
+				              <br>
+				              <span>Don't just sit there, scallywag! Click the bounty markers on the map to find ye some treasure!</span>
+				            </div>
+	              		</div>
+	              		<div ng-if="activeBountyItem">
+		              		<div>
+		              			<div class="bounty-item-title f-left">
+		              				{{ activeBountyItem.title }}
+		              			</div>
+		              			<h1 class="bounty-item-price f-right">
+		              				{{ activeBountyItem.maxValue | currency }}
+		              			</h1>
+		              			<div class="bounty-item-org-info">
+			              			<div class="bounty-item-org-header f-left">
+			              				<div class="bounty-item-org-name f-left">
+				              				{{ activeBountyItem.organisation.name }}
+				              			</div>
+				              			<div class="bounty-item-org-social f-right">
+				              				<a ng-if="activeBountyItem.organisation.social.facebook" target="_blank" ng-href="{{activeBountyItem.organisation.social.facebook}}">
+				              					<img class="social-button f-right" src="images/facebook.svg" />
+				              				</a>
+				              				<a ng-if="activeBountyItem.organisation.social.twitter" target="_blank" ng-href="{{activeBountyItem.organisation.social.twitter}}">
+				              					<img class="social-button f-right" src="images/twitter.svg" />
+				              				</a>
+				              				<a ng-if="activeBountyItem.organisation.social.instagram" target="_blank" ng-href="{{activeBountyItem.organisation.social.instagram}}">
+				              					<img class="social-button f-right" src="images/instagram.svg" />
+				              				</a>
+				              			</div>
+			              			</div>
+			              			<div class="bounty-item-org-subheader f-left">
+			              				<div class="f-left">
+				              				<div class="bounty-item-org-address">
+				              					{{ activeBountyItem.organisation.locations[0].placeDetails.formatted_address }}
+				              				</div>
+				              				<div class="bounty-item-org-phone f-left">
+				              					&#128222; {{ activeBountyItem.organisation.locations[0].placeDetails.formatted_phone_number || "N/A" }}
+				              				</div>
+			              				</div>
+			              				<div class="bounty-item-org-rating f-right">
+			              					&#9733;{{ activeBountyItem.organisation.locations[0].placeDetails.rating }}
+			              				</div>
+			              			</div>
+			              			<!--
+			              			<div class="bounty-item-org-photos f-right">
+			              				<img ng-src="{{activeBountyItem.organisation.locations[0].placeDetails.photos[0].getUrl({'maxWidth': 200, 'maxHeight':150})}}" />
+			              			</div>
+			              			-->
+			              			<div class="bounty-item-org-open">
+			              				{{ getDaysOpenDisplay() }}
+			              			</div>
+		              			</div>
+		              			<div class="bounty-item-condition-info">
+		              			
+		              			</div>
+		              		</div>
+		              	</div>
+	              	</div>
+	              	<div class="plunder-board-options">
+	              		<div class="option-label f-left">
+	              			Bounty Types:
+             			</div>
+             			<div ng-repeat="bountyType in bountyTypes track by $index">
+							  <img ng-class="{ unselected: plunderOptions.excludeTypes.indexOf(bountyType.id) !== -1 }" class="toggle-bounty-button f-left" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
+						</div>
+	              		<div class="option-label f-left">Conditions:</div>
+	              		<div class="option-label">Plunder Period:</div>
+	              	</div>
+	              </div>
 	            </div>
 	          </div>
-	          <div ng-click="clearBirthday()">
-	            Arrrgh! I want to use a different date of birth!
+	          <div class="footer">
+	            <div ng-click="clearBirthday()">
+	            	Arrrgh! I want to use a different date of birth!
+	          	</div>
+	          	<div>
+	          		Social icons designed by <a target="_blank" href="http://www.flaticon.com/authors/freepik">Freepik</a> of Flaticon
+	          	</div>
+	          	<div>
+	          	Bounty icons designed by <a target="_blank" href="http://www.flaticon.com/authors/madebyoliver">Madebyoliver</a> of Flaticon
+	          	</div>
 	          </div>
 		    </div>
         </div>

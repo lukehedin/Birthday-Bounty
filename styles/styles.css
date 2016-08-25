@@ -15,7 +15,7 @@ body {
 
 html {
   background-color: #fdec59;
-  color: #222;
+  color: white;
   font-weight: 100;
   font-size: 1em; /* ~16px; */
   font-family: 'Gloria Hallelujah', cursive;
@@ -28,6 +28,7 @@ html {
   height: 620px;
   background-color: #bce0f7;
   width: 100%;
+  overflow: hidden;
 }
 
 .water-background{
@@ -46,7 +47,7 @@ html {
 }
 
 .palm-tree-background, .small-palm-background{
-  height: 640px;
+  height: 760px;
   position: absolute;
 }
 
@@ -56,11 +57,17 @@ html {
   padding: 0 13%;
 }
 
+.cloud-a, .cloud-b{
+  max-height: 100px;
+}
+
 .f-left{
+  float: left;
   left: 0;
 }
 
 .f-right{
+  float: right;
   right: 0;
 }
 
@@ -157,7 +164,6 @@ h1 {
 
 .plunder-message{
   width: 100%;
-  color: white;
   margin: 40px 0 20px 0;
 }
 
@@ -170,13 +176,13 @@ h1 {
   margin: 20px 0;
 }
 
-.plunder-map{
-  background-color: #f2f2f2;
+.plunder-board{
+  color: white;
   position: absolute;
-  width: 65%;
-  height: 68%;
-  margin: 55px;
-  border: 2px solid #503c1a;
+  width: 1100px; /*max-width minus margin*/
+  height: 75%;
+  margin: 50px;
+  
 }
 
 .sign-board{
@@ -203,11 +209,112 @@ h1 {
     cursor: pointer;
 }
 
-.bounty-map-container{
-  margin: none;
-  height: 100%;
-}
-
 .bounty-marker:hover{
   z-index: 99;
+}
+
+.bounty-map-container, .plunder-board-right{
+  height: 100%;
+  
+}
+
+.bounty-map-container{
+  background-color: #f2f2f2;
+  width: 60%;
+}
+
+.plunder-board-right{
+  width: 40%;
+}
+
+.plunder-board-details, .plunder-board-options{
+  margin: 0 10px 0 20px;
+  text-align: left;
+}
+
+.plunder-board-details{
+  height: 480px;
+}
+
+.plunder-board-options{
+  height: 10%;
+}
+
+.option-label{
+  width: 90px;
+  text-align: right;
+  font-size: 0.8em;
+  line-height: 28px;
+  margin: 0 5px;
+}
+
+.toggle-bounty-button{
+  width: 28px;
+  height: 28px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.unselected{
+  opacity: 0.3;
+}
+
+.initial-details-text{
+  text-align: center;
+}
+
+/* The details of a bounty item */
+.bounty-item-title{
+  font-size: 1.8em;
+  width: 60%;
+}
+
+.bounty-item-price{
+  width: 40%;
+  font-size: 3em;
+  text-align: right;
+}
+
+.bounty-item-title, .bounty-item-price{
+  line-height: 70px;
+}
+
+.bounty-item-org-header, .bounty-item-org-subheader{
+  width: 100%;
+  margin: 3px 0;
+}
+
+.bounty-item-org-name{
+  font-size: 1.2em;
+  line-height: 32px;
+}
+
+.bounty-item-org-address, .bounty-item-org-phone{
+  font-size: 0.8em;
+  line-height: 18px;
+  height: 18px;
+}
+
+.bounty-item-org-rating{
+  font-size: 1.2em;
+  line-height: 36px;
+}
+
+.bounty-item-org-photos{
+  border: 4px solid white;
+  max-width: 300px;
+  max-height: 150px;
+}
+
+.social-button{
+  width: 28px;
+  height: 28px;
+  margin: 0 2px;
+}
+
+
+.footer{
+  font-size: 0.8em;
+  color: #dcbc24;
+  text-align: center;
 }

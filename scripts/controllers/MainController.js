@@ -3,29 +3,30 @@ app.controller('MainController', ['$scope', function($scope) {
   $scope.init = function(){
     var existingBday = localStorage.getItem("birthday");
 
-    if(!existingBday){
-      $scope.birthday = {
-        day: null,
-        month: null,
-        year: null
-      };
-    } else{
+    if(existingBday){
       $scope.dob = existingBday;
       $scope.renderMapWhenReady();
     }
+
+    //init options
+    $scope.plunderOptions = {
+        excludeTypes: [],
+        excludeConditions: [],
+        customPeriod: null
+    };
 
     createData();
   };
 
   $scope.dobFieldChange = function(fld){
-    var birthday = $scope.birthday;
+    var fldVal = $('#' + fld + 'Field')[0].value;
 
     switch(fld){
       case "day":
-        if(birthday.day && birthday.day.length === 2) $('#monthField').focus();
+        if(fldVal && fldVal.length === 2) $('#monthField').focus();
         break;
       case "month":
-        if(birthday.month && birthday.month.length === 2) $('#yearField').focus();
+        if(fldVal && fldVal.length === 2) $('#yearField').focus();
         break;
       default:
         break;
@@ -35,7 +36,7 @@ app.controller('MainController', ['$scope', function($scope) {
   $scope.renderMapWhenReady = function(){
     $.getScript('https://www.google.com/jsapi', function()
     {
-        google.load('maps', '3', { other_params: 'sensor=false', callback: function() {
+        google.load('maps', '3', { other_params: ['sensor=false&key=AIzaSyBnG2wcWi0MrBxd3wTtNCKTau-xHD_B324&libraries=places'], callback: function() {
           setTimeout(function() {
             //Google Map
             var mapContainer = $('#bountyMapContainer')[0];
@@ -59,13 +60,16 @@ app.controller('MainController', ['$scope', function($scope) {
   };
 
   $scope.submitBirthday = function(){
-    var birthday = $scope.birthday;
-    var isValid = (!isNaN(birthday.year) && !isNaN(birthday.month) && !isNaN(birthday.day));
+    var yearVal = $('#yearField')[0].value;
+    var monthVal = $('#monthField')[0].value;
+    var dayVal = $('#dayField')[0].value;
+
+    var isValid = (!isNaN(yearVal) && !isNaN(monthVal) && !isNaN(dayVal));
 
     if(isValid){
-      var day = parseInt(birthday.day);
-      var month = parseInt(birthday.month);
-      var year = parseInt(birthday.year);
+      var day = parseInt(dayVal);
+      var month = parseInt(monthVal);
+      var year = parseInt(yearVal);
 
       var thisYear = new Date().getFullYear();
       var isValid = year > (thisYear - 130) && year < (thisYear + 1);
@@ -89,15 +93,46 @@ app.controller('MainController', ['$scope', function($scope) {
       var bdayDate = new Date(year, month, day);
 
       localStorage.setItem("birthday", bdayDate);
-      //this.createCookie('postcode', birthday.postcode, 1000)
       $scope.dob = bdayDate;
       $scope.renderMapWhenReady();
     }
   };
 
-  function fetchBountyMarkers(gMap){
+  $scope.getPlunderPrice = function(){
+    var amount = 0;
+    getFilteredBountyData().forEach(function(bountyItem){
+      amount = amount + bountyItem.maxValue;
+    });
+    return amount;
+  }
 
-    var getBountyMarker = function(item, latLong, image){
+  $scope.toggleBountyType = function(type){
+      var index = $scope.plunderOptions.excludeTypes.indexOf(type);
+
+      if(index === -1){
+        $scope.plunderOptions.excludeTypes.push(type);
+      } else{
+        $scope.plunderOptions.excludeTypes.splice(index, 1);
+      }
+  }
+
+  function getFilteredBountyData(){
+    var filteredData = [];
+    var filters = $scope.plunderOptions;
+
+    $scope.bountyData.forEach(function(bountyItem){
+        if(filters.excludeTypes.indexOf(bountyItem.types[0]) === -1){
+          filteredData.push(bountyItem);
+        }
+    });
+
+    return filteredData;
+  }
+
+  function fetchBountyMarkers(gMap){
+    var placesService = new google.maps.places.PlacesService(gMap);
+
+    var createBountyMarker = function(item, latLong, image){
       var marker = new google.maps.OverlayView();
 
       // Explicitly call setMap on this overlay.
@@ -108,28 +143,47 @@ app.controller('MainController', ['$scope', function($scope) {
           const markerHeight = 34;
           const markerWidth = 34;
 
-          var iconPaths = {
-              1: 'images/marker_gift.svg',
-              2: 'images/marker_food.svg',
-              3: 'images/marker_drink.svg',
-              4: 'images/marker_activity.svg',
-              5: 'images/marker_voucher.svg'
-          };
-
           if (!div) {
               div = marker.div = document.createElement('div');
               div.className = "bounty-marker";
               div.style.width = markerWidth + 'px';
               div.style.height = markerHeight + 'px';
               
-              div.style.backgroundImage = 'url(' + iconPaths[item.types[0]] + ')';
+              var itemType = $.grep($scope.bountyTypes, function(type){ return type.id == item.types[0]; });
+
+              div.style.backgroundImage = 'url(' + itemType[0].iconPath + ')';
               div.style.backgroundSize =  markerWidth + 'px ' + markerHeight + 'px';
               div.style.backgroundRepeat = 'no-repeat';
 
               div.dataset.marker_id = item.bountyId;
               
               google.maps.event.addDomListener(div, "click", function(event) {      
-                  google.maps.event.trigger(marker, "click");
+                  google.maps.event.trigger(marker, "click"); //todo: need this?
+
+                  //TODO: Change to closest location to postcode
+                  var closestLoc = item.organisation.locations[0];
+
+                  //If we haven't already loaded this place's details
+                  if(!closestLoc.placeDetails){
+
+                      //Try to load them
+                      placesService.getDetails({placeId:closestLoc.placeId},function(placeResult, status){
+                        if(status == "OK"){
+                          //Set the place details so we have it
+                          closestLoc.placeDetails = placeResult;
+                          debugger;
+                        } else{
+                          //No place details found
+                        }
+
+                        $scope.activeBountyItem = item;
+                        $scope.$apply();
+                    });
+                  } else{
+                    //We already have the place details
+                    $scope.activeBountyItem = item;
+                    $scope.$apply();
+                  }
               });
               
               var panes = marker.getPanes();
@@ -145,12 +199,10 @@ app.controller('MainController', ['$scope', function($scope) {
       };
     }
 
-    $scope.bountyData.forEach(function(item){
+    getFilteredBountyData().forEach(function(item){
         //todo this should be the location of the closest branch to the postcode
         var closestLoc = item.organisation.locations[0];
         var closestLocLatLng = new google.maps.LatLng(closestLoc.lat, closestLoc.lng);
-        
-        //var foodPath = require('../../images/marker_food.png');
 
         var marker = new google.maps.Marker({
             position: closestLocLatLng,
@@ -158,26 +210,38 @@ app.controller('MainController', ['$scope', function($scope) {
             map: gMap,
             icon: '/'
         });
-        marker.metadata = {type: "point", id: item.bountyId}
-
-        var bountyMark = getBountyMarker(item, closestLocLatLng, null);
-
-        google.maps.event.addListener(marker, 'click', function(){
-            placesService.getDetails({placeId:closestLoc.placeId},function(placeResult, status){
-                if(status == "OK"){
-                    debugger;
-                } else{
-
-                }
-            });
-        });
+        
+        marker.metadata = {type: "point", id: item.bountyId};
+        createBountyMarker(item, closestLocLatLng, null);
     });
   };
 
   function createData(){
+      $scope.bountyTypes = [{ 
+          id: 1,
+          iconPath: 'images/marker_gift.svg',
+          name: 'gift'
+        }, { 
+          id: 2,
+          iconPath: 'images/marker_food.svg',
+          name: 'food'
+        }, { 
+          id: 3,
+          iconPath: 'images/marker_drink.svg',
+          name: 'drink'
+        }, { 
+          id: 4,
+          iconPath: 'images/marker_activity.svg',
+          name: 'activity'
+        }, { 
+          id: 5,
+          iconPath: 'images/marker_voucher.svg',
+          name: 'voucher'
+      }];
+
       $scope.bountyData = [{
         "bountyId": 1,
-        "title": "$50 Birthday Voucher",
+        "title": "Birthday Voucher",
         "maxValue": 50.00,
         "types": [5, 1, 2], 
         "sponsored": false,
@@ -262,7 +326,7 @@ app.controller('MainController', ['$scope', function($scope) {
             "digitalVoucherRequired": null,
             "paperVoucherRequired": null,
             "notes": [
-                "You will need to pick up a VIBE club card from a Boost store and activate the card using the URL provided. This card will be used to get your free juice."
+                "You will need to pick up a VIBE club card from a Boost store and activate the card using the registration URL provided. This card will be used to get your free juice."
             ]
         },
         "organisation": {
