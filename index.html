@@ -64,7 +64,7 @@
 	              	<div id="bountyDetailsContainer" class="plunder-board-details">
 	              		<div ng-if="!activeBountyItem">
 	              			<div class="initial-details-text">
-				              <span>Shiver me timbers! Plunderin' between 23/04/16-20/05/16 will earn ye </span>
+				              <span>Shiver me timbers! Plunderin' between {{ getPlunderPeriodString() }} will earn ye </span>
 				              <h1>{{ getPlunderPrice() | currency }}</h1>
 				              <span>worth o' free birthday bounty!</span>
 				              <br>
@@ -99,10 +99,10 @@
 			              			</div>
 			              			<div class="bounty-item-org-subheader f-left">
 			              				<div class="f-left">
-				              				<div class="bounty-item-org-address">
+				              				<div class="bounty-item-small-line">
 				              					{{ activeBountyItem.organisation.locations[0].placeDetails.formatted_address }}
 				              				</div>
-				              				<div class="bounty-item-org-phone f-left">
+				              				<div class="bounty-item-small-line">
 				              					&#128222; {{ activeBountyItem.organisation.locations[0].placeDetails.formatted_phone_number || "N/A" }}
 				              				</div>
 			              				</div>
@@ -111,16 +111,21 @@
 			              				</div>
 			              			</div>
 			              			<!--
-			              			<div class="bounty-item-org-photos f-right">
-			              				<img ng-src="{{activeBountyItem.organisation.locations[0].placeDetails.photos[0].getUrl({'maxWidth': 200, 'maxHeight':150})}}" />
+			              			<div ng-repeat="photo in activeBountyItem.organisation.locations[0].placeDetails.photos track by $index">
+							  			<img class="bounty-item-org-photos f-right" ng-src="{{ photo.getUrl({'maxWidth': 200, 'maxHeight':70}) }}" />
+									</div>
+									-->
+			              			<div class="bounty-item-timeline f-left">
+			              				<div class="timeline-before" ng-style="{ 'width' : getTimelineSectionWidth('allBefore') }" >
+			              					<div class="timeline-before-period" ng-style="{ 'width' : getTimelineSectionWidth('before') }"></div>
+			              					<div class="timeline-start-period" ng-style="{ 'width' : getTimelineSectionWidth('start') }"></div>
+			              				</div>
+			              				<div class="timeline-birthday"></div>
+			              				<div class="timeline-after" ng-style="{ 'width' : getTimelineSectionWidth('allAfter') }">
+			              					<div class="timeline-end-period" ng-style="{ 'width' : getTimelineSectionWidth('end') }"></div>
+			              					<div class="timeline-after-period" ng-style="{ 'width' : getTimelineSectionWidth('after') }"></div>
+			              				</div>
 			              			</div>
-			              			-->
-			              			<div class="bounty-item-org-open">
-			              				{{ getDaysOpenDisplay() }}
-			              			</div>
-		              			</div>
-		              			<div class="bounty-item-condition-info">
-		              			
 		              			</div>
 		              		</div>
 		              	</div>

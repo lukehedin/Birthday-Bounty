@@ -94,7 +94,7 @@ app.controller('MainController', ['$scope', function($scope) {
 
     if(isValid){
       var day = parseInt(dayVal);
-      var month = parseInt(monthVal);
+      var month = parseInt(monthVal) - 1; //subtract one, months begin at 00
       var year = parseInt(yearVal);
 
       var thisYear = new Date().getFullYear();
@@ -116,7 +116,12 @@ app.controller('MainController', ['$scope', function($scope) {
     }
 
     if(isValid){
-      var bdayDate = new Date(year, month, day);
+      var today = new Date();
+      var thisYear =  today.getFullYear();
+
+      var thisYearsBirthday = new Date(thisYear, month, day);
+
+      var bdayDate = new Date((thisYear + (thisYearsBirthday < today ? 1 : 0)), month, day);
 
       localStorage.setItem("birthday", bdayDate);
       $scope.dob = bdayDate;
@@ -132,6 +137,12 @@ app.controller('MainController', ['$scope', function($scope) {
     return amount;
   }
 
+  $scope.getPlunderPeriodString = function(){
+      var period = getPlunderPeriod();
+
+      return dateToString(period.start) + ' - ' + dateToString(period.end);
+  }
+
   $scope.toggleBountyType = function(type){
       var index = $scope.plunderOptions.excludeTypes.indexOf(type);
 
@@ -145,6 +156,116 @@ app.controller('MainController', ['$scope', function($scope) {
       $scope.bountyMarkers.forEach(function(bountyMarker){
           bountyMarker.div.hidden = $scope.plunderOptions.excludeTypes.indexOf(bountyMarker.bountyItemType.id) !== -1;
       });
+  }
+
+  $scope.getAvailabilityTimeline = function(){
+    var itemStart = new Date($scope.dob);
+    itemStart.setDate(itemStart.getDate() - $scope.activeBountyItem.conditions.daysBefore);
+
+    var itemEnd = new Date($scope.dob);
+    itemEnd.setDate(itemEnd.getDate() + $scope.activeBountyItem.conditions.daysAfter);
+
+    var dayDivs = [];
+
+    var period = getPlunderPeriod();
+    var processingDay = period.start;
+    while (processingDay <= period.end) {
+        var inner = "0";
+        debugger;
+        if(itemStart <= processingDay && itemEnd >= processingDay){
+          inner = "1";
+        }
+
+        dayDivs.push('[' + inner + ']');
+        processingDay.setDate(processingDay.getDate() + 1);
+    }
+
+    return dayDivs.join('');
+  }
+
+  $scope.getTimelineSectionWidth = function(section){
+    var percentageAvailable = (section === 'allBefore' || section === 'allAfter')
+      ? 94
+      : 100;
+
+    var daysToThis = 0; //days for this section in my space (eg. end = this, after = that)
+    var daysToThat = 0; //days for the other section in my space (eg. before = this, start = that)
+
+    var bdayDate = new Date($scope.dob);
+
+    var period = getPlunderPeriod();
+
+    var itemStart = new Date($scope.dob);
+    itemStart.setDate(itemStart.getDate() - $scope.activeBountyItem.conditions.daysBefore);
+
+    var itemEnd = new Date($scope.dob);
+    itemEnd.setDate(itemEnd.getDate() + $scope.activeBountyItem.conditions.daysAfter);
+
+    switch(section){
+      case 'before':
+        daysToThat = Math.abs(bdayDate.getTime() - itemStart.getTime());
+        daysToThis = Math.abs(itemStart.getTime() - period.start.getTime());
+      break;
+      case 'start':
+        daysToThat = Math.abs(itemStart.getTime() - period.start.getTime());
+        daysToThis = Math.abs(bdayDate.getTime() - itemStart.getTime());
+      break;
+      case 'end':
+        daysToThis = Math.abs(itemEnd.getTime() - bdayDate.getTime());
+        daysToThat = Math.abs(period.end.getTime() - itemEnd.getTime());
+      break;
+      case 'after':
+        daysToThat = Math.abs(itemEnd.getTime() - bdayDate.getTime());
+        daysToThis = Math.abs(period.end.getTime() - itemEnd.getTime());
+      break;
+      case 'allBefore':
+        daysToThat = Math.abs(period.end.getTime() - bdayDate.getTime());
+        daysToThis = Math.abs(bdayDate.getTime() - period.start.getTime());
+      break;
+      case 'allAfter':
+        daysToThat = Math.abs(bdayDate.getTime() - period.start.getTime());
+        daysToThis = Math.abs(period.end.getTime() - bdayDate.getTime());
+      break;
+    }
+
+    daysToThat = Math.ceil(daysToThat / (1000 * 3600 * 24)); 
+    daysToThis = Math.ceil(daysToThis / (1000 * 3600 * 24)); 
+
+    if(daysToThis === 0) return 0;
+    if(daysToThat === 0) return percentageAvailable + '%';
+
+    debugger;
+
+    return daysToThis === 0 ? 0 : (Math.floor((daysToThis / (daysToThat + daysToThis)) * percentageAvailable) + '%'); //w00t!
+  }
+
+  function  getPlunderPeriod(){
+    var bountyData = getFilteredBountyData();
+    var bdayDate = new Date($scope.dob);
+    
+    //todo: take into account custom period $scope.plunderOptions.customPeriod.startDate
+
+    var minDate = new Date(bdayDate);
+    var maxDate = new Date(bdayDate);
+
+    bountyData.forEach(function(item){
+        var possibleMin = new Date($scope.dob);
+        possibleMin.setDate(possibleMin.getDate() - item.conditions.daysBefore);
+        if(possibleMin < minDate) minDate = possibleMin;
+
+        var possibleMax = new Date($scope.dob);
+        possibleMax.setDate(possibleMax.getDate() + item.conditions.daysAfter);
+        if(possibleMax > maxDate) maxDate = possibleMax;
+    });
+
+    return {
+      start: minDate,
+      end: maxDate
+    };
+  }
+
+  function dateToString(date, noYear){
+    return date.getDate() + '/' + (date.getMonth() + 1) + (noYear ? '' : '/' + date.getFullYear());
   }
 
   function getFilteredBountyData(){
@@ -164,15 +285,16 @@ app.controller('MainController', ['$scope', function($scope) {
     var placesService = new google.maps.places.PlacesService(gMap);
 
 
-    var showBountyIconTooltip = function(hoverEvent, bountyItem){
-                  var tooltip = document.createElement('div')
-                  tooltip.className = "bounty-marker-tooltip";
-                  tooltip.innerHTML = bountyItem.title;
+    var showBountyIconTooltip = function(event, bountyItem){
+          var tooltip = document.createElement('div')
+          tooltip.className = "bounty-marker-tooltip";
+          tooltip.innerHTML = '<h5>' + bountyItem.title + '</h5>';
 
-                  var x = event.pageX;
-                  var y = event.pageY;
-                  tooltip.style.top = (y + 20) + 'px';
-                  tooltip.style.left = x + 'px';
+          var x = event.pageX;
+          var y = event.pageY;
+
+          tooltip.style.top = (y - 10)+ 'px';
+          tooltip.style.left = (x + 15) + 'px';
 
           $scope.bountyMarkerTooltip = tooltip;
           $(document.body).append($scope.bountyMarkerTooltip);     

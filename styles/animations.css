@@ -98,19 +98,19 @@
 }
 
 .cloud-a{
-animation: cloudFrames linear 120s;
--webkit-animation: cloudFrames linear 120s;
--moz-animation: cloudFrames linear 120s;
--o-animation: cloudFrames linear 120s;
--ms-animation: cloudFrames linear 120s;
+animation: cloudFrames linear 350s;
+-webkit-animation: cloudFrames linear 350s;
+-moz-animation: cloudFrames linear 350s;
+-o-animation: cloudFrames linear 350s;
+-ms-animation: cloudFrames linear 350s;
 }
 
 .cloud-b{
-animation: cloudFrames linear 150s;
--webkit-animation: cloudFrames linear 150s;
--moz-animation: cloudFrames linear 150s;
--o-animation: cloudFrames linear 150s;
--ms-animation: cloudFrames linear 150s;
+animation: cloudFrames linear 270s;
+-webkit-animation: cloudFrames linear 270s;
+-moz-animation: cloudFrames linear 270s;
+-o-animation: cloudFrames linear 270s;
+-ms-animation: cloudFrames linear 270s;
 }
 
 .cloud-a, .cloud-b{  
@@ -131,10 +131,10 @@ animation: cloudFrames linear 150s;
     transform:  translate(0px,0px)  ;
   }
   50% {
-    transform:  translate(100vw,0px)  ;
+    transform:  translate(150vw,0px)  ;
   }
   50% {
-    transform:  translate(100vw,0px)  ;
+    transform:  translate(150vw,0px)  ;
   }
   100% {
     transform:  translate(0px,0px)  ;
@@ -146,10 +146,10 @@ animation: cloudFrames linear 150s;
     -moz-transform:  translate(0px,0px)  ;
   }
   50% {
-    -moz-transform:  translate(100vw,0px)  ;
+    -moz-transform:  translate(150vw,0px)  ;
   }
   50% {
-    -moz-transform:  translate(100vw,0px)  ;
+    -moz-transform:  translate(150vw,0px)  ;
   }
   100% {
     -moz-transform:  translate(0px,0px)  ;
@@ -161,10 +161,10 @@ animation: cloudFrames linear 150s;
     -webkit-transform:  translate(0px,0px)  ;
   }
   50% {
-    -webkit-transform:  translate(100vw,0px)  ;
+    -webkit-transform:  translate(150vw,0px)  ;
   }
   50% {
-    -webkit-transform:  translate(100vw,0px)  ;
+    -webkit-transform:  translate(150vw,0px)  ;
   }
   100% {
     -webkit-transform:  translate(0px,0px)  ;
@@ -176,10 +176,10 @@ animation: cloudFrames linear 150s;
     -o-transform:  translate(0px,0px)  ;
   }
   50% {
-    -o-transform:  translate(100vw,0px)  ;
+    -o-transform:  translate(150vw,0px)  ;
   }
   50% {
-    -o-transform:  translate(100vw, 0px)  ;
+    -o-transform:  translate(150vw, 0px)  ;
   }
   100% {
     -o-transform:  translate(0px,0px)  ;
@@ -191,10 +191,10 @@ animation: cloudFrames linear 150s;
     -ms-transform:  translate(0px,0px)  ;
   }
   50% {
-    -ms-transform:  translate(100vw,0px)  ;
+    -ms-transform:  translate(150vw,0px)  ;
   }
   50% {
-    -ms-transform:  translate(100vw,0px)  ;
+    -ms-transform:  translate(150vw,0px)  ;
   }
   100% {
     -ms-transform:  translate(0px,0px)  ;
