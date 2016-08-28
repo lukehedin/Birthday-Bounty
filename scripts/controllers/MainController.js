@@ -158,29 +158,20 @@ app.controller('MainController', ['$scope', function($scope) {
       });
   }
 
-  $scope.getAvailabilityTimeline = function(){
+  $scope.getBountyAvailabilityMessage = function(){
+    var bdayDate = new Date($scope.dob);
+
     var itemStart = new Date($scope.dob);
     itemStart.setDate(itemStart.getDate() - $scope.activeBountyItem.conditions.daysBefore);
 
     var itemEnd = new Date($scope.dob);
     itemEnd.setDate(itemEnd.getDate() + $scope.activeBountyItem.conditions.daysAfter);
 
-    var dayDivs = [];
-
-    var period = getPlunderPeriod();
-    var processingDay = period.start;
-    while (processingDay <= period.end) {
-        var inner = "0";
-        debugger;
-        if(itemStart <= processingDay && itemEnd >= processingDay){
-          inner = "1";
-        }
-
-        dayDivs.push('[' + inner + ']');
-        processingDay.setDate(processingDay.getDate() + 1);
+    if(itemStart - itemEnd === 0){
+      return 'This bounty can only be claimed on the date of your birthday!'
+    } else{
+      return 'This bounty can be claimed between ' + dateToString(itemStart) + ' - ' + dateToString(itemEnd);
     }
-
-    return dayDivs.join('');
   }
 
   $scope.getTimelineSectionWidth = function(section){

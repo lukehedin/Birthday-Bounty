@@ -115,6 +115,10 @@
 							  			<img class="bounty-item-org-photos f-right" ng-src="{{ photo.getUrl({'maxWidth': 200, 'maxHeight':70}) }}" />
 									</div>
 									-->
+									<div class="bounty-board-spacer f-left"></div>
+									<div class="bounty-item-small-line f-left">
+				              			{{ getBountyAvailabilityMessage() }}
+				              		</div>
 			              			<div class="bounty-item-timeline f-left">
 			              				<div class="timeline-before" ng-style="{ 'width' : getTimelineSectionWidth('allBefore') }" >
 			              					<div class="timeline-before-period" ng-style="{ 'width' : getTimelineSectionWidth('before') }"></div>

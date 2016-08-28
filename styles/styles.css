@@ -235,8 +235,7 @@ hr{
 }
 
 .bounty-map-container, .plunder-board-right{
-  height: 100%;
-  
+  height: 100%; 
 }
 
 .bounty-map-container{
@@ -324,12 +323,17 @@ hr{
   padding: 5px;
 }
 
+.bounty-board-spacer{
+  width: 100%;
+  height: 85px;
+}
+
 /*Timeline Styles*/
 
 .bounty-item-timeline{
   height: 30px;
   width: 100%;
-  margin: 25px 0;
+  margin: 15px 0;
 }
 
 .timeline-before, .timeline-after, .timeline-before-period, .timeline-after-period, .timeline-start-period, .timeline-end-period, .timeline-birthday{
