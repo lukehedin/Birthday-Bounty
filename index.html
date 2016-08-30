@@ -42,9 +42,7 @@
 			        <!-- <div>Enter ye postcode:</div>
 			        <input placeholder="Postcode" />-->
 			        <h1>Ahoy there, matey!</h1>
-			        <div>
-			        Enter ye date of birth:
-			        </div>
+			        <h2>Enter ye date of birth:</h2>
 			        <input id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
 			        <input id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
 			        <input id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
@@ -129,6 +127,30 @@
 			              					<div class="timeline-end-period" ng-style="{ 'width' : getTimelineSectionWidth('end') }"></div>
 			              					<div class="timeline-after-period" ng-style="{ 'width' : getTimelineSectionWidth('after') }"></div>
 			              				</div>
+			              			</div>
+			              			<div class="bounty-item-small-line f-left">
+				              			2. To claim this Birthday Bounty, you will need to:
+				              		</div>
+			              			<div class="condition-list">
+				              			<div ng-if="activeBountyItem.conditions.registrationRequiredUrl">
+					              			<img class="condition-icon f-left" src="images/registrationurl.svg" />
+					              			<a target="_blank" ng-href="{{ activeBountyItem.conditions.registrationRequiredUrl }}">Sign up here</a>
+					              			<span ng-if="activeBountyItem.conditions.minimumRegistrationDays">
+					              				 at least {{ activeBountyItem.conditions.minimumRegistrationDays }} days before your birthday
+					              			 </span>
+				              			</div>
+				              			<div ng-if="activeBountyItem.conditions.identificationRequired">
+					              			<img class="condition-icon f-left" src="images/idRequired.svg" />
+					              			Provide ID to verify your date of birth
+				              			</div>
+				              			<div ng-if="activeBountyItem.conditions.digitalVoucherRequired">
+					              			<img class="condition-icon f-left" src="images/digitalVoucher.svg" />
+					              			Show a digital copy of a voucher on a phone or tablet
+				              			</div>
+				              			<div ng-if="activeBountyItem.conditions.paperVoucherRequired">
+				              				<img class="condition-icon f-left" src="images/paperVoucher.svg" />
+					              			Print out and show a paper copy of a voucher
+				              			</div>
 			              			</div>
 		              			</div>
 		              		</div>

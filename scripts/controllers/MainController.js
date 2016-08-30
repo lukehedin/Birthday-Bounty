@@ -168,9 +168,9 @@ app.controller('MainController', ['$scope', function($scope) {
     itemEnd.setDate(itemEnd.getDate() + $scope.activeBountyItem.conditions.daysAfter);
 
     if(itemStart - itemEnd === 0){
-      return 'This bounty can only be claimed on the date of your birthday!'
+      return '1. This Birthday Bounty can only be claimed on your birthday!'
     } else{
-      return 'This bounty can be claimed between ' + dateToString(itemStart) + ' - ' + dateToString(itemEnd);
+      return '1. Claim this Birthday Bounty between ' + dateToString(itemStart) + ' - ' + dateToString(itemEnd);
     }
   }
 

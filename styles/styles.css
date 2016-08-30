@@ -95,6 +95,15 @@ hr{
   float: left;
 }
 
+a{
+  color: #ff6699;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
 /* FROM HEADER.SCSS*/
 .banner {
   height: 100px;
@@ -310,8 +319,9 @@ hr{
 
 .bounty-item-small-line{
   font-size: 0.8em;
-  line-height: 18px;
-  height: 18px;
+  line-height: 20px;
+  height: 20px;
+  width: 100%;
 }
 
 .bounty-item-org-rating{
@@ -333,7 +343,8 @@ hr{
 .bounty-item-timeline{
   height: 30px;
   width: 100%;
-  margin: 15px 0;
+  margin: 6px 0 16px;
+
 }
 
 .timeline-before, .timeline-after, .timeline-before-period, .timeline-after-period, .timeline-start-period, .timeline-end-period, .timeline-birthday{
@@ -367,9 +378,26 @@ hr{
   margin: 0 2px;
 }
 
+.condition-list{
+  font-size: 0.8em;
+  line-height: 18px;
+  float: left;
+  margin: 4px;
+}
+
+.condition-list div{
+  margin: 1px 0 2px;
+}
+
+.condition-icon{
+  width: 18px;
+  height: 18px;
+  margin: 0 4px;
+}
+
 
 .footer{
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #dcbc24;
   text-align: center;
 }
