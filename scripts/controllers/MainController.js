@@ -49,10 +49,10 @@ app.controller('MainController', ['$scope', function($scope) {
 
     switch(fld){
       case "day":
-        if(fldVal && fldVal.length === 2) $('#monthField').focus();
+        if(fldVal && (!isNaN(fldVal)) && fldVal.length === 2 && fldVal <= 31) $('#monthField').focus();
         break;
       case "month":
-        if(fldVal && fldVal.length === 2) $('#yearField').focus();
+        if(fldVal && (!isNaN(fldVal)) && fldVal.length === 2 && fldVal <= 12) $('#yearField').focus();
         break;
       default:
         break;
@@ -225,8 +225,6 @@ app.controller('MainController', ['$scope', function($scope) {
     if(daysToThis === 0) return 0;
     if(daysToThat === 0) return percentageAvailable + '%';
 
-    debugger;
-
     return daysToThis === 0 ? 0 : (Math.floor((daysToThis / (daysToThat + daysToThis)) * percentageAvailable) + '%'); //w00t!
   }
 
@@ -330,7 +328,6 @@ app.controller('MainController', ['$scope', function($scope) {
                         if(status == "OK"){
                           //Set the place details so we have it
                           closestLoc.placeDetails = placeResult;
-                          debugger;
                         } else{
                           //No place details found
                         }

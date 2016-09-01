@@ -1,0 +1,42 @@
+/*Construct the beach background divs*/
+.sky-background{
+  position: absolute;
+  height: 620px;
+  background-color: #bce0f7;
+  width: 100%;
+  overflow: hidden;
+}
+
+.water-background{
+  position: absolute;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+  background-color: #7dc3ef;
+}
+
+.sand-horizon-background{
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+}
+
+.palm-tree-background, .small-palm-background{
+  height: 780px;
+  position: absolute;
+}
+
+.small-palm-background{
+  height: 340px;
+  bottom: 0;
+  padding: 0 0%;
+}
+
+.cloud-a, .cloud-b{
+  max-height: 100px;
+}
+
+.sign-board, .sand-mound{
+  position: absolute;
+}
