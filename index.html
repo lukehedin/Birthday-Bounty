@@ -19,15 +19,15 @@
 
 <body ng-app="BirthdayBountyApp">
 	<div class="wrapper" ng-controller="MainController">
-      	<div class="sky-background">
+      	<div class="sky-background background-element">
 			<img class="cloud-a f-left" src="images/cloud1.svg" />
 			<img class="cloud-b f-right" src="images/cloud3.svg" />
 			<div class="water-background"></div>
 		    <img class="sand-horizon-background background-element" src="images/sand_horizon.svg" />
 			<img class="small-palm-background-a background-element" src="images/smallpalm_1.svg" />
 		    <img class="small-palm-background-b background-element" src="images/smallpalm_2.svg" />
-			<img class="palm-tree-background background-element f-left" src="images/palmtree1.svg" />
-			<img class="palm-tree-background background-element f-right" src="images/palmtree2.svg" />
+			<img class="palm-tree-background-a background-element" src="images/palmtree1.svg" />
+			<img class="palm-tree-background-b background-element" src="images/palmtree2.svg" />
 		</div>
         <div class="container">
             <div class="banner">
@@ -59,9 +59,10 @@
 	              	<div id="bountyDetailsContainer" class="plunder-board-details">
 	              		<div ng-if="!activeBountyItem">
 	              			<div class="initial-details-text">
-				              <span>Shiver me timbers! Plunderin' Birthday Bounty between {{ getPlunderPeriodString() }} will earn ye </span>
+				              <h1>Shiver me timbers!</h1>
+				              <span>Plunderin' between {{ getPlunderPeriodString() }} will earn ye </span>
 				              <h1>{{ getPlunderPrice() | currency }}</h1>
-				              <span>worth o' free birthday bounty!</span>
+				              <span>worth o' free Birthday Bounty!</span>
 				              <br>
 				              <br>
 				              <span>Don't just sit there, scallywag! Click the bounty markers on the map to find ye some treasure!</span>
