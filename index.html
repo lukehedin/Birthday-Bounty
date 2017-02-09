@@ -48,15 +48,15 @@
                         <br/>-->
                 </div>
             </div>
-            <div ng-if="!dob">
+            <div ng-if="!dob" class="dob-splash">
                 <!-- <div>Enter ye postcode:</div>
                     <input placeholder="Postcode" />-->
                 <h1>Ahoy there, matey!</h1>
-                <h2>Enter ye date of birth:</h2>
+                <h2>Enter your date of birth:</h2>
                 <input class="input-field" id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
                 <input class="input-field" id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
                 <input class="input-field" id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
-                <div class="plunder-button" ng-click="submitBirthday()">
+                <div class="standard-button" ng-click="submitBirthday()">
                     Plunder me Birthday Bounty!
                 </div>
             </div>

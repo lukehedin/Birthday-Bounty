@@ -16,6 +16,24 @@ select:focus, input:focus {
   box-shadow: 0 0 2px #ee5588;
 }
 
+.dob-splash{
+  width: 100vw;
+  text-align: center;
+  background-color: #ff6699;
+  background-image: url(../images/background-trans.svg);  
+  color: white;
+  font-family: 'Didact Gothic', sans-serif;    
+  padding: 40px 0 40px 0;  
+}
+
+.dob-splash input{
+  color: black;
+}
+
+.dob-splash .standard-button{
+  display: inline-block;
+}
+
 /*Keeping things inside 80vw*/
 .content-wrapper, .top-navigation-bar, .birthday-summary-strip .summary-text, .footer-strip .footer-text{
   min-width: 600px;
