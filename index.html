@@ -1,198 +1,259 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Birthday Bounty</title>
+        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/animations.css" />
+        <link rel="stylesheet" href="styles/bootstrap.min.css" />
+        <meta name=viewport content='width=1024'>
+        <!-- Include Google APIS (Jquery, fonts, maps) -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
+        <!-- Include the AngularJS library -->
+        <script src="../scripts/angular.min.js"></script>
+        <script src="../scripts/bootstrap.min.js"></script>
 
-<head>
-    <title>Birthday Bounty</title>
-	<link rel="stylesheet" type="text/css" href="styles/animations.css" />
-	<link rel="stylesheet" href="styles/styles.css" />
-
-	<meta name=viewport content='width=1024'>
-
-	<!-- Include Google APIS (Jquery, fonts, maps) -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
-
-
-	<!-- Include the AngularJS library -->
-    <script src="../scripts/angular.min.js"></script>
-</head>
-
-<body ng-app="BirthdayBountyApp">
-	<div class="wrapper" ng-controller="MainController">
-      	<div class="sky-background background-element">
-			<img class="cloud-a f-left" src="images/cloud1.svg" />
-			<img class="cloud-b f-right" src="images/cloud3.svg" />
-			<div class="water-background"></div>
-		    <img class="sand-horizon-background background-element" src="images/sand_horizon.svg" />
-			<img class="small-palm-background-a background-element" src="images/smallpalm_1.svg" />
-		    <img class="small-palm-background-b background-element" src="images/smallpalm_2.svg" />
-			<img class="palm-tree-background-a background-element" src="images/palmtree1.svg" />
-			<img class="palm-tree-background-b background-element" src="images/palmtree2.svg" />
-		</div>
-        <div class="container">
-            <div class="banner">
-	          <img class="banner-logo" src="images/flag.svg" />
-	          <h1 class="banner-title">Birthday<br/>Bounty</h1>
-	        </div>
-          	<div ng-if="!dob">
-			   <div class="content-container">
-			        <!-- <div>Enter ye postcode:</div>
-			        <input placeholder="Postcode" />-->
-			        <h1>Ahoy there, matey!</h1>
-			        <h2>Enter ye date of birth:</h2>
-			        <input class="input-field" id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
-			        <input class="input-field" id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
-			        <input class="input-field" id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
-			        <div class="plunder-button" ng-click="submitBirthday()">
-			            Plunder me Birthday Bounty!
-			        </div>
-				</div>
-			</div>
-			<div ng-if="dob">
-	          <div class="content-container">
-	            <img class="sign-board background-element" src="images/sign_long.svg" />
-	            <img class="sand-mound background-element f-left" src="images/sandmound2.svg" />
-	            <img class="sand-mound background-element f-right" src="images/sandmound1.svg" />
-	            <div class="plunder-board">
-	              
-	              <div class="plunder-board-info">
-	              	<div id="bountyDetailsContainer" class="plunder-board-details">
-	              		<div ng-if="!activeBountyItem">
-	              			<div class="initial-details-text">
-				              <h1>Shiver me timbers!</h1>
-				              <span>Plunderin' between {{ getPlunderPeriodString() }} will earn ye </span>
-				              <h1>{{ getPlunderPrice() | currency }}</h1>
-				              <span>worth o' free Birthday Bounty!</span>
-				              <br>
-				              <br>
-				              <span>Don't just sit there, scallywag! Click the bounty markers on the map to find ye some treasure!</span>
-				            </div>
-	              		</div>
-	              		<div ng-if="activeBountyItem">
-		              		<div>
-		              			<div class="bounty-item-title f-left">
-		              				{{ activeBountyItem.title }}
-		              			</div>
-		              			<h1 class="bounty-item-price f-right">
-		              				{{ activeBountyItem.maxValue | currency }}
-		              			</h1>
-		              			<div class="bounty-item-org-info">
-			              			<div class="bounty-item-org-header f-left">
-			              				<div class="bounty-item-org-name f-left">
-				              				{{ activeBountyItem.organisation.name }}
-				              			</div>
-				              			<div class="bounty-item-org-social f-right">
-				              				<a ng-if="activeBountyItem.organisation.social.facebook" target="_blank" ng-href="{{activeBountyItem.organisation.social.facebook}}">
-				              					<img class="social-button f-right" src="images/facebook.svg" />
-				              				</a>
-				              				<a ng-if="activeBountyItem.organisation.social.twitter" target="_blank" ng-href="{{activeBountyItem.organisation.social.twitter}}">
-				              					<img class="social-button f-right" src="images/twitter.svg" />
-				              				</a>
-				              				<a ng-if="activeBountyItem.organisation.social.instagram" target="_blank" ng-href="{{activeBountyItem.organisation.social.instagram}}">
-				              					<img class="social-button f-right" src="images/instagram.svg" />
-				              				</a>
-				              			</div>
-			              			</div>
-			              			<div class="bounty-item-org-subheader f-left">
-			              				<div class="f-left">
-				              				<div class="bounty-item-small-line">
-				              					{{ activeBountyItem.organisation.locations[0].placeDetails.formatted_address }}
-				              				</div>
-				              				<div class="bounty-item-small-line">
-				              					&#128222; {{ activeBountyItem.organisation.locations[0].placeDetails.formatted_phone_number || "N/A" }}
-				              				</div>
-			              				</div>
-			              				<div ng-if="activeBountyItem.organisation.locations[0].placeDetails.rating" class="bounty-item-org-rating f-right">
-			              					&#9733;{{ activeBountyItem.organisation.locations[0].placeDetails.rating }}
-			              				</div>
-			              			</div>
-			              			<!--
-			              			<div ng-repeat="photo in activeBountyItem.organisation.locations[0].placeDetails.photos track by $index">
-							  			<img class="bounty-item-org-photos f-right" ng-src="{{ photo.getUrl({'maxWidth': 200, 'maxHeight':70}) }}" />
+		<!-- Include the fav icons -->
+		<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="images/favicons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+		<link rel="manifest" href="images/favicons/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+    </head>
+    <body ng-app="BirthdayBountyApp">
+        <div class="app-container" ng-controller="MainController">
+            <div class="top-navigation-bar">
+                <div class="logo-text">
+                    BIRTHDAY<br/>BOUNTY
+                </div>
+                <img class="flag-icon" src="images/flag.svg">
+                <div class="navigation-menu">
+                    <!--Try another birthday
+                        <br/>
+                        About
+                        <br/>
+                        Help
+                        <br/>-->
+                </div>
+            </div>
+            <div ng-if="!dob">
+                <!-- <div>Enter ye postcode:</div>
+                    <input placeholder="Postcode" />-->
+                <h1>Ahoy there, matey!</h1>
+                <h2>Enter ye date of birth:</h2>
+                <input class="input-field" id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
+                <input class="input-field" id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
+                <input class="input-field" id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
+                <div class="plunder-button" ng-click="submitBirthday()">
+                    Plunder me Birthday Bounty!
+                </div>
+            </div>
+            <div ng-if="dob">
+                <div class="birthday-summary-strip">
+                    <div class="summary-text">
+                        <h2>Shiver me timbers!</h2>
+						</span>Plunderin' between {{ getPlunderPeriodString() }} could earn you up to </span>
+                        <h1>{{ getPlunderValue() | currency }}</h1>
+                        <span>worth of free Birthday Bounty!</span>
+                        <br>
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div ng-if="showFullMap" class="bounty-map-container">
+                        <div id="bountyMapContainer" class="bounty-map"></div>
+                        <div class="plunder-options">
+                            <div class="option-label">
+                                Bounty Types:
+                            </div>
+                            <div ng-repeat="bountyType in bountyTypes track by $index">
+                                <img ng-class="{ unselected: plunderOptions.includeTypes.indexOf(bountyType.id) === -1 }" class="toggle-bounty-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
+                            </div>
+                        </div>
+						<a ng-click="toggleFullMap()" class="map-view-button standard-button">
+							Hide Full Map
+						</a>
+                    </div>
+                    <div class="bounty-summary-container">
+                        <div class="bounty-summary">
+							<div ng-if="!showFullMap" class="bounty-summary-map-mini">
+                                <h4>
+									Bounty Map
+								</h4>
+								<hr/>
+								<div class="bounty-map-mini-container">
+									<div id="bountyMapContainer" class="bounty-map"></div>
+									<a ng-click="toggleFullMap()" class="map-view-button standard-button">
+										Show Full Map
+									</a>
+								</div>
+							</div>
+                            <div class="bounty-summary-settings">
+                                <h4>
+									Bounty Options
+								</h4>
+								<hr/>
+                                <div class="settings-label">
+                                    Bounty Types:
+                                </div>
+								<div class="settings-input">
+									<div ng-repeat="bountyType in bountyTypes track by $index">
+										<img ng-class="{ unselected: plunderOptions.includeTypes.indexOf(bountyType.id) === -1 }" class="toggle-bounty-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
 									</div>
-									-->
-									<div class="bounty-board-spacer f-left"></div>
-									<div class="bounty-item-small-line f-left">
-				              			{{ getBountyAvailabilityMessage() }}
-				              		</div>
-			              			<div class="bounty-item-timeline f-left">
-			              				<div class="timeline-before" ng-style="{ 'width' : getTimelineSectionWidth('allBefore') }" >
-			              					<div class="timeline-before-period" ng-style="{ 'width' : getTimelineSectionWidth('before') }"></div>
-			              					<div class="timeline-start-period" ng-style="{ 'width' : getTimelineSectionWidth('start') }"></div>
-			              				</div>
-			              				<div class="timeline-birthday"></div>
-			              				<div class="timeline-after" ng-style="{ 'width' : getTimelineSectionWidth('allAfter') }">
-			              					<div class="timeline-end-period" ng-style="{ 'width' : getTimelineSectionWidth('end') }"></div>
-			              					<div class="timeline-after-period" ng-style="{ 'width' : getTimelineSectionWidth('after') }"></div>
-			              				</div>
-			              			</div>
-			              			<div class="bounty-item-small-line f-left">
-				              			2. To claim this Birthday Bounty, you will need to:
-				              		</div>
-			              			<div class="condition-list">
-				              			<div ng-if="activeBountyItem.conditions.registrationRequiredUrl">
-					              			<img class="condition-icon f-left" src="images/registrationurl.svg" />
-					              			<a target="_blank" ng-href="{{ activeBountyItem.conditions.registrationRequiredUrl }}">Sign up here</a>
-					              			<span ng-if="activeBountyItem.conditions.minimumRegistrationDays">
-					              				 at least {{ activeBountyItem.conditions.minimumRegistrationDays }} days before your birthday
-					              			 </span>
-				              			</div>
-				              			<div ng-if="activeBountyItem.conditions.identificationRequired">
-					              			<img class="condition-icon f-left" src="images/idRequired.svg" />
-					              			Provide ID to verify your date of birth
-				              			</div>
-				              			<div ng-if="activeBountyItem.conditions.digitalVoucherRequired">
-					              			<img class="condition-icon f-left" src="images/digitalVoucher.svg" />
-					              			Show a digital copy of a voucher on a phone or tablet
-				              			</div>
-				              			<div ng-if="activeBountyItem.conditions.paperVoucherRequired">
-				              				<img class="condition-icon f-left" src="images/paperVoucher.svg" />
-					              			Print out and show a paper copy of a voucher
-				              			</div>
-			              			</div>
-		              			</div>
-		              		</div>
-		              	</div>
-	              	</div>
-	              </div>
-	              <div class="bounty-map-container f-left">
-	              	<div id="bountyMapContainer" class="bounty-map f-left"></div>
-	               	<div class="plunder-options">
-	              		<div class="option-label f-left">
-	              			Bounty Types:
-             			</div>
-             			<div ng-repeat="bountyType in bountyTypes track by $index">
-							  <img ng-class="{ unselected: plunderOptions.excludeTypes.indexOf(bountyType.id) !== -1 }" class="toggle-bounty-button f-left" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
-						</div>
-						<!---
-	              		<div class="option-label f-left">Conditions:</div>
-	              		<div class="option-label">Plunder Period:</div>
-	              		-->
-	              	</div>
-	              </div>
-	            </div>
-	          </div>
-		    </div>
-		    <div class="footer f-left">
-	            <div ng-click="clearBirthday()">
-	            	Arrrgh! I want to use a different date of birth!
-	          	</div>
-	          	<div>
-	          		Social icons designed by <a target="_blank" href="http://www.flaticon.com/authors/freepik">Freepik</a> of Flaticon
-	          	</div>
-	          	<div>
-	          		Bounty icons designed by <a target="_blank" href="http://www.flaticon.com/authors/madebyoliver">Madebyoliver</a> of Flaticon
-	         	 </div>
-	        </div>
+								</div>
+                                <div class="settings-label">
+                                    Max Value Between:
+                                </div>
+								<div class="settings-input">
+									$<input type="number" ng-change="filterChange()"  ng-model="plunderOptions.minValue" min="0" max="1000" value="0"> and 
+									$<input type="number" ng-change="filterChange()"  ng-model="plunderOptions.maxValue" min="1" max="1000" value="1000">
+									<br/>
+									<input type="checkbox" ng-change="filterChange()" ng-model="plunderOptions.showUnknownValue">Show Bounty with unknown value<br>
+								</div>
+                                <div class="settings-label">
+                                    Available Between:
+                                </div>
+								<div class="settings-input">
+									<input type="date" ng-change="filterChange()" ng-model="plunderOptions.dateStart"> and  
+									<input type="date" ng-change="filterChange()" ng-model="plunderOptions.dateFinish">
+								</div>
+                                <div class="settings-label">
+                                    Claim Conditions:
+                                </div>
+								<div class="settings-input">
+									<input type="checkbox" ng-change="filterChange()" ng-model="plunderOptions.includeRegistrationReq">Online Registration<br>
+									<input type="checkbox" ng-change="filterChange()" ng-model="plunderOptions.includeIdentificationReq">Identification Required<br>
+									<input type="checkbox" ng-change="filterChange()" ng-model="plunderOptions.includeDigitalVoucherReq">Digital Voucher Required<br>
+									<input type="checkbox" ng-change="filterChange()" ng-model="plunderOptions.includePaperVoucherReq">Paper Voucher Required
+								</div>
+								<div class="settings-label">
+									Show Me:
+								</div>
+								<div class="settings-input">
+									<input type="radio" ng-change="filterChange()" ng-model="plunderOptions.showMe" value="{{enums.showMe.All}}"> All Birthday Bounty<br>									
+									<input type="radio" ng-change="filterChange()" ng-model="plunderOptions.showMe" value="{{enums.showMe.NotPlundered}}"> Bounty I haven't plundered<br>
+									<input type="radio" ng-change="filterChange()" ng-model="plunderOptions.showMe" value="{{enums.showMe.Plundered}}"> Bounty I have plundered
+                                </div>
+                                <div class="settings-label">
+                                    Sort By:
+                                </div>
+								<div class="settings-input">
+									<select ng-change="filterChange()" ng-model="plunderOptions.sortBy">
+										<option value="{{enums.sorter.ValueHighLow}}">Max Value (High to Low)</option>
+										<option value="{{enums.sorter.ValueLowHigh}}">Max Value (Low to High)</option>
+										<option value="{{enums.sorter.AvailEarlyLate}}">Availability (Early to Late)</option>
+										<option value="{{enums.sorter.AvailLateEarly}}">Availability (Late to Early)</option>
+										<option value="{{enums.sorter.OrgNameAZ}}">Organisation Name (A-Z)</option>
+									</select>
+								</div>
+                            </div>
+							<div class="bounty-summary-plunder">
+								<h4>
+									My Bounty Plunder
+								</h4>
+								<hr/>
+								<div ng-if="myPlunder && myPlunder.length > 1" ng-repeat="plunderBountyId in myPlunder track by $index">
+									<div class="my-plunder-item">
+										<b>{{ getBountyByBountyId(plunderBountyId).organisation.name }}</b>
+										<br/>
+										{{ getBountyByBountyId(plunderBountyId).title }}										
+									</div>
+								</div>
+								<div ng-if="!myPlunder || myPlunder.length < 1">
+									You haven't plundered any Birthday Bounty yet!
+								</div>
+                            </div>
+                        </div>
+                        <div class="bounty-summary-items-container">
+							<div ng-if="filteredBountyData().length < 1" class="no-bounty-message">
+								Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Options on the left.
+							</div>
+                            <div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
+                                <div class="bounty-summary-row">
+                                    <h1 class="bounty-item-org-name">
+                                        {{ bountyItem.organisation.name }}
+                                        <div class="bounty-item-org-social">
+                                            <a ng-if="bountyItem.organisation.social.facebook" target="_blank" ng-href="{{bountyItem.organisation.social.facebook}}">
+                                            <img class="social-button" src="images/facebook.svg" />
+                                            </a>
+                                            <a ng-if="bountyItem.organisation.social.twitter" target="_blank" ng-href="{{bountyItem.organisation.social.twitter}}">
+                                            <img class="social-button" src="images/twitter.svg" />
+                                            </a>
+                                            <a ng-if="bountyItem.organisation.social.instagram" target="_blank" ng-href="{{bountyItem.organisation.social.instagram}}">
+                                            <img class="social-button" src="images/instagram.svg" />
+                                            </a>
+                                        </div>
+                                    </h1>
+									<div class="bounty-item-left-details">
+										<h3>
+											{{ bountyItem.title }}
+										</h3>
+										<h4>
+											{{ getBountyAvailabilityMessage(bountyItem) }}
+										</h4>
+									</div>
+ 									<div class="bounty-item-right-details">
+										<h3>
+											{{ bountyItem.maxValue | currency }}
+										</h3>
+										<div class="standard-button toggle-plunder-button" ng-click="toggleInMyPlunder(bountyItem.bountyId)">
+											{{ myPlunder.indexOf(bountyItem.bountyId) === -1 ? 'Add to My Bounty' : 'Remove from My Bounty' }}
+										</div>
+ 									</div>
+                                    <div class="condition-list">
+										<hr/>
+                                        <div ng-if="bountyItem.conditions.registrationRequiredUrl" class="ng-scope">
+                                            <img class="condition-icon" src="images/registrationurl.svg">
+                                            <a target="_blank" ng-href="{{bountyItem.conditions.registrationRequiredUrl}}">Sign up here</a>
+                                        </div>
+                                        <div ng-if="bountyItem.conditions.identificationRequired" class="ng-scope">
+                                            <img class="condition-icon" src="images/idrequired.svg">
+                                            Provide ID to verify your date of birth
+                                        </div>
+                                        <div ng-if="bountyItem.conditions.digitalVoucherRequired" class="ng-scope">
+                                            <img class="condition-icon" src="images/digitalvoucher.svg">
+                                            Present a digital voucher on a phone or tablet
+                                        </div>
+                                        <div ng-if="bountyItem.conditions.paperVoucherRequired" class="ng-scope">
+                                            <img class="condition-icon" src="images/papervoucher.svg">
+                                            Print off and present a paper voucher
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-strip">
+                    <div class="footer-text">
+                        <a href="" ng-click="clearBirthday()" ng-if="dob">
+                        Arrrgh! I want to use a different date of birth!
+                        </a>
+                        <div>
+                            Social icons designed by <a target="_blank" href="http://www.flaticon.com/authors/freepik">Freepik</a> of Flaticon
+                        </div>
+                        <div>
+                            Bounty icons designed by <a target="_blank" href="http://www.flaticon.com/authors/madebyoliver">Madebyoliver</a> of Flaticon
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-	</div>
-	
-    <!-- Modules -->
-    <script src="scripts/app.js"></script>
-
-    <!-- Controllers -->
-    <script src="scripts/data/bounty.js"></script>
-    <script src="scripts/controllers/MainController.js"></script>
-</body>
-
+        <!-- Modules -->
+        <script src="scripts/app.js"></script>
+        <!-- Controllers -->
+        <script src="scripts/data/bounty.js"></script>
+        <script src="scripts/controllers/MainController.js"></script>
+    </body>
 </html>

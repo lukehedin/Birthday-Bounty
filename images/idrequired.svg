@@ -26,7 +26,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.1767767"
-     inkscape:cx="1087.162"
+     inkscape:cx="-216.74287"
      inkscape:cy="-699.59507"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -79,7 +79,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -90,95 +90,112 @@
      transform="translate(1517.5192,2415.3234)">
     <g
        id="g5590"
-       transform="matrix(8.5333338,0,0,8.5333338,-1517.5192,-2483.5901)">
+       transform="matrix(8.5333338,0,0,8.5333338,-1517.5192,-2483.5901)"
+       style="fill:#ee5588;fill-opacity:1">
       <g
-         id="g5530">
+         id="g5530"
+         style="fill:#ee5588;fill-opacity:1">
         <path
            id="path5532"
            d="M 55.783,8 4.217,8 C 1.892,8 0,9.892 0,12.217 L 0,47.783 C 0,50.108 1.892,52 4.217,52 l 51.566,0 C 58.108,52 60,50.108 60,47.783 L 60,12.217 C 60,9.892 58.108,8 55.783,8 Z M 58,47.783 C 58,49.006 57.006,50 55.783,50 L 4.217,50 C 2.994,50 2,49.006 2,47.783 L 2,12.217 C 2,10.994 2.994,10 4.217,10 l 51.566,0 C 57.006,10 58,10.994 58,12.217 l 0,35.566 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5534"
            d="M 22.642,36.248 19,34.388 19,34.001 c 1.628,-0.889 2.773,-2.353 3.412,-4.364 C 23.381,29.123 24,28.122 24,27 l 0,-1 c 0,-0.926 -0.431,-1.785 -1.151,-2.349 -0.624,-3.78 -3.262,-5.696 -7.849,-5.696 -0.217,0 -0.429,0.008 -0.636,0.024 -1.202,0.097 -2.363,-0.162 -3.224,-0.74 C 10.731,16.963 10.422,16.695 10.225,16.446 9.781,15.878 8.856,15.853 8.382,16.384 8.155,16.638 8.048,16.98 8.088,17.32 c 0.042,0.374 0.105,0.809 0.2,1.286 0.193,0.975 0.193,0.975 -0.078,1.558 -0.102,0.221 -0.228,0.49 -0.376,0.853 C 7.503,21.828 7.268,22.716 7.133,23.664 6.424,24.229 6,25.083 6,26 l 0,1 c 0,1.122 0.619,2.123 1.588,2.637 0.639,2.012 1.784,3.476 3.412,4.364 l 0,0.376 -3.769,1.858 C 5.855,36.985 5,38.425 5,39.993 l 0,1.325 C 5,42.121 5,44 15,44 25,44 25,42.121 25,41.318 l 0,-1.245 c 0,-1.632 -0.906,-3.099 -2.358,-3.825 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5536"
            d="m 30,23 10,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 l -10,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5538"
            d="m 44,23 1,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 l -1,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5540"
            d="m 31,38 -1,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 l 1,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5542"
            d="m 37,38 -2,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 l 2,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5544"
            d="m 42,38 -1,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 l 1,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5546"
            d="m 48,38 -2,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 l 2,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5548"
            d="M 51.29,38.29 C 51.109,38.479 51,38.74 51,39 c 0,0.26 0.109,0.52 0.29,0.71 0.189,0.18 0.45,0.29 0.71,0.29 0.26,0 0.52,-0.11 0.71,-0.29 C 52.89,39.52 53,39.26 53,39 c 0,-0.26 -0.11,-0.521 -0.29,-0.71 -0.38,-0.37 -1.05,-0.37 -1.42,0 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5550"
            d="m 52,27 -22,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 l 22,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5552"
            d="m 52,33 -22,0 c -0.553,0 -1,0.447 -1,1 0,0.553 0.447,1 1,1 l 22,0 c 0.553,0 1,-0.447 1,-1 0,-0.553 -0.447,-1 -1,-1 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
       </g>
       <g
-         id="g5554" />
+         id="g5554"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5556" />
+         id="g5556"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5558" />
+         id="g5558"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5560" />
+         id="g5560"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5562" />
+         id="g5562"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5564" />
+         id="g5564"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5566" />
+         id="g5566"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5568" />
+         id="g5568"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5570" />
+         id="g5570"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5572" />
+         id="g5572"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5574" />
+         id="g5574"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5576" />
+         id="g5576"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5578" />
+         id="g5578"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5580" />
+         id="g5580"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5582" />
+         id="g5582"
+         style="fill:#ee5588;fill-opacity:1" />
     </g>
   </g>
 </svg>

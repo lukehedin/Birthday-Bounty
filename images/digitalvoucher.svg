@@ -26,7 +26,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.1767767"
-     inkscape:cx="396.53567"
+     inkscape:cx="-907.3692"
      inkscape:cy="249.69929"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -79,7 +79,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -90,51 +90,68 @@
      transform="translate(-6045.6949,1299.8188)">
     <g
        id="g5662"
-       transform="matrix(0,-8.5333338,8.5333338,0,6045.6949,-800.62727)">
+       transform="matrix(0,-8.5333338,8.5333338,0,6045.6949,-800.62727)"
+       style="fill:#ee5588;fill-opacity:1">
       <g
-         id="g5620">
+         id="g5620"
+         style="fill:#ee5588;fill-opacity:1">
         <circle
            id="circle5622"
            r="2"
            cy="53"
            cx="41.5"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
         <path
            id="path5624"
            d="M 54.095,0 28.905,0 C 26.476,0 24.5,1.977 24.5,4.405 l 0,9.534 c -5.254,2.019 -9,7.104 -9,13.061 0,3.258 1.128,6.253 3.002,8.634 L 1.816,51.271 C 1.413,51.649 1.392,52.282 1.77,52.684 1.967,52.894 2.233,53 2.5,53 2.745,53 2.991,52.91 3.184,52.729 L 19.847,37.114 c 1.33,1.27 2.907,2.276 4.653,2.947 l 0,15.534 c 0,2.429 1.976,4.405 4.405,4.405 l 25.189,0 c 2.429,0 4.405,-1.977 4.405,-4.405 l 0,-51.19 C 58.5,1.977 56.524,0 54.095,0 Z m -9.595,3 1,0 c 0.552,0 1,0.447 1,1 0,0.553 -0.448,1 -1,1 l -1,0 c -0.552,0 -1,-0.447 -1,-1 0,-0.553 0.448,-1 1,-1 z m -7,0 4,0 c 0.552,0 1,0.447 1,1 0,0.553 -0.448,1 -1,1 l -4,0 c -0.552,0 -1,-0.447 -1,-1 0,-0.553 0.448,-1 1,-1 z m -20,24 c 0,-6.617 5.383,-12 12,-12 6.617,0 12,5.383 12,12 0,6.617 -5.383,12 -12,12 -6.617,0 -12,-5.383 -12,-12 z m 24,30 c -2.206,0 -4,-1.794 -4,-4 0,-2.206 1.794,-4 4,-4 2.206,0 4,1.794 4,4 0,2.206 -1.794,4 -4,4 z m 15,-11 -30,0 0,-5.332 c 0.968,0.212 1.97,0.332 3,0.332 7.72,0 14,-6.28 14,-14 0,-7.72 -6.28,-14 -14,-14 -1.03,0 -2.032,0.12 -3,0.332 l 0,-5.332 30,0 0,38 z"
            inkscape:connector-curvature="0"
-           style="fill:#ffffff" />
+           style="fill:#ee5588;fill-opacity:1" />
       </g>
       <g
-         id="g5626" />
+         id="g5626"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5628" />
+         id="g5628"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5630" />
+         id="g5630"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5632" />
+         id="g5632"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5634" />
+         id="g5634"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5636" />
+         id="g5636"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5638" />
+         id="g5638"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5640" />
+         id="g5640"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5642" />
+         id="g5642"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5644" />
+         id="g5644"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5646" />
+         id="g5646"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5648" />
+         id="g5648"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5650" />
+         id="g5650"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5652" />
+         id="g5652"
+         style="fill:#ee5588;fill-opacity:1" />
       <g
-         id="g5654" />
+         id="g5654"
+         style="fill:#ee5588;fill-opacity:1" />
     </g>
   </g>
 </svg>
