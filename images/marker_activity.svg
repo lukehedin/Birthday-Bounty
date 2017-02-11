@@ -26,10 +26,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="72.418987"
-     inkscape:cy="-0.068244649"
+     inkscape:cx="-65.36608"
+     inkscape:cy="-99.571078"
      inkscape:document-units="px"
-     inkscape:current-layer="g4137"
+     inkscape:current-layer="g4412"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -82,7 +82,7 @@
       <g
          id="g4137">
         <circle
-           style="opacity:1;fill:#b4b9dc;fill-opacity:1;stroke:#6973b9;stroke-width:9.43589783;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           style="opacity:1;fill:#f7a5a5;fill-opacity:1;stroke:#ef4d4d;stroke-width:9.43589783;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="path4355-9-0-1-7"
            cx="261.17859"
            cy="29.464287"
@@ -95,13 +95,13 @@
              r="17.509001"
              cy="40.507"
              cx="22.017"
-             style="fill:#6973b9;fill-opacity:1" />
+             style="fill:#ed3737;fill-opacity:1" />
           <g
              id="g4364">
             <path
                id="path4366"
                d="m 49.88,25.681 c -1.761,-3.56 -2.694,-7.466 -2.694,-11.438 0.138,-2.48 0.266,-5.729 0.754,-7.555 0.311,-1.165 0.363,-2.396 0.039,-3.558 -0.99,-3.554 -4.076,-3.113 -4.076,-3.113 0,0 -3.407,-0.487 -4.21,3.686 -0.192,0.999 -0.078,2.03 0.181,3.014 0.481,1.831 0.838,5.105 0.746,7.526 0,3.971 -0.933,7.878 -2.694,11.438 -0.642,1.298 -1.314,2.779 -1.916,4.334 0,0 0,0 0,0 2.198,2.926 3.516,6.551 3.516,10.492 0,4.24 -1.527,8.109 -4.035,11.136 -0.002,0.025 -0.004,0.05 -0.006,0.075 0.029,0.092 0.051,0.187 0.083,0.278 1.052,3.01 2.693,6.019 5.053,6.019 l 6.566,0 c 2.36,0 3.757,-3.006 4.809,-6.016 1.044,-2.987 1.513,-6.144 1.513,-9.308 l 0,-4.371 C 53.394,34.16 51.642,29.243 49.88,25.681 Z"
-               style="fill:#f5efca"
+               style="fill:#fde6e6;fill-opacity:1"
                inkscape:connector-curvature="0" />
           </g>
           <circle
@@ -109,23 +109,23 @@
              r="3"
              cy="35"
              cx="14.508"
-             style="fill:#38454f" />
+             style="fill:#770b0b;fill-opacity:1" />
           <circle
              id="circle4370"
              r="3"
              cy="29"
              cx="20.507999"
-             style="fill:#38454f" />
+             style="fill:#770b0b;fill-opacity:1" />
           <circle
              id="circle4372"
              r="3"
              cy="37.015999"
              cx="24.507999"
-             style="fill:#38454f" />
+             style="fill:#770b0b;fill-opacity:1" />
           <path
              id="path4374"
              d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
-             style="fill:#6973b9;fill-opacity:1"
+             style="fill:#ef4d4d;fill-opacity:1"
              inkscape:connector-curvature="0" />
           <g
              id="g4376" />

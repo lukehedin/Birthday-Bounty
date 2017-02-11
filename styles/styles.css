@@ -16,6 +16,7 @@ select:focus, input:focus {
   box-shadow: 0 0 2px #ee5588;
 }
 
+/*Splash screen*/
 .dob-splash{
   width: 100vw;
   text-align: center;
@@ -77,7 +78,7 @@ select:focus, input:focus {
 .birthday-summary-strip{
   margin: 0 0 20px 0;
   font-size: 22px;
-  padding: 40px 0 20px 0;
+  padding: 30px 0 30px 0;
 }
 
 .footer-strip {
@@ -120,8 +121,11 @@ select:focus, input:focus {
 
 .bounty-marker-tooltip {
     position:absolute;
-    color: black;
-    padding: 5px;
+    font-family: 'Didact Gothic', sans-serif;  
+    background-color:white;
+    color: #797876;
+    border: 1px solid #797876;
+    padding: 2px;
 }
 
 .bounty-map-container {
@@ -276,7 +280,7 @@ select:focus, input:focus {
 }
 
 .settings-input input{
-  max-width: 140px;
+  max-width: 130px;
 }
 
 .bounty-summary-items-container{

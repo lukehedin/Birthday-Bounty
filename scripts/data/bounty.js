@@ -14,6 +14,8 @@ var bountyData = [
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": 0,
       "daysAfter": 30,
       "withPurchaseAmount": null,
@@ -56,6 +58,8 @@ var bountyData = [
     "sponsored": false,
     "additionalDetails": "Groups of 6 or more will also recieve a FREE birthday cake!",
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": 0,
       "daysAfter": 0,
       "withPurchaseAmount": null,
@@ -99,6 +103,8 @@ var bountyData = [
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": 0,
       "daysAfter": 0,
       "withPurchaseAmount": null,
@@ -287,6 +293,8 @@ var bountyData = [
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": 0,
       "daysAfter": 0,
       "withPurchaseAmount": null,
@@ -322,11 +330,13 @@ var bountyData = [
     "title": "Churros For Two",
     "maxValue": 14.95,
     "types": [
-      2
+      1
     ],
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": 1,
       "daysAfter": 1,
       "withPurchaseAmount": null,
@@ -401,14 +411,17 @@ var bountyData = [
       "$oid": "57c14e80057ce9581f82fc88"
     },
     "bountyId": 6,
-    "title": "6 Course Menu",
-    "maxValue": null,
+    "title": "6 Course Degustation",
+    "maxValue": 85,
     "types": [
-      2
+      2,
+      1
     ],
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": 14,
       "daysAfter": 14,
       "withPurchaseAmount": null,
@@ -447,11 +460,14 @@ var bountyData = [
     "maxValue": 200,
     "types": [
       3,
-      4
+      4,
+      5
     ],
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": null,
       "daysAfter": null,
       "withPurchaseAmount": null,
@@ -486,14 +502,62 @@ var bountyData = [
       "$oid": "57c14e80057ce9581f82fc88"
     },
     "bountyId": 8,
+    "title": "$100 Drink Voucher",
+    "maxValue": 100,
+    "types": [
+      3,
+      4,
+      5
+    ],
+    "sponsored": false,
+    "additionalDetails": null,
+    "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
+      "daysBefore": null,
+      "daysAfter": null,
+      "withPurchaseAmount": null,
+      "withPurchaseNotes": null,
+      "registrationRequiredUrl": "https://www.facebook.com/SpiceMarketMelb/app/171215659637353/",
+      "minimumRegistrationDays": 30,
+      "identificationRequired": true,
+      "digitalVoucherRequired": false,
+      "paperVoucherRequired": null,
+      "notes": [
+        "You will receive an email 30 days before your birthday to arrange your celebration, along with your $100 drinks voucher."
+      ]
+    },
+    "organisation": {
+      "name": "Spice Market",
+      "social": {
+        "facebook": "https://www.facebook.com/SpiceMarketMelb/",
+        "twitter": "https://twitter.com/littleredpocket?lang=en",
+        "instagram": null
+      },
+      "locations": [
+        {
+          "lat": -37.8149669,
+          "lng": 144.9674887,
+          "placeId": "ChIJKzCzLbZC1moRrIwQTDbbSrg"
+        }
+      ]
+    }
+  },
+  {
+    "_id": {
+      "$oid": "57c14e80057ce9581f82fc88"
+    },
+    "bountyId": 9,
     "title": "$15 Pharmacy Voucher",
     "maxValue": 15,
     "types": [
       5
     ],
     "sponsored": false,
-    "additionalDetails": "Being a member of the customer club also gives you a few extra discounts and goodies. Might be right up your alley if you're a health nut.",
+    "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": null,
       "daysAfter": null,
       "withPurchaseAmount": null,
@@ -542,15 +606,17 @@ var bountyData = [
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
-    "bountyId": 9,
+    "bountyId": 10,
     "title": "Two Games of Bowling",
-    "maxValue": null,
+    "maxValue": 30,
     "types": [
       4
     ],
     "sponsored": false,
     "additionalDetails": "Signing up also gets you into the visitor rewards program, where you can get more free bowling after successive visits.",
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": null,
       "daysAfter": null,
       "withPurchaseAmount": null,
@@ -602,15 +668,17 @@ var bountyData = [
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
-    "bountyId": 10,
+    "bountyId": 11,
     "title": "Premium Car Wash",
-    "maxValue": null,
+    "maxValue": 9,
     "types": [
-      1
+      5
     ],
     "sponsored": false,
     "additionalDetails": null,
     "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
       "daysBefore": null,
       "daysAfter": null,
       "withPurchaseAmount": null,
@@ -634,6 +702,221 @@ var bountyData = [
           "lat": -38.027356,
           "lng": 145.1288465,
           "placeId": "ChIJ7TDqdE5t1moRKCJTD3Gqhyw"
+        }
+      ]
+    }
+  },
+  {
+    "_id": {
+      "$oid": "57c14e80057ce9581f82fc88"
+    },
+    "bountyId": 12,
+    "title": "$10 Bonds Voucher ",
+    "maxValue": 10,
+    "types": [
+      5
+    ],
+    "sponsored": false,
+    "additionalDetails": null,
+    "conditions": {
+      "availableOnline": true,
+      "wholeMonth": true,
+      "daysBefore": null,
+      "daysAfter": null,
+      "withPurchaseAmount": null,
+      "withPurchaseNotes": null,
+      "registrationRequiredUrl": "https://www.bonds.com.au/bondsandme",
+      "minimumRegistrationDays": null,
+      "identificationRequired": false,
+      "digitalVoucherRequired": false,
+      "paperVoucherRequired": false,
+      "notes": [
+        "When signing up, make sure you tick the checkbox stating \"Yes, I'd like 20% off all purchases and news via email by joining Bonds & Me.\""
+      ]
+    },
+    "organisation": {
+      "name": "Bonds",
+      "social": {
+        "facebook": "https://www.facebook.com/BONDS/",
+        "twitter": "https://twitter.com/BondsAus",
+        "instagram": "https://www.instagram.com/bondsaus/"
+      },
+      "locations": [
+        {
+          "lat": -37.8180596,
+          "lng": 144.9948873,
+          "placeId": "ChIJD5A_CvFC1moR83mXaiQY2bs"
+        },
+        {
+          "lat": -37.8107783,
+          "lng": 144.9604908,
+          "placeId": "ChIJvYzPC8tC1moR7q0rTlRpRrg"
+        },
+        {
+          "lat": -37.8450988,
+          "lng": 144.9922405,
+          "placeId": "ChIJhXAhpIJC1moRjoIvyA7dgOA"
+        },
+        {
+          "lat": -37.848061,
+          "lng": 145.0016119,
+          "placeId": "ChIJj-FkGCto1moR2wQFzpIRCno"
+        },
+        {
+          "lat": -37.7386527,
+          "lng": 145.0276753,
+          "placeId": "ChIJY_LST8pF1moRFka5RWLUwo4"
+        },
+        {
+          "lat": -37.7664927,
+          "lng": 144.9193027,
+          "placeId": "ChIJ0_5FvPZc1moRxe0NXbWrNLo"
+        },
+        {
+          "lat": -37.8859547,
+          "lng": 145.0792447,
+          "placeId": "ChIJvajMwWhq1moRx-eOVy6whlQ"
+        },
+        {
+          "lat": -37.8273318,
+          "lng": 145.0554541,
+          "placeId": "ChIJlRTs9YJB1moR0SeA0rKp6RY"
+        }
+      ]
+    }
+  },
+  {
+    "_id": {
+      "$oid": "57c14e80057ce9581f82fc88"
+    },
+    "bountyId": 13,
+    "title": "$20 Witchery Voucher ",
+    "maxValue": 20,
+    "types": [
+      5
+    ],
+    "sponsored": false,
+    "additionalDetails": null,
+    "conditions": {
+      "availableOnline": false,
+      "wholeMonth": true,
+      "daysBefore": null,
+      "daysAfter": null,
+      "withPurchaseAmount": null,
+      "withPurchaseNotes": null,
+      "registrationRequiredUrl": "https://www.witchery.com.au/members/rewards-and-benefits",
+      "minimumRegistrationDays": null,
+      "identificationRequired": false,
+      "digitalVoucherRequired": false,
+      "paperVoucherRequired": false,
+      "notes": [
+        "When signing up, make sure you provide your birthday."
+      ]
+    },
+    "organisation": {
+      "name": "Witchery",
+      "social": {
+        "facebook": "https://www.facebook.com/witcheryfashions",
+        "twitter": "https://twitter.com/witcheryfashion",
+        "instagram": "https://www.instagram.com/witcheryfashion/"
+      },
+      "locations": [
+        {
+          "lat": -37.7721349,
+          "lng": 144.887425,
+          "placeId": "ChIJz8Qfp85d1moRtXwrvVp5ZJo"
+        },
+        {
+          "lat": -37.7667186,
+          "lng": 144.9200307,
+          "placeId": "ChIJPZVabfRc1moRrWUmF6WxSq0"
+        },
+        {
+          "lat": -37.7971104,
+          "lng": 144.9666675,
+          "placeId": "ChIJ0dWtkNZC1moRKZ_rvFCNUrs"
+        },
+        {
+          "lat": -37.811232,
+          "lng": 144.9608794,
+          "placeId": "ChIJV9SM4spC1moRjHUAcOPw0Ew"
+        },
+        {
+          "lat": -37.8121957,
+          "lng": 144.9615063,
+          "placeId": "ChIJ_VCuhspC1moRVLJ0upSojDk"
+        },
+        {
+          "lat": -37.8249719,
+          "lng": 144.9560476,
+          "placeId": "ChIJH7E3PVNd1moREUNxB0-BnQI"
+        },
+        {
+          "lat": -37.8178321,
+          "lng": 144.9914587,
+          "placeId": "ChIJm3aYBe5C1moRuJSiiGqug2U"
+        },
+        {
+          "lat": -37.8481011,
+          "lng": 145.002074,
+          "placeId": "ChIJMZUvJCto1moRnW4i92T9MTk"
+        },
+        {
+          "lat": -37.8857333,
+          "lng": 145.0793925,
+          "placeId": "ChIJ36ql7mhq1moR7oTzmo9iUwY"
+        },
+        {
+          "lat": -37.8481011,
+          "lng": 145.002074,
+          "placeId": "ChIJMZUvJCto1moRnW4i92T9MTk"
+        },
+        {
+          "lat": -37.8306895,
+          "lng": 145.054949,
+          "placeId": "ChIJ18kEeoRB1moRikR0lAseG7c"
+        }
+      ]
+    }
+  },
+  {
+    "_id": {
+      "$oid": "57c14e80057ce9581f82fc88"
+    },
+    "bountyId": 14,
+    "title": "Ice Cream",
+    "maxValue": 5,
+    "types": [
+      1
+    ],
+    "sponsored": false,
+    "additionalDetails": "You can also get a discounted birthday cake.",
+    "conditions": {
+      "availableOnline": false,
+      "wholeMonth": false,
+      "daysBefore": null,
+      "daysAfter": null,
+      "withPurchaseAmount": null,
+      "withPurchaseNotes": null,
+      "registrationRequiredUrl": "http://club31.baskinrobbins.com.au/",
+      "minimumRegistrationDays": null,
+      "identificationRequired": false,
+      "digitalVoucherRequired": false,
+      "paperVoucherRequired": false,
+      "notes": []
+    },
+    "organisation": {
+      "name": "Baskin Robbins",
+      "social": {
+        "facebook": "https://www.facebook.com/pages/Baskin-Robbins-Australia/385328175038",
+        "twitter": "https://twitter.com/baskinrobbins",
+        "instagram": "https://www.instagram.com/baskinrobbins/"
+      },
+      "locations": [
+        {
+          "lat": -37.8304198,
+          "lng": 145.0545415,
+          "placeId": "ChIJm8evd4RB1moR6gFClG0Ie4c"
         }
       ]
     }

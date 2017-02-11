@@ -5,26 +5,27 @@ app.controller('MainController', ['$scope', function($scope) {
     //Load required static data
     $scope.bountyData = bountyData;
     $scope.bountyTypes = [{ 
-        id: 1,
-        iconPath: 'images/marker_gift.svg',
-        name: 'gift'
+        id: 4,
+        iconPath: 'images/marker_activity.svg',
+        name: 'activity'
       }, { 
         id: 2,
         iconPath: 'images/marker_food.svg',
         name: 'food'
       }, { 
+        id: 5,
+        iconPath: 'images/marker_voucher.svg',
+        name: 'voucher'
+      }, { 
         id: 3,
         iconPath: 'images/marker_drink.svg',
         name: 'drink'
       }, { 
-        id: 4,
-        iconPath: 'images/marker_activity.svg',
-        name: 'activity'
-      }, { 
-        id: 5,
-        iconPath: 'images/marker_voucher.svg',
-        name: 'voucher'
-    }];
+        id: 1,
+        iconPath: 'images/marker_sweets.svg',
+        name: 'sweets'
+      }];
+      
     //init enums
     $scope.enums = {
       showMe: {
@@ -40,6 +41,10 @@ app.controller('MainController', ['$scope', function($scope) {
         OrgNameAZ: 5
       }
     }
+    //init internal static vars
+    $scope.monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
 
     //init scope vars
     $scope.bountyMarkers = [];
@@ -74,7 +79,7 @@ app.controller('MainController', ['$scope', function($scope) {
     var existingBday = localStorage.getItem("birthday");
 
     if(existingBday){
-      $scope.dob = existingBday;
+      $scope.dob = new Date(existingBday);
       $scope.renderMapWhenReady();
     }
   };
@@ -219,7 +224,9 @@ app.controller('MainController', ['$scope', function($scope) {
   }
 
   $scope.getBountyAvailabilityMessage = function(bountyItem){
-    var bdayDate = new Date($scope.dob);
+    if(bountyItem.conditions.wholeMonth){
+      return 'Claim this Birthday Bounty anytime during ' + $scope.monthNames[$scope.dob.getMonth()];
+    }
 
     var itemStart = new Date($scope.dob);
     itemStart.setDate(itemStart.getDate() - bountyItem.conditions.daysBefore);
@@ -228,7 +235,7 @@ app.controller('MainController', ['$scope', function($scope) {
     itemEnd.setDate(itemEnd.getDate() + bountyItem.conditions.daysAfter);
 
     if(itemStart - itemEnd === 0){
-      return 'This Birthday Bounty can only be claimed on your birthday!'
+      return 'This Birthday Bounty can only be claimed on your birthday';
     } else{
       return 'Claim this Birthday Bounty between ' + dateToString(itemStart) + ' - ' + dateToString(itemEnd);
     }
@@ -296,16 +303,9 @@ app.controller('MainController', ['$scope', function($scope) {
         if(!options.includePaperVoucherReq && item.conditions.paperVoucherRequired) return false;
 
         //Show Me
-        switch(options.showMe){
-          case $scope.enums.showMe.All:
-          break;
-          case $scope.enums.showMe.NotPlundered:
-          break;
-          case $scope.enums.showMe.Plundered:
-          break;
-          default:
-          break;
-        }
+        var inPlunder = $scope.myPlunder.indexOf(item.bountyId) !== -1;
+        if(inPlunder && parseInt(options.showMe) === $scope.enums.showMe.NotPlundered) return false;
+        if(!inPlunder && parseInt(options.showMe) === $scope.enums.showMe.Plundered) return false;
 
         return true;
     };
@@ -319,10 +319,18 @@ app.controller('MainController', ['$scope', function($scope) {
      //Sort
       switch(parseInt(options.sortBy)){
           case $scope.enums.sorter.ValueHighLow:
-            filteredData.sort(function(b1, b2){ return b1.maxValue < b2.maxValue});
+            filteredData.sort(function(b1, b2){
+              if(b1.maxValue === b2.maxValue) return 0;
+              if(b1.maxValue < b2.maxValue) return 1;
+              return -1;
+            });
           break;
           case $scope.enums.sorter.ValueLowHigh:
-            filteredData.sort(function(b1, b2){ return b1.maxValue > b2.maxValue});
+            filteredData.sort(function(b1, b2){
+              if(b1.maxValue === b2.maxValue) return 0;
+              if(b1.maxValue < b2.maxValue) return -1;
+              return 1;
+            });
           break;
           case $scope.enums.sorter.AvailEarlyLate:
           break;
@@ -345,7 +353,8 @@ app.controller('MainController', ['$scope', function($scope) {
     var showBountyIconTooltip = function(event, bountyItem){
           var tooltip = document.createElement('div')
           tooltip.className = "bounty-marker-tooltip";
-          tooltip.innerHTML = '<h5>' + bountyItem.title + '</h5>';
+          tooltip.innerHTML += '<b>' + bountyItem.organisation.name + '</b><br/>';
+          tooltip.innerHTML += bountyItem.title;
 
           var x = event.pageX;
           var y = event.pageY;
@@ -384,6 +393,8 @@ app.controller('MainController', ['$scope', function($scope) {
               
               google.maps.event.addDomListener(div, "click", function(event) {      
                   google.maps.event.trigger(marker, "click"); //todo: need this?
+
+                  gMap.panTo(new google.maps.LatLng(location.lat, location.lng))
 
                   //If we haven't already loaded this place's details
                   if(!location.placeDetails){

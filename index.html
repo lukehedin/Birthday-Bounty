@@ -51,18 +51,21 @@
             <div ng-if="!dob" class="dob-splash">
                 <!-- <div>Enter ye postcode:</div>
                     <input placeholder="Postcode" />-->
-                <h1>Ahoy there, matey!</h1>
-                <h2>Enter your date of birth:</h2>
-                <input class="input-field" id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
-                <input class="input-field" id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
-                <input class="input-field" id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
-                <div class="standard-button" ng-click="submitBirthday()">
-                    Plunder me Birthday Bounty!
-                </div>
+				<div class="splash-text">
+					<h1>Ahoy there, matey!</h1>
+					<h2>Enter your date of birth:</h2>
+					<input class="input-field" id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
+					<input class="input-field" id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
+					<input class="input-field" id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
+					<br/>
+					<div class="standard-button" ng-click="submitBirthday()">
+						Plunder some Birthday Bounty!
+					</div>
+				</div>
             </div>
             <div ng-if="dob">
                 <div class="birthday-summary-strip">
-                    <div class="summary-text">
+                    <div class="summary-text grow-appear">
                         <h2>Shiver me timbers!</h2>
 						</span>Plunderin' between {{ getPlunderPeriodString() }} could earn you up to </span>
                         <h1>{{ getPlunderValue() | currency }}</h1>
@@ -229,6 +232,9 @@
                                             <img class="condition-icon" src="images/papervoucher.svg">
                                             Print off and present a paper voucher
                                         </div>
+										<ul ng-repeat="note in bountyItem.conditions.notes track by $index">
+											<li>{{ note }}</li>
+										</ul>
                                     </div>
                                 </div>
                             </div>
