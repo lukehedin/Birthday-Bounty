@@ -1,5 +1,7 @@
 var bountyData = [
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c0eee8057ce9581f82fc84"
     },
@@ -46,6 +48,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c0eef9057ce9581f82fc85"
     },
@@ -91,6 +95,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c0ef05057ce9581f82fc86"
     },
@@ -280,6 +286,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c0ef16057ce9581f82fc87"
     },
@@ -323,6 +331,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -407,6 +417,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -452,6 +464,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -498,6 +512,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -544,6 +560,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -603,6 +621,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -665,6 +685,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -707,6 +729,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -786,6 +810,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },
@@ -880,6 +906,8 @@ var bountyData = [
     }
   },
   {
+    "modified": "Sun, 12 Feb 2017 01:11:09 GMT",
+    "created": "Sun, 12 Feb 2017 01:11:09 GMT",
     "_id": {
       "$oid": "57c14e80057ce9581f82fc88"
     },

@@ -1,4 +1,4 @@
-.bounty-marker:hover, .toggle-bounty-button:hover, .social-button:hover{
+.bounty-marker:hover, .toggle-bounty-type-button:hover, .social-button:hover{
   animation: growFrames linear 0.15s;
   animation-iteration-count: 1;
   transform-origin: 50% 50%;

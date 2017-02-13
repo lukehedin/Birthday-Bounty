@@ -38,14 +38,13 @@ select:focus, input:focus {
 /*Keeping things inside 80vw*/
 .content-wrapper, .top-navigation-bar, .birthday-summary-strip .summary-text, .footer-strip .footer-text{
   min-width: 600px;
-  max-width: 1200px;
+  max-width: 1100px;
   width: 80vw;
   margin: auto;
 }
 
 /*Top Nav Bar*/
 .top-navigation-bar {
-  width: 100%;
   height: 80px;
 
   text-align: center;
@@ -76,7 +75,7 @@ select:focus, input:focus {
 
 /*Summary strip*/
 .birthday-summary-strip{
-  margin: 0 0 20px 0;
+  margin: 0 0 40px 0;
   font-size: 22px;
   padding: 30px 0 30px 0;
 }
@@ -149,6 +148,7 @@ select:focus, input:focus {
 .map-view-button{
   position: absolute;
   margin: 5px;
+  width: 100px;
   top: 0;
   left: 0;
 }
@@ -183,10 +183,13 @@ select:focus, input:focus {
   margin: 0 5px;
 }
 
-.toggle-bounty-button{
+.bounty-type-icon {
   width: 28px;
   height: 28px;
   margin: 0 2px;
+}
+
+.toggle-bounty-type-button{
   float: left;
   cursor: pointer;
 }
@@ -247,7 +250,6 @@ select:focus, input:focus {
 }
 
 .bounty-summary-container{
-  margin: 20px 0 0 0;
   width: 100%;
   display: inline-block;
 }
@@ -257,15 +259,22 @@ select:focus, input:focus {
   float: left;
 }
 
-.bounty-summary h4{
-  font-weight: bold;
-  font-size: 30px;
-}
-
-.bounty-summary-map-mini, .bounty-summary-settings, .bounty-summary-plunder{
+.content-wrapper h4{
   font-family: 'Didact Gothic', sans-serif;    
   color: #797876;
-  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0;
+}
+
+.content-wrapper hr{
+  margin: 7px 0;
+}
+
+.bounty-summary-map-mini, .bounty-map-container, .bounty-summary-settings, .bounty-summary-plunder{
+  font-family: 'Didact Gothic', sans-serif;    
+  color: #797876;
+  margin-bottom: 40px;
 }
 
 .settings-label{
@@ -287,6 +296,7 @@ select:focus, input:focus {
   width: 70%;
   float: left;
   padding-left: 20px;
+  padding-top: 32px;
 }
 
 .bounty-summary-row{
@@ -295,9 +305,40 @@ select:focus, input:focus {
   margin: 0 5px 20px 5px;
 }
 
-.bounty-summary-row h1{
+.bounty-summary-row hr {
+  margin: 16px 0;
+}
+
+.bounty-item-header{
+  background-color: #ee5588;
+  color: white;
+  padding: 5px;
+}
+
+.bounty-item-org-name {
   margin: 0;
-  font-size: 30px;
+  font-size: 24px;
+  display: inline-block;
+}
+
+.toggle-plunder-button{
+  width: 170px;
+  font-size: 15px;
+  float: right;
+}
+
+.bounty-item-org-social{
+  float: right;
+}
+
+.bounty-item-org-social a:hover{
+  color: #ee5588;
+}
+
+.social-button, .condition-icon{
+  width: 32px;
+  height: 32px;
+  padding: 2px 0 4px 0;
 }
 
 .bounty-summary-row .bounty-item-left-details{
@@ -311,29 +352,19 @@ select:focus, input:focus {
     text-align: right;
 }
 
-.bounty-item-right-details .toggle-plunder-button{
-  display:inline-block;
+.bounty-types div {
+  width: 10px;
+  overflow: visible;
+  float: right;
+}
+
+.bounty-summary-row .bounty-types .bounty-type-icon {
+  float: right;
 }
 
 .bounty-summary-row .condition-list{
   width: 100%;
   display: inline-block;
-}
-
-.bounty-item-org-name {
-  background-color: #ee5588;
-  color: white;
-  padding: 5px;
-}
-
-.bounty-item-org-social{
-  float: right;
-}
-
-.social-button, .condition-icon{
-  width: 32px;
-  height: 32px;
-  padding: 2px 0 4px 0;
 }
 
 .condition-icon svg {
@@ -343,4 +374,20 @@ select:focus, input:focus {
 /* My Plunder */
 .my-plunder-item{
   margin: 5px 0 5px 0;
+}
+
+.my-plunder-item .my-plunder-item-left{
+  width: 80%;
+  float: left;
+}
+
+.my-plunder-item .my-plunder-item-right{
+  width: 20%;
+  float: right;
+}
+
+.plunder-total{
+  font-weight: bold;
+  text-align: right;
+  padding-right: 10px;
 }

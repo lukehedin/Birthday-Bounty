@@ -6,26 +6,31 @@ app.controller('MainController', ['$scope', function($scope) {
     $scope.bountyData = bountyData;
     $scope.bountyTypes = [{ 
         id: 4,
+        ordinal: 1,
         iconPath: 'images/marker_activity.svg',
         name: 'activity'
       }, { 
         id: 2,
+        ordinal: 2,
         iconPath: 'images/marker_food.svg',
         name: 'food'
       }, { 
         id: 5,
+        ordinal: 3,
         iconPath: 'images/marker_voucher.svg',
         name: 'voucher'
       }, { 
         id: 3,
+        ordinal: 4,
         iconPath: 'images/marker_drink.svg',
         name: 'drink'
       }, { 
         id: 1,
+        ordinal: 5,
         iconPath: 'images/marker_sweets.svg',
         name: 'sweets'
       }];
-      
+
     //init enums
     $scope.enums = {
       showMe: {
@@ -52,6 +57,7 @@ app.controller('MainController', ['$scope', function($scope) {
 
     //init options
     $scope.plunderOptions = {
+        searchString: null,
         includeTypes: [1,2,3,4,5],
         minValue: 0,
         maxValue: 1000,
@@ -80,7 +86,9 @@ app.controller('MainController', ['$scope', function($scope) {
 
     if(existingBday){
       $scope.dob = new Date(existingBday);
-      $scope.renderMapWhenReady();
+      renderMapWhenReady();
+      $scope.plunderOptions.dateStart = getPlunderPeriod().start;
+      $scope.plunderOptions.dateFinish = getPlunderPeriod().end;
     }
   };
 
@@ -101,7 +109,15 @@ app.controller('MainController', ['$scope', function($scope) {
 
   $scope.toggleFullMap = function(){
     $scope.showFullMap = !$scope.showFullMap;
-    $scope.renderMapWhenReady();
+    renderMapWhenReady();
+  }
+
+  $scope.getMyPlunder = function(){
+    var plunderArray = [];
+    $scope.bountyData.forEach(function(bountyItem){
+      if($scope.myPlunder.indexOf(bountyItem.bountyId) !== -1) plunderArray.push(bountyItem);
+    });
+    return plunderArray;
   }
 
   $scope.toggleInMyPlunder = function(bountyId){
@@ -116,7 +132,7 @@ app.controller('MainController', ['$scope', function($scope) {
       localStorage.setItem("myplunder", $scope.myPlunder);
   }
 
-  $scope.renderMapWhenReady = function(){
+  function renderMapWhenReady(){
     $.getScript('https://www.google.com/jsapi', function()
     {
         google.load('maps', '3', { other_params: ['key=AIzaSyBnG2wcWi0MrBxd3wTtNCKTau-xHD_B324&libraries=places'], callback: function() {
@@ -131,7 +147,7 @@ app.controller('MainController', ['$scope', function($scope) {
               styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#bcbbbb"},{"visibility":"on"}]}]
             });
               
-            fetchBountyMarkers(googleMap);
+            loadAllBountyMarkers(googleMap);
           }, 0)
         }});
     });
@@ -181,18 +197,21 @@ app.controller('MainController', ['$scope', function($scope) {
       var bdayDate = new Date((thisYear + (thisYearsBirthday < today ? 1 : 0)), month, day);
 
       localStorage.setItem("birthday", bdayDate);
+
       $scope.dob = bdayDate;
-      $scope.renderMapWhenReady();
+      renderMapWhenReady();
+      $scope.plunderOptions.dateStart = getPlunderPeriod().start;
+      $scope.plunderOptions.dateFinish = getPlunderPeriod().end;
     }
   };
 
-  $scope.getBountyByBountyId = function(bountyId){
-    var requestedItem = null;
-    $scope.bountyData.forEach(function(bountyItem){
-      if(!requestedItem && bountyItem.bountyId === bountyId) requestedItem = bountyItem;
+  $scope.getTypeById = function(typeId){
+    var requestedType = null;
+    $scope.bountyTypes.forEach(function(type){
+      if(!requestedType && type.id === typeId) requestedType = type;
     });
-    return requestedItem;
-  }
+    return requestedType;
+  };
 
   $scope.getPlunderValue = function(){
     var amount = 0;
@@ -203,9 +222,7 @@ app.controller('MainController', ['$scope', function($scope) {
   }
 
   $scope.getPlunderPeriodString = function(){
-      var period = getPlunderPeriod();
-
-      return dateToString(period.start) + ' - ' + dateToString(period.end);
+      return dateToString($scope.plunderOptions.dateStart) + ' - ' + dateToString($scope.plunderOptions.dateFinish);
   }
 
   $scope.toggleBountyType = function(type){
@@ -216,11 +233,6 @@ app.controller('MainController', ['$scope', function($scope) {
       } else{
         $scope.plunderOptions.includeTypes.splice(index, 1);
       }
-
-      //Update the google map markers
-      $scope.bountyMarkers.forEach(function(bountyMarker){
-          bountyMarker.div.hidden = $scope.plunderOptions.includeTypes.indexOf(bountyMarker.bountyItemType.id) === -1;
-      });
   }
 
   $scope.getBountyAvailabilityMessage = function(bountyItem){
@@ -243,7 +255,7 @@ app.controller('MainController', ['$scope', function($scope) {
 
   function getPlunderPeriod(){
     var bdayDate = new Date($scope.dob);
-    
+
     //todo: take into account custom period $scope.plunderOptions.customPeriod.startDate
 
     var minDate = new Date(bdayDate);
@@ -265,14 +277,23 @@ app.controller('MainController', ['$scope', function($scope) {
     };
   }
 
-  function dateToString(date, noYear){
-    return date.getDate() + '/' + (date.getMonth() + 1) + (noYear ? '' : '/' + date.getFullYear());
+  function dateToString(date, includeYear){
+    return date.getDate() + '/' + (date.getMonth() + 1) + (includeYear ? '/' + date.getFullYear() : '');
   }
 
   $scope.filteredBountyData = function() {
+    var bdayDate = new Date($scope.dob);
     var options = $scope.plunderOptions;
     
-    var shouldPush = function(item){
+    var shouldPush = function(item) {
+
+        if(options.searchString){
+          var searchFor = options.searchString.toLowerCase().trim();
+            if(searchFor !== ""
+            && item.title.toLowerCase().indexOf(searchFor) === -1 
+            && item.organisation.name.toLowerCase().indexOf(searchFor) === -1) return false;
+        }
+      
         //Included types
         if (options.includeTypes.indexOf(item.types[0]) === -1) return false;
 
@@ -285,15 +306,16 @@ app.controller('MainController', ['$scope', function($scope) {
         }
 
         //Availability
-        itemAvailable = item.conditions.daysBefore;
-        itemEnd = item.conditions.daysAfter;
-
-        if(options.dateStart && options.dateStart){
-
+        var itemStart;
+        var itemFinish;
+        if(item.conditions.wholeMonth){
+          itemStart = new Date(bdayDate.getFullYear(), bdayDate.getMonth(), 1);;
+          itemFinish = new Date(bdayDate.getFullYear(), bdayDate.getMonth() + 1, 0);
+        } else{
+          itemStart = new Date(bdayDate) - item.conditions.daysBefore;
+          itemFinish = new Date(bdayDate) + item.conditions.daysAfter;
         }
-        if(options.dateFinish){
-          
-        }
+        //todo date filter not working :\
 
 
         // Eligibility rules
@@ -343,12 +365,15 @@ app.controller('MainController', ['$scope', function($scope) {
           break;
       }
     
-    return filteredData;
+      $scope.bountyMarkers.forEach(function(bountyMarker){
+          if(bountyMarker.div) bountyMarker.div.hidden = filteredData.indexOf(bountyMarker.bountyItem) === -1;
+      });
+
+      return filteredData;
   }
 
-  function fetchBountyMarkers(gMap){
+  function loadAllBountyMarkers(gMap){
     var placesService = new google.maps.places.PlacesService(gMap);
-
 
     var showBountyIconTooltip = function(event, bountyItem){
           var tooltip = document.createElement('div')
@@ -374,7 +399,7 @@ app.controller('MainController', ['$scope', function($scope) {
 
       //Keep track of the bountyItem type //todo??
        var itemType = $.grep($scope.bountyTypes, function(type){ return type.id == item.types[0]; })[0];
-      marker.bountyItemType = itemType;
+      marker.bountyItem = item;
 
       marker.draw = function() {
           var div = marker.div;
@@ -384,11 +409,12 @@ app.controller('MainController', ['$scope', function($scope) {
           if (!div) {
               div = marker.div = document.createElement('div');
               div.className = "bounty-marker";
+              div.hidden = $scope.filteredBountyData().indexOf(item) === -1;
+              
               div.style.width = markerWidth + 'px';
               div.style.height = markerHeight + 'px';
               div.style.backgroundImage = 'url(' + itemType.iconPath + ')';
               div.style.backgroundSize =  markerWidth + 'px ' + markerHeight + 'px';
-
               div.dataset.marker_id = item.bountyId;
               
               google.maps.event.addDomListener(div, "click", function(event) {      
@@ -447,7 +473,7 @@ app.controller('MainController', ['$scope', function($scope) {
       $scope.bountyMarkers.push(marker);
     }
 
-    $scope.filteredBountyData().forEach(function(item){
+    $scope.bountyData.forEach(function(item){
       item.organisation.locations.forEach(function(location){
         var latLng = new google.maps.LatLng(location.lat, location.lng);
 
