@@ -10,8 +10,8 @@
         <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
         <!-- Include the AngularJS library -->
-        <script src="../scripts/angular.min.js"></script>
-        <script src="../scripts/bootstrap.min.js"></script>
+        <script src="./scripts/angular.min.js"></script>
+        <script src="./scripts/bootstrap.min.js"></script>
 
 		<!-- Include the fav icons -->
 		<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
@@ -31,6 +31,19 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+
+		<!-- Inlcude Goolge Analytics -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-92026212-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
     </head>
     <body ng-app="BirthdayBountyApp">
         <div class="app-container" ng-controller="MainController">
@@ -40,12 +53,8 @@
                 </div>
                 <img class="flag-icon" src="images/flag.svg">
                 <div class="navigation-menu">
-                    <!--Try another birthday
-                        <br/>
-                        About
-                        <br/>
-                        Help
-                        <br/>-->
+                    <!--<div>About</div>
+                    <div>Change Birthday</div>-->
                 </div>
             </div>
             <div ng-if="!dob" class="dob-splash">
@@ -280,7 +289,12 @@
                 <div class="footer-strip">
                     <div class="footer-text">
                         <a href="" ng-click="clearBirthday()" ng-if="dob">
-                        Arrrgh! I want to use a different date of birth!
+                            Click here to change your date of birth
+                        </a>
+                        <br />
+                        <br />
+                        <a href="http://www.lukehedin.com/">
+                        	Created by Luke Hedin
                         </a>
                         <div>
                             Social icons designed by <a target="_blank" href="http://www.flaticon.com/authors/freepik">Freepik</a> of Flaticon

@@ -37,7 +37,7 @@ select:focus, input:focus {
 
 /*Keeping things inside 80vw*/
 .content-wrapper, .top-navigation-bar, .birthday-summary-strip .summary-text, .footer-strip .footer-text{
-  min-width: 600px;
+  min-width: 800px;
   max-width: 1100px;
   width: 80vw;
   margin: auto;
@@ -61,8 +61,8 @@ select:focus, input:focus {
 }
 
 .top-navigation-bar .flag-icon{
-  height: 60px;
-  margin-top: 10px;
+  height: 52px;
+  margin: 10px;
   float: left;
 }
 
@@ -133,6 +133,14 @@ select:focus, input:focus {
   width: 100%;
   height: 80vh;
 }
+
+@media screen and (orientation:portrait){
+  .bounty-map-container {
+      height: 40vh;
+  }
+}
+
+
 
 .bounty-map-mini-container{
   position: relative;
