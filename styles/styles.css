@@ -372,7 +372,7 @@ select:focus, input:focus {
 .social-button, .condition-icon{
   width: 32px;
   height: 32px;
-  padding: 2px 0 4px 0;
+  padding: 2px 4px 4px 0;
 }
 
 .bounty-summary-row .bounty-item-left-details{
