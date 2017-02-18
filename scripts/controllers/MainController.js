@@ -349,16 +349,21 @@ app.controller('MainController', ['$scope', function($scope) {
         }
 
         //Availability
-        var itemStart;
-        var itemFinish;
-        if(item.conditions.wholeMonth){
-          itemStart = new Date(bdayDate.getFullYear(), bdayDate.getMonth(), 1);;
-          itemFinish = new Date(bdayDate.getFullYear(), bdayDate.getMonth() + 1, 0);
-        } else{
-          itemStart = new Date(bdayDate) - item.conditions.daysBefore;
-          itemFinish = new Date(bdayDate) + item.conditions.daysAfter;
+        if(options.dateStart && options.dateFinish){
+          var itemStart;
+          var itemFinish;
+
+          if(item.conditions.wholeMonth){
+            itemStart = new Date(new Date(bdayDate.getFullYear(), bdayDate.getMonth(), 1));
+            itemFinish = new Date(new Date(bdayDate.getFullYear(), bdayDate.getMonth() + 1, 0));
+          } else{
+            itemStart = new Date(new Date(bdayDate) - item.conditions.daysBefore);
+            itemFinish = new Date(new Date(bdayDate) + item.conditions.daysAfter);
+          }
+
+        //todo ur bad at this
+        // if((itemStart < options.dateFinish && itemFinish < options.dateStart)) return false;
         }
-        //todo date filter not working :\
 
 
         // Eligibility rules

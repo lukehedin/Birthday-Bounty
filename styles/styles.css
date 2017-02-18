@@ -25,7 +25,8 @@ select:focus, input:focus {
   width: 100vw;
   text-align: center;
   background-color: #ff6699;
-  background-image: url(../images/background-trans.svg);  
+  background-image: url(../images/background-trans.svg);
+  animation: animatedBackground 80s linear infinite;
   color: white;
   font-family: 'Didact Gothic', sans-serif;    
   padding: 40px 0 40px 0;  
@@ -82,6 +83,7 @@ select:focus, input:focus {
   margin: 0 0 40px 0;
   font-size: 22px;
   padding: 30px 0 30px 0;
+   animation: animatedBackground 80s linear infinite;
 }
 
 .footer-strip {

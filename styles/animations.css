@@ -1,3 +1,12 @@
+@keyframes animatedBackground{
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+
+.dob-splash, .birthday-summary-strip{
+  animation: animatedBackground 80s linear infinite;
+}
+
 .bounty-marker:hover, .toggle-bounty-type-button:hover, .social-button:hover{
   animation: growFrames linear 0.15s;
   animation-iteration-count: 1;
