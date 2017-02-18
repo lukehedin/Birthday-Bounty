@@ -107,6 +107,31 @@ select:focus, input:focus {
   font-family: 'Didact Gothic', sans-serif;  
 }
 
+/*Mobile Controls*/
+.mobile-controls{
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-controls .standard-button{
+  margin: 20px;
+  padding: 20px;
+  display: inline-block;
+  width: 40%;
+}
+
+.mobile-window{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 90vw;
+  margin: 5vh 5vw 5vh 5vw;
+  height: 90vh;
+  background-color: white;
+  border: 2px solid #ee5588;
+}
+
 /*GoogleMap*/
 .bounty-marker{
     position: absolute;
@@ -133,14 +158,6 @@ select:focus, input:focus {
   width: 100%;
   height: 80vh;
 }
-
-@media screen and (orientation:portrait){
-  .bounty-map-container {
-      height: 40vh;
-  }
-}
-
-
 
 .bounty-map-mini-container{
   position: relative;

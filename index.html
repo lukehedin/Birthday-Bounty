@@ -2,6 +2,7 @@
     <head>
         <title>Birthday Bounty</title>
         <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="styles/mobilestyles.css" />
         <link rel="stylesheet" href="styles/animations.css" />
         <link rel="stylesheet" href="styles/bootstrap.min.css" />
         <meta name=viewport content='width=1024'>
@@ -84,11 +85,19 @@
                 </div>
                 <div class="content-wrapper">
                     <div class="bounty-summary-container">
+                        <div ng-if="isMobile()" class="mobile-controls">
+                            <div ng-click="toggleMobileFilters()" class="standard-button" >
+                                Bounty Options
+                            </div>
+                            <div ng-click="toggleMobilePlunder()" class="standard-button">
+                                My Plunder 
+                            </div>
+                        </div>
                         <h4 ng-if="showFullMap">
 						    Bounty Map
                         </h4>
                         <hr ng-if="showFullMap"/>
-                        <div ng-if="showFullMap" class="bounty-map-container">
+                        <div ng-if="showFullMap || isMobile()" class="bounty-map-container">
                             <div id="bountyMapContainer" class="bounty-map"></div>
                             <div class="plunder-options">
                                 <div class="option-label">
@@ -98,12 +107,12 @@
                                     <img ng-class="{ unselected: plunderOptions.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
                                 </div>
                             </div>
-                            <a ng-click="toggleFullMap()" class="map-view-button standard-button">
+                            <a ng-if="!isMobile()" ng-click="toggleFullMap()" class="map-view-button standard-button">
                                 Hide Full Map
                             </a>
                         </div>
                         <div class="bounty-summary">
-							<div ng-if="!showFullMap" class="bounty-summary-map-mini">
+							<div ng-if="!showFullMap && !isMobile()" class="bounty-summary-map-mini">
                                 <h4>
 									Bounty Map
 								</h4>
@@ -115,175 +124,10 @@
 									</a>
 								</div>
 							</div>
-                            <div class="bounty-summary-settings">
-                                <h4>
-									Bounty Filters
-								</h4>
-								<hr/>
-                                <div class="settings-label">
-                                    Search:
-                                </div>
-                                <div class="settings-input"> 
-                                    <input type="text" ng-model="plunderOptions.searchString" placeholder="Enter search term..." />
-                                </div>
-                                <div class="settings-label">
-                                    Bounty Types:
-                                </div>
-								<div class="settings-input">
-									<div ng-repeat="bountyType in bountyTypes track by $index">
-										<img ng-class="{ unselected: plunderOptions.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
-									</div>
-								</div>
-                                <div class="settings-label">
-                                    Max Value Between:
-                                </div>
-								<div class="settings-input">
-									<br/>
-									<input type="checkbox" ng-model="plunderOptions.showUnknownValue">Show Bounty with unknown value<br>
-								</div>
-                                <div class="settings-label">
-                                    Available Between:
-                                </div>
-								<div class="settings-input">
-									<input type="date" ng-model="plunderOptions.dateStart"> and  
-									<input type="date" ng-model="plunderOptions.dateFinish">
-								</div>
-                                <div class="settings-label">
-                                    Claim Conditions:
-                                </div>
-								<div class="settings-input">
-									<input type="checkbox" ng-model="plunderOptions.includeRegistrationReq">Online Registration<br>
-									<input type="checkbox" ng-model="plunderOptions.includeIdentificationReq">Identification Required<br>
-									<input type="checkbox" ng-model="plunderOptions.includeDigitalVoucherReq">Digital Voucher Required<br>
-									<input type="checkbox" ng-model="plunderOptions.includePaperVoucherReq">Paper Voucher Required
-								</div>
-								<div class="settings-label">
-									Show Me:
-								</div>
-								<div class="settings-input">
-									<input type="radio" ng-model="plunderOptions.showMe" value="{{enums.showMe.All}}"> All Birthday Bounty<br>									
-									<input type="radio" ng-model="plunderOptions.showMe" value="{{enums.showMe.NotPlundered}}"> Bounty I haven't plundered<br>
-									<input type="radio" ng-model="plunderOptions.showMe" value="{{enums.showMe.Plundered}}"> Bounty I have plundered
-                                </div>
-                                <div class="settings-label">
-                                    Sort By:
-                                </div>
-								<div class="settings-input">
-									<select ng-model="plunderOptions.sortBy">
-										<option value="{{enums.sorter.ValueHighLow}}">Max Value (High to Low)</option>
-										<option value="{{enums.sorter.ValueLowHigh}}">Max Value (Low to High)</option>
-										<option value="{{enums.sorter.AvailEarlyLate}}">Availability (Early to Late)</option>
-										<option value="{{enums.sorter.AvailLateEarly}}">Availability (Late to Early)</option>
-										<option value="{{enums.sorter.OrgNameAZ}}">Organisation Name (A-Z)</option>
-									</select>
-								</div>
-                            </div>
-							<div class="bounty-summary-plunder">
-								<h4>
-									My Bounty Plunder
-								</h4>
-								<hr/>
-								<div ng-if="myPlunder && myPlunder.length > 1" ng-repeat="plunderBounty in getMyPlunder() track by $index">
-									<div class="my-plunder-item">
-                                        <div class="my-plunder-item-left">
-                                            <b>{{ plunderBounty.organisation.name }}</b>
-										    <br/>
-										    {{ plunderBounty.title }}
-                                            <br/>
-                                        </div>
-                                        <div class="my-plunder-item-right">
-                                            {{ plunderBounty.maxValue | currency }}
-                                        </div>				
-									</div>
-								</div>
-                                <div class="my-plunder-item">
-                                    <div class="my-plunder-item-left plunder-total">
-                                        Total Value:
-                                    </div>
-                                    <div class="my-plunder-item-right">
-                                        {{  }}
-                                    </div>
-                                </div>
-								<div ng-if="!myPlunder || myPlunder.length < 1">
-									You haven't plundered any Birthday Bounty yet!
-								</div>
-                            </div>
+                            <filter ng-if="!isMobile()"></filter>
+							<plunder ng-if="!isMobile()"></plunder>
                         </div>
-                        <div class="bounty-summary-items-container">
-							<hr/>
-							<div ng-if="filteredBountyData().length < 1" class="no-bounty-message">
-								Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters on the left.
-							</div>
-                            <div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
-                                <div class="bounty-summary-row">
-                                    <div class="bounty-item-header">
-                                        <div class="bounty-item-org-name">
-                                            {{ bountyItem.organisation.name }}
-                                        </div>
-                                        <div class="standard-button toggle-plunder-button" ng-click="toggleInMyPlunder(bountyItem.bountyId)">
-											{{ myPlunder.indexOf(bountyItem.bountyId) === -1 ? 'Add to My Bounty' : 'Remove from My Bounty' }}
-										</div>
-                                        <div class="bounty-item-org-social">
-                                            <a ng-if="bountyItem.organisation.social.facebook" target="_blank" ng-href="{{bountyItem.organisation.social.facebook}}">
-                                                <img class="social-button" src="images/facebook.svg" />
-                                            </a>
-                                            <a ng-if="bountyItem.organisation.social.twitter" target="_blank" ng-href="{{bountyItem.organisation.social.twitter}}">
-                                                <img class="social-button" src="images/twitter.svg" />
-                                            </a>
-                                            <a ng-if="bountyItem.organisation.social.instagram" target="_blank" ng-href="{{bountyItem.organisation.social.instagram}}">
-                                                <img class="social-button" src="images/instagram.svg" />
-                                            </a>
-                                        </div>
-                                    </div>
-									<div class="bounty-item-left-details">
-										<h3>
-											{{ bountyItem.title }}
-										</h3>
-                                        <h6>
-											{{ bountyItem.additionalDetails }}
-										</h6>
-										<div>
-											<b>{{ getBountyAvailabilityMessage(bountyItem) }}</b>
-										</div>
-									</div>
- 									<div class="bounty-item-right-details">
-										<h3>
-											{{ bountyItem.maxValue | currency }}
-										</h3>
-                                        <div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
-											<div ng-if="plunderOptions.includeTypes.indexOf(typeId) !== -1">
-                                                <img class="bounty-type-icon" ng-src="{{getTypeById(typeId).iconPath}}"/>
-											</div>
-										</div>
- 									</div>
-                                    <div class="condition-list">
-										<hr/>
-                                        <div ng-if="bountyItem.conditions.registrationRequiredUrl" class="ng-scope">
-                                            <img class="condition-icon" src="images/registrationurl.svg">
-                                            <a target="_blank" ng-href="{{bountyItem.conditions.registrationRequiredUrl}}">Sign up here</a>
-                                        </div>
-                                        <div ng-if="bountyItem.conditions.identificationRequired" class="ng-scope">
-                                            <img class="condition-icon" src="images/idrequired.svg">
-                                            Provide ID to verify your date of birth
-                                        </div>
-                                        <div ng-if="bountyItem.conditions.digitalVoucherRequired" class="ng-scope">
-                                            <img class="condition-icon" src="images/digitalvoucher.svg">
-                                            Present a digital voucher on a phone or tablet
-                                        </div>
-                                        <div ng-if="bountyItem.conditions.paperVoucherRequired" class="ng-scope">
-                                            <img class="condition-icon" src="images/papervoucher.svg">
-                                            Print off and present a paper voucher
-                                        </div>
-                                        <div ng-if="bountyItem.conditions.notes && bountyItem.conditions.notes.length > 0">
-                                            <b>Notes:</b>
-                                            <div ng-repeat="note in bountyItem.conditions.notes track by $index">
-                                                <div>{{ note }}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <summary></summary>
                     </div>
                 </div>
                 <div class="footer-strip">
@@ -305,11 +149,24 @@
                     </div>
                 </div>
             </div>
+            <!-- Mobile Divs only shown if toggled -->
+            <div ng-if="showMobileFilters" class="mobile-window mobile-controls-filters">
+                <filter></filter>
+                <div ng-click="toggleMobileFilters()" class="back-button standard-button">Back to Bounty</div>
+            </div>
+            <div ng-if="showMobilePlunder" class="mobile-window mobile-controls-plunder">
+                <plunder></plunder>
+                <div ng-click="toggleMobilePlunder()"class="back-button standard-button">Back to Bounty</div>                
+            </div>
         </div>
         <!-- Modules -->
         <script src="scripts/app.js"></script>
         <!-- Controllers -->
         <script src="scripts/data/bounty.js"></script>
         <script src="scripts/controllers/MainController.js"></script>
+        <!-- Directives -->
+        <script src="scripts/directives/filter.js"></script>
+        <script src="scripts/directives/plunder.js"></script> 
+        <script src="scripts/directives/summary.js"></script>        
     </body>
 </html>
