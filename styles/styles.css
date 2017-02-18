@@ -16,6 +16,10 @@ select:focus, input:focus {
   box-shadow: 0 0 2px #ee5588;
 }
 
+.app-container{
+  min-width: 600px;
+}
+
 /*Splash screen*/
 .dob-splash{
   width: 100vw;
@@ -73,7 +77,7 @@ select:focus, input:focus {
   text-align: right;
 }
 
-/*Summary strip*/
+/*Summary strip & footer*/
 .birthday-summary-strip{
   margin: 0 0 40px 0;
   font-size: 22px;
@@ -96,6 +100,10 @@ select:focus, input:focus {
   text-decoration: none;  
 }
 
+.footer-text div{
+  font-size: 12px;
+}
+
 .birthday-summary-strip, .footer-strip {
   background-color: #ff6699; 
   background-image: url(../images/background-trans.svg);
@@ -107,29 +115,31 @@ select:focus, input:focus {
   font-family: 'Didact Gothic', sans-serif;  
 }
 
-/*Mobile Controls*/
-.mobile-controls{
-  width: 100%;
-  text-align: center;
-}
-
-.mobile-controls .standard-button{
-  margin: 20px;
-  padding: 20px;
-  display: inline-block;
-  width: 40%;
-}
-
-.mobile-window{
+/*Window controls*/
+.whole-page-mask{
+  background-color: rgba(105, 105, 105, 0.6);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 90vw;
-  margin: 5vh 5vw 5vh 5vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+.mobile-window{
   background-color: white;
   border: 2px solid #ee5588;
+  width: 90%;
+  margin: 5%;
+  height: 90%;
+  font-size: 32px;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.close-window-button{
+  bottom: 0;
+  width: 50%;
 }
 
 /*GoogleMap*/
@@ -179,8 +189,10 @@ select:focus, input:focus {
 }
 
 .plunder-options{
-  top: 0;
+  bottom: 0;
   right: 0;
+
+  width: 360px;
 
   position: absolute;
   color: #444444;
@@ -189,29 +201,26 @@ select:focus, input:focus {
   border: 1px solid #bcbbbb;
   margin: 2px;
   padding: 2px;
-  width: 260px;
   z-index: 999; 
 }
 
-.plunder-board-details{
-  margin: 0 20px 0 10px;
-  text-align: left;
-  height: 100%;
+.reset-filters-button{
+  width: 50%;
 }
 
 .option-label{
-  width: 80px;
   text-align: right;
   float: left;
   font-size: 0.8em;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 40px;
   margin: 0 5px;
 }
 
 .bounty-type-icon {
-  width: 28px;
-  height: 28px;
-  margin: 0 2px;
+  width: 42px;
+  height: 42px;
+  margin: 2px;
 }
 
 .toggle-bounty-type-button{
@@ -261,10 +270,14 @@ select:focus, input:focus {
 .standard-button:hover{
   color:white;
   border: 1px solid white;
-  background-color:#ee5588;
+  background-color:#ee77aa;
 
   text-decoration: none;
   cursor: pointer;
+}
+
+.standard-button:active{
+  background-color:#ee5588;
 }
 
 .no-bounty-message{
@@ -311,10 +324,6 @@ select:focus, input:focus {
   padding: 0px 0px 20px 10px;
   width: 100%;
   display: inline-block;
-}
-
-.settings-input input{
-  max-width: 130px;
 }
 
 .bounty-summary-items-container{
@@ -397,6 +406,10 @@ select:focus, input:focus {
 }
 
 /* My Plunder */
+.bounty-summary-plunder{
+  overflow: auto;
+}
+
 .my-plunder-item{
   margin: 5px 0 5px 0;
 }

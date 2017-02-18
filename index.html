@@ -85,14 +85,6 @@
                 </div>
                 <div class="content-wrapper">
                     <div class="bounty-summary-container">
-                        <div ng-if="isMobile()" class="mobile-controls">
-                            <div ng-click="toggleMobileFilters()" class="standard-button" >
-                                Bounty Options
-                            </div>
-                            <div ng-click="toggleMobilePlunder()" class="standard-button">
-                                My Plunder 
-                            </div>
-                        </div>
                         <h4 ng-if="showFullMap">
 						    Bounty Map
                         </h4>
@@ -101,15 +93,23 @@
                             <div id="bountyMapContainer" class="bounty-map"></div>
                             <div class="plunder-options">
                                 <div class="option-label">
-                                    Bounty Types:
+                                    Bounty Types:                    
                                 </div>
                                 <div ng-repeat="bountyType in bountyTypes track by $index">
-                                    <img ng-class="{ unselected: plunderOptions.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
+                                    <img ng-class="{ unselected: bountyFilters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
                                 </div>
                             </div>
                             <a ng-if="!isMobile()" ng-click="toggleFullMap()" class="map-view-button standard-button">
                                 Hide Full Map
                             </a>
+                        </div>
+                        <div ng-if="isMobile()" class="mobile-controls">
+                            <div ng-click="toggleMobileFilters()" class="standard-button" >
+                                Bounty Options
+                            </div>
+                            <div ng-click="toggleMobilePlunder()" class="standard-button">
+                                My Plunder 
+                            </div>
                         </div>
                         <div class="bounty-summary">
 							<div ng-if="!showFullMap && !isMobile()" class="bounty-summary-map-mini">
@@ -141,6 +141,9 @@
                         	Created by Luke Hedin
                         </a>
                         <div>
+                            Bounty data collected with <a target="_blank" href="https://www.linkedin.com/in/andrew-gierens-638b727b">Andrew Gierens</a>
+                        </div>
+                        <div>
                             Social icons designed by <a target="_blank" href="http://www.flaticon.com/authors/freepik">Freepik</a> of Flaticon
                         </div>
                         <div>
@@ -149,14 +152,16 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile Divs only shown if toggled -->
-            <div ng-if="showMobileFilters" class="mobile-window mobile-controls-filters">
-                <filter></filter>
-                <div ng-click="toggleMobileFilters()" class="back-button standard-button">Back to Bounty</div>
-            </div>
-            <div ng-if="showMobilePlunder" class="mobile-window mobile-controls-plunder">
-                <plunder></plunder>
-                <div ng-click="toggleMobilePlunder()"class="back-button standard-button">Back to Bounty</div>                
+            <!-- Special Divs only shown if toggled -->
+            <div ng-if="showMobileFilters || showMobilePlunder" class="whole-page-mask">
+              <div ng-if="showMobileFilters" class="mobile-window mobile-controls-filters">
+                    <filter></filter>
+                    <div ng-click="toggleMobileFilters()" class="close-window-button standard-button">Back to Bounty</div>
+                </div>
+                <div ng-if="showMobilePlunder" class="mobile-window mobile-controls-plunder">
+                    <plunder></plunder>
+                    <div ng-click="toggleMobilePlunder()" class="close-window-button standard-button">Back to Bounty</div>                
+                </div>
             </div>
         </div>
         <!-- Modules -->

@@ -53,17 +53,24 @@ app.controller('MainController', ['$scope', function($scope) {
         OrgNameAZ: 5
       }
     }
+
     //init internal static vars
     $scope.monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
 
     //init scope vars
+    $scope.myPlunder = [];
     $scope.bountyMarkers = [];
     $scope.bountyMarkerTooltip = null;
 
+    //TODO Pagination
+    $scope.pageBegin = 0;
+    $scope.pageTake = 10;
+    $scope.totalPages = 0;
+
     //init options
-    $scope.plunderOptions = {
+    $scope.defaultFilters = {
         searchString: null,
         includeTypes: [1,2,3,4,5],
         minValue: 0,
@@ -76,13 +83,26 @@ app.controller('MainController', ['$scope', function($scope) {
         includeDigitalVoucherReq: true,
         includePaperVoucherReq: true,
         showMe: $scope.enums.showMe.All,
-        sortBy: $scope.enums.sorter.ValueHighLow
+        sortBy: $scope.enums.sorter.OrgNameAZ
     };
+    $scope.resetBountyFilters();
+
+    var existingBday = localStorage.getItem("birthday");
+
+    if(existingBday){
+      $scope.dob = new Date(existingBday);
+      
+      $scope.defaultFilters.dateStart = getPlunderPeriod().start;
+      $scope.defaultFilters.dateFinish = getPlunderPeriod().end;
+      $scope.resetBountyFilters();
+
+      renderMapWhenReady();
+    }
 
     //init my plunder
     var existingPlunder = localStorage.getItem("myplunder") || "";
     var stringPlunderArray = existingPlunder.split(",");
-    $scope.myPlunder = [];
+    
     stringPlunderArray.forEach(function(stringPlunder){
       $scope.myPlunder.push(parseInt(stringPlunder));
     });
@@ -91,15 +111,6 @@ app.controller('MainController', ['$scope', function($scope) {
     $scope.showFullMap = false;
     $scope.showMobileFilters = false;
     $scope.showMobilePlunder = false;
-
-    var existingBday = localStorage.getItem("birthday");
-
-    if(existingBday){
-      $scope.dob = new Date(existingBday);
-      renderMapWhenReady();
-      $scope.plunderOptions.dateStart = getPlunderPeriod().start;
-      $scope.plunderOptions.dateFinish = getPlunderPeriod().end;
-    }
   };
 
   $scope.dobFieldChange = function(fld){
@@ -219,8 +230,8 @@ app.controller('MainController', ['$scope', function($scope) {
 
       $scope.dob = bdayDate;
       renderMapWhenReady();
-      $scope.plunderOptions.dateStart = getPlunderPeriod().start;
-      $scope.plunderOptions.dateFinish = getPlunderPeriod().end;
+      $scope.bountyFilters.dateStart = getPlunderPeriod().start;
+      $scope.bountyFilters.dateFinish = getPlunderPeriod().end;
     }
   };
 
@@ -240,17 +251,25 @@ app.controller('MainController', ['$scope', function($scope) {
     return amount;
   }
 
+  $scope.getMyPlunderTotal = function(){
+    var total = 0;
+    $scope.getMyPlunder().forEach(function(item){
+      total += item.maxValue;
+    });
+    return total;
+  }
+
   $scope.getPlunderPeriodString = function(){
-      return dateToString($scope.plunderOptions.dateStart) + ' - ' + dateToString($scope.plunderOptions.dateFinish);
+      return dateToString($scope.bountyFilters.dateStart) + ' - ' + dateToString($scope.bountyFilters.dateFinish);
   }
 
   $scope.toggleBountyType = function(type){
-      var index = $scope.plunderOptions.includeTypes.indexOf(type);
+      var index = $scope.bountyFilters.includeTypes.indexOf(type);
 
       if(index === -1){
-        $scope.plunderOptions.includeTypes.push(type);
+        $scope.bountyFilters.includeTypes.push(type);
       } else{
-        $scope.plunderOptions.includeTypes.splice(index, 1);
+        $scope.bountyFilters.includeTypes.splice(index, 1);
       }
   }
 
@@ -259,7 +278,7 @@ app.controller('MainController', ['$scope', function($scope) {
       return 'Claim this Birthday Bounty anytime during ' + $scope.monthNames[$scope.dob.getMonth()];
     }
 
-    var itemStart = new Date($scope.dob);
+    var itemStart = new Date($scope.dob);   
     itemStart.setDate(itemStart.getDate() - bountyItem.conditions.daysBefore);
 
     var itemEnd = new Date($scope.dob);
@@ -275,7 +294,7 @@ app.controller('MainController', ['$scope', function($scope) {
   function getPlunderPeriod(){
     var bdayDate = new Date($scope.dob);
 
-    //todo: take into account custom period $scope.plunderOptions.customPeriod.startDate
+    //todo: take into account custom period $scope.bountyFilters.customPeriod.startDate
 
     var minDate = new Date(bdayDate);
     var maxDate = new Date(bdayDate);
@@ -300,9 +319,14 @@ app.controller('MainController', ['$scope', function($scope) {
     return date.getDate() + '/' + (date.getMonth() + 1) + (includeYear ? '/' + date.getFullYear() : '');
   }
 
+  $scope.resetBountyFilters = function(){
+    //clone deault filters to active ones
+    $scope.bountyFilters = jQuery.extend(true, {}, $scope.defaultFilters);
+  }
+
   $scope.filteredBountyData = function() {
     var bdayDate = new Date($scope.dob);
-    var options = $scope.plunderOptions;
+    var options = $scope.bountyFilters;
     
     var shouldPush = function(item) {
 
@@ -378,7 +402,11 @@ app.controller('MainController', ['$scope', function($scope) {
           case $scope.enums.sorter.AvailLateEarly:
           break;
           case $scope.enums.sorter.OrgNameAZ:
-            filteredData.sort(function(b1, b2){ return b1.organisation.name > b2.organisation.name});
+            filteredData.sort(function(b1, b2){
+              if(b1.organisation.name > b2.organisation.name) return 1;
+              if(b1.organisation.name < b2.organisation.name) return -1;
+              return 0;
+            });
           break;
           default:
           break;
@@ -394,20 +422,44 @@ app.controller('MainController', ['$scope', function($scope) {
   function loadAllBountyMarkers(gMap){
     var placesService = new google.maps.places.PlacesService(gMap);
 
+    var tipOffsetY = -10;
+    var tipOffsetX = 15;
+
     var showBountyIconTooltip = function(event, bountyItem){
-          var tooltip = document.createElement('div')
+        var tooltip = $scope.bountyMarkerTooltip;
+
+        if(!tooltip){
+          tooltip = document.createElement('div');
           tooltip.className = "bounty-marker-tooltip";
+          tooltip.innerHTML = "";
           tooltip.innerHTML += '<b>' + bountyItem.organisation.name + '</b><br/>';
           tooltip.innerHTML += bountyItem.title;
 
-          var x = event.pageX;
-          var y = event.pageY;
+          $scope.bountyMarkerTooltip = tooltip;
+          $(document.body).append($scope.bountyMarkerTooltip);     
+        }
 
-          tooltip.style.top = (y - 10)+ 'px';
-          tooltip.style.left = (x + 15) + 'px';
+        tooltip.style.top = (event.pageY + tipOffsetY)+ 'px';
+        tooltip.style.left = (event.pageX + tipOffsetX) + 'px';
+    };
+
+    var showDetailedTooltip = function(event, place){
+        var tooltip = $scope.bountyMarkerTooltip;
+
+        if(!tooltip){
+          tooltip = document.createElement('div');
+          tooltip.className = "bounty-marker-tooltip";
 
           $scope.bountyMarkerTooltip = tooltip;
           $(document.body).append($scope.bountyMarkerTooltip);     
+        }
+
+        tooltip.innerHTML = "";
+        tooltip.innerHTML += '<b>' + place.name + '</b><br/>';
+        tooltip.innerHTML += place.formatted_address;
+
+        tooltip.style.top = (event.pageY + tipOffsetY)+ 'px';
+        tooltip.style.left = (event.pageX + tipOffsetX) + 'px';
     };
 
     var createBountyMarker = function(item, location, image) {
@@ -439,41 +491,35 @@ app.controller('MainController', ['$scope', function($scope) {
               google.maps.event.addDomListener(div, "click", function(event) {      
                   google.maps.event.trigger(marker, "click"); //todo: need this?
 
-                  gMap.panTo(new google.maps.LatLng(location.lat, location.lng))
-
                   //If we haven't already loaded this place's details
                   if(!location.placeDetails){
-
                       //Try to load them
                       placesService.getDetails({placeId:location.placeId},function(placeResult, status){
                         if(status == "OK"){
                           //Set the place details so we have it
                           location.placeDetails = placeResult;
+                          showDetailedTooltip(event, placeResult);
                         } else{
                           //No place details found
                         }
-
-                        $scope.activeBountyItem = item;
-                        $scope.$apply();
                     });
-                  } else{
+                  } else {
                     //We already have the place details
-                    $scope.activeBountyItem = item;
-                    $scope.$apply();
+                    showDetailedTooltip(event, location.placeDetails);
                   }
               });
 
               google.maps.event.addDomListener(div, "mousemove", function(event) {      
                   google.maps.event.trigger(marker, "mousemove"); //todo: need this?
-
-                  if($scope.bountyMarkerTooltip) $scope.bountyMarkerTooltip.remove();
                   showBountyIconTooltip(event, item);
               });
 
               google.maps.event.addDomListener(div, "mouseout", function(event) {      
                   google.maps.event.trigger(marker, "mouseout"); //todo: need this?
-
-                  if($scope.bountyMarkerTooltip) $scope.bountyMarkerTooltip.remove();
+                  if($scope.bountyMarkerTooltip){
+                    $scope.bountyMarkerTooltip.remove();
+                    $scope.bountyMarkerTooltip = null;
+                  }
               });              
               
               var panes = marker.getPanes();

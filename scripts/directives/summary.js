@@ -13,7 +13,7 @@ app.directive('summary', function() {
                                 '{{ bountyItem.organisation.name }}' +
                             '</div>' +
                             '<div class="standard-button toggle-plunder-button" ng-click="toggleInMyPlunder(bountyItem.bountyId)">' +
-								'{{ myPlunder.indexOf(bountyItem.bountyId) === -1 ? "Add to My Bounty" : "Remove from My Bounty" }}' +
+								'{{ myPlunder.indexOf(bountyItem.bountyId) === -1 ? "Add to My Plunder" : "Remove from My Plunder" }}' +
 							'</div>' +
                             '<div class="bounty-item-org-social">' +
                                 '<a ng-if="bountyItem.organisation.social.facebook" target="_blank" ng-href="{{bountyItem.organisation.social.facebook}}">' +

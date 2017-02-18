@@ -1,12 +1,28 @@
 @media screen and (orientation:portrait){
-    .bounty-map-container {
-      height: 40vh;
-    }
 
-    .bounty-summary-items-container{
-        width: 100%;
-        float: left;
-        padding-left: 20px;
-        padding-top: 32px;
-    }
+.bounty-map-container {
+  height: 40vh;
+}
+
+.bounty-summary-items-container{
+    width: 100%;
+    float: left;
+    padding-left: 0;
+    padding-top: 16px;
+}
+
+.mobile-controls{
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-controls .standard-button{
+    margin: 0 20px;
+    padding: 20px;
+    font-size: 20px;
+    border-width: 2px;
+    display: inline-block;
+    width: 40%;
+}
+
 }
