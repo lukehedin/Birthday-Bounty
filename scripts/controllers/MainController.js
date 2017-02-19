@@ -60,11 +60,16 @@ app.controller('MainController', ['$scope', function($scope) {
       "Why spend, when you can plunder?",
       "The best things in life are free!",
       "Don't pay for things on your bithday!",
-      "Arghh, me hearties! Let's score some bounty!",
+      "Arghh, me hearties! Let's find some bounty!",
       "Because you're a cheapskate!",
       "More bounty coming soon!",
-      "The best kind of sword is a free sword!",
-      "It's the most wonderful time of your year!"
+      "The best kind of stuff is free stuff!",
+      "It's the most wonderful time of your year!",
+      "Time for a birthday binge?",
+      "Treat yourself!",
+      "Give it to me, baby!",
+      "You are a pirate!",
+      "Yay! Piracy!"
     ];
 
     //init scope vars
@@ -72,6 +77,11 @@ app.controller('MainController', ['$scope', function($scope) {
     $scope.myPlunder = [];
     $scope.bountyMarkers = [];
     $scope.bountyMarkerTooltip = null;
+    $scope.birthdayInput = {
+      day: 1,
+      month: 'Jan',
+      year: new Date().getFullYear()
+    };
     //pagination
     $scope.pageBegin = 0;
     $scope.pageTake = 10;
@@ -83,10 +93,10 @@ app.controller('MainController', ['$scope', function($scope) {
         minValue: 0,
         maxValue: 200,
         showUnknownValue: true,
-        monthStart: 'Jan',
-        dayStart: 01,
-        monthFinish: 'Dec',
-        dayFinish: 31,
+        monthStart: null,
+        dayStart: null,
+        monthFinish: null,
+        dayFinish: null,
         includeRegistrationReq: true,
         includeIdentificationReq: true,
         includeDigitalVoucherReq: true,
@@ -102,6 +112,7 @@ app.controller('MainController', ['$scope', function($scope) {
       $scope.dob = new Date(existingBday);
       
       var plunderPeriod = getFullPlunderPeriod();
+
       $scope.defaultFilters.monthStart = moment(plunderPeriod.start).format('MMM');
       $scope.defaultFilters.monthFinish = moment(plunderPeriod.finish).format('MMM');
       $scope.defaultFilters.dayStart = moment(plunderPeriod.start).date();
@@ -152,7 +163,15 @@ app.controller('MainController', ['$scope', function($scope) {
     }
   }
 
+  $scope.getYears = function(){
+    var thisYear = new Date().getFullYear();
+    var yearsArray = [];
+    for(var i = thisYear; i >= 1900; i--) yearsArray.push(i);
+    return yearsArray;
+  }
+
   $scope.getDaysInMonth = function(shortMonth){
+    if(!shortMonth) shortMonth = "Jan";
     var days = moment(shortMonth, 'MMM').daysInMonth();
     var daysArray = [];
     for(var i = 1; i <= days; i++) daysArray.push(i);
@@ -218,60 +237,36 @@ app.controller('MainController', ['$scope', function($scope) {
     });
   };
 
+  $scope.getBirthdayString = function() {
+    return moment($scope.dob).format('DD/MM/YYYY');
+  }
+
   $scope.clearBirthday = function(){
     $scope.dob = null;
     localStorage.removeItem("birthday");
   };
 
   $scope.submitBirthday = function(){
-    var yearVal = $('#yearField')[0].value;
-    var monthVal = $('#monthField')[0].value;
-    var dayVal = $('#dayField')[0].value;
+    var yearVal = $scope.birthdayInput.year;
+    var monthVal = moment($scope.birthdayInput.month, 'MMM').month();
+    var dayVal = $scope.birthdayInput.day;
 
-    var isValid = (!isNaN(yearVal) && !isNaN(monthVal) && !isNaN(dayVal));
+    var bdayDate = new Date(yearVal, monthVal, dayVal);
+    bdayDate.setFullYear(new Date().getFullYear() + (new Date() > bdayDate ? 1 : 0)); 
+    
+    localStorage.setItem("birthday", bdayDate);
 
-    if(isValid){
-      var day = parseInt(dayVal);
-      var month = parseInt(monthVal) - 1; //subtract one, months begin at 00
-      var year = parseInt(yearVal);
+    $scope.dob = bdayDate;
+    renderMapWhenReady();
 
-      var thisYear = new Date().getFullYear();
-      var isValid = year > (thisYear - 130) && year < (thisYear + 1);
+    var plunderPeriod = getFullPlunderPeriod();
+    
+    $scope.defaultFilters.monthStart = moment(plunderPeriod.start).format('MMM');
+    $scope.defaultFilters.monthFinish = moment(plunderPeriod.finish).format('MMM');
+    $scope.defaultFilters.dayStart = moment(plunderPeriod.start).date();
+    $scope.defaultFilters.dayFinish = moment(plunderPeriod.finish).date();
 
-      var getDaysInMonth = function(month){
-        if([1,3,5,7,8,10,12].indexOf(month) !== -1){
-          return 31;
-        } else if([4,6,9,11].indexOf(month) !== -1){
-          return 30;
-        } else{
-          //feb
-          var leapYear = (year % 4 === 0) && ((year % 400 === 0) || (year % 100 !== 0));
-          return leapYear ? 29 : 28;
-        }
-      };
-
-      isValid = month <= 12 && month> 0 && day <= getDaysInMonth(month) && day > 0;
-    }
-
-    if(isValid){
-      var today = new Date();
-      var thisYear =  today.getFullYear();
-
-      var thisYearsBirthday = new Date(thisYear, month, day);
-
-      var bdayDate = new Date((thisYear + (thisYearsBirthday < today ? 1 : 0)), month, day);
-
-      localStorage.setItem("birthday", bdayDate);
-
-      $scope.dob = bdayDate;
-      renderMapWhenReady();
-
-      var plunderPeriod = getFullPlunderPeriod();
-      $scope.defaultFilters.monthStart = moment(plunderPeriod.start).format('MMM');
-      $scope.defaultFilters.monthFinish = moment(plunderPeriod.finish).format('MMM');
-      $scope.defaultFilters.dayStart = moment(plunderPeriod.start).date();
-      $scope.defaultFilters.dayFinish = moment(plunderPeriod.finish).date();
-    }
+    $scope.resetBountyFilters();
   };
 
   $scope.getTypeById = function(typeId){
@@ -302,7 +297,8 @@ app.controller('MainController', ['$scope', function($scope) {
       var filterStart = new Date(moment().year(), moment($scope.bountyFilters.monthStart, 'MMM').month(), $scope.bountyFilters.dayStart);
       var filterFinish = new Date(moment().year(), moment($scope.bountyFilters.monthFinish, 'MMM').month(), $scope.bountyFilters.dayFinish);
       
-      return moment(filterStart).format('dddd Do MMMM') + ' - ' + moment(filterFinish).format('dddd Do MMMM');
+      if(filterStart.getTime() === filterFinish.getTime()) return "on " + moment(filterStart).format('dddd Do MMMM');
+      return "between " + moment(filterStart).format('dddd Do MMMM') + ' and ' + moment(filterFinish).format('dddd Do MMMM');
   }
 
   $scope.toggleBountyType = function(type){
@@ -323,13 +319,13 @@ app.controller('MainController', ['$scope', function($scope) {
     var itemStart = new Date($scope.dob);   
     itemStart.setDate(itemStart.getDate() - bountyItem.conditions.daysBefore);
 
-    var itemEnd = new Date($scope.dob);
-    itemEnd.setDate(itemEnd.getDate() + bountyItem.conditions.daysAfter);
+    var itemFinish = new Date($scope.dob);
+    itemFinish.setDate(itemFinish.getDate() + bountyItem.conditions.daysAfter);
 
-    if(itemStart - itemEnd === 0){
-      return 'This Birthday Bounty can only be claimed on your birthday';
+    if(itemStart - itemFinish === 0){
+      return 'This Birthday Bounty can only be claimed on your birthday, ' + moment(itemStart).format('dddd Do MMM');
     } else{
-      return 'Claim this Birthday Bounty between ' + dateToString(itemStart) + ' - ' + dateToString(itemEnd);
+      return 'Claim this Birthday Bounty between ' + moment(itemStart).format('dddd Do MMM') + ' and ' + moment(itemFinish).format('dddd Do MMM');
     }
   }
 
@@ -339,13 +335,12 @@ app.controller('MainController', ['$scope', function($scope) {
     var minDate = new Date(bdayDate);
     var maxDate = new Date(bdayDate);
 
-    $scope.filteredBountyData().forEach(function(item){
-        var possibleMin = new Date($scope.dob);
-        possibleMin.setDate(possibleMin.getDate() - item.conditions.daysBefore);
+    $scope.bountyData.forEach(function(item){
+        var itemPeriod = getItemAvailablePeriod(item);
+        var possibleMin = itemPeriod.start;
         if(possibleMin < minDate) minDate = possibleMin;
 
-        var possibleMax = new Date($scope.dob);
-        possibleMax.setDate(possibleMax.getDate() + item.conditions.daysAfter);
+        var possibleMax = itemPeriod.finish;
         if(possibleMax > maxDate) maxDate = possibleMax;
     });
 
@@ -362,8 +357,8 @@ app.controller('MainController', ['$scope', function($scope) {
     var itemFinish = moment(bdayDate);
 
     if(item.conditions.wholeMonth){
-      itemStart = itemStart.startOf('month');
-      itemFinish = itemFinish.endOf('month');
+      itemStart = itemStart.startOf('month').toDate();
+      itemFinish = itemFinish.endOf('month').toDate();
     } else{
       itemStart = itemStart.subtract(item.conditions.daysBefore, 'days').toDate();
       itemFinish = itemFinish.add(item.conditions.daysAfter, 'days').toDate();
@@ -373,10 +368,6 @@ app.controller('MainController', ['$scope', function($scope) {
       start: new Date(itemStart),
       finish: new Date(itemFinish)
     }
-  }
-
-  function dateToString(date, includeYear){
-    return date.getDate() + '/' + (date.getMonth() + 1) + (includeYear ? '/' + date.getFullYear() : '');
   }
 
   $scope.resetBountyFilters = function(){
@@ -423,10 +414,15 @@ app.controller('MainController', ['$scope', function($scope) {
         }
 
         //Availability
-        var filterStart = new Date(moment().year(), moment(options.monthStart, 'MMM').month(), options.dayStart);
-        var filterFinish = new Date(moment().year(), moment(options.monthFinish, 'MMM').month(), options.dayFinish);
-
         if(options.monthStart && options.dayStart && options.monthFinish && options.dayFinish){
+          var filterStart = new Date(moment().year(), moment(options.monthStart, 'MMM').month(), options.dayStart);
+          var filterFinish = new Date(moment().year(), moment(options.monthFinish, 'MMM').month(), options.dayFinish);
+
+          var now = new Date();
+          
+          if(now > filterFinish) filterFinish.setFullYear(filterFinish.getFullYear() + 1);
+          if(now > filterStart) filterStart.setFullYear(filterStart.getFullYear() + 1);
+  
           var itemAvail = getItemAvailablePeriod(item);
 
           if((itemAvail.start < filterFinish && itemAvail.finish < filterStart)) return false;

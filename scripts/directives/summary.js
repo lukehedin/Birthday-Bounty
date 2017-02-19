@@ -76,7 +76,7 @@ app.directive('summary', function() {
                     '</div>' +
                 '</div>' +
                 '<hr/>' +
-                 '<div class="page-controls" ng-if="getTotalPages() > 0">' +
+                 '<div class="page-controls" ng-if="getTotalPages() > 1">' +
                     '<div class="standard-button" ng-click="changePage(-1)" ng-class="{ disabled: (((pageBegin + 1) + (pageTake * -1) < 0)) }">' +
                         'Previous Page' + 
                     '</div>' +

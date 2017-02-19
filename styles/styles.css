@@ -31,14 +31,6 @@ select:focus, input:focus {
   padding: 40px 0 40px 0;  
 }
 
-.dob-splash input{
-  color: black;
-}
-
-.dob-splash .standard-button{
-  display: inline-block;
-}
-
 /*Keeping things inside 80vw*/
 .content-wrapper, .top-navigation-bar, .birthday-summary-strip .summary-text, .footer-strip .footer-text{
   min-width: 800px;
@@ -74,11 +66,12 @@ select:focus, input:focus {
   float: right;
   font-size: 18px;
   font-family: 'Didact Gothic', sans-serif; 
+  font-size: 12px;
   text-align: right;
 }
 
 .nav-right .tagline{
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .nav-right .standard-button{
@@ -115,6 +108,8 @@ select:focus, input:focus {
 .birthday-summary-strip, .footer-strip {
   background-color: #ff6699; 
   background-image: url(../images/background-trans.svg);
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
 }
 
 .birthday-summary-strip, .footer-strip{
@@ -264,9 +259,14 @@ select:focus, input:focus {
   background-color: #ee5588;
 }
 
-.input-field{
-  width: 50px;
+.dob-splash select{
+  color: black;
+  min-width: 50px;
   margin: 6px;
+}
+
+.dob-splash .standard-button{
+  display: inline-block;
 }
 
 /* Bounty summary*/
@@ -418,7 +418,7 @@ select:focus, input:focus {
 }
 
 .bounty-types div {
-  width: 10px;
+  width: 0px; /*change this to 10px to get cool effect*/
   overflow: visible;
   float: right;
 }

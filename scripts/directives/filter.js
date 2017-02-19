@@ -34,10 +34,10 @@ app.directive('filter', function() {
                   '</div>' +
 				'<div class="settings-input">' +
 					'<select ng-model="bountyFilters.monthStart" ng-options="shortMonth for shortMonth in getShortMonths()"></select>' +
-					'<select ng-model="bountyFilters.dayStart" ng-options="shortMonth for shortMonth in getDaysInMonth(bountyFilters.monthStart)"></select>' +
+					'<select ng-model="bountyFilters.dayStart" ng-options="day for day in getDaysInMonth(bountyFilters.monthStart)"></select>' +
 					' and ' +
 					'<select ng-model="bountyFilters.monthFinish" ng-options="shortMonth for shortMonth in getShortMonths()"></select>' +
-					'<select ng-model="bountyFilters.dayFinish" ng-options="shortMonth for shortMonth in getDaysInMonth(bountyFilters.monthFinish)"></select>' +
+					'<select ng-model="bountyFilters.dayFinish" ng-options="day for day in getDaysInMonth(bountyFilters.monthFinish)"></select>' +
 				'</div>' +
                   '<div class="settings-label">' +
                       'Claim Conditions:' +

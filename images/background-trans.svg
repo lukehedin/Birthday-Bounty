@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="128mm"
-   height="128mm"
-   viewBox="0 0 453.5433 453.5433"
+   width="512"
+   height="512"
+   viewBox="0 0 511.99999 511.99999"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="384.02311"
-     inkscape:cy="122.55453"
+     inkscape:zoom="1.979899"
+     inkscape:cx="236.81977"
+     inkscape:cy="428.03961"
      inkscape:document-units="px"
      inkscape:current-layer="g4137"
      showgrid="false"
@@ -41,7 +41,8 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     units="px" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -50,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,7 +59,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-385.28573,-155.24747)">
+     transform="translate(-385.26981,-96.716772)">
     <g
        id="g4229"
        transform="translate(174.10714,529.32649)">
@@ -66,9 +67,9 @@
          id="g4137"
          transform="translate(8.0812204,-1.0101525)">
         <g
-           transform="matrix(0.8660254,-0.5,0.5,0.8660254,215.58946,-255.42903)"
+           transform="matrix(0.97792882,-0.56460747,0.56460747,0.97792882,217.20568,-298.82321)"
            id="g3"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <path
              inkscape:connector-curvature="0"
              style="fill:#8f8f8f;fill-opacity:1"
@@ -136,24 +137,20 @@
              id="path29" />
         </g>
         <g
-           transform="matrix(0.99341573,0.11456518,-0.11456518,0.99341573,-3.7860657,-635.90855)"
+           transform="matrix(1.1217799,0.12936871,-0.12936871,1.1217799,-14.546927,-721.6223)"
            id="layer1-8-0"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-1-2"
-             style="">
+             id="g4229-1-2">
             <g
-               id="g4137-5-7"
-               style="">
+               id="g4137-5-7">
               <g
                  transform="matrix(0.97606294,-0.5635302,0.5635302,0.97606294,100.8772,28.339032)"
-                 id="g4329-3"
-                 style="">
+                 id="g4329-3">
                 <g
-                   id="g4275-1"
-                   style="">
+                   id="g4275-1">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#e6e6e6;fill-opacity:1"
@@ -196,118 +193,84 @@
                      id="path4291-5" />
                 </g>
                 <g
-                   id="g4293-8"
-                   style="" />
+                   id="g4293-8" />
                 <g
-                   id="g4295-4"
-                   style="" />
+                   id="g4295-4" />
                 <g
-                   id="g4297-3"
-                   style="" />
+                   id="g4297-3" />
                 <g
-                   id="g4299-5"
-                   style="" />
+                   id="g4299-5" />
                 <g
-                   id="g4301-6"
-                   style="" />
+                   id="g4301-6" />
                 <g
-                   id="g4303-3"
-                   style="" />
+                   id="g4303-3" />
                 <g
-                   id="g4305-5"
-                   style="" />
+                   id="g4305-5" />
                 <g
-                   id="g4307-8"
-                   style="" />
+                   id="g4307-8" />
                 <g
-                   id="g4309-8"
-                   style="" />
+                   id="g4309-8" />
                 <g
-                   id="g4311-9"
-                   style="" />
+                   id="g4311-9" />
                 <g
-                   id="g4313-1"
-                   style="" />
+                   id="g4313-1" />
                 <g
-                   id="g4315-0"
-                   style="" />
+                   id="g4315-0" />
                 <g
-                   id="g4317-2"
-                   style="" />
+                   id="g4317-2" />
                 <g
-                   id="g4319-8"
-                   style="" />
+                   id="g4319-8" />
                 <g
-                   id="g4321-2"
-                   style="" />
+                   id="g4321-2" />
               </g>
             </g>
             <g
-               id="g4193-9-0"
-               style="" />
+               id="g4193-9-0" />
             <g
-               id="g4195-2-9"
-               style="" />
+               id="g4195-2-9" />
             <g
-               id="g4197-8-8"
-               style="" />
+               id="g4197-8-8" />
             <g
-               id="g4199-0-4"
-               style="" />
+               id="g4199-0-4" />
             <g
-               id="g4201-8-5"
-               style="" />
+               id="g4201-8-5" />
             <g
-               id="g4203-8-8"
-               style="" />
+               id="g4203-8-8" />
             <g
-               id="g4205-1-4"
-               style="" />
+               id="g4205-1-4" />
             <g
-               id="g4207-6-0"
-               style="" />
+               id="g4207-6-0" />
             <g
-               id="g4209-2-3"
-               style="" />
+               id="g4209-2-3" />
             <g
-               id="g4211-7-7"
-               style="" />
+               id="g4211-7-7" />
             <g
-               id="g4213-3-8"
-               style="" />
+               id="g4213-3-8" />
             <g
-               id="g4215-9-9"
-               style="" />
+               id="g4215-9-9" />
             <g
-               id="g4217-0-2"
-               style="" />
+               id="g4217-0-2" />
             <g
-               id="g4219-3-0"
-               style="" />
+               id="g4219-3-0" />
             <g
-               id="g4221-8-0"
-               style="" />
+               id="g4221-8-0" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-251.72173,-339.79711)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,-310.48909,-394.09291)"
            id="layer1-7-0"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-5-3"
-             style="">
+             id="g4229-5-3">
             <g
-               id="g4137-3-1"
-               style="">
+               id="g4137-3-1">
               <g
                  transform="matrix(1.0601065,0,0,1.0601065,50.19119,-220.03751)"
-                 id="g4530-1"
-                 style="">
+                 id="g4530-1">
                 <g
-                   id="XMLID_80_-6"
-                   style="">
+                   id="XMLID_80_-6">
                   <path
                      style="fill:#858585;fill-opacity:1"
                      d="m 198.61844,120.67275 58.34654,0 0,33.34089 -58.34654,0 z"
@@ -357,14 +320,11 @@
                      inkscape:connector-curvature="0" />
                   <g
                      transform="matrix(0.86439331,0,0,0.86439331,297.59148,144.56706)"
-                     id="g4620-0"
-                     style="">
+                     id="g4620-0">
                     <g
-                       id="XMLID_3_-8"
-                       style="">
+                       id="XMLID_3_-8">
                       <g
-                         id="XMLID_105_-1"
-                         style="">
+                         id="XMLID_105_-1">
                         <path
                            inkscape:connector-curvature="0"
                            id="XMLID_119_-3"
@@ -378,150 +338,105 @@
                       </g>
                     </g>
                     <g
-                       id="g4584-4"
-                       style="" />
+                       id="g4584-4" />
                     <g
-                       id="g4586-1"
-                       style="" />
+                       id="g4586-1" />
                     <g
-                       id="g4588-6"
-                       style="" />
+                       id="g4588-6" />
                     <g
-                       id="g4590-1"
-                       style="" />
+                       id="g4590-1" />
                     <g
-                       id="g4592-5"
-                       style="" />
+                       id="g4592-5" />
                     <g
-                       id="g4594-7"
-                       style="" />
+                       id="g4594-7" />
                     <g
-                       id="g4596-4"
-                       style="" />
+                       id="g4596-4" />
                     <g
-                       id="g4598-1"
-                       style="" />
+                       id="g4598-1" />
                     <g
-                       id="g4600-3"
-                       style="" />
+                       id="g4600-3" />
                     <g
-                       id="g4602-3"
-                       style="" />
+                       id="g4602-3" />
                     <g
-                       id="g4604-4"
-                       style="" />
+                       id="g4604-4" />
                     <g
-                       id="g4606-8"
-                       style="" />
+                       id="g4606-8" />
                     <g
-                       id="g4608-9"
-                       style="" />
+                       id="g4608-9" />
                     <g
-                       id="g4610-4"
-                       style="" />
+                       id="g4610-4" />
                     <g
-                       id="g4612-0"
-                       style="" />
+                       id="g4612-0" />
                   </g>
                 </g>
                 <g
-                   id="g4494-3"
-                   style="" />
+                   id="g4494-3" />
                 <g
-                   id="g4496-9"
-                   style="" />
+                   id="g4496-9" />
                 <g
-                   id="g4498-8"
-                   style="" />
+                   id="g4498-8" />
                 <g
-                   id="g4500-2"
-                   style="" />
+                   id="g4500-2" />
                 <g
-                   id="g4502-2"
-                   style="" />
+                   id="g4502-2" />
                 <g
-                   id="g4504-2"
-                   style="" />
+                   id="g4504-2" />
                 <g
-                   id="g4506-7"
-                   style="" />
+                   id="g4506-7" />
                 <g
-                   id="g4508-3"
-                   style="" />
+                   id="g4508-3" />
                 <g
-                   id="g4510-1"
-                   style="" />
+                   id="g4510-1" />
                 <g
-                   id="g4512-6"
-                   style="" />
+                   id="g4512-6" />
                 <g
-                   id="g4514-3"
-                   style="" />
+                   id="g4514-3" />
                 <g
-                   id="g4516-3"
-                   style="" />
+                   id="g4516-3" />
                 <g
-                   id="g4518-1"
-                   style="" />
+                   id="g4518-1" />
                 <g
-                   id="g4520-2"
-                   style="" />
+                   id="g4520-2" />
                 <g
-                   id="g4522-4"
-                   style="" />
+                   id="g4522-4" />
               </g>
             </g>
             <g
-               id="g4193-6-4"
-               style="" />
+               id="g4193-6-4" />
             <g
-               id="g4195-7-0"
-               style="" />
+               id="g4195-7-0" />
             <g
-               id="g4197-6-3"
-               style="" />
+               id="g4197-6-3" />
             <g
-               id="g4199-7-2"
-               style="" />
+               id="g4199-7-2" />
             <g
-               id="g4201-5-0"
-               style="" />
+               id="g4201-5-0" />
             <g
-               id="g4203-7-2"
-               style="" />
+               id="g4203-7-2" />
             <g
-               id="g4205-6-3"
-               style="" />
+               id="g4205-6-3" />
             <g
-               id="g4207-0-6"
-               style="" />
+               id="g4207-0-6" />
             <g
-               id="g4209-20-4"
-               style="" />
+               id="g4209-20-4" />
             <g
-               id="g4211-90-5"
-               style="" />
+               id="g4211-90-5" />
             <g
-               id="g4213-0-1"
-               style="" />
+               id="g4213-0-1" />
             <g
-               id="g4215-8-9"
-               style="" />
+               id="g4215-8-9" />
             <g
-               id="g4217-5-2"
-               style="" />
+               id="g4217-5-2" />
             <g
-               id="g4219-1-8"
-               style="" />
+               id="g4219-1-8" />
             <g
-               id="g4221-81-9"
-               style="" />
+               id="g4221-81-9" />
           </g>
         </g>
         <g
            id="g5191-1-3-3"
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,190.63553,-81.941329)"
-           style="opacity:0.174">
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,189.02733,-102.91831)"
+           style="opacity:0.17399998">
           <g
              style="opacity:0.5"
              transform="matrix(1.046516,0,0,1.046516,228.65156,-4.5075805)"
@@ -532,8 +447,7 @@
                style="fill:#919191;fill-opacity:1"
                inkscape:connector-curvature="0" />
             <g
-               id="g4364-9-9-3"
-               style="">
+               id="g4364-9-9-3">
               <path
                  inkscape:connector-curvature="0"
                  style="fill:#dfdfdf;fill-opacity:1"
@@ -561,71 +475,52 @@
                d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
                id="path4374-2-7-1" />
             <g
-               id="g4376-5-6-2"
-               style="" />
+               id="g4376-5-6-2" />
             <g
-               id="g4378-5-8-3"
-               style="" />
+               id="g4378-5-8-3" />
             <g
-               id="g4380-3-8-0"
-               style="" />
+               id="g4380-3-8-0" />
             <g
-               id="g4382-3-0-7"
-               style="" />
+               id="g4382-3-0-7" />
             <g
-               id="g4384-1-9-7"
-               style="" />
+               id="g4384-1-9-7" />
             <g
-               id="g4386-1-5-1"
-               style="" />
+               id="g4386-1-5-1" />
             <g
-               id="g4388-5-7-1"
-               style="" />
+               id="g4388-5-7-1" />
             <g
-               id="g4390-0-5-6"
-               style="" />
+               id="g4390-0-5-6" />
             <g
-               id="g4392-0-8-8"
-               style="" />
+               id="g4392-0-8-8" />
             <g
-               id="g4394-4-4-8"
-               style="" />
+               id="g4394-4-4-8" />
             <g
-               id="g4396-4-3-1"
-               style="" />
+               id="g4396-4-3-1" />
             <g
-               id="g4398-1-8-2"
-               style="" />
+               id="g4398-1-8-2" />
             <g
-               id="g4400-5-8-3"
-               style="" />
+               id="g4400-5-8-3" />
             <g
-               id="g4402-0-4-0"
-               style="" />
+               id="g4402-0-4-0" />
             <g
-               id="g4404-7-1-9"
-               style="" />
+               id="g4404-7-1-9" />
           </g>
         </g>
         <g
-           transform="matrix(0.99341573,0.11456518,-0.11456518,0.99341573,100.40775,-825.15832)"
+           transform="matrix(1.1217799,0.12936871,-0.12936871,1.1217799,87.140775,-942.17004)"
            id="layer1-8-0-3"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-1-2-9"
-             style="">
+             id="g4229-1-2-9">
             <g
-               id="g4137-5-7-7"
-               style="">
+               id="g4137-5-7-7">
               <g
                  transform="matrix(0.97606294,-0.5635302,0.5635302,0.97606294,100.8772,28.339032)"
-                 id="g4329-3-4"
-                 style="">
+                 id="g4329-3-4">
                 <g
-                   id="g4275-1-0"
-                   style="">
+                   id="g4275-1-0">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#e6e6e6;fill-opacity:1"
@@ -668,118 +563,84 @@
                      id="path4291-5-5" />
                 </g>
                 <g
-                   id="g4293-8-7"
-                   style="" />
+                   id="g4293-8-7" />
                 <g
-                   id="g4295-4-1"
-                   style="" />
+                   id="g4295-4-1" />
                 <g
-                   id="g4297-3-5"
-                   style="" />
+                   id="g4297-3-5" />
                 <g
-                   id="g4299-5-0"
-                   style="" />
+                   id="g4299-5-0" />
                 <g
-                   id="g4301-6-8"
-                   style="" />
+                   id="g4301-6-8" />
                 <g
-                   id="g4303-3-0"
-                   style="" />
+                   id="g4303-3-0" />
                 <g
-                   id="g4305-5-0"
-                   style="" />
+                   id="g4305-5-0" />
                 <g
-                   id="g4307-8-8"
-                   style="" />
+                   id="g4307-8-8" />
                 <g
-                   id="g4309-8-3"
-                   style="" />
+                   id="g4309-8-3" />
                 <g
-                   id="g4311-9-7"
-                   style="" />
+                   id="g4311-9-7" />
                 <g
-                   id="g4313-1-0"
-                   style="" />
+                   id="g4313-1-0" />
                 <g
-                   id="g4315-0-2"
-                   style="" />
+                   id="g4315-0-2" />
                 <g
-                   id="g4317-2-4"
-                   style="" />
+                   id="g4317-2-4" />
                 <g
-                   id="g4319-8-6"
-                   style="" />
+                   id="g4319-8-6" />
                 <g
-                   id="g4321-2-6"
-                   style="" />
+                   id="g4321-2-6" />
               </g>
             </g>
             <g
-               id="g4193-9-0-2"
-               style="" />
+               id="g4193-9-0-2" />
             <g
-               id="g4195-2-9-6"
-               style="" />
+               id="g4195-2-9-6" />
             <g
-               id="g4197-8-8-4"
-               style="" />
+               id="g4197-8-8-4" />
             <g
-               id="g4199-0-4-9"
-               style="" />
+               id="g4199-0-4-9" />
             <g
-               id="g4201-8-5-9"
-               style="" />
+               id="g4201-8-5-9" />
             <g
-               id="g4203-8-8-1"
-               style="" />
+               id="g4203-8-8-1" />
             <g
-               id="g4205-1-4-1"
-               style="" />
+               id="g4205-1-4-1" />
             <g
-               id="g4207-6-0-0"
-               style="" />
+               id="g4207-6-0-0" />
             <g
-               id="g4209-2-3-6"
-               style="" />
+               id="g4209-2-3-6" />
             <g
-               id="g4211-7-7-9"
-               style="" />
+               id="g4211-7-7-9" />
             <g
-               id="g4213-3-8-2"
-               style="" />
+               id="g4213-3-8-2" />
             <g
-               id="g4215-9-9-5"
-               style="" />
+               id="g4215-9-9-5" />
             <g
-               id="g4217-0-2-7"
-               style="" />
+               id="g4217-0-2-7" />
             <g
-               id="g4219-3-0-7"
-               style="" />
+               id="g4219-3-0-7" />
             <g
-               id="g4221-8-0-4"
-               style="" />
+               id="g4221-8-0-4" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-18.906098,-767.43889)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,-47.590205,-876.99239)"
            id="layer1-3-6-3"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-9-8-3"
-             style="">
+             id="g4229-9-8-3">
             <g
-               id="g4137-0-8-8"
-               style="">
+               id="g4137-0-8-8">
               <g
                  transform="translate(-6.6493159,1.9661188)"
-                 id="g5322-1-3"
-                 style="">
+                 id="g5322-1-3">
                 <g
-                   id="g5268-4-7"
-                   style="">
+                   id="g5268-4-7">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#f5f5f5;fill-opacity:1"
@@ -791,8 +652,7 @@
                      d="M 47.342,5.88 46.598,5.212 C 47.457,4.253 48.687,3.69 49.971,3.664 l 0.02,1 c -1.008,0.02 -1.973,0.463 -2.649,1.216 z"
                      id="path5272-3-4" />
                   <g
-                     id="g5274-5-1"
-                     style="">
+                     id="g5274-5-1">
                     <path
                        inkscape:connector-curvature="0"
                        style="fill:#9c9c9c;fill-opacity:1"
@@ -821,118 +681,84 @@
                      inkscape:connector-curvature="0" />
                 </g>
                 <g
-                   id="g5286-5-1"
-                   style="" />
+                   id="g5286-5-1" />
                 <g
-                   id="g5288-9-6"
-                   style="" />
+                   id="g5288-9-6" />
                 <g
-                   id="g5290-4-0"
-                   style="" />
+                   id="g5290-4-0" />
                 <g
-                   id="g5292-9-5"
-                   style="" />
+                   id="g5292-9-5" />
                 <g
-                   id="g5294-7-2"
-                   style="" />
+                   id="g5294-7-2" />
                 <g
-                   id="g5296-4-2"
-                   style="" />
+                   id="g5296-4-2" />
                 <g
-                   id="g5298-9-6"
-                   style="" />
+                   id="g5298-9-6" />
                 <g
-                   id="g5300-9-7"
-                   style="" />
+                   id="g5300-9-7" />
                 <g
-                   id="g5302-3-8"
-                   style="" />
+                   id="g5302-3-8" />
                 <g
-                   id="g5304-9-6"
-                   style="" />
+                   id="g5304-9-6" />
                 <g
-                   id="g5306-9-4"
-                   style="" />
+                   id="g5306-9-4" />
                 <g
-                   id="g5308-5-2"
-                   style="" />
+                   id="g5308-5-2" />
                 <g
-                   id="g5310-4-3"
-                   style="" />
+                   id="g5310-4-3" />
                 <g
-                   id="g5312-8-9"
-                   style="" />
+                   id="g5312-8-9" />
                 <g
-                   id="g5314-0-2"
-                   style="" />
+                   id="g5314-0-2" />
               </g>
             </g>
             <g
-               id="g4193-0-3-8"
-               style="" />
+               id="g4193-0-3-8" />
             <g
-               id="g4195-29-2-2"
-               style="" />
+               id="g4195-29-2-2" />
             <g
-               id="g4197-4-0-5"
-               style="" />
+               id="g4197-4-0-5" />
             <g
-               id="g4199-6-4-9"
-               style="" />
+               id="g4199-6-4-9" />
             <g
-               id="g4201-88-0-1"
-               style="" />
+               id="g4201-88-0-1" />
             <g
-               id="g4203-9-9-5"
-               style="" />
+               id="g4203-9-9-5" />
             <g
-               id="g4205-2-0-5"
-               style="" />
+               id="g4205-2-0-5" />
             <g
-               id="g4207-9-5-7"
-               style="" />
+               id="g4207-9-5-7" />
             <g
-               id="g4209-7-3-9"
-               style="" />
+               id="g4209-7-3-9" />
             <g
-               id="g4211-3-7-1"
-               style="" />
+               id="g4211-3-7-1" />
             <g
-               id="g4213-9-1-9"
-               style="" />
+               id="g4213-9-1-9" />
             <g
-               id="g4215-6-6-9"
-               style="" />
+               id="g4215-6-6-9" />
             <g
-               id="g4217-8-9-9"
-               style="" />
+               id="g4217-8-9-9" />
             <g
-               id="g4219-7-6-2"
-               style="" />
+               id="g4219-7-6-2" />
             <g
-               id="g4221-0-2-5"
-               style="" />
+               id="g4221-0-2-5" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-90.659895,-447.92289)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,-128.61566,-516.19016)"
            id="layer1-7-0-8"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-5-3-2"
-             style="">
+             id="g4229-5-3-2">
             <g
-               id="g4137-3-1-3"
-               style="">
+               id="g4137-3-1-3">
               <g
                  transform="matrix(1.0601065,0,0,1.0601065,50.19119,-220.03751)"
-                 id="g4530-1-8"
-                 style="">
+                 id="g4530-1-8">
                 <g
-                   id="XMLID_80_-6-0"
-                   style="">
+                   id="XMLID_80_-6-0">
                   <path
                      style="fill:#858585;fill-opacity:1"
                      d="m 198.61844,120.67275 58.34654,0 0,33.34089 -58.34654,0 z"
@@ -982,14 +808,11 @@
                      inkscape:connector-curvature="0" />
                   <g
                      transform="matrix(0.86439331,0,0,0.86439331,297.59148,144.56706)"
-                     id="g4620-0-2"
-                     style="">
+                     id="g4620-0-2">
                     <g
-                       id="XMLID_3_-8-9"
-                       style="">
+                       id="XMLID_3_-8-9">
                       <g
-                         id="XMLID_105_-1-2"
-                         style="">
+                         id="XMLID_105_-1-2">
                         <path
                            inkscape:connector-curvature="0"
                            id="XMLID_119_-3-6"
@@ -1003,150 +826,105 @@
                       </g>
                     </g>
                     <g
-                       id="g4584-4-9"
-                       style="" />
+                       id="g4584-4-9" />
                     <g
-                       id="g4586-1-3"
-                       style="" />
+                       id="g4586-1-3" />
                     <g
-                       id="g4588-6-5"
-                       style="" />
+                       id="g4588-6-5" />
                     <g
-                       id="g4590-1-3"
-                       style="" />
+                       id="g4590-1-3" />
                     <g
-                       id="g4592-5-4"
-                       style="" />
+                       id="g4592-5-4" />
                     <g
-                       id="g4594-7-7"
-                       style="" />
+                       id="g4594-7-7" />
                     <g
-                       id="g4596-4-3"
-                       style="" />
+                       id="g4596-4-3" />
                     <g
-                       id="g4598-1-5"
-                       style="" />
+                       id="g4598-1-5" />
                     <g
-                       id="g4600-3-8"
-                       style="" />
+                       id="g4600-3-8" />
                     <g
-                       id="g4602-3-5"
-                       style="" />
+                       id="g4602-3-5" />
                     <g
-                       id="g4604-4-0"
-                       style="" />
+                       id="g4604-4-0" />
                     <g
-                       id="g4606-8-6"
-                       style="" />
+                       id="g4606-8-6" />
                     <g
-                       id="g4608-9-5"
-                       style="" />
+                       id="g4608-9-5" />
                     <g
-                       id="g4610-4-1"
-                       style="" />
+                       id="g4610-4-1" />
                     <g
-                       id="g4612-0-8"
-                       style="" />
+                       id="g4612-0-8" />
                   </g>
                 </g>
                 <g
-                   id="g4494-3-8"
-                   style="" />
+                   id="g4494-3-8" />
                 <g
-                   id="g4496-9-0"
-                   style="" />
+                   id="g4496-9-0" />
                 <g
-                   id="g4498-8-6"
-                   style="" />
+                   id="g4498-8-6" />
                 <g
-                   id="g4500-2-1"
-                   style="" />
+                   id="g4500-2-1" />
                 <g
-                   id="g4502-2-5"
-                   style="" />
+                   id="g4502-2-5" />
                 <g
-                   id="g4504-2-3"
-                   style="" />
+                   id="g4504-2-3" />
                 <g
-                   id="g4506-7-3"
-                   style="" />
+                   id="g4506-7-3" />
                 <g
-                   id="g4508-3-7"
-                   style="" />
+                   id="g4508-3-7" />
                 <g
-                   id="g4510-1-6"
-                   style="" />
+                   id="g4510-1-6" />
                 <g
-                   id="g4512-6-4"
-                   style="" />
+                   id="g4512-6-4" />
                 <g
-                   id="g4514-3-3"
-                   style="" />
+                   id="g4514-3-3" />
                 <g
-                   id="g4516-3-0"
-                   style="" />
+                   id="g4516-3-0" />
                 <g
-                   id="g4518-1-6"
-                   style="" />
+                   id="g4518-1-6" />
                 <g
-                   id="g4520-2-7"
-                   style="" />
+                   id="g4520-2-7" />
                 <g
-                   id="g4522-4-3"
-                   style="" />
+                   id="g4522-4-3" />
               </g>
             </g>
             <g
-               id="g4193-6-4-8"
-               style="" />
+               id="g4193-6-4-8" />
             <g
-               id="g4195-7-0-5"
-               style="" />
+               id="g4195-7-0-5" />
             <g
-               id="g4197-6-3-7"
-               style="" />
+               id="g4197-6-3-7" />
             <g
-               id="g4199-7-2-9"
-               style="" />
+               id="g4199-7-2-9" />
             <g
-               id="g4201-5-0-9"
-               style="" />
+               id="g4201-5-0-9" />
             <g
-               id="g4203-7-2-6"
-               style="" />
+               id="g4203-7-2-6" />
             <g
-               id="g4205-6-3-9"
-               style="" />
+               id="g4205-6-3-9" />
             <g
-               id="g4207-0-6-5"
-               style="" />
+               id="g4207-0-6-5" />
             <g
-               id="g4209-20-4-5"
-               style="" />
+               id="g4209-20-4-5" />
             <g
-               id="g4211-90-5-4"
-               style="" />
+               id="g4211-90-5-4" />
             <g
-               id="g4213-0-1-1"
-               style="" />
+               id="g4213-0-1-1" />
             <g
-               id="g4215-8-9-4"
-               style="" />
+               id="g4215-8-9-4" />
             <g
-               id="g4217-5-2-8"
-               style="" />
+               id="g4217-5-2-8" />
             <g
-               id="g4219-1-8-6"
-               style="" />
+               id="g4219-1-8-6" />
             <g
-               id="g4221-81-9-6"
-               style="" />
+               id="g4221-81-9-6" />
           </g>
         </g>
         <g
            id="g5191-1-3-3-3"
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,190.26878,-268.6893)"
-           style="opacity:0.174">
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,188.61319,116.2392)"
+           style="opacity:0.17399998">
           <g
              style="opacity:0.5"
              transform="matrix(1.046516,0,0,1.046516,228.65156,-4.5075805)"
@@ -1157,8 +935,7 @@
                style="fill:#919191;fill-opacity:1"
                inkscape:connector-curvature="0" />
             <g
-               id="g4364-9-9-3-1"
-               style="">
+               id="g4364-9-9-3-1">
               <path
                  inkscape:connector-curvature="0"
                  style="fill:#dfdfdf;fill-opacity:1"
@@ -1186,71 +963,52 @@
                d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
                id="path4374-2-7-1-8" />
             <g
-               id="g4376-5-6-2-9"
-               style="" />
+               id="g4376-5-6-2-9" />
             <g
-               id="g4378-5-8-3-0"
-               style="" />
+               id="g4378-5-8-3-0" />
             <g
-               id="g4380-3-8-0-4"
-               style="" />
+               id="g4380-3-8-0-4" />
             <g
-               id="g4382-3-0-7-8"
-               style="" />
+               id="g4382-3-0-7-8" />
             <g
-               id="g4384-1-9-7-1"
-               style="" />
+               id="g4384-1-9-7-1" />
             <g
-               id="g4386-1-5-1-6"
-               style="" />
+               id="g4386-1-5-1-6" />
             <g
-               id="g4388-5-7-1-3"
-               style="" />
+               id="g4388-5-7-1-3" />
             <g
-               id="g4390-0-5-6-9"
-               style="" />
+               id="g4390-0-5-6-9" />
             <g
-               id="g4392-0-8-8-8"
-               style="" />
+               id="g4392-0-8-8-8" />
             <g
-               id="g4394-4-4-8-2"
-               style="" />
+               id="g4394-4-4-8-2" />
             <g
-               id="g4396-4-3-1-6"
-               style="" />
+               id="g4396-4-3-1-6" />
             <g
-               id="g4398-1-8-2-3"
-               style="" />
+               id="g4398-1-8-2-3" />
             <g
-               id="g4400-5-8-3-9"
-               style="" />
+               id="g4400-5-8-3-9" />
             <g
-               id="g4402-0-4-0-5"
-               style="" />
+               id="g4402-0-4-0-5" />
             <g
-               id="g4404-7-1-9-1"
-               style="" />
+               id="g4404-7-1-9-1" />
           </g>
         </g>
         <g
-           transform="matrix(0.99341573,0.11456518,-0.11456518,0.99341573,278.14704,-710.34399)"
+           transform="matrix(1.1217799,0.12936871,-0.12936871,1.1217799,287.84664,-812.51998)"
            id="layer1-8-0-30"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-1-2-0"
-             style="">
+             id="g4229-1-2-0">
             <g
-               id="g4137-5-7-6"
-               style="">
+               id="g4137-5-7-6">
               <g
                  transform="matrix(0.97606294,-0.5635302,0.5635302,0.97606294,100.8772,28.339032)"
-                 id="g4329-3-2"
-                 style="">
+                 id="g4329-3-2">
                 <g
-                   id="g4275-1-6"
-                   style="">
+                   id="g4275-1-6">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#e6e6e6;fill-opacity:1"
@@ -1293,118 +1051,84 @@
                      id="path4291-5-1" />
                 </g>
                 <g
-                   id="g4293-8-1"
-                   style="" />
+                   id="g4293-8-1" />
                 <g
-                   id="g4295-4-9"
-                   style="" />
+                   id="g4295-4-9" />
                 <g
-                   id="g4297-3-4"
-                   style="" />
+                   id="g4297-3-4" />
                 <g
-                   id="g4299-5-1"
-                   style="" />
+                   id="g4299-5-1" />
                 <g
-                   id="g4301-6-2"
-                   style="" />
+                   id="g4301-6-2" />
                 <g
-                   id="g4303-3-2"
-                   style="" />
+                   id="g4303-3-2" />
                 <g
-                   id="g4305-5-03"
-                   style="" />
+                   id="g4305-5-03" />
                 <g
-                   id="g4307-8-87"
-                   style="" />
+                   id="g4307-8-87" />
                 <g
-                   id="g4309-8-5"
-                   style="" />
+                   id="g4309-8-5" />
                 <g
-                   id="g4311-9-9"
-                   style="" />
+                   id="g4311-9-9" />
                 <g
-                   id="g4313-1-6"
-                   style="" />
+                   id="g4313-1-6" />
                 <g
-                   id="g4315-0-26"
-                   style="" />
+                   id="g4315-0-26" />
                 <g
-                   id="g4317-2-2"
-                   style="" />
+                   id="g4317-2-2" />
                 <g
-                   id="g4319-8-4"
-                   style="" />
+                   id="g4319-8-4" />
                 <g
-                   id="g4321-2-0"
-                   style="" />
+                   id="g4321-2-0" />
               </g>
             </g>
             <g
-               id="g4193-9-0-9"
-               style="" />
+               id="g4193-9-0-9" />
             <g
-               id="g4195-2-9-69"
-               style="" />
+               id="g4195-2-9-69" />
             <g
-               id="g4197-8-8-9"
-               style="" />
+               id="g4197-8-8-9" />
             <g
-               id="g4199-0-4-3"
-               style="" />
+               id="g4199-0-4-3" />
             <g
-               id="g4201-8-5-3"
-               style="" />
+               id="g4201-8-5-3" />
             <g
-               id="g4203-8-8-2"
-               style="" />
+               id="g4203-8-8-2" />
             <g
-               id="g4205-1-4-0"
-               style="" />
+               id="g4205-1-4-0" />
             <g
-               id="g4207-6-0-9"
-               style="" />
+               id="g4207-6-0-9" />
             <g
-               id="g4209-2-3-0"
-               style="" />
+               id="g4209-2-3-0" />
             <g
-               id="g4211-7-7-1"
-               style="" />
+               id="g4211-7-7-1" />
             <g
-               id="g4213-3-8-7"
-               style="" />
+               id="g4213-3-8-7" />
             <g
-               id="g4215-9-9-6"
-               style="" />
+               id="g4215-9-9-6" />
             <g
-               id="g4217-0-2-1"
-               style="" />
+               id="g4217-0-2-1" />
             <g
-               id="g4219-3-0-0"
-               style="" />
+               id="g4219-3-0-0" />
             <g
-               id="g4221-8-0-9"
-               style="" />
+               id="g4221-8-0-9" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,46.411839,-490.25336)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,26.167786,-563.99035)"
            id="layer1-3-6-7"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-9-8-32"
-             style="">
+             id="g4229-9-8-32">
             <g
-               id="g4137-0-8-5"
-               style="">
+               id="g4137-0-8-5">
               <g
                  transform="translate(-6.6493159,1.9661188)"
-                 id="g5322-1-5"
-                 style="">
+                 id="g5322-1-5">
                 <g
-                   id="g5268-4-0"
-                   style="">
+                   id="g5268-4-0">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#f5f5f5;fill-opacity:1"
@@ -1416,8 +1140,7 @@
                      d="M 47.342,5.88 46.598,5.212 C 47.457,4.253 48.687,3.69 49.971,3.664 l 0.02,1 c -1.008,0.02 -1.973,0.463 -2.649,1.216 z"
                      id="path5272-3-0" />
                   <g
-                     id="g5274-5-6"
-                     style="">
+                     id="g5274-5-6">
                     <path
                        inkscape:connector-curvature="0"
                        style="fill:#9c9c9c;fill-opacity:1"
@@ -1446,118 +1169,84 @@
                      inkscape:connector-curvature="0" />
                 </g>
                 <g
-                   id="g5286-5-9"
-                   style="" />
+                   id="g5286-5-9" />
                 <g
-                   id="g5288-9-0"
-                   style="" />
+                   id="g5288-9-0" />
                 <g
-                   id="g5290-4-4"
-                   style="" />
+                   id="g5290-4-4" />
                 <g
-                   id="g5292-9-0"
-                   style="" />
+                   id="g5292-9-0" />
                 <g
-                   id="g5294-7-9"
-                   style="" />
+                   id="g5294-7-9" />
                 <g
-                   id="g5296-4-0"
-                   style="" />
+                   id="g5296-4-0" />
                 <g
-                   id="g5298-9-0"
-                   style="" />
+                   id="g5298-9-0" />
                 <g
-                   id="g5300-9-1"
-                   style="" />
+                   id="g5300-9-1" />
                 <g
-                   id="g5302-3-9"
-                   style="" />
+                   id="g5302-3-9" />
                 <g
-                   id="g5304-9-2"
-                   style="" />
+                   id="g5304-9-2" />
                 <g
-                   id="g5306-9-6"
-                   style="" />
+                   id="g5306-9-6" />
                 <g
-                   id="g5308-5-4"
-                   style="" />
+                   id="g5308-5-4" />
                 <g
-                   id="g5310-4-8"
-                   style="" />
+                   id="g5310-4-8" />
                 <g
-                   id="g5312-8-5"
-                   style="" />
+                   id="g5312-8-5" />
                 <g
-                   id="g5314-0-5"
-                   style="" />
+                   id="g5314-0-5" />
               </g>
             </g>
             <g
-               id="g4193-0-3-1"
-               style="" />
+               id="g4193-0-3-1" />
             <g
-               id="g4195-29-2-3"
-               style="" />
+               id="g4195-29-2-3" />
             <g
-               id="g4197-4-0-3"
-               style="" />
+               id="g4197-4-0-3" />
             <g
-               id="g4199-6-4-8"
-               style="" />
+               id="g4199-6-4-8" />
             <g
-               id="g4201-88-0-13"
-               style="" />
+               id="g4201-88-0-13" />
             <g
-               id="g4203-9-9-9"
-               style="" />
+               id="g4203-9-9-9" />
             <g
-               id="g4205-2-0-2"
-               style="" />
+               id="g4205-2-0-2" />
             <g
-               id="g4207-9-5-6"
-               style="" />
+               id="g4207-9-5-6" />
             <g
-               id="g4209-7-3-1"
-               style="" />
+               id="g4209-7-3-1" />
             <g
-               id="g4211-3-7-7"
-               style="" />
+               id="g4211-3-7-7" />
             <g
-               id="g4213-9-1-0"
-               style="" />
+               id="g4213-9-1-0" />
             <g
-               id="g4215-6-6-4"
-               style="" />
+               id="g4215-6-6-4" />
             <g
-               id="g4217-8-9-4"
-               style="" />
+               id="g4217-8-9-4" />
             <g
-               id="g4219-7-6-7"
-               style="" />
+               id="g4219-7-6-7" />
             <g
-               id="g4221-0-2-4"
-               style="" />
+               id="g4221-0-2-4" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-1.3373254,-254.26061)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,-26.610605,-322.59877)"
            id="layer1-7-0-9"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-5-3-8"
-             style="">
+             id="g4229-5-3-8">
             <g
-               id="g4137-3-1-33"
-               style="">
+               id="g4137-3-1-33">
               <g
                  transform="matrix(1.0601065,0,0,1.0601065,50.19119,-220.03751)"
-                 id="g4530-1-5"
-                 style="">
+                 id="g4530-1-5">
                 <g
-                   id="XMLID_80_-6-6"
-                   style="">
+                   id="XMLID_80_-6-6">
                   <path
                      style="fill:#858585;fill-opacity:1"
                      d="m 198.61844,120.67275 58.34654,0 0,33.34089 -58.34654,0 z"
@@ -1607,14 +1296,11 @@
                      inkscape:connector-curvature="0" />
                   <g
                      transform="matrix(0.86439331,0,0,0.86439331,297.59148,144.56706)"
-                     id="g4620-0-9"
-                     style="">
+                     id="g4620-0-9">
                     <g
-                       id="XMLID_3_-8-0"
-                       style="">
+                       id="XMLID_3_-8-0">
                       <g
-                         id="XMLID_105_-1-5"
-                         style="">
+                         id="XMLID_105_-1-5">
                         <path
                            inkscape:connector-curvature="0"
                            id="XMLID_119_-3-69"
@@ -1628,150 +1314,105 @@
                       </g>
                     </g>
                     <g
-                       id="g4584-4-2"
-                       style="" />
+                       id="g4584-4-2" />
                     <g
-                       id="g4586-1-7"
-                       style="" />
+                       id="g4586-1-7" />
                     <g
-                       id="g4588-6-7"
-                       style="" />
+                       id="g4588-6-7" />
                     <g
-                       id="g4590-1-0"
-                       style="" />
+                       id="g4590-1-0" />
                     <g
-                       id="g4592-5-2"
-                       style="" />
+                       id="g4592-5-2" />
                     <g
-                       id="g4594-7-6"
-                       style="" />
+                       id="g4594-7-6" />
                     <g
-                       id="g4596-4-9"
-                       style="" />
+                       id="g4596-4-9" />
                     <g
-                       id="g4598-1-8"
-                       style="" />
+                       id="g4598-1-8" />
                     <g
-                       id="g4600-3-3"
-                       style="" />
+                       id="g4600-3-3" />
                     <g
-                       id="g4602-3-6"
-                       style="" />
+                       id="g4602-3-6" />
                     <g
-                       id="g4604-4-4"
-                       style="" />
+                       id="g4604-4-4" />
                     <g
-                       id="g4606-8-3"
-                       style="" />
+                       id="g4606-8-3" />
                     <g
-                       id="g4608-9-1"
-                       style="" />
+                       id="g4608-9-1" />
                     <g
-                       id="g4610-4-3"
-                       style="" />
+                       id="g4610-4-3" />
                     <g
-                       id="g4612-0-0"
-                       style="" />
+                       id="g4612-0-0" />
                   </g>
                 </g>
                 <g
-                   id="g4494-3-2"
-                   style="" />
+                   id="g4494-3-2" />
                 <g
-                   id="g4496-9-1"
-                   style="" />
+                   id="g4496-9-1" />
                 <g
-                   id="g4498-8-3"
-                   style="" />
+                   id="g4498-8-3" />
                 <g
-                   id="g4500-2-2"
-                   style="" />
+                   id="g4500-2-2" />
                 <g
-                   id="g4502-2-51"
-                   style="" />
+                   id="g4502-2-51" />
                 <g
-                   id="g4504-2-5"
-                   style="" />
+                   id="g4504-2-5" />
                 <g
-                   id="g4506-7-8"
-                   style="" />
+                   id="g4506-7-8" />
                 <g
-                   id="g4508-3-79"
-                   style="" />
+                   id="g4508-3-79" />
                 <g
-                   id="g4510-1-5"
-                   style="" />
+                   id="g4510-1-5" />
                 <g
-                   id="g4512-6-9"
-                   style="" />
+                   id="g4512-6-9" />
                 <g
-                   id="g4514-3-8"
-                   style="" />
+                   id="g4514-3-8" />
                 <g
-                   id="g4516-3-09"
-                   style="" />
+                   id="g4516-3-09" />
                 <g
-                   id="g4518-1-4"
-                   style="" />
+                   id="g4518-1-4" />
                 <g
-                   id="g4520-2-1"
-                   style="" />
+                   id="g4520-2-1" />
                 <g
-                   id="g4522-4-4"
-                   style="" />
+                   id="g4522-4-4" />
               </g>
             </g>
             <g
-               id="g4193-6-4-5"
-               style="" />
+               id="g4193-6-4-5" />
             <g
-               id="g4195-7-0-51"
-               style="" />
+               id="g4195-7-0-51" />
             <g
-               id="g4197-6-3-0"
-               style="" />
+               id="g4197-6-3-0" />
             <g
-               id="g4199-7-2-7"
-               style="" />
+               id="g4199-7-2-7" />
             <g
-               id="g4201-5-0-0"
-               style="" />
+               id="g4201-5-0-0" />
             <g
-               id="g4203-7-2-4"
-               style="" />
+               id="g4203-7-2-4" />
             <g
-               id="g4205-6-3-5"
-               style="" />
+               id="g4205-6-3-5" />
             <g
-               id="g4207-0-6-51"
-               style="" />
+               id="g4207-0-6-51" />
             <g
-               id="g4209-20-4-9"
-               style="" />
+               id="g4209-20-4-9" />
             <g
-               id="g4211-90-5-2"
-               style="" />
+               id="g4211-90-5-2" />
             <g
-               id="g4213-0-1-6"
-               style="" />
+               id="g4213-0-1-6" />
             <g
-               id="g4215-8-9-42"
-               style="" />
+               id="g4215-8-9-42" />
             <g
-               id="g4217-5-2-5"
-               style="" />
+               id="g4217-5-2-5" />
             <g
-               id="g4219-1-8-5"
-               style="" />
+               id="g4219-1-8-5" />
             <g
-               id="g4221-81-9-7"
-               style="" />
+               id="g4221-81-9-7" />
           </g>
         </g>
         <g
            id="g5191-1-3-3-9"
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,270.85077,75.602541)"
-           style="opacity:0.174">
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,279.60758,74.982581)"
+           style="opacity:0.17399998">
           <g
              style="opacity:0.5"
              transform="matrix(1.046516,0,0,1.046516,228.65156,-4.5075805)"
@@ -1782,8 +1423,7 @@
                style="fill:#919191;fill-opacity:1"
                inkscape:connector-curvature="0" />
             <g
-               id="g4364-9-9-3-0"
-               style="">
+               id="g4364-9-9-3-0">
               <path
                  inkscape:connector-curvature="0"
                  style="fill:#dfdfdf;fill-opacity:1"
@@ -1811,56 +1451,41 @@
                d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
                id="path4374-2-7-1-5" />
             <g
-               id="g4376-5-6-2-5"
-               style="" />
+               id="g4376-5-6-2-5" />
             <g
-               id="g4378-5-8-3-2"
-               style="" />
+               id="g4378-5-8-3-2" />
             <g
-               id="g4380-3-8-0-3"
-               style="" />
+               id="g4380-3-8-0-3" />
             <g
-               id="g4382-3-0-7-0"
-               style="" />
+               id="g4382-3-0-7-0" />
             <g
-               id="g4384-1-9-7-5"
-               style="" />
+               id="g4384-1-9-7-5" />
             <g
-               id="g4386-1-5-1-4"
-               style="" />
+               id="g4386-1-5-1-4" />
             <g
-               id="g4388-5-7-1-0"
-               style="" />
+               id="g4388-5-7-1-0" />
             <g
-               id="g4390-0-5-6-3"
-               style="" />
+               id="g4390-0-5-6-3" />
             <g
-               id="g4392-0-8-8-5"
-               style="" />
+               id="g4392-0-8-8-5" />
             <g
-               id="g4394-4-4-8-1"
-               style="" />
+               id="g4394-4-4-8-1" />
             <g
-               id="g4396-4-3-1-4"
-               style="" />
+               id="g4396-4-3-1-4" />
             <g
-               id="g4398-1-8-2-7"
-               style="" />
+               id="g4398-1-8-2-7" />
             <g
-               id="g4400-5-8-3-0"
-               style="" />
+               id="g4400-5-8-3-0" />
             <g
-               id="g4402-0-4-0-4"
-               style="" />
+               id="g4402-0-4-0-4" />
             <g
-               id="g4404-7-1-9-4"
-               style="" />
+               id="g4404-7-1-9-4" />
           </g>
         </g>
         <g
            id="g5191-1-3-3-36"
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,333.52582,-168.40783)"
-           style="opacity:0.174">
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,381.17952,-221.08981)"
+           style="opacity:0.17399998">
           <g
              style="opacity:0.5"
              transform="matrix(1.046516,0,0,1.046516,228.65156,-4.5075805)"
@@ -1871,8 +1496,7 @@
                style="fill:#919191;fill-opacity:1"
                inkscape:connector-curvature="0" />
             <g
-               id="g4364-9-9-3-8"
-               style="">
+               id="g4364-9-9-3-8">
               <path
                  inkscape:connector-curvature="0"
                  style="fill:#dfdfdf;fill-opacity:1"
@@ -1900,225 +1524,52 @@
                d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
                id="path4374-2-7-1-4" />
             <g
-               id="g4376-5-6-2-7"
-               style="" />
+               id="g4376-5-6-2-7" />
             <g
-               id="g4378-5-8-3-4"
-               style="" />
+               id="g4378-5-8-3-4" />
             <g
-               id="g4380-3-8-0-9"
-               style="" />
+               id="g4380-3-8-0-9" />
             <g
-               id="g4382-3-0-7-2"
-               style="" />
+               id="g4382-3-0-7-2" />
             <g
-               id="g4384-1-9-7-2"
-               style="" />
+               id="g4384-1-9-7-2" />
             <g
-               id="g4386-1-5-1-3"
-               style="" />
+               id="g4386-1-5-1-3" />
             <g
-               id="g4388-5-7-1-7"
-               style="" />
+               id="g4388-5-7-1-7" />
             <g
-               id="g4390-0-5-6-4"
-               style="" />
+               id="g4390-0-5-6-4" />
             <g
-               id="g4392-0-8-8-2"
-               style="" />
+               id="g4392-0-8-8-2" />
             <g
-               id="g4394-4-4-8-0"
-               style="" />
+               id="g4394-4-4-8-0" />
             <g
-               id="g4396-4-3-1-8"
-               style="" />
+               id="g4396-4-3-1-8" />
             <g
-               id="g4398-1-8-2-6"
-               style="" />
+               id="g4398-1-8-2-6" />
             <g
-               id="g4400-5-8-3-7"
-               style="" />
+               id="g4400-5-8-3-7" />
             <g
-               id="g4402-0-4-0-3"
-               style="" />
+               id="g4402-0-4-0-3" />
             <g
-               id="g4404-7-1-9-7"
-               style="" />
+               id="g4404-7-1-9-7" />
           </g>
         </g>
         <g
-           transform="matrix(0.99341573,0.11456518,-0.11456518,0.99341573,368.01724,-955.51736)"
-           id="layer1-8-0-30-2"
-           inkscape:label="Layer 1"
-           style="opacity:0.174">
-          <g
-             transform="translate(174.10714,529.32649)"
-             id="g4229-1-2-0-8"
-             style="">
-            <g
-               id="g4137-5-7-6-1"
-               style="">
-              <g
-                 transform="matrix(0.97606294,-0.5635302,0.5635302,0.97606294,100.8772,28.339032)"
-                 id="g4329-3-2-9"
-                 style="">
-                <g
-                   id="g4275-1-6-6"
-                   style="">
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#e6e6e6;fill-opacity:1"
-                     d="m 44.5,20.232 -6,0 0,4 4,0 c 1.1,0 2,0.9 2,2 l 0,10 c 0,1.1 -0.9,2 -2,2 l -4,0 0,4 6,0 c 2.2,0 4,-1.8 4,-4 l 0,-14 c 0,-2.2 -1.8,-4 -4,-4 z"
-                     id="path4277-5-6-2" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#e6e6e6;fill-opacity:1"
-                     d="M 32.5,4 C 31.117,4 29.847,4.472 28.833,5.258 27.837,3.325 25.825,2 23.5,2 22.651,2 21.845,2.178 21.113,2.496 19.924,0.979 18.078,0 16,0 12.875,0 10.268,2.205 9.644,5.144 9.275,5.057 8.895,5 8.5,5 c -2.761,0 -5,2.239 -5,5 l 0,8 c 0,1.1 0.9,2 2,2 l 1,0 c 1.1,0 2,-0.9 2,-2 l 0,-1.596 C 9.106,16.775 9.809,17 10.568,17 l 1.967,0 c 1.275,0 2.402,-0.615 3.136,-1.551 1.089,1.539 2.879,2.551 4.897,2.551 3.3,0 6,-2.7 6,-6 l 11.583,0 c 0.222,-0.626 0.349,-1.298 0.349,-2 0,-3.314 -2.686,-6 -6,-6 z"
-                     id="path4279-0-8-0" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#a1a1a1;fill-opacity:1"
-                     d="m 26.568,12 c 0,3.3 -2.7,6 -6,6 C 18.55,18 16.76,16.988 15.671,15.449 14.937,16.385 13.81,17 12.535,17 l -1.967,0 C 9.81,17 9.106,16.775 8.5,16.404 L 8.5,47 c 0,2.75 2.25,5 5,5 l 20,0 c 2.75,0 5,-2.25 5,-5 l 0,-35 -11.932,0 z"
-                     id="path4281-0-2-0" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#a1a1a1;fill-opacity:1"
-                     d="m 14.5,25 c 0,-1.65 -1.35,-3 -3,-3 -1.65,0 -3,1.35 -3,3 l 0,21 6,0 0,-21 z"
-                     id="path4283-5-1-0" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#9c9c9c;fill-opacity:1"
-                     d="m 20.5,25 c 0,-1.65 -1.35,-3 -3,-3 -1.65,0 -3,1.35 -3,3 l 0,21 6,0 0,-21 z"
-                     id="path4285-7-1-9" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#a1a1a1;fill-opacity:1"
-                     d="m 26.5,25 c 0,-1.65 -1.35,-3 -3,-3 -1.65,0 -3,1.35 -3,3 l 0,21 6,0 0,-21 z"
-                     id="path4287-6-2-1" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#9c9c9c;fill-opacity:1"
-                     d="m 32.5,25 c 0,-1.65 -1.35,-3 -3,-3 -1.65,0 -3,1.35 -3,3 l 0,21 6,0 0,-21 z"
-                     id="path4289-7-6-8" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     style="fill:#a1a1a1;fill-opacity:1"
-                     d="m 38.5,25 c 0,-1.65 -1.35,-3 -3,-3 -1.65,0 -3,1.35 -3,3 l 0,21 6,0 0,-21 z"
-                     id="path4291-5-1-9" />
-                </g>
-                <g
-                   id="g4293-8-1-6"
-                   style="" />
-                <g
-                   id="g4295-4-9-5"
-                   style="" />
-                <g
-                   id="g4297-3-4-1"
-                   style="" />
-                <g
-                   id="g4299-5-1-0"
-                   style="" />
-                <g
-                   id="g4301-6-2-8"
-                   style="" />
-                <g
-                   id="g4303-3-2-0"
-                   style="" />
-                <g
-                   id="g4305-5-03-3"
-                   style="" />
-                <g
-                   id="g4307-8-87-0"
-                   style="" />
-                <g
-                   id="g4309-8-5-5"
-                   style="" />
-                <g
-                   id="g4311-9-9-9"
-                   style="" />
-                <g
-                   id="g4313-1-6-3"
-                   style="" />
-                <g
-                   id="g4315-0-26-4"
-                   style="" />
-                <g
-                   id="g4317-2-2-3"
-                   style="" />
-                <g
-                   id="g4319-8-4-8"
-                   style="" />
-                <g
-                   id="g4321-2-0-4"
-                   style="" />
-              </g>
-            </g>
-            <g
-               id="g4193-9-0-9-6"
-               style="" />
-            <g
-               id="g4195-2-9-69-4"
-               style="" />
-            <g
-               id="g4197-8-8-9-6"
-               style="" />
-            <g
-               id="g4199-0-4-3-2"
-               style="" />
-            <g
-               id="g4201-8-5-3-0"
-               style="" />
-            <g
-               id="g4203-8-8-2-1"
-               style="" />
-            <g
-               id="g4205-1-4-0-5"
-               style="" />
-            <g
-               id="g4207-6-0-9-8"
-               style="" />
-            <g
-               id="g4209-2-3-0-2"
-               style="" />
-            <g
-               id="g4211-7-7-1-8"
-               style="" />
-            <g
-               id="g4213-3-8-7-9"
-               style="" />
-            <g
-               id="g4215-9-9-6-0"
-               style="" />
-            <g
-               id="g4217-0-2-1-3"
-               style="" />
-            <g
-               id="g4219-3-0-0-7"
-               style="" />
-            <g
-               id="g4221-8-0-9-9"
-               style="" />
-          </g>
-        </g>
-        <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-131.95776,-573.19531)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,-188.93798,-659.93101)"
            id="layer1-3-6-30"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-9-8-0"
-             style="">
+             id="g4229-9-8-0">
             <g
-               id="g4137-0-8-2"
-               style="">
+               id="g4137-0-8-2">
               <g
                  transform="translate(-6.6493159,1.9661188)"
-                 id="g5322-1-57"
-                 style="">
+                 id="g5322-1-57">
                 <g
-                   id="g5268-4-2"
-                   style="">
+                   id="g5268-4-2">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#f5f5f5;fill-opacity:1"
@@ -2130,8 +1581,7 @@
                      d="M 47.342,5.88 46.598,5.212 C 47.457,4.253 48.687,3.69 49.971,3.664 l 0.02,1 c -1.008,0.02 -1.973,0.463 -2.649,1.216 z"
                      id="path5272-3-6" />
                   <g
-                     id="g5274-5-0"
-                     style="">
+                     id="g5274-5-0">
                     <path
                        inkscape:connector-curvature="0"
                        style="fill:#9c9c9c;fill-opacity:1"
@@ -2160,118 +1610,84 @@
                      inkscape:connector-curvature="0" />
                 </g>
                 <g
-                   id="g5286-5-2"
-                   style="" />
+                   id="g5286-5-2" />
                 <g
-                   id="g5288-9-4"
-                   style="" />
+                   id="g5288-9-4" />
                 <g
-                   id="g5290-4-2"
-                   style="" />
+                   id="g5290-4-2" />
                 <g
-                   id="g5292-9-2"
-                   style="" />
+                   id="g5292-9-2" />
                 <g
-                   id="g5294-7-7"
-                   style="" />
+                   id="g5294-7-7" />
                 <g
-                   id="g5296-4-6"
-                   style="" />
+                   id="g5296-4-6" />
                 <g
-                   id="g5298-9-03"
-                   style="" />
+                   id="g5298-9-03" />
                 <g
-                   id="g5300-9-6"
-                   style="" />
+                   id="g5300-9-6" />
                 <g
-                   id="g5302-3-83"
-                   style="" />
+                   id="g5302-3-83" />
                 <g
-                   id="g5304-9-7"
-                   style="" />
+                   id="g5304-9-7" />
                 <g
-                   id="g5306-9-8"
-                   style="" />
+                   id="g5306-9-8" />
                 <g
-                   id="g5308-5-3"
-                   style="" />
+                   id="g5308-5-3" />
                 <g
-                   id="g5310-4-0"
-                   style="" />
+                   id="g5310-4-0" />
                 <g
-                   id="g5312-8-2"
-                   style="" />
+                   id="g5312-8-2" />
                 <g
-                   id="g5314-0-8"
-                   style="" />
+                   id="g5314-0-8" />
               </g>
             </g>
             <g
-               id="g4193-0-3-5"
-               style="" />
+               id="g4193-0-3-5" />
             <g
-               id="g4195-29-2-4"
-               style="" />
+               id="g4195-29-2-4" />
             <g
-               id="g4197-4-0-2"
-               style="" />
+               id="g4197-4-0-2" />
             <g
-               id="g4199-6-4-4"
-               style="" />
+               id="g4199-6-4-4" />
             <g
-               id="g4201-88-0-2"
-               style="" />
+               id="g4201-88-0-2" />
             <g
-               id="g4203-9-9-2"
-               style="" />
+               id="g4203-9-9-2" />
             <g
-               id="g4205-2-0-0"
-               style="" />
+               id="g4205-2-0-0" />
             <g
-               id="g4207-9-5-0"
-               style="" />
+               id="g4207-9-5-0" />
             <g
-               id="g4209-7-3-11"
-               style="" />
+               id="g4209-7-3-11" />
             <g
-               id="g4211-3-7-5"
-               style="" />
+               id="g4211-3-7-5" />
             <g
-               id="g4213-9-1-1"
-               style="" />
+               id="g4213-9-1-1" />
             <g
-               id="g4215-6-6-0"
-               style="" />
+               id="g4215-6-6-0" />
             <g
-               id="g4217-8-9-0"
-               style="" />
+               id="g4217-8-9-0" />
             <g
-               id="g4219-7-6-5"
-               style="" />
+               id="g4219-7-6-5" />
             <g
-               id="g4221-0-2-1"
-               style="" />
+               id="g4221-0-2-1" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-322.76121,-590.033)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,-443.74952,-661.6916)"
            id="layer1-7-0-9-9"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-5-3-8-6"
-             style="">
+             id="g4229-5-3-8-6">
             <g
-               id="g4137-3-1-33-9"
-               style="">
+               id="g4137-3-1-33-9">
               <g
                  transform="matrix(1.0601065,0,0,1.0601065,50.19119,-220.03751)"
-                 id="g4530-1-5-9"
-                 style="">
+                 id="g4530-1-5-9">
                 <g
-                   id="XMLID_80_-6-6-5"
-                   style="">
+                   id="XMLID_80_-6-6-5">
                   <path
                      style="fill:#858585;fill-opacity:1"
                      d="m 198.61844,120.67275 58.34654,0 0,33.34089 -58.34654,0 z"
@@ -2321,14 +1737,11 @@
                      inkscape:connector-curvature="0" />
                   <g
                      transform="matrix(0.86439331,0,0,0.86439331,297.59148,144.56706)"
-                     id="g4620-0-9-4"
-                     style="">
+                     id="g4620-0-9-4">
                     <g
-                       id="XMLID_3_-8-0-3"
-                       style="">
+                       id="XMLID_3_-8-0-3">
                       <g
-                         id="XMLID_105_-1-5-3"
-                         style="">
+                         id="XMLID_105_-1-5-3">
                         <path
                            inkscape:connector-curvature="0"
                            id="XMLID_119_-3-69-5"
@@ -2342,165 +1755,116 @@
                       </g>
                     </g>
                     <g
-                       id="g4584-4-2-4"
-                       style="" />
+                       id="g4584-4-2-4" />
                     <g
-                       id="g4586-1-7-6"
-                       style="" />
+                       id="g4586-1-7-6" />
                     <g
-                       id="g4588-6-7-9"
-                       style="" />
+                       id="g4588-6-7-9" />
                     <g
-                       id="g4590-1-0-7"
-                       style="" />
+                       id="g4590-1-0-7" />
                     <g
-                       id="g4592-5-2-3"
-                       style="" />
+                       id="g4592-5-2-3" />
                     <g
-                       id="g4594-7-6-8"
-                       style="" />
+                       id="g4594-7-6-8" />
                     <g
-                       id="g4596-4-9-5"
-                       style="" />
+                       id="g4596-4-9-5" />
                     <g
-                       id="g4598-1-8-2"
-                       style="" />
+                       id="g4598-1-8-2" />
                     <g
-                       id="g4600-3-3-6"
-                       style="" />
+                       id="g4600-3-3-6" />
                     <g
-                       id="g4602-3-6-3"
-                       style="" />
+                       id="g4602-3-6-3" />
                     <g
-                       id="g4604-4-4-7"
-                       style="" />
+                       id="g4604-4-4-7" />
                     <g
-                       id="g4606-8-3-7"
-                       style="" />
+                       id="g4606-8-3-7" />
                     <g
-                       id="g4608-9-1-5"
-                       style="" />
+                       id="g4608-9-1-5" />
                     <g
-                       id="g4610-4-3-1"
-                       style="" />
+                       id="g4610-4-3-1" />
                     <g
-                       id="g4612-0-0-8"
-                       style="" />
+                       id="g4612-0-0-8" />
                   </g>
                 </g>
                 <g
-                   id="g4494-3-2-2"
-                   style="" />
+                   id="g4494-3-2-2" />
                 <g
-                   id="g4496-9-1-1"
-                   style="" />
+                   id="g4496-9-1-1" />
                 <g
-                   id="g4498-8-3-6"
-                   style="" />
+                   id="g4498-8-3-6" />
                 <g
-                   id="g4500-2-2-3"
-                   style="" />
+                   id="g4500-2-2-3" />
                 <g
-                   id="g4502-2-51-3"
-                   style="" />
+                   id="g4502-2-51-3" />
                 <g
-                   id="g4504-2-5-7"
-                   style="" />
+                   id="g4504-2-5-7" />
                 <g
-                   id="g4506-7-8-2"
-                   style="" />
+                   id="g4506-7-8-2" />
                 <g
-                   id="g4508-3-79-0"
-                   style="" />
+                   id="g4508-3-79-0" />
                 <g
-                   id="g4510-1-5-0"
-                   style="" />
+                   id="g4510-1-5-0" />
                 <g
-                   id="g4512-6-9-9"
-                   style="" />
+                   id="g4512-6-9-9" />
                 <g
-                   id="g4514-3-8-3"
-                   style="" />
+                   id="g4514-3-8-3" />
                 <g
-                   id="g4516-3-09-5"
-                   style="" />
+                   id="g4516-3-09-5" />
                 <g
-                   id="g4518-1-4-4"
-                   style="" />
+                   id="g4518-1-4-4" />
                 <g
-                   id="g4520-2-1-1"
-                   style="" />
+                   id="g4520-2-1-1" />
                 <g
-                   id="g4522-4-4-6"
-                   style="" />
+                   id="g4522-4-4-6" />
               </g>
             </g>
             <g
-               id="g4193-6-4-5-6"
-               style="" />
+               id="g4193-6-4-5-6" />
             <g
-               id="g4195-7-0-51-7"
-               style="" />
+               id="g4195-7-0-51-7" />
             <g
-               id="g4197-6-3-0-4"
-               style="" />
+               id="g4197-6-3-0-4" />
             <g
-               id="g4199-7-2-7-8"
-               style="" />
+               id="g4199-7-2-7-8" />
             <g
-               id="g4201-5-0-0-6"
-               style="" />
+               id="g4201-5-0-0-6" />
             <g
-               id="g4203-7-2-4-3"
-               style="" />
+               id="g4203-7-2-4-3" />
             <g
-               id="g4205-6-3-5-9"
-               style="" />
+               id="g4205-6-3-5-9" />
             <g
-               id="g4207-0-6-51-9"
-               style="" />
+               id="g4207-0-6-51-9" />
             <g
-               id="g4209-20-4-9-7"
-               style="" />
+               id="g4209-20-4-9-7" />
             <g
-               id="g4211-90-5-2-6"
-               style="" />
+               id="g4211-90-5-2-6" />
             <g
-               id="g4213-0-1-6-8"
-               style="" />
+               id="g4213-0-1-6-8" />
             <g
-               id="g4215-8-9-42-6"
-               style="" />
+               id="g4215-8-9-42-6" />
             <g
-               id="g4217-5-2-5-7"
-               style="" />
+               id="g4217-5-2-5-7" />
             <g
-               id="g4219-1-8-5-2"
-               style="" />
+               id="g4219-1-8-5-2" />
             <g
-               id="g4221-81-9-7-6"
-               style="" />
+               id="g4221-81-9-7-6" />
           </g>
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,30.000658,-698.9719)"
+           transform="matrix(1.0361742,-0.44885335,0.44885335,1.0361742,7.6360348,-799.67845)"
            id="layer1-3-6-30-8"
            inkscape:label="Layer 1"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <g
              transform="translate(174.10714,529.32649)"
-             id="g4229-9-8-0-0"
-             style="">
+             id="g4229-9-8-0-0">
             <g
-               id="g4137-0-8-2-3"
-               style="">
+               id="g4137-0-8-2-3">
               <g
                  transform="translate(-6.6493159,1.9661188)"
-                 id="g5322-1-57-9"
-                 style="">
+                 id="g5322-1-57-9">
                 <g
-                   id="g5268-4-2-7"
-                   style="">
+                   id="g5268-4-2-7">
                   <path
                      inkscape:connector-curvature="0"
                      style="fill:#f5f5f5;fill-opacity:1"
@@ -2512,8 +1876,7 @@
                      d="M 47.342,5.88 46.598,5.212 C 47.457,4.253 48.687,3.69 49.971,3.664 l 0.02,1 c -1.008,0.02 -1.973,0.463 -2.649,1.216 z"
                      id="path5272-3-6-7" />
                   <g
-                     id="g5274-5-0-2"
-                     style="">
+                     id="g5274-5-0-2">
                     <path
                        inkscape:connector-curvature="0"
                        style="fill:#9c9c9c;fill-opacity:1"
@@ -2542,103 +1905,73 @@
                      inkscape:connector-curvature="0" />
                 </g>
                 <g
-                   id="g5286-5-2-9"
-                   style="" />
+                   id="g5286-5-2-9" />
                 <g
-                   id="g5288-9-4-3"
-                   style="" />
+                   id="g5288-9-4-3" />
                 <g
-                   id="g5290-4-2-7"
-                   style="" />
+                   id="g5290-4-2-7" />
                 <g
-                   id="g5292-9-2-8"
-                   style="" />
+                   id="g5292-9-2-8" />
                 <g
-                   id="g5294-7-7-8"
-                   style="" />
+                   id="g5294-7-7-8" />
                 <g
-                   id="g5296-4-6-2"
-                   style="" />
+                   id="g5296-4-6-2" />
                 <g
-                   id="g5298-9-03-5"
-                   style="" />
+                   id="g5298-9-03-5" />
                 <g
-                   id="g5300-9-6-2"
-                   style="" />
+                   id="g5300-9-6-2" />
                 <g
-                   id="g5302-3-83-7"
-                   style="" />
+                   id="g5302-3-83-7" />
                 <g
-                   id="g5304-9-7-9"
-                   style="" />
+                   id="g5304-9-7-9" />
                 <g
-                   id="g5306-9-8-9"
-                   style="" />
+                   id="g5306-9-8-9" />
                 <g
-                   id="g5308-5-3-1"
-                   style="" />
+                   id="g5308-5-3-1" />
                 <g
-                   id="g5310-4-0-5"
-                   style="" />
+                   id="g5310-4-0-5" />
                 <g
-                   id="g5312-8-2-4"
-                   style="" />
+                   id="g5312-8-2-4" />
                 <g
-                   id="g5314-0-8-5"
-                   style="" />
+                   id="g5314-0-8-5" />
               </g>
             </g>
             <g
-               id="g4193-0-3-5-3"
-               style="" />
+               id="g4193-0-3-5-3" />
             <g
-               id="g4195-29-2-4-0"
-               style="" />
+               id="g4195-29-2-4-0" />
             <g
-               id="g4197-4-0-2-5"
-               style="" />
+               id="g4197-4-0-2-5" />
             <g
-               id="g4199-6-4-4-8"
-               style="" />
+               id="g4199-6-4-4-8" />
             <g
-               id="g4201-88-0-2-9"
-               style="" />
+               id="g4201-88-0-2-9" />
             <g
-               id="g4203-9-9-2-3"
-               style="" />
+               id="g4203-9-9-2-3" />
             <g
-               id="g4205-2-0-0-6"
-               style="" />
+               id="g4205-2-0-0-6" />
             <g
-               id="g4207-9-5-0-2"
-               style="" />
+               id="g4207-9-5-0-2" />
             <g
-               id="g4209-7-3-11-1"
-               style="" />
+               id="g4209-7-3-11-1" />
             <g
-               id="g4211-3-7-5-8"
-               style="" />
+               id="g4211-3-7-5-8" />
             <g
-               id="g4213-9-1-1-2"
-               style="" />
+               id="g4213-9-1-1-2" />
             <g
-               id="g4215-6-6-0-1"
-               style="" />
+               id="g4215-6-6-0-1" />
             <g
-               id="g4217-8-9-0-2"
-               style="" />
+               id="g4217-8-9-0-2" />
             <g
-               id="g4219-7-6-5-8"
-               style="" />
+               id="g4219-7-6-5-8" />
             <g
-               id="g4221-0-2-1-4"
-               style="" />
+               id="g4221-0-2-1-4" />
           </g>
         </g>
         <g
-           transform="matrix(0.8660254,-0.5,0.5,0.8660254,309.76586,-0.3999057)"
+           transform="matrix(0.97792882,-0.56460747,0.56460747,0.97792882,323.55108,-10.840517)"
            id="g3-0"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <path
              inkscape:connector-curvature="0"
              style="fill:#8f8f8f;fill-opacity:1"
@@ -2706,9 +2039,9 @@
              id="path29-6" />
         </g>
         <g
-           transform="matrix(0.8660254,-0.5,0.5,0.8660254,571.85796,-156.41877)"
+           transform="matrix(0.97792882,-0.56460747,0.56460747,0.97792882,621.79076,-196.14478)"
            id="g3-3"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <path
              inkscape:connector-curvature="0"
              style="fill:#8f8f8f;fill-opacity:1"
@@ -2776,9 +2109,9 @@
              id="path29-65" />
         </g>
         <g
-           transform="matrix(0.8660254,-0.5,0.5,0.8660254,494.76585,-331.06344)"
+           transform="matrix(0.97792882,-0.56460747,0.56460747,0.97792882,532.45583,-384.23072)"
            id="g3-5"
-           style="opacity:0.174">
+           style="opacity:0.17399998">
           <path
              inkscape:connector-curvature="0"
              style="fill:#8f8f8f;fill-opacity:1"
@@ -2846,342 +2179,20 @@
              id="path29-9" />
         </g>
         <g
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,-323.11551,-137.16433)"
-           id="layer1-7-0-9-9-6"
-           inkscape:label="Layer 1"
-           style="opacity:0.174">
-          <g
-             transform="translate(174.10714,529.32649)"
-             id="g4229-5-3-8-6-6"
-             style="">
-            <g
-               id="g4137-3-1-33-9-7"
-               style="">
-              <g
-                 transform="matrix(1.0601065,0,0,1.0601065,50.19119,-220.03751)"
-                 id="g4530-1-5-9-0"
-                 style="">
-                <g
-                   id="XMLID_80_-6-6-5-4"
-                   style="">
-                  <path
-                     style="fill:#858585;fill-opacity:1"
-                     d="m 198.61844,120.67275 58.34654,0 0,33.34089 -58.34654,0 z"
-                     id="XMLID_115_-5-9-4-3"
-                     inkscape:connector-curvature="0" />
-                  <path
-                     transform="matrix(1.0419026,0,0,1.0419026,198.61845,104.00231)"
-                     style="fill:#999999;fill-opacity:1"
-                     d="m 2,16 0,-4 50,4 z"
-                     id="XMLID_114_-7-9-6-2"
-                     inkscape:connector-curvature="0" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     id="XMLID_79_-2-0-7-6"
-                     style="fill:#676767;fill-opacity:1"
-                     d="m 246.52281,137.3432 c 0,7.48086 -6.06387,13.54473 -13.54473,13.54473 -7.48086,0 -13.54474,-6.06387 -13.54474,-13.54473 0,-7.48085 6.06388,-13.54473 13.54474,-13.54473 7.48086,0 13.54473,6.06388 13.54473,13.54473" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     id="XMLID_112_-1-4-0-9"
-                     style="fill:#eaead7"
-                     d="m 220.59634,148.80413 c -3.8092,-2.39742 -6.34935,-6.62754 -6.34935,-11.46093 0,-4.83339 2.54015,-9.06351 6.34935,-11.46092 l -10.54301,0 c 0.0157,0.17191 0.026,0.34486 0.026,0.52094 0,3.1653 -2.5662,5.73046 -5.73047,5.73046 -0.17607,0 -0.34903,-0.0104 -0.52095,-0.026 l 0,10.47111 c 0.17192,-0.0156 0.34488,-0.026 0.52095,-0.026 3.16427,0 5.73047,2.56517 5.73047,5.73047 0,0.17608 -0.0105,0.34903 -0.026,0.52095 l 10.54301,0 z" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     id="XMLID_110_-0-8-1-4"
-                     style="fill:#eaead7"
-                     d="m 204.34891,129.00799 c -1.43678,0 -2.60475,-1.16798 -2.60475,-2.60477 0,-1.43678 1.16797,-2.60475 2.60475,-2.60475 1.43679,0 2.60476,1.16797 2.60476,2.60475 0,1.43679 -1.16797,2.60477 -2.60476,2.60477" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     id="XMLID_109_-0-2-3-9"
-                     style="fill:#eaead7"
-                     d="m 251.23454,129.00799 c -1.43679,0 -2.60477,-1.16798 -2.60477,-2.60477 0,-1.43678 1.16798,-2.60475 2.60477,-2.60475 1.43678,0 2.60475,1.16797 2.60475,2.60475 0,1.43679 -1.16797,2.60477 -2.60475,2.60477" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     id="XMLID_108_-6-9-4-5"
-                     style="fill:#eaead7"
-                     d="m 204.34891,150.88793 c -1.43678,0 -2.60475,-1.16797 -2.60475,-2.60475 0,-1.43679 1.16797,-2.60476 2.60475,-2.60476 1.43679,0 2.60476,1.16797 2.60476,2.60476 0,1.43678 -1.16797,2.60475 -2.60476,2.60475" />
-                  <path
-                     inkscape:connector-curvature="0"
-                     id="XMLID_107_-4-3-7-8"
-                     style="fill:#eaead7"
-                     d="m 251.23454,150.88793 c -1.43679,0 -2.60477,-1.16797 -2.60477,-2.60475 0,-1.43679 1.16798,-2.60476 2.60477,-2.60476 1.43678,0 2.60475,1.16797 2.60475,2.60476 0,1.43678 -1.16797,2.60475 -2.60475,2.60475" />
-                  <path
-                     transform="matrix(1.0419026,0,0,1.0419026,198.61845,104.00231)"
-                     style="fill:#a3a3a3;fill-opacity:1"
-                     d="M 55,16 5,8 5,12.24 52,16 Z"
-                     id="XMLID_106_-4-6-2-9"
-                     inkscape:connector-curvature="0" />
-                  <g
-                     transform="matrix(0.86439331,0,0,0.86439331,297.59148,144.56706)"
-                     id="g4620-0-9-4-4"
-                     style="">
-                    <g
-                       id="XMLID_3_-8-0-3-0"
-                       style="">
-                      <g
-                         id="XMLID_105_-1-5-3-2"
-                         style="">
-                        <path
-                           inkscape:connector-curvature="0"
-                           id="XMLID_119_-3-69-5-9"
-                           style="fill:#858585;fill-opacity:1"
-                           d="m -74.853738,0.34227953 c -2.757,0 -5,-2.24300003 -5,-5.00000003 0,-0.553 0.448,-1 1,-1 0.552,0 1,0.447 1,1 0,1.654 1.346,3 3,3 0.884,0 1.72,-0.388 2.292,-1.064 0.256,-0.303 0.374,-0.696 0.331,-1.106 -0.046,-0.438 -0.272,-0.847 -0.622,-1.118 l -5.23,-4.068 c -0.777,-0.605 -1.282,-1.5129995 -1.383,-2.4919995 -0.1,-0.956 0.182,-1.881 0.794,-2.603 0.952,-1.126 2.344,-1.772 3.818,-1.772 2.757,0 5,2.244 5,5 0,0.553 -0.448,0.9999995 -1,0.9999995 -0.552,0 -1,-0.4469995 -1,-0.9999995 0,-1.654 -1.346,-3 -3,-3 -0.884,0 -1.72,0.388 -2.292,1.065 -0.256,0.303 -0.374,0.694 -0.331,1.103 0.046,0.439 0.272,0.848 0.622,1.12 l 5.23,4.0689995 c 0.777,0.604 1.281,1.511 1.383,2.488 0.1,0.957 -0.182,1.882 -0.793,2.606 -0.953,1.12600003 -2.345,1.77200003 -3.819,1.77200003" />
-                        <path
-                           inkscape:connector-curvature="0"
-                           id="XMLID_118_-2-30-5-8"
-                           style="fill:#858585;fill-opacity:1"
-                           d="m -74.853738,2.1192795 c -0.552,0 -1,-0.447 -1,-1 l 0,-17.9999995 c 0,-0.553 0.448,-1 1,-1 0.552,0 1,0.447 1,1 l 0,17.9999995 c 0,0.553 -0.448,1 -1,1" />
-                      </g>
-                    </g>
-                    <g
-                       id="g4584-4-2-4-2"
-                       style="" />
-                    <g
-                       id="g4586-1-7-6-3"
-                       style="" />
-                    <g
-                       id="g4588-6-7-9-4"
-                       style="" />
-                    <g
-                       id="g4590-1-0-7-7"
-                       style="" />
-                    <g
-                       id="g4592-5-2-3-3"
-                       style="" />
-                    <g
-                       id="g4594-7-6-8-6"
-                       style="" />
-                    <g
-                       id="g4596-4-9-5-4"
-                       style="" />
-                    <g
-                       id="g4598-1-8-2-9"
-                       style="" />
-                    <g
-                       id="g4600-3-3-6-1"
-                       style="" />
-                    <g
-                       id="g4602-3-6-3-2"
-                       style="" />
-                    <g
-                       id="g4604-4-4-7-8"
-                       style="" />
-                    <g
-                       id="g4606-8-3-7-4"
-                       style="" />
-                    <g
-                       id="g4608-9-1-5-8"
-                       style="" />
-                    <g
-                       id="g4610-4-3-1-2"
-                       style="" />
-                    <g
-                       id="g4612-0-0-8-1"
-                       style="" />
-                  </g>
-                </g>
-                <g
-                   id="g4494-3-2-2-6"
-                   style="" />
-                <g
-                   id="g4496-9-1-1-7"
-                   style="" />
-                <g
-                   id="g4498-8-3-6-8"
-                   style="" />
-                <g
-                   id="g4500-2-2-3-2"
-                   style="" />
-                <g
-                   id="g4502-2-51-3-4"
-                   style="" />
-                <g
-                   id="g4504-2-5-7-8"
-                   style="" />
-                <g
-                   id="g4506-7-8-2-9"
-                   style="" />
-                <g
-                   id="g4508-3-79-0-9"
-                   style="" />
-                <g
-                   id="g4510-1-5-0-0"
-                   style="" />
-                <g
-                   id="g4512-6-9-9-6"
-                   style="" />
-                <g
-                   id="g4514-3-8-3-2"
-                   style="" />
-                <g
-                   id="g4516-3-09-5-9"
-                   style="" />
-                <g
-                   id="g4518-1-4-4-8"
-                   style="" />
-                <g
-                   id="g4520-2-1-1-8"
-                   style="" />
-                <g
-                   id="g4522-4-4-6-6"
-                   style="" />
-              </g>
-            </g>
-            <g
-               id="g4193-6-4-5-6-1"
-               style="" />
-            <g
-               id="g4195-7-0-51-7-2"
-               style="" />
-            <g
-               id="g4197-6-3-0-4-3"
-               style="" />
-            <g
-               id="g4199-7-2-7-8-0"
-               style="" />
-            <g
-               id="g4201-5-0-0-6-2"
-               style="" />
-            <g
-               id="g4203-7-2-4-3-6"
-               style="" />
-            <g
-               id="g4205-6-3-5-9-8"
-               style="" />
-            <g
-               id="g4207-0-6-51-9-8"
-               style="" />
-            <g
-               id="g4209-20-4-9-7-4"
-               style="" />
-            <g
-               id="g4211-90-5-2-6-6"
-               style="" />
-            <g
-               id="g4213-0-1-6-8-6"
-               style="" />
-            <g
-               id="g4215-8-9-42-6-4"
-               style="" />
-            <g
-               id="g4217-5-2-5-7-4"
-               style="" />
-            <g
-               id="g4219-1-8-5-2-7"
-               style="" />
-            <g
-               id="g4221-81-9-7-6-5"
-               style="" />
-          </g>
-        </g>
-        <g
-           style="opacity:0.174"
-           transform="matrix(0.91760585,-0.39749151,0.39749151,0.91760585,190.26878,185.3107)"
-           id="g5454">
-          <g
-             id="g5456"
-             transform="matrix(1.046516,0,0,1.046516,228.65156,-4.5075805)"
-             style="opacity:0.5">
-            <path
-               inkscape:connector-curvature="0"
-               style="fill:#919191;fill-opacity:1"
-               d="M 39.526001,40.507 A 17.509001,17.509001 0 0 1 22.017,58.016001 17.509001,17.509001 0 0 1 4.5079994,40.507 17.509001,17.509001 0 0 1 22.017,22.997999 17.509001,17.509001 0 0 1 39.526001,40.507 Z"
-               id="path5458" />
-            <g
-               id="g5460"
-               style="">
-              <path
-                 id="path5462"
-                 d="m 49.88,25.681 c -1.761,-3.56 -2.694,-7.466 -2.694,-11.438 0.138,-2.48 0.266,-5.729 0.754,-7.555 0.311,-1.165 0.363,-2.396 0.039,-3.558 -0.99,-3.554 -4.076,-3.113 -4.076,-3.113 0,0 -3.407,-0.487 -4.21,3.686 -0.192,0.999 -0.078,2.03 0.181,3.014 0.481,1.831 0.838,5.105 0.746,7.526 0,3.971 -0.933,7.878 -2.694,11.438 -0.642,1.298 -1.314,2.779 -1.916,4.334 0,0 0,0 0,0 2.198,2.926 3.516,6.551 3.516,10.492 0,4.24 -1.527,8.109 -4.035,11.136 -0.002,0.025 -0.004,0.05 -0.006,0.075 0.029,0.092 0.051,0.187 0.083,0.278 1.052,3.01 2.693,6.019 5.053,6.019 l 6.566,0 c 2.36,0 3.757,-3.006 4.809,-6.016 1.044,-2.987 1.513,-6.144 1.513,-9.308 l 0,-4.371 C 53.394,34.16 51.642,29.243 49.88,25.681 Z"
-                 style="fill:#dfdfdf;fill-opacity:1"
-                 inkscape:connector-curvature="0" />
-            </g>
-            <path
-               inkscape:connector-curvature="0"
-               style="fill:#444444;fill-opacity:1"
-               d="m 17.508,35 a 3,3 0 0 1 -3,3 3,3 0 0 1 -3,-3 3,3 0 0 1 3,-3 3,3 0 0 1 3,3 z"
-               id="path5464" />
-            <path
-               inkscape:connector-curvature="0"
-               style="fill:#444444;fill-opacity:1"
-               d="m 23.507999,29 a 3,3 0 0 1 -3,3 3,3 0 0 1 -3,-3 3,3 0 0 1 3,-3 3,3 0 0 1 3,3 z"
-               id="path5466" />
-            <path
-               inkscape:connector-curvature="0"
-               style="fill:#444444;fill-opacity:1"
-               d="m 27.507999,37.015999 a 3,3 0 0 1 -3,3 3,3 0 0 1 -3,-3 3,3 0 0 1 3,-3 3,3 0 0 1 3,3 z"
-               id="path5468" />
-            <path
-               id="path5470"
-               d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
-               style="fill:#919191;fill-opacity:1"
-               inkscape:connector-curvature="0" />
-            <g
-               id="g5472"
-               style="" />
-            <g
-               id="g5474"
-               style="" />
-            <g
-               id="g5476"
-               style="" />
-            <g
-               id="g5478"
-               style="" />
-            <g
-               id="g5480"
-               style="" />
-            <g
-               id="g5482"
-               style="" />
-            <g
-               id="g5484"
-               style="" />
-            <g
-               id="g5486"
-               style="" />
-            <g
-               id="g5488"
-               style="" />
-            <g
-               id="g5490"
-               style="" />
-            <g
-               id="g5492"
-               style="" />
-            <g
-               id="g5494"
-               style="" />
-            <g
-               id="g5496"
-               style="" />
-            <g
-               id="g5498"
-               style="" />
-            <g
-               id="g5500"
-               style="" />
-          </g>
-        </g>
-        <g
-           style="opacity:0.174"
+           style="opacity:0.17399998"
            inkscape:label="Layer 1"
            id="g5554"
-           transform="matrix(0.99341573,0.11456518,-0.11456518,0.99341573,368.01724,-503.51736)">
+           transform="matrix(1.1217799,0.12936871,-0.12936871,1.1217799,402.59697,-635.1712)">
           <g
              id="g5556"
-             transform="translate(174.10714,529.32649)"
-             style="">
+             transform="translate(174.10714,529.32649)">
             <g
-               id="g5558"
-               style="">
+               id="g5558">
               <g
                  id="g5560"
-                 transform="matrix(0.97606294,-0.5635302,0.5635302,0.97606294,100.8772,28.339032)"
-                 style="">
+                 transform="matrix(0.97606294,-0.5635302,0.5635302,0.97606294,100.8772,28.339032)">
                 <g
-                   id="g5562"
-                   style="">
+                   id="g5562">
                   <path
                      id="path5564"
                      d="m 44.5,20.232 -6,0 0,4 4,0 c 1.1,0 2,0.9 2,2 l 0,10 c 0,1.1 -0.9,2 -2,2 l -4,0 0,4 6,0 c 2.2,0 4,-1.8 4,-4 l 0,-14 c 0,-2.2 -1.8,-4 -4,-4 z"
@@ -3224,97 +2235,67 @@
                      inkscape:connector-curvature="0" />
                 </g>
                 <g
-                   id="g5580"
-                   style="" />
+                   id="g5580" />
                 <g
-                   id="g5582"
-                   style="" />
+                   id="g5582" />
                 <g
-                   id="g5584"
-                   style="" />
+                   id="g5584" />
                 <g
-                   id="g5586"
-                   style="" />
+                   id="g5586" />
                 <g
-                   id="g5588"
-                   style="" />
+                   id="g5588" />
                 <g
-                   id="g5590"
-                   style="" />
+                   id="g5590" />
                 <g
-                   id="g5592"
-                   style="" />
+                   id="g5592" />
                 <g
-                   id="g5594"
-                   style="" />
+                   id="g5594" />
                 <g
-                   id="g5596"
-                   style="" />
+                   id="g5596" />
                 <g
-                   id="g5598"
-                   style="" />
+                   id="g5598" />
                 <g
-                   id="g5600"
-                   style="" />
+                   id="g5600" />
                 <g
-                   id="g5602"
-                   style="" />
+                   id="g5602" />
                 <g
-                   id="g5604"
-                   style="" />
+                   id="g5604" />
                 <g
-                   id="g5606"
-                   style="" />
+                   id="g5606" />
                 <g
-                   id="g5608"
-                   style="" />
+                   id="g5608" />
               </g>
             </g>
             <g
-               id="g5610"
-               style="" />
+               id="g5610" />
             <g
-               id="g5612"
-               style="" />
+               id="g5612" />
             <g
-               id="g5614"
-               style="" />
+               id="g5614" />
             <g
-               id="g5616"
-               style="" />
+               id="g5616" />
             <g
-               id="g5618"
-               style="" />
+               id="g5618" />
             <g
-               id="g5620"
-               style="" />
+               id="g5620" />
             <g
-               id="g5622"
-               style="" />
+               id="g5622" />
             <g
-               id="g5624"
-               style="" />
+               id="g5624" />
             <g
-               id="g5626"
-               style="" />
+               id="g5626" />
             <g
-               id="g5628"
-               style="" />
+               id="g5628" />
             <g
-               id="g5630"
-               style="" />
+               id="g5630" />
             <g
-               id="g5632"
-               style="" />
+               id="g5632" />
             <g
-               id="g5634"
-               style="" />
+               id="g5634" />
             <g
-               id="g5636"
-               style="" />
+               id="g5636" />
             <g
-               id="g5638"
-               style="" />
+               id="g5638" />
           </g>
         </g>
       </g>

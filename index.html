@@ -61,8 +61,10 @@
                 </div>
                 <img class="flag-icon" src="images/flag.svg">
                 <div class="nav-right">
-                    <h3 class="tagline">{{ tagline }}</h3>
-                    <div class="fb-share-button" data-href="http://birthdaybounty.com.au/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a></div>
+                    <h4 class="tagline">{{ tagline }}</h4>
+                    <!-- Your birthday is {{ getBirthdayString() }} -->
+                    <a class="standard-button" ng-click="clearBirthday()" ng-if="dob">Change Birthday</a>                    
+                    <a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>
                 </div>
             </div>
             <div ng-if="!dob" class="dob-splash">
@@ -71,9 +73,9 @@
 				<div class="splash-text">
 					<h1>Ahoy there, matey!</h1>
 					<h2>Enter your date of birth:</h2>
-					<input class="input-field" id="dayField" placeholder="DD" ng-change="dobFieldChange('day')" ng-model="birthday.day"/>
-					<input class="input-field" id="monthField" placeholder="MM" ng-change="dobFieldChange('month')" ng-model="birthday.month"/>
-					<input class="input-field" id="yearField" placeholder="YYYY" ng-change="dobFieldChange('year')" ng-model="birthday.year"/>
+                    <select ng-model="birthdayInput.day" ng-selected="01" ng-options="day for day in getDaysInMonth(birthday.month)"></select>
+					<select ng-model="birthdayInput.month" ng-options="shortMonth for shortMonth in getShortMonths()"></select>
+                    <select ng-model="birthdayInput.year" ng-options="year for year in getYears()"></select>
 					<br/>
 					<div class="standard-button" ng-click="submitBirthday()">
 						Plunder some Birthday Bounty!
@@ -84,7 +86,7 @@
                 <div class="birthday-summary-strip">
                     <div class="summary-text grow-appear">
                         <h2>Shiver me timbers!</h2>
-						</span>Plunderin' between {{ getPlunderPeriodString() }} could earn you up to </span>
+						</span>Plunderin' {{ getPlunderPeriodString() }} could earn you </span>
                         <h1>{{ getPlunderValue() | currency }}</h1>
                         <span>worth of free Birthday Bounty!</span>
                         <br>
