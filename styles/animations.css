@@ -4,7 +4,7 @@
 }
 
 .dob-splash, .birthday-summary-strip{
-  animation: animatedBackground 80s linear infinite;
+  animation: animatedBackground 40s linear infinite;
 }
 
 .bounty-marker:hover, .toggle-bounty-type-button:hover, .social-button:hover{

@@ -1,6 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Birthday Bounty</title>
+        <meta property="og:title" content="Birthday Bounty" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://www.birthdaybounty.com.au/" />
+        <meta property="og:image" content="images/flag.svg" />
         <link rel="stylesheet" href="styles/styles.css" />
         <link rel="stylesheet" href="styles/mobilestyles.css" />
         <link rel="stylesheet" href="styles/animations.css" />
@@ -13,7 +17,10 @@
         <!-- Include the AngularJS library -->
         <script src="./scripts/angular.min.js"></script>
         <script src="./scripts/bootstrap.min.js"></script>
-
+        <!-- Include moment.js -->
+        <script src="./scripts/moment.min.js"></script>
+        <!-- Facebook sharing -->
+        
 		<!-- Include the fav icons -->
 		<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
@@ -53,9 +60,9 @@
                     BIRTHDAY<br/>BOUNTY
                 </div>
                 <img class="flag-icon" src="images/flag.svg">
-                <div class="navigation-menu">
-                    <!--<div>About</div>
-                    <div>Change Birthday</div>-->
+                <div class="nav-right">
+                    <h3 class="tagline">{{ tagline }}</h3>
+                    <div class="fb-share-button" data-href="http://birthdaybounty.com.au/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a></div>
                 </div>
             </div>
             <div ng-if="!dob" class="dob-splash">
@@ -132,12 +139,7 @@
                 </div>
                 <div class="footer-strip">
                     <div class="footer-text">
-                        <a href="" ng-click="clearBirthday()" ng-if="dob">
-                            Click here to change your date of birth
-                        </a>
-                        <br />
-                        <br />
-                        <a href="http://www.lukehedin.com/">
+                        <a target="_blank" href="http://www.lukehedin.com/">
                         	Created by Luke Hedin
                         </a>
                         <div>
@@ -149,6 +151,11 @@
                         <div>
                             Bounty icons designed by <a target="_blank" href="http://www.flaticon.com/authors/madebyoliver">Madebyoliver</a> of Flaticon
                         </div>
+                        <br/>
+                        <br/>
+                        <a href="" ng-click="clearBirthday()" ng-if="dob">
+                            Click here to change your date of birth
+                        </a>
                     </div>
                 </div>
             </div>

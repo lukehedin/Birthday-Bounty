@@ -24,7 +24,7 @@ app.directive('plunder', function() {
 				'</div>' +
                   '<div class="my-plunder-item">' +
                      '<div class="my-plunder-item-left plunder-total">' +
-                          'Total Value:' +
+                          'Total Plunder Value:' +
                       '</div>' +
                       '<div class="my-plunder-item-right">' +
                           '{{ getMyPlunderTotal() | currency }}' +

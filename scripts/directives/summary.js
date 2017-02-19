@@ -6,7 +6,7 @@ app.directive('summary', function() {
 				'<div ng-if="filteredBountyData().length < 1" class="no-bounty-message">' +
 					'Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters on the left.' +
 				'</div>' +
-                '<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">' +
+                '<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredPagedBountyData() track by $index">' +
                     '<div class="bounty-summary-row">' +
                         '<div class="bounty-item-header">' +
                             '<div class="bounty-item-org-name">' +
@@ -75,6 +75,18 @@ app.directive('summary', function() {
                         '</div>' +
                     '</div>' +
                 '</div>' +
-           '</div>'
+                '<hr/>' +
+                 '<div class="page-controls" ng-if="getTotalPages() > 0">' +
+                    '<div class="standard-button" ng-click="changePage(-1)" ng-class="{ disabled: (((pageBegin + 1) + (pageTake * -1) < 0)) }">' +
+                        'Previous Page' + 
+                    '</div>' +
+                    '<div>' + 
+                        'Page {{ (pageBegin / pageTake) + 1 }} of {{ getTotalPages() }}' +
+                    '</div>' +
+                    '<div class="standard-button" ng-click="changePage(1)" ng-class="{ disabled: (((pageBegin + 1) >= getTotalPages())) }">' + 
+                        'Next Page' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
   }
 });

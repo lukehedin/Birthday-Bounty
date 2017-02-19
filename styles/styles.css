@@ -26,7 +26,6 @@ select:focus, input:focus {
   text-align: center;
   background-color: #ff6699;
   background-image: url(../images/background-trans.svg);
-  animation: animatedBackground 80s linear infinite;
   color: white;
   font-family: 'Didact Gothic', sans-serif;    
   padding: 40px 0 40px 0;  
@@ -71,11 +70,19 @@ select:focus, input:focus {
   float: left;
 }
 
-.top-navigation-bar .navigation-menu{
+.top-navigation-bar .nav-right{
   float: right;
   font-size: 18px;
   font-family: 'Didact Gothic', sans-serif; 
   text-align: right;
+}
+
+.nav-right .tagline{
+  margin-top: 10px;
+}
+
+.nav-right .standard-button{
+  font-size: 12px;
 }
 
 /*Summary strip & footer*/
@@ -83,7 +90,6 @@ select:focus, input:focus {
   margin: 0 0 40px 0;
   font-size: 22px;
   padding: 30px 0 30px 0;
-   animation: animatedBackground 80s linear infinite;
 }
 
 .footer-strip {
@@ -220,8 +226,8 @@ select:focus, input:focus {
 }
 
 .bounty-type-icon {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   margin: 2px;
 }
 
@@ -230,8 +236,12 @@ select:focus, input:focus {
   cursor: pointer;
 }
 
-.unselected{
+.unselected, .disabled{
   opacity: 0.3;
+}
+
+.disabled{
+  pointer-events:none;
 }
 
 /* Birthday Input */
@@ -299,6 +309,21 @@ select:focus, input:focus {
   float: left;
 }
 
+.page-controls{
+  display: inline-block;
+  width: 100%;
+}
+
+.page-controls div {  
+  width: 60%;
+  text-align: center;
+  float:left;
+}
+
+.page-controls .standard-button {  
+  width: 20%;
+}
+
 .content-wrapper h4{
   font-family: 'Didact Gothic', sans-serif;    
   color: #797876;
@@ -326,6 +351,10 @@ select:focus, input:focus {
   padding: 0px 0px 20px 10px;
   width: 100%;
   display: inline-block;
+}
+
+.filter-value input{
+  max-width: 50px;
 }
 
 .bounty-summary-items-container{

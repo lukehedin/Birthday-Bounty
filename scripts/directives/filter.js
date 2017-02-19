@@ -20,10 +20,12 @@ app.directive('filter', function() {
 						'<img ng-class="{ unselected: bountyFilters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>' +
 					'</div>' +
 				'</div>' +
-                  '<div class="settings-label">' +
-                     'Max Value Between:' +
-                  '</div>' +
-				'<div class="settings-input">' +
+                '<div class="settings-label">' +
+                    'Max Value Between:' +
+                '</div>' +
+				'<div class="settings-input filter-value">' +
+					'$<input type="number" ng-model="bountyFilters.minValue" min="0" max="1000"> and ' +
+ 					'$<input type="number" ng-model="bountyFilters.maxValue" min="1" max="1000">' +
 					'<br/>' +
 					'<input type="checkbox" ng-model="bountyFilters.showUnknownValue">Show Bounty with unknown value<br>' +
 				'</div>' +
@@ -31,8 +33,11 @@ app.directive('filter', function() {
                       'Available Between:' +
                   '</div>' +
 				'<div class="settings-input">' +
-					'<input type="date" ng-model="bountyFilters.dateStart"> and  ' +
-					'<input type="date" ng-model="bountyFilters.dateFinish">' +
+					'<select ng-model="bountyFilters.monthStart" ng-options="shortMonth for shortMonth in getShortMonths()"></select>' +
+					'<select ng-model="bountyFilters.dayStart" ng-options="shortMonth for shortMonth in getDaysInMonth(bountyFilters.monthStart)"></select>' +
+					' and ' +
+					'<select ng-model="bountyFilters.monthFinish" ng-options="shortMonth for shortMonth in getShortMonths()"></select>' +
+					'<select ng-model="bountyFilters.dayFinish" ng-options="shortMonth for shortMonth in getDaysInMonth(bountyFilters.monthFinish)"></select>' +
 				'</div>' +
                   '<div class="settings-label">' +
                       'Claim Conditions:' +
@@ -55,13 +60,7 @@ app.directive('filter', function() {
                       'Sort By:' +
                   '</div>' +
 				'<div class="settings-input">' +
-					'<select ng-model="bountyFilters.sortBy">' +
-						'<option value="{{enums.sorter.ValueHighLow}}">Max Value (High to Low)</option>' +
-						'<option value="{{enums.sorter.ValueLowHigh}}">Max Value (Low to High)</option>' +
-						'<option value="{{enums.sorter.AvailEarlyLate}}">Availability (Early to Late)</option>' +
-						'<option value="{{enums.sorter.AvailLateEarly}}">Availability (Late to Early)</option>' +
-						'<option selected="selected" value="{{enums.sorter.OrgNameAZ}}">Organisation Name (A-Z)</option>' +
-					'</select>' +
+					'<select ng-model="bountyFilters.sortBy" ng-options="getSorterString(sorter) for sorter in enums.sorter"></select>' +
 				'</div>' +
 				'<div class="settings-input">' +
 					'<div ng-click="resetBountyFilters()" class="reset-filters-button standard-button">' +
