@@ -56,7 +56,7 @@ app.directive('summary', function() {
                             '</div>' +
                             '<div ng-if="bountyItem.conditions.identificationRequired" class="ng-scope">' +
                                 '<img class="condition-icon" src="images/idrequired.svg">' +
-                                'Provide ID to verify your date of birth' +
+                                'Provide ID to verify your birthday or show a member\'s card' +
                             '</div>' +
                             '<div ng-if="bountyItem.conditions.digitalVoucherRequired" class="ng-scope">' +
                                 '<img class="condition-icon" src="images/digitalvoucher.svg">' +
@@ -83,7 +83,7 @@ app.directive('summary', function() {
                     '<div>' + 
                         'Page {{ (pageBegin / pageTake) + 1 }} of {{ getTotalPages() }}' +
                     '</div>' +
-                    '<div class="standard-button" ng-click="changePage(1)" ng-class="{ disabled: (((pageBegin + 1) >= getTotalPages())) }">' + 
+                    '<div class="standard-button" ng-click="changePage(1)" ng-class="{ disabled: ((((pageBegin / pageTake) + 1) >= getTotalPages())) }">' + 
                         'Next Page' +
                     '</div>' +
                 '</div>' +

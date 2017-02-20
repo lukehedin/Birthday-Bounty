@@ -75,7 +75,6 @@
 					<h2>Enter your date of birth:</h2>
                     <select ng-model="birthdayInput.day" ng-selected="01" ng-options="day for day in getDaysInMonth(birthday.month)"></select>
 					<select ng-model="birthdayInput.month" ng-options="shortMonth for shortMonth in getShortMonths()"></select>
-                    <select ng-model="birthdayInput.year" ng-options="year for year in getYears()"></select>
 					<br/>
 					<div class="standard-button" ng-click="submitBirthday()">
 						Plunder some Birthday Bounty!
@@ -154,7 +153,9 @@
                             Bounty icons designed by <a target="_blank" href="http://www.flaticon.com/authors/madebyoliver">Madebyoliver</a> of Flaticon
                         </div>
                         <br/>
-                        <br/>
+                        <div>
+                            Your birthday is {{ getBirthdayString() }}
+                        </div>
                         <a href="" ng-click="clearBirthday()" ng-if="dob">
                             Click here to change your date of birth
                         </a>

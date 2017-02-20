@@ -79,8 +79,7 @@ app.controller('MainController', ['$scope', function($scope) {
     $scope.bountyMarkerTooltip = null;
     $scope.birthdayInput = {
       day: 1,
-      month: 'Jan',
-      year: new Date().getFullYear()
+      month: 'Jan'
     };
     //pagination
     $scope.pageBegin = 0;
@@ -238,7 +237,7 @@ app.controller('MainController', ['$scope', function($scope) {
   };
 
   $scope.getBirthdayString = function() {
-    return moment($scope.dob).format('DD/MM/YYYY');
+    return moment($scope.dob).format('DD/MM');
   }
 
   $scope.clearBirthday = function(){
@@ -247,15 +246,13 @@ app.controller('MainController', ['$scope', function($scope) {
   };
 
   $scope.submitBirthday = function(){
-    var yearVal = $scope.birthdayInput.year;
     var monthVal = moment($scope.birthdayInput.month, 'MMM').month();
     var dayVal = $scope.birthdayInput.day;
 
-    var bdayDate = new Date(yearVal, monthVal, dayVal);
-    bdayDate.setFullYear(new Date().getFullYear() + (new Date() > bdayDate ? 1 : 0)); 
+    var now = new Date();
+    var bdayDate = new Date(now.getFullYear(), monthVal, dayVal);
     
     localStorage.setItem("birthday", bdayDate);
-
     $scope.dob = bdayDate;
     renderMapWhenReady();
 
@@ -418,11 +415,8 @@ app.controller('MainController', ['$scope', function($scope) {
           var filterStart = new Date(moment().year(), moment(options.monthStart, 'MMM').month(), options.dayStart);
           var filterFinish = new Date(moment().year(), moment(options.monthFinish, 'MMM').month(), options.dayFinish);
 
-          var now = new Date();
-          
-          if(now > filterFinish) filterFinish.setFullYear(filterFinish.getFullYear() + 1);
-          if(now > filterStart) filterStart.setFullYear(filterStart.getFullYear() + 1);
-  
+          if(filterStart > filterFinish) filterStart.setFullYear(filterStart.getFullYear() - 1);
+
           var itemAvail = getItemAvailablePeriod(item);
 
           if((itemAvail.start < filterFinish && itemAvail.finish < filterStart)) return false;
