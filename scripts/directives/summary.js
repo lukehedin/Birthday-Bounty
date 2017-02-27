@@ -1,7 +1,7 @@
 app.directive('summary', function() {
   return {
     scope: false,
-    template: '<div class="bounty-summary-items-container">' +
+    template: '<div class="bounty-summary-items-container" ng-class="{ \'full-width-summary-items\': isMobile() }">' +
 				'<hr/>' +
 				'<div ng-if="filteredBountyData().length < 1" class="no-bounty-message">' +
 					'Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters on the left.' +

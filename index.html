@@ -107,11 +107,11 @@
                                     <img ng-class="{ unselected: bountyFilters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>
                                 </div>
                             </div>
-                            <a ng-if="!isMobile()" ng-click="toggleFullMap()" class="map-view-button standard-button">
+                            <a ng-click="toggleFullMap()" class="map-view-button standard-button" ng-class="{ hidden: isMobile() }">
                                 Hide Full Map
                             </a>
                         </div>
-                        <div ng-if="isMobile()" class="mobile-controls">
+                        <div class="mobile-controls" ng-class="{ hidden: !isMobile() }">
                             <div ng-click="toggleMobileFilters()" class="standard-button" >
                                 Bounty Options
                             </div>
@@ -119,8 +119,8 @@
                                 My Plunder 
                             </div>
                         </div>
-                        <div class="bounty-summary">
-							<div ng-if="!showFullMap && !isMobile()" class="bounty-summary-map-mini">
+                        <div class="bounty-summary-left" ng-class="{ hidden: isMobile() }">
+							<div ng-if="!showFullMap" class="bounty-summary-map-mini">
                                 <h4>
 									Bounty Map
 								</h4>
@@ -132,8 +132,8 @@
 									</a>
 								</div>
 							</div>
-                            <filter ng-if="!isMobile()"></filter>
-							<plunder ng-if="!isMobile()"></plunder>
+                            <filter></filter>
+							<plunder></plunder>
                         </div>
                         <summary></summary>
                     </div>
