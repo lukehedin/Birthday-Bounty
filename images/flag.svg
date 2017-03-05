@@ -23,11 +23,11 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="14.727929"
-     inkscape:cy="-177.85762"
+     inkscape:cx="-74.670572"
+     inkscape:cy="17.101822"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -62,11 +62,15 @@
        d="m 195.9426,116.19139 c 0,0 32.87856,-9.60456 49.83902,-10.60057 42.85875,-2.51688 85.31317,11.5432 128.24568,11.86029 20.70084,0.15289 61.9153,-4.80471 61.9153,-4.80471 0,0 -27.97435,77.65961 -58.73266,102.34277 -32.11058,25.76835 -80.11311,21.04516 -118.09238,37.12981 -21.37807,9.05385 -61.1986,33.17036 -61.1986,33.17036 z"
        id="rect4136"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="caacaacc" />
+       sodipodi:nodetypes="caacaacc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <g
        transform="matrix(0.92230404,0,0,0.91550341,-465.01828,-309.38496)"
        id="layer1-0"
-       inkscape:label="Layer 1">
+       inkscape:label="Layer 1"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          transform="matrix(0.37113998,-0.09944666,0.09944666,0.37113998,616.83845,344.77784)"
          id="g5072">

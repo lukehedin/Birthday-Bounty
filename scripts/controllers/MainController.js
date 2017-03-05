@@ -12,10 +12,10 @@ app.controller('MainController', ['$scope', function($scope) {
     //Load required static data
     $scope.bountyData = bountyData;
     $scope.bountyTypes = [{ 
-        id: 4,
+        id: 1,
         ordinal: 1,
-        iconPath: 'images/marker_activity.svg',
-        name: 'activity'
+        iconPath: 'images/marker_sweets.svg',
+        name: 'sweets'
       }, { 
         id: 2,
         ordinal: 2,
@@ -27,15 +27,20 @@ app.controller('MainController', ['$scope', function($scope) {
         iconPath: 'images/marker_voucher.svg',
         name: 'voucher'
       }, { 
-        id: 3,
+        id: 6,
         ordinal: 4,
         iconPath: 'images/marker_drink.svg',
         name: 'drink'
       }, { 
-        id: 1,
+        id: 4,
         ordinal: 5,
-        iconPath: 'images/marker_sweets.svg',
-        name: 'sweets'
+        iconPath: 'images/marker_activity.svg',
+        name: 'activity'
+      }, { 
+        id: 3,
+        ordinal: 6,
+        iconPath: 'images/marker_alcohol.svg',
+        name: 'alcohol'
       }];
 
     //init enums
@@ -88,7 +93,7 @@ app.controller('MainController', ['$scope', function($scope) {
     //init options
     $scope.defaultFilters = {
         searchString: null,
-        includeTypes: [1,2,3,4,5],
+        includeTypes: [1,2,3,4,5,6],
         minValue: 0,
         maxValue: 200,
         showUnknownValue: true,
@@ -549,6 +554,7 @@ app.controller('MainController', ['$scope', function($scope) {
 
       var itemType = $.grep($scope.bountyTypes, function(type){ return type.id == item.types[0]; })[0];
       marker.bountyItem = item;
+      marker.bountyLocation = location;
 
       marker.draw = function() {
           var div = marker.div;
@@ -587,7 +593,7 @@ app.controller('MainController', ['$scope', function($scope) {
                   }
               });
 
-              google.maps.event.addDomListener(div, "mousemove", function(event) {      
+              google.maps.event.addDomListener(div, "mousemove", function(event) {
                   google.maps.event.trigger(marker, "mousemove"); //todo: need this?
                   showBountyIconTooltip(event, item);
               });

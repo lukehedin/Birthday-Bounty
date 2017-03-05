@@ -17,7 +17,15 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="marker_activity.svg">
   <defs
-     id="defs4" />
+     id="defs4">
+    <pattern
+       y="0"
+       x="0"
+       height="6"
+       width="6"
+       patternUnits="userSpaceOnUse"
+       id="EMFhbasepattern" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,11 +33,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-65.36608"
-     inkscape:cy="-99.571078"
+     inkscape:zoom="3.959798"
+     inkscape:cx="7.0583148"
+     inkscape:cy="56.344127"
      inkscape:document-units="px"
-     inkscape:current-layer="g4412"
+     inkscape:current-layer="g4137"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -82,7 +90,7 @@
       <g
          id="g4137">
         <circle
-           style="opacity:1;fill:#f7a5a5;fill-opacity:1;stroke:#ef4d4d;stroke-width:9.43589783;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           style="opacity:1;fill:#a4a0d9;fill-opacity:1;stroke:#403b90;stroke-width:9.43589783;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="path4355-9-0-1-7"
            cx="261.17859"
            cy="29.464287"
@@ -95,7 +103,7 @@
              r="17.509001"
              cy="40.507"
              cx="22.017"
-             style="fill:#ed3737;fill-opacity:1" />
+             style="fill:#403b90;fill-opacity:1" />
           <g
              id="g4364">
             <path
@@ -109,23 +117,23 @@
              r="3"
              cy="35"
              cx="14.508"
-             style="fill:#770b0b;fill-opacity:1" />
+             style="fill:#1b193d;fill-opacity:1" />
           <circle
              id="circle4370"
              r="3"
              cy="29"
              cx="20.507999"
-             style="fill:#770b0b;fill-opacity:1" />
+             style="fill:#1b193d;fill-opacity:1" />
           <circle
              id="circle4372"
              r="3"
              cy="37.015999"
              cx="24.507999"
-             style="fill:#770b0b;fill-opacity:1" />
+             style="fill:#1b193d;fill-opacity:1" />
           <path
              id="path4374"
              d="m 40.239,19 7.328,0 c -0.251,-1.441 -0.381,-3.284 -0.381,-4.756 0.038,-0.686 0.076,-1.431 0.121,-2.189 l -6.711,0 c 0.038,0.762 0.05,1.51 0.025,2.189 -0.001,1.472 -0.13,3.315 -0.382,4.756 z"
-             style="fill:#ef4d4d;fill-opacity:1"
+             style="fill:#403b90;fill-opacity:1"
              inkscape:connector-curvature="0" />
           <g
              id="g4376" />

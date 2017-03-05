@@ -56,15 +56,15 @@
     <body ng-app="BirthdayBountyApp">
         <div class="app-container" ng-controller="MainController" ng-cloak>
             <div class="top-navigation-bar">
-                <div class="logo-text">
-                    BIRTHDAY<br/>BOUNTY
-                </div>
                 <img class="flag-icon" src="images/flag.svg">
                 <div class="nav-right">
                     <h4 class="tagline">{{ tagline }}</h4>
                     <!-- Your birthday is {{ getBirthdayString() }} -->
                     <a class="standard-button" ng-click="clearBirthday()" ng-if="dob">Change Birthday</a>                    
                     <a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>
+                </div>
+                <div class="logo-text">
+                    BIRTHDAY<br/>BOUNTY
                 </div>
             </div>
             <div ng-if="!dob" class="dob-splash">
