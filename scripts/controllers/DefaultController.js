@@ -1,65 +1,42 @@
-app.controller('MainController', ['$scope', function($scope) {
+var birthdayBountyApp = angular.module('BirthdayBountyApp', []);
 
-  $scope.init = function(){
-
-    //Are we using mobile?
-    $scope.isMobile = function() {
-      var check = false;
-        (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
-        return check;
-    };
-
-    //Load required static data
-    $scope.bountyData = bountyData;
-    $scope.bountyTypes = [{ 
+birthdayBountyApp.factory('BirthdayBountyFactory', function(){
+  return {
+    //common data
+    dob: null,
+    bountyData: bountyData,
+    bountyTypes: [{ 
         id: 1,
         ordinal: 1,
         iconPath: 'images/marker_sweets.svg',
-        name: 'sweets'
+        name: 'Sweet Food / Desserts'
       }, { 
         id: 2,
         ordinal: 2,
         iconPath: 'images/marker_food.svg',
-        name: 'food'
+        name: 'Savoury Food / Meals'
       }, { 
         id: 5,
         ordinal: 3,
         iconPath: 'images/marker_voucher.svg',
-        name: 'voucher'
+        name: 'Vouchers'
       }, { 
         id: 6,
         ordinal: 4,
         iconPath: 'images/marker_drink.svg',
-        name: 'drink'
+        name: 'Drinks'
       }, { 
         id: 4,
         ordinal: 5,
         iconPath: 'images/marker_activity.svg',
-        name: 'activity'
+        name: 'Activities'
       }, { 
         id: 3,
         ordinal: 6,
         iconPath: 'images/marker_alcohol.svg',
-        name: 'alcohol'
-      }];
-
-    //init enums
-    $scope.enums = {
-      showMe: {
-        All: 1,
-        NotPlundered: 2,
-        Plundered: 3
-      },
-      sorter: {
-        ValueHighLow: 1,
-        ValueLowHigh: 2,
-        AvailEarlyLate: 3,
-        AvailLateEarly: 4,
-        OrgNameAZ: 5
-      }
-    }
-
-    var taglines = [
+        name: 'Alcohol / Bars'
+      }],
+    taglines: [
       "Set sail for savings!",
       "Get free stuff!",
       "Why spend, when you can plunder?",
@@ -75,71 +52,100 @@ app.controller('MainController', ['$scope', function($scope) {
       "Give it to me, baby!",
       "You are a pirate!",
       "Yay! Piracy!"
-    ];
+    ],
+    myPlunder: [],
 
-    //init scope vars
-    $scope.tagline = taglines[Math.floor(Math.random()*taglines.length)];
-    $scope.myPlunder = [];
-    $scope.bountyMarkers = [];
-    $scope.bountyMarkerTooltip = null;
-    $scope.birthdayInput = {
-      day: 1,
-      month: 'Jan'
-    };
-    //pagination
-    $scope.pageBegin = 0;
-    $scope.pageTake = 10;
+    //common functions
+    getTypeById: function(typeId){
+      var me = this;
 
-    //init options
-    $scope.defaultFilters = {
-        searchString: null,
-        includeTypes: [1,2,3,4,5,6],
-        minValue: 0,
-        maxValue: 200,
-        showUnknownValue: true,
-        monthStart: null,
-        dayStart: null,
-        monthFinish: null,
-        dayFinish: null,
-        includeRegistrationReq: true,
-        includeIdentificationReq: true,
-        includeDigitalVoucherReq: true,
-        includePaperVoucherReq: true,
-        showMe: $scope.enums.showMe.All,
-        sortBy: $scope.enums.sorter.OrgNameAZ
-    };
-    $scope.resetBountyFilters();
+      var requestedType = null;
+      me.bountyTypes.forEach(function(type){
+        if(!requestedType && type.id === typeId) requestedType = type;
+      });
 
-    var existingBday = localStorage.getItem("birthday");
+      return requestedType;
+    },
 
-    if(existingBday){
-      $scope.dob = new Date(existingBday);
+    getBountyItemById: function(bountyId){
+      var me = this;
+
+      var requestedItem = null;
+      me.bountyData.forEach(function(item){
+        if(!requestedItem && item.bountyId === bountyId) requestedItem = item;
+      });
       
-      var plunderPeriod = getFullPlunderPeriod();
-
-      $scope.defaultFilters.monthStart = moment(plunderPeriod.start).format('MMM');
-      $scope.defaultFilters.monthFinish = moment(plunderPeriod.finish).format('MMM');
-      $scope.defaultFilters.dayStart = moment(plunderPeriod.start).date();
-      $scope.defaultFilters.dayFinish = moment(plunderPeriod.finish).date();
-
-      $scope.resetBountyFilters();
-
-      renderMapWhenReady();
+      return requestedItem;
     }
-
-    //init my plunder
-    var existingPlunder = localStorage.getItem("myplunder") || "";
-    var stringPlunderArray = existingPlunder.split(",");
-    
-    stringPlunderArray.forEach(function(stringPlunder){
-      $scope.myPlunder.push(parseInt(stringPlunder));
-    });
-
-    //todo: map setting from local storage?
-    $scope.showFullMap = false;
-    $scope.showMobileFilters = false;
-    $scope.showMobilePlunder = false;
   };
+});
+
+birthdayBountyApp.controller('DefaultController', function($scope, BirthdayBountyFactory) {
+  $scope.root = BirthdayBountyFactory;
+
+  var taglines = $scope.root.taglines;
+  $scope.tagline = taglines[Math.floor(Math.random()*taglines.length)];
+  $scope.birthdayInput = {
+    day: 1,
+    month: 'Jan',
+    postcode: 3000
+  };
+
+  var existingBday = localStorage.getItem("birthday");
+
+  if(existingBday) $scope.root.dob = new Date(existingBday);
+
+  //init my plunder
+  var existingPlunder = localStorage.getItem("myplunder") || "";
+  var stringPlunderArray = existingPlunder.split(",");
+
+  stringPlunderArray.forEach(function(stringPlunder){
+    $scope.root.myPlunder.push(parseInt(stringPlunder));
+  });
+  
+  $scope.getBirthdayString = function() {
+    return moment($scope.root.dob).format('DD/MM');
+  }
+
+  $scope.clearBirthday = function(){
+    $scope.root.dob = null;
+    localStorage.removeItem("birthday");
+  };
+});
+
+birthdayBountyApp.controller('SplashController', function($scope, BirthdayBountyFactory) {
+  $scope.root = BirthdayBountyFactory;
+
+  $scope.birthdayInput = {
+    day: 1,
+    month: 'Jan',
+    postcode: 3000
+  };
+
+  $scope.submitBirthday = function(){
+    var monthVal = moment($scope.birthdayInput.month, 'MMM').month();
+    var dayVal = $scope.birthdayInput.day;
+
+    var now = new Date();
+    var bdayDate = new Date(now.getFullYear(), monthVal, dayVal);
+    
+    localStorage.setItem("birthday", bdayDate);
+    $scope.root.dob = bdayDate;
+
+    var plunderPeriod = getFullPlunderPeriod();
+  };
+
+  $scope.getDaysInMonth = function(shortMonth){
+    if(!shortMonth) shortMonth = "Jan";
+    var days = moment(shortMonth, 'MMM').daysInMonth();
+    var daysArray = [];
+    for(var i = 1; i <= days; i++) daysArray.push(i);
+    return daysArray;
+  }
+
+  $scope.getShortMonths = function(){
+    return moment.monthsShort();
+  }
 
   $scope.dobFieldChange = function(fld){
     var fldVal = $('#' + fld + 'Field')[0].value;
@@ -155,129 +161,70 @@ app.controller('MainController', ['$scope', function($scope) {
         break;
     }
   };
+});
 
-//Combobox functions
-  $scope.getSorterString = function(sorter){
-    switch(sorter){
-      case $scope.enums.sorter.ValueHighLow: return "Max Value (High to Low)";
-      case $scope.enums.sorter.ValueLowHigh: return "Max Value (Low to High)";
-      case $scope.enums.sorter.AvailEarlyLate: return "Availability (Early to Late)";
-      case $scope.enums.sorter.AvailLateEarly: return "Availability (Late to Early)";
-      case $scope.enums.sorter.OrgNameAZ: return "Organisation Name (A-Z)";
-    }
-  }
+birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBountyFactory) {
+  $scope.root = BirthdayBountyFactory;
 
-  $scope.getYears = function(){
-    var thisYear = new Date().getFullYear();
-    var yearsArray = [];
-    for(var i = thisYear; i >= 1900; i--) yearsArray.push(i);
-    return yearsArray;
-  }
-
-  $scope.getDaysInMonth = function(shortMonth){
-    if(!shortMonth) shortMonth = "Jan";
-    var days = moment(shortMonth, 'MMM').daysInMonth();
-    var daysArray = [];
-    for(var i = 1; i <= days; i++) daysArray.push(i);
-    return daysArray;
-  }
-
-  $scope.getShortMonths = function(){
-    return moment.monthsShort();
-  }
-
-//Toggles that alter the view
-  $scope.toggleFullMap = function(){
-    $scope.showFullMap = !$scope.showFullMap;
-    renderMapWhenReady();
-  }
-
-  $scope.toggleMobileFilters = function(){
-    $scope.showMobileFilters = !$scope.showMobileFilters;
-  }
-
-  $scope.toggleMobilePlunder = function(){
-    $scope.showMobilePlunder = !$scope.showMobilePlunder;
-  }
-
-  $scope.getMyPlunder = function(){
-    var plunderArray = [];
-    $scope.bountyData.forEach(function(bountyItem){
-      if($scope.myPlunder.indexOf(bountyItem.bountyId) !== -1) plunderArray.push(bountyItem);
-    });
-    return plunderArray;
-  }
-
-  $scope.toggleInMyPlunder = function(bountyId){
-    var index = $scope.myPlunder.indexOf(bountyId);
-
-    if(index === -1){
-        $scope.myPlunder.push(bountyId);
-      } else{
-        $scope.myPlunder.splice(index, 1);
-      }
-
-      localStorage.setItem("myplunder", $scope.myPlunder);
-  }
-
-  function renderMapWhenReady(){
-    $.getScript('https://www.google.com/jsapi', function()
-    {
-        google.load('maps', '3', { other_params: ['key=AIzaSyBnG2wcWi0MrBxd3wTtNCKTau-xHD_B324&libraries=places'], callback: function() {
-          setTimeout(function() {
-            //Google Map
-            var mapContainer = $('#bountyMapContainer')[0];
-
-            var googleMap = new google.maps.Map(mapContainer, {
-              center: {lat: -37.815112, lng: 144.960909},
-              zoom: 14,
-              disableDefaultUI: true,
-              styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#bcbbbb"},{"visibility":"on"}]}]
-            });
-              
-            loadAllBountyMarkers(googleMap);
-          }, 0)
-        }});
-    });
+  $scope.sorters = {
+    ValueHighLow: 1,
+    ValueLowHigh: 2,
+    AvailEarlyLate: 3,
+    AvailLateEarly: 4,
+    OrgNameAZ: 5,
+    CloseBy: 6
   };
 
-  $scope.getBirthdayString = function() {
-    return moment($scope.dob).format('DD/MM');
-  }
-
-  $scope.clearBirthday = function(){
-    $scope.dob = null;
-    localStorage.removeItem("birthday");
+  $scope.defaultFilters = {
+      searchString: null,
+      includeTypes: [1,2,3,4,5,6],
+      minValue: 0,
+      maxValue: 200,
+      showUnknownValue: true,
+      monthStart: null,
+      dayStart: null,
+      monthFinish: null,
+      dayFinish: null,
+      includeRegistrationReq: true,
+      includeIdentificationReq: true,
+      includeDigitalVoucherReq: true,
+      includePaperVoucherReq: true,
+      showNotPlundered: true,
+      showPlundered: true,
+      sortBy: $scope.sorters.OrgNameAZ
   };
 
-  $scope.submitBirthday = function(){
-    var monthVal = moment($scope.birthdayInput.month, 'MMM').month();
-    var dayVal = $scope.birthdayInput.day;
+  $scope.resetBountyFilters = function(){
+    //clone deault filters to active ones
+    $scope.bountyFilters = jQuery.extend(true, {}, $scope.defaultFilters);
+  }
+  
+  $scope.resetBountyFilters();
 
-    var now = new Date();
-    var bdayDate = new Date(now.getFullYear(), monthVal, dayVal);
+  var existingBday = localStorage.getItem("birthday");
+
+  if(existingBday){
+    $scope.dob = new Date(existingBday);
     
-    localStorage.setItem("birthday", bdayDate);
-    $scope.dob = bdayDate;
-    renderMapWhenReady();
-
     var plunderPeriod = getFullPlunderPeriod();
-    
+
     $scope.defaultFilters.monthStart = moment(plunderPeriod.start).format('MMM');
     $scope.defaultFilters.monthFinish = moment(plunderPeriod.finish).format('MMM');
     $scope.defaultFilters.dayStart = moment(plunderPeriod.start).date();
     $scope.defaultFilters.dayFinish = moment(plunderPeriod.finish).date();
 
     $scope.resetBountyFilters();
-  };
+  }
 
-  $scope.getTypeById = function(typeId){
-    var requestedType = null;
-    $scope.bountyTypes.forEach(function(type){
-      if(!requestedType && type.id === typeId) requestedType = type;
-    });
-    return requestedType;
-  };
+  $scope.getSorterString = function(sorter){
+    switch(sorter){
+      case $scope.sorters.ValueHighLow: return "Max Value (High to Low)";
+      case $scope.sorters.ValueLowHigh: return "Max Value (Low to High)";
+      case $scope.sorters.AvailEarlyLate: return "Availability (Early to Late)";
+      case $scope.sorters.AvailLateEarly: return "Availability (Late to Early)";
+      case $scope.sorters.OrgNameAZ: return "Organisation Name (A-Z)";
+    }
+  }
 
   $scope.getPlunderValue = function(){
     var amount = 0;
@@ -337,7 +284,7 @@ app.controller('MainController', ['$scope', function($scope) {
     var minDate = new Date(bdayDate);
     var maxDate = new Date(bdayDate);
 
-    $scope.bountyData.forEach(function(item){
+    $scope.root.bountyData.forEach(function(item){
         var itemPeriod = getItemAvailablePeriod(item);
         var possibleMin = itemPeriod.start;
         if(possibleMin < minDate) minDate = possibleMin;
@@ -370,26 +317,6 @@ app.controller('MainController', ['$scope', function($scope) {
       start: new Date(itemStart),
       finish: new Date(itemFinish)
     }
-  }
-
-  $scope.resetBountyFilters = function(){
-    //clone deault filters to active ones
-    $scope.bountyFilters = jQuery.extend(true, {}, $scope.defaultFilters);
-  }
-
-  $scope.getTotalPages = function(){
-    var total = Math.ceil($scope.filteredBountyData().length / $scope.pageTake);
-    if(($scope.pageBegin / $scope.pageTake) + 1 > total) $scope.pageBegin = 0;
-
-    return total;
-  }
-
-  $scope.changePage = function(pages){
-    $scope.pageBegin = ($scope.pageBegin + ($scope.pageTake * pages));
-  }
-
-  $scope.filteredPagedBountyData = function(){
-    return $scope.filteredBountyData().slice($scope.pageBegin, ($scope.pageBegin + $scope.pageTake));
   }
 
   $scope.filteredBountyData = function() {
@@ -436,36 +363,36 @@ app.controller('MainController', ['$scope', function($scope) {
         if(!options.includePaperVoucherReq && item.conditions.paperVoucherRequired) return false;
 
         //Show Me
-        var inPlunder = $scope.myPlunder.indexOf(item.bountyId) !== -1;
-        if(inPlunder && parseInt(options.showMe) === $scope.enums.showMe.NotPlundered) return false;
-        if(!inPlunder && parseInt(options.showMe) === $scope.enums.showMe.Plundered) return false;
+        var inPlunder = $scope.root.myPlunder.indexOf(item.bountyId) !== -1;
+        if(inPlunder && !options.showPlundered) return false;
+        if(!inPlunder && !options.showNotPlundered) return false;
 
         return true;
     };
 
     var filteredData = [];
 
-    $scope.bountyData.forEach(function(bountyItem) {  
+    $scope.root.bountyData.forEach(function(bountyItem) {  
         if(shouldPush(bountyItem)) filteredData.push(bountyItem);
     });
 
      //Sort
       switch(parseInt(options.sortBy)){
-          case $scope.enums.sorter.ValueHighLow:
+          case $scope.sorters.ValueHighLow:
             filteredData.sort(function(b1, b2){
               if(b1.maxValue === b2.maxValue) return 0;
               if(b1.maxValue < b2.maxValue) return 1;
               return -1;
             });
           break;
-          case $scope.enums.sorter.ValueLowHigh:
+          case $scope.sorters.ValueLowHigh:
             filteredData.sort(function(b1, b2){
               if(b1.maxValue === b2.maxValue) return 0;
               if(b1.maxValue < b2.maxValue) return -1;
               return 1;
             });
           break;
-          case $scope.enums.sorter.AvailEarlyLate:
+          case $scope.sorters.AvailEarlyLate:
             filteredData.sort(function(b1, b2){
               var b1Period = getItemAvailablePeriod(b1);
               var b2Period = getItemAvailablePeriod(b2);
@@ -475,7 +402,7 @@ app.controller('MainController', ['$scope', function($scope) {
               return 0;
             });
           break;
-          case $scope.enums.sorter.AvailLateEarly:
+          case $scope.sorters.AvailLateEarly:
             filteredData.sort(function(b1, b2){
               var b1Period = getItemAvailablePeriod(b1);
               var b2Period = getItemAvailablePeriod(b2);
@@ -485,7 +412,7 @@ app.controller('MainController', ['$scope', function($scope) {
               return 0;
             });
           break;
-          case $scope.enums.sorter.OrgNameAZ:
+          case $scope.sorters.OrgNameAZ:
             filteredData.sort(function(b1, b2){
               if(b1.organisation.name > b2.organisation.name) return 1;
               if(b1.organisation.name < b2.organisation.name) return -1;
@@ -495,13 +422,37 @@ app.controller('MainController', ['$scope', function($scope) {
           default:
           break;
       }
-    
-      $scope.bountyMarkers.forEach(function(bountyMarker){
-          if(bountyMarker.div) bountyMarker.div.hidden = filteredData.indexOf(bountyMarker.bountyItem) === -1;
-      });
 
       return filteredData;
   }
+});
+
+birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFactory){
+  $scope.root = BirthdayBountyFactory;
+
+  $scope.bountyMarkers = [];
+  $scope.bountyMarkerTooltip = null;
+
+  function renderMapWhenReady(){
+    $.getScript('https://www.google.com/jsapi', function()
+    {
+        google.load('maps', '3', { other_params: ['key=AIzaSyBnG2wcWi0MrBxd3wTtNCKTau-xHD_B324&libraries=places'], callback: function() {
+          setTimeout(function() {
+            //Google Map
+            var mapContainer = $('#bountyMapContainer')[0];
+
+            var googleMap = new google.maps.Map(mapContainer, {
+              center: {lat: -37.815112, lng: 144.960909},
+              zoom: 14,
+              disableDefaultUI: true,
+              styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#bcbbbb"},{"visibility":"on"}]}]
+            });
+              
+            loadAllBountyMarkers(googleMap);
+          }, 0)
+        }});
+    });
+  };
 
   function loadAllBountyMarkers(gMap){
     var placesService = new google.maps.places.PlacesService(gMap);
@@ -638,7 +589,29 @@ app.controller('MainController', ['$scope', function($scope) {
       });
     });
   };
+});
 
-  $scope.init();
+birthdayBountyApp.controller('BountyDetailController', function($scope, BirthdayBountyFactory){
+  $scope.root = BirthdayBountyFactory;
 
-}]);
+  //Function to get query params
+  getUrlParamByName = function(name) {
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(window.location.href);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  };
+
+  var bountyIdParam = getUrlParamByName('bountyId');
+  if(!bountyIdParam || parseInt(bountyIdParam) === NaN) return;
+
+  var bountyId = parseInt(bountyIdParam);
+  var bountyItem = $scope.root.getBountyItemById(bountyId);
+
+  if(!bountyItem) return;
+
+  $scope.viewingBountyItem = bountyItem;
+
+});

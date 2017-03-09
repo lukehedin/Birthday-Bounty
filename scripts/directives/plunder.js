@@ -1,4 +1,4 @@
-app.directive('plunder', function() {
+birthdayBountyApp.directive('plunder', function() {
   return {
     scope: false,
     template: '<div class="bounty-summary-plunder">' +

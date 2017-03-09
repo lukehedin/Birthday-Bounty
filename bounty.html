@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Birthday Bounty | Free Birthday Goodies! </title>
+        <title>Birthday Bounty</title>
         <meta property="og:title" content="Birthday Bounty" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://www.birthdaybounty.com.au/" />
@@ -56,26 +56,8 @@
     <body ng-app="BirthdayBountyApp">
         <div class="app-container" ng-controller="DefaultController" ng-cloak>
             <appheader></appheader>
-            <div ng-if="!root.dob" class="dob-splash">
-                <!-- <div>Enter ye postcode:</div>
-                    <input placeholder="Postcode" />-->
-				<div class="splash-text" ng-controller="SplashController">
-					<h1>Ahoy there, matey!</h1>
-					<h2>Enter your date of birth:</h2>
-                    <select ng-model="birthdayInput.day" ng-selected="01" ng-options="day for day in getDaysInMonth(birthday.month)"></select>
-					<select ng-model="birthdayInput.month" ng-options="shortMonth for shortMonth in getShortMonths()"></select>
-                    <h2>and your postcode (optional):</h2>
-                    <input ng-model="birthdayInput.postcode"></input>
-					<br/>
-					<div class="standard-button" ng-click="submitBirthday()">
-						Plunder some Birthday Bounty!
-					</div>
-				</div>
-            </div>
-            <div ng-if="root.dob">
-                <summary ng-controller="SummaryController"></summary>
-                <appfooter></appfooter>
-            </div>
+            <bountydetail ng-controller="BountyDetailController"></bountydetail>
+            <appfooter></appfooter>
         </div>
         <!-- Modules -->
         <script src="scripts/app.js"></script>
@@ -84,7 +66,7 @@
         <script src="scripts/controllers/DefaultController.js"></script>
         <!-- Directives -->
         <script src="scripts/directives/appheader.js"></script>
-        <script src="scripts/directives/appfooter.js"></script>
-        <script src="scripts/directives/summary.js"></script>        
+        <script src="scripts/directives/appfooter.js"></script> 
+        <script src="scripts/directives/bountydetail.js"></script>      
     </body>
 </html>

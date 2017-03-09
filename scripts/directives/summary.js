@@ -1,91 +1,94 @@
-app.directive('summary', function() {
+birthdayBountyApp.directive('summary', function() {
   return {
     scope: false,
-    template: '<div class="bounty-summary-items-container" ng-class="{ \'full-width-summary-items\': isMobile() }">' +
-				'<hr/>' +
-				'<div ng-if="filteredBountyData().length < 1" class="no-bounty-message">' +
-					'Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters on the left.' +
-				'</div>' +
-                '<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredPagedBountyData() track by $index">' +
-                    '<div class="bounty-summary-row">' +
-                        '<div class="bounty-item-header">' +
-                            '<div class="bounty-item-org-name">' +
-                                '{{ bountyItem.organisation.name }}' +
+    template:  '<div class="feature-strip">' +
+                    '<div class="summary-feature grow-appear">' +
+                        '<h2>Shiver me timbers!</h2>' +
+						'</span>Plunderin\' {{ getPlunderPeriodString() }} could earn you </span>' +
+                        '<h1>{{ getPlunderValue() | currency }}</h1>' +
+                        '<span>worth of free Birthday Bounty!</span>' +
+                        '<br>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="summary-settings-container">' +
+                    '<div class="bounty-summary-settings">' +
+                        '<div class="settings-control">' +
+                            '<div class="settings-label">' +
+                                'Bounty Types:' +
                             '</div>' +
-                            '<div class="standard-button toggle-plunder-button" ng-click="toggleInMyPlunder(bountyItem.bountyId)">' +
-								'{{ myPlunder.indexOf(bountyItem.bountyId) === -1 ? "Add to My Plunder" : "Remove from My Plunder" }}' +
-							'</div>' +
-                            '<div class="bounty-item-org-social">' +
-                                '<a ng-if="bountyItem.organisation.social.facebook" target="_blank" ng-href="{{bountyItem.organisation.social.facebook}}">' +
-                                    '<img class="social-button" src="images/facebook.svg" />' +
-                                '</a>' +
-                                '<a ng-if="bountyItem.organisation.social.twitter" target="_blank" ng-href="{{bountyItem.organisation.social.twitter}}">' +
-                                    '<img class="social-button" src="images/twitter.svg" />' +
-                                '</a>' +
-                                '<a ng-if="bountyItem.organisation.social.instagram" target="_blank" ng-href="{{bountyItem.organisation.social.instagram}}">' +
-                                    '<img class="social-button" src="images/instagram.svg" />' +
-                                '</a>' +
-                            '</div>' +
-                        '</div>' +
-						'<div class="bounty-item-left-details">' +
-							'<h3>' +
-								'{{ bountyItem.title }}' +
-							'</h3>' +
-                            '<h6>' +
-								'{{ bountyItem.additionalDetails }}' +
-							'</h6>' +
-							'<div>' +
-								'<b>{{ getBountyAvailabilityMessage(bountyItem) }}</b>' +
-							'</div>' +
-						'</div>' +
- 						'<div class="bounty-item-right-details">' +
-							'<h3>' +
-								'{{ bountyItem.maxValue | currency }}' +
-							'</h3>' +
-                            '<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">' +
-								'<div ng-if="plunderOptions.includeTypes.indexOf(typeId) !== -1">' +
-                                    '<img class="bounty-type-icon" ng-src="{{getTypeById(typeId).iconPath}}"/>' +
-								'</div>' +
-							'</div>' +
- 						'</div>' +
-                        '<div class="condition-list">' +
-							'<hr/>' +
-                            '<div ng-if="bountyItem.conditions.registrationRequiredUrl" class="ng-scope">' +
-                                '<img class="condition-icon" src="images/registrationurl.svg">' +
-                                '<a target="_blank" ng-href="{{bountyItem.conditions.registrationRequiredUrl}}">Sign up here</a>' +
-                            '</div>' +
-                            '<div ng-if="bountyItem.conditions.identificationRequired" class="ng-scope">' +
-                                '<img class="condition-icon" src="images/idrequired.svg">' +
-                                'Provide ID to verify your birthday or show a member\'s card' +
-                            '</div>' +
-                            '<div ng-if="bountyItem.conditions.digitalVoucherRequired" class="ng-scope">' +
-                                '<img class="condition-icon" src="images/digitalvoucher.svg">' +
-                                'Present a digital voucher on a phone or tablet' +
-                            '</div>' +
-                            '<div ng-if="bountyItem.conditions.paperVoucherRequired" class="ng-scope">' +
-                                '<img class="condition-icon" src="images/papervoucher.svg">' +
-                                'Print off and present a paper voucher' +
-                            '</div>' +
-                            '<div ng-if="bountyItem.conditions.notes && bountyItem.conditions.notes.length > 0">' +
-                                '<b>Notes:</b>' +
-                                '<div ng-repeat="note in bountyItem.conditions.notes track by $index">' +
-                                    '<div>{{ note }}</div>' +
+                            '<div class="settings-input">' +
+                                '<div ng-repeat="bountyType in root.bountyTypes track by $index">' +
+                                    '<img title="{{bountyType.name}}" ng-class="{ unselected: bountyFilters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
+                        '<div class="settings-control">' +
+                            '<div class="settings-label">' +
+                                'Available Between:' +
+                            '</div>' +
+                            '<div class="settings-input">' +
+                                '<select ng-model="bountyFilters.monthStart" ng-options="shortMonth for shortMonth in getShortMonths()"></select>' +
+                                '<select ng-model="bountyFilters.dayStart" ng-options="day for day in getDaysInMonth(bountyFilters.monthStart)"></select>' +
+                                ' and ' +
+                                '<select ng-model="bountyFilters.monthFinish" ng-options="shortMonth for shortMonth in getShortMonths()"></select>' +
+                                '<select ng-model="bountyFilters.dayFinish" ng-options="day for day in getDaysInMonth(bountyFilters.monthFinish)"></select>' +
+                            '</div>' +
+                        '</div>' +
+                        // '<div class="settings-control">' +
+                        // 	'<div class="settings-label">' +
+                        // 		'Show Me:' +
+                        // 	'</div>' +
+                        // 	'<div class="settings-input">' +							
+                        // 		'<input type="checkbox" ng-model="bountyFilters.showNotPlundered"> Bounty I haven\'t plundered<br>' +
+                        // 		'<input type="checkbox" ng-model="bountyFilters.showPlundered"> Bounty I have plundered' +
+                        // 	'</div>' +
+                        // '</div>' +
+                        '<div class="settings-control">' +
+                            '<div class="settings-label">' +
+                                'Sort By:' +
+                            '</div>' +
+                            '<div class="settings-input">' +
+                                '<select ng-model="bountyFilters.sortBy" ng-options="getSorterString(sorter) for sorter in sorters"></select>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="settings-control">' +
+                            '<a class="standard-button">' +
+                                'View on Map' +
+                            '</a>' +
+                             '<a class="standard-button" ng-click="clearBirthday()" ng-if="dob">' +
+                                'Change Birthday/Postcode' +
+                             '</a>' +
+                        '</div>' +
+                        // '<div class="settings-input">' +
+                        // 	'<div ng-click="resetBountyFilters()" class="reset-filters-button standard-button">' +
+                        // 		'Reset All Filters' +
+                        // 	'</div>' +
+                        // '</div>' +
                     '</div>' +
-                '</div>' +
-                '<hr/>' +
-                 '<div class="page-controls" ng-if="getTotalPages() > 1">' +
-                    '<div class="standard-button" ng-click="changePage(-1)" ng-class="{ disabled: (((pageBegin + 1) + (pageTake * -1) < 0)) }">' +
-                        'Previous Page' + 
-                    '</div>' +
-                    '<div>' + 
-                        'Page {{ (pageBegin / pageTake) + 1 }} of {{ getTotalPages() }}' +
-                    '</div>' +
-                    '<div class="standard-button" ng-click="changePage(1)" ng-class="{ disabled: ((((pageBegin / pageTake) + 1) >= getTotalPages())) }">' + 
-                        'Next Page' +
-                    '</div>' +
+              '</div>' +
+              '<div class="content-wrapper">' +
+                '<div class="bounty-summary-container">' +
+                    '<div class="bounty-summary-items-container">' +
+				        '<div ng-if="filteredBountyData().length < 1" class="no-bounty-message">' +
+				        	'Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters above.' +
+				        '</div>' +
+                        '<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">' +
+                            '<a class="bounty-thumbnail col-lg-4 col-sm-6" href="./bounty.html?bountyId={{bountyItem.bountyId}}">' +
+                                '<span class="bounty-thumbnail-image" ng-style="{ \'background-image\': !!bountyItem.thumbnail ? \'url(images/bountypix/\' + bountyItem.thumbnail + \')\' : \'\'}">' +
+                                    '<img class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(bountyItem.types[0]).iconPath}}" />' +                        
+                                '</span>' +
+                                '<div>' +
+                                    '<div class="bounty-thumbnail-details-left">' +
+                                        '<h1>{{ bountyItem.title }}</h1>' +
+                                        '{{ bountyItem.organisation.name }}' +
+                                    '</div>' +
+                                    '<div class="bounty-thumbnail-details-right">' +
+                                        '5km away' +
+                                    '</div>' +
+                                '</div>' +
+                            '</a>' +
+                        '</div>' +
+                     '</div>' +
                 '</div>' +
             '</div>'
   }
