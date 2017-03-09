@@ -56,7 +56,7 @@
 				Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters above. 
 			</div>
 			<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
-				<a class="bounty-thumbnail col-lg-4 col-sm-6" href="./bounty.html?bountyId={{bountyItem.bountyId}}">
+				<a class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
 					<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
 					<img class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(bountyItem.types[0]).iconPath}}" />                         
 					</span> 

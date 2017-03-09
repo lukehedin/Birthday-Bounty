@@ -380,7 +380,7 @@ select:focus, input:focus {
   max-width: 50px;
 }
 
-.bounty-summary-items-container{
+.bounty-summary-items-container, .bounty-detail-container{
   width: 100%;
   padding-left: 20px;
   padding-top: 22px;
