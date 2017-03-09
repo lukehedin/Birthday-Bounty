@@ -1,3 +1,4 @@
+birthdayBountyApp.directive('appheader', function() {
   return {
     scope: false,
     template: '<div class="top-navigation-bar">' +
