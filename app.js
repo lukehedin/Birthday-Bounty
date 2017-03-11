@@ -3,7 +3,7 @@ var birthdayBountyApp = angular.module('BirthdayBountyApp', ['ngRoute']);
 birthdayBountyApp.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl: "home.html"
+        templateUrl: "splash.html"
     })
     .when("/bounty", {
         templateUrl: "bounty.html"
@@ -17,7 +17,12 @@ birthdayBountyApp.config(function($routeProvider) {
 birthdayBountyApp.factory('BirthdayBountyFactory', function(){
   return {
     //Shared data
-    dob: null,
+    dob: localStorage.getItem("birthday") ? new Date(localStorage.getItem("birthday")) : null,
+    address: {
+      lat: localStorage.getItem("addressLat"),
+      lng: localStorage.getItem("addressLng"),
+      placeId: localStorage.getItem("addressPlaceId")  
+    },
     bountyData: bountyData,
     bountyTypes: [{ 
         id: 1,
@@ -70,7 +75,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     myPlunder: [],
     //homeScroll: 0,
 
-    //Shared functions
+    //Shared functions - these CANNOT change variables in the scope
     getTypeById: function(typeId){
       var me = this;
 
@@ -91,6 +96,52 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       });
       
       return requestedItem;
+    },
+
+    getNearestLocation: function(toLocation, locations){
+      var me = this;
+      
+      if(!locations || locations.length === 0) return;
+      
+      var nearestLocation;
+      var distanceToNearest;
+
+     locations.forEach(function(location){
+        var distanceTo = me.getKmBetweenPlaces(toLocation.lat, toLocation.lng, location.lat, location.lng);
+        if(!nearestLocation || distanceToNearest > distanceTo){
+          nearestLocation = location;
+          distanceToNearest = distanceTo;
+        }  
+      });
+
+      return nearestLocation;
+    },
+
+    getKmBetweenPlaces: function(lat1, lng1, lat2, lng2){
+      //http://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula
+      deg2rad = function(deg) {
+        return deg * (Math.PI/180)
+      }
+
+      var R = 6371; // Radius of the earth in km
+      var dLat = deg2rad(lat2-lat1);  // deg2rad below
+      var dLon = deg2rad(lng2-lng1); 
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+              Math.sin(dLon/2) * Math.sin(dLon/2); 
+
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+      var d = R * c; // Distance in km
+
+      return d;
+    },
+
+    loadGoogleMapsAndPlaces: function(callbackFn){
+      $.getScript('https://www.google.com/jsapi', function() {
+          google.load('maps', '3', { other_params: ['key=AIzaSyBnG2wcWi0MrBxd3wTtNCKTau-xHD_B324&libraries=places'], callback: function() {
+            callbackFn();
+          }});
+      });
     }
   };
 });

@@ -3,7 +3,7 @@
   100% { background-position: 512px 0; }
 }
 
-.dob-splash, .birthday-summary-strip{
+.dob-splash, .feature-strip{
    animation: animatedBackground 16s linear infinite;
 }
 

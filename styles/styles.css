@@ -245,6 +245,11 @@ select:focus, input:focus {
   color: #fff;
 }
 
+#addressField{
+  min-width: 400px;
+  width: 30%;
+}
+
 .plunder-button{
   border: 1px solid #ee5588;
   width: 150px;
@@ -260,7 +265,6 @@ select:focus, input:focus {
 
 .dob-splash select, .dob-splash input{
   color: black;
-  min-width: 50px;
   margin: 6px;
 }
 
@@ -351,7 +355,6 @@ select:focus, input:focus {
 }
 
 .settings-control{
-  width: 25%;
   float: left;
 }
 
@@ -404,17 +407,27 @@ select:focus, input:focus {
 
 .bounty-thumbnail:hover{
   opacity: 0.8;
+  text-decoration: none;
 }
 
-.bounty-thumbnail-details-left{
-  display: inline-block;
+.bounty-thumbnail-title{
+  padding-bottom: 10px;
+}
+
+.bounty-thumbnail-subtitle-left{
   width: 80%;
+  float: left;
 }
 
-.bounty-thumbnail-details-right{
-  display: inline-block;  
-  width: 20%;
-  text-align: right;
+.bounty-thumbnail-subtitle-km{
+  text-align: center;
+  width: 12%;
+  margin: 0 5px;
+  float: right;
+}
+
+.bounty-thumbnail-subtitle-km span{
+  width: 100%;
 }
 
 .bounty-thumbnail-image{

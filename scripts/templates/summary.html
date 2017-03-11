@@ -1,7 +1,7 @@
 <div class="feature-strip">
 	<div class="summary-feature grow-appear">
 		<h2>Shiver me timbers!</h2>
-		</span>Plunderin\ {{ getPlunderPeriodString() }} could earn you </span> 
+		</span>You could plunder </span> 
 		<h1>{{ getPlunderValue() | currency }}</h1>
 		<span>worth of free Birthday Bounty!</span> 
 		<br> 
@@ -9,7 +9,7 @@
 </div>
 <div class="summary-settings-container">
 	<div class="bounty-summary-settings">
-		<div class="settings-control">
+		<div class="settings-control col-lg-4 col-md-8 col-sm-6 col-xs-6">
 			<div class="settings-label"> 
 				Bounty Types: 
 			</div>
@@ -19,19 +19,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="settings-control">
-			<div class="settings-label"> 
-				Available Between: 
-			</div>
-			<div class="settings-input"> 
-				<select ng-model="bountyFilters.monthStart" ng-options="shortMonth for shortMonth in getShortMonths()"></select> 
-				<select ng-model="bountyFilters.dayStart" ng-options="day for day in getDaysInMonth(bountyFilters.monthStart)"></select> 
-				and  
-				<select ng-model="bountyFilters.monthFinish" ng-options="shortMonth for shortMonth in getShortMonths()"></select> 
-				<select ng-model="bountyFilters.dayFinish" ng-options="day for day in getDaysInMonth(bountyFilters.monthFinish)"></select> 
-			</div>
-		</div>
-		<div class="settings-control">
+        <div class="settings-control col-lg-3 hidden-md hidden-sm hidden-xs">
 			<div class="settings-label"> 
 				Sort By: 
 			</div>
@@ -39,13 +27,23 @@
 				<select ng-model="bountyFilters.sortBy" ng-options="getSorterString(sorter) for sorter in sorters"></select> 
 			</div>
 		</div>
-		<div class="settings-control"> 
+		<div class="settings-control col-lg-3 hidden-md hidden-sm hidden-xs">
+			<div class="settings-label"> 
+				Available Between: 
+			</div>
+			<div class="settings-input"> 
+				<select ng-model="bountyFilters.monthStart" ng-options="shortMonth for shortMonth in getShortMonths()"></select> 
+				<select ng-model="bountyFilters.dayStart" ng-options="day for day in getDaysInMonth(bountyFilters.monthStart)"></select> 
+				-  
+				<select ng-model="bountyFilters.monthFinish" ng-options="shortMonth for shortMonth in getShortMonths()"></select> 
+				<select ng-model="bountyFilters.dayFinish" ng-options="day for day in getDaysInMonth(bountyFilters.monthFinish)"></select> 
+			</div>
+		</div>
+        <div class="settings-control hidden-lg col-md-2 col-sm-2 col-xs-2"></div>
+		<div class="settings-control col-lg-2 col-md-2 col-sm-4 col-xs-4"> 
 		    <a class="standard-button"> 
-			View on Map 
-			</a> 
-			<a class="standard-button" ng-click="clearBirthday()" ng-if="dob"> 
-			Change Birthday/Postcode 
-			</a> 
+			    View on Map 
+			</a>
 		</div>
 	</div>
 </div>
@@ -56,20 +54,22 @@
 				Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters above. 
 			</div>
 			<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
-				<a class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
+				<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
 					<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
 					<img class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(bountyItem.types[0]).iconPath}}" />                         
 					</span> 
 					<div>
-						<div class="bounty-thumbnail-details-left">
+						<div class="bounty-thumbnail-title">
 							<h1>{{ bountyItem.title }}</h1>
-							{{ bountyItem.organisation.name }} 
 						</div>
-						<div class="bounty-thumbnail-details-right"> 
-							5km away 
+						<div class="bounty-thumbnail-subtitle-left">
+                            {{ bountyItem.organisation.name }}
 						</div>
+                        <div class="bounty-thumbnail-subtitle-km">
+                            {{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
+                        </div>
 					</div>
-				</a>
+				</div>
 			</div>
 		</div>
 	</div>

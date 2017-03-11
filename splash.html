@@ -1,0 +1,23 @@
+<div class="app-container" ng-controller="SplashController" ng-cloak>
+    <appheader></appheader>
+    <div ng-if="!root.dob" class="dob-splash">
+        <!-- <div>Enter ye postcode:</div>
+            <input placeholder="Postcode" />-->
+		<div class="splash-text">
+			<h1>Ahoy there, matey!</h1>
+			<h2>Enter your address to find birthday deals in your area:</h2>
+            <input id="addressField"></input>
+            <h2>and your birthday (optional):</h2>
+            <select ng-model="splashInput.day" ng-selected="01" ng-options="day for day in getDaysInMonth(birthday.month)"></select>
+			<select ng-model="splashInput.month" ng-options="shortMonth for shortMonth in getShortMonths()"></select>
+			<br/>
+			<div class="standard-button" ng-click="submitBirthday()">
+				Plunder some Birthday Bounty!
+			</div>
+		</div>
+    </div>
+    <div ng-if="root.dob">
+        <summary ng-controller="SummaryController"></summary>
+        <appfooter></appfooter>
+    </div>
+</div>     
