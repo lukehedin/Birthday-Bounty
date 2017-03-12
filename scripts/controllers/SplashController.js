@@ -7,11 +7,14 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
     //bounds: defaultBounds, default to melb?
     var options = { types: ['address'] };
     var input = document.getElementById('addressField');    
-    if(input) autocomplete = new google.maps.places.Autocomplete(input, options);
+    if(input){
+        autocomplete = new google.maps.places.Autocomplete(input, options);
+        input.focus();
+    }
   });
 
   //Default input fields object
-  $scope.bdayInput = {
+  $scope.splashInput = {
     day: 1,
     month: 'Jan'
   };
@@ -22,50 +25,29 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
     var address = autocomplete.getPlace();
     if(!address || !address.place_id) return; // alert user to provide
 
-    $scope.root.address = {
-        lat: address.geometry.location.lat(),
-        lng: address.geometry.location.lng(),
-        placeId: address.place_id
-    }
+    userDetails = {
+        address: {
+            lat: address.geometry.location.lat(),
+            lng: address.geometry.location.lng(),
+            placeId: address.place_id
+        }
+    };
 
-    localStorage.setItem("addressLat", $scope.root.address.lat);
-    localStorage.setItem("addressLng", $scope.root.address.lng);
-    localStorage.setItem("addressPlaceId", $scope.root.address.placeId);
+    var monthVal = $scope.splashInput.month;
+    var dayVal = $scope.splashInput.day;
 
-    var monthVal = moment($scope.bdayInput.month, 'MMM').month();
-    var dayVal = $scope.bdayInput.day;
+    localStorage.setItem("addressLat", userDetails.address.lat);
+    localStorage.setItem("addressLng", userDetails.address.lng);
+    localStorage.setItem("addressPlaceId", userDetails.address.placeId);
+    localStorage.setItem("bdayDay", dayVal);
+    localStorage.setItem("bdayMonth", monthVal);
 
-    var now = new Date();
-    var bdayDate = new Date(now.getFullYear(), monthVal, dayVal);
-    
-    $scope.root.dob = bdayDate;
-    localStorage.setItem("birthday", $scope.root.dob);
-  };
+    userDetails.bdayDay = dayVal;
+    userDetails.bdayMonth = monthVal;
 
-  $scope.getDaysInMonth = function(shortMonth){
-    if(!shortMonth) shortMonth = "Jan";
-    var days = moment(shortMonth, 'MMM').daysInMonth();
-    var daysArray = [];
-    for(var i = 1; i <= days; i++) daysArray.push(i);
-    return daysArray;
-  }
+    $scope.root.filters.availableMonth = monthVal;
+    $scope.root.filters.availableDay = dayVal;
 
-  $scope.getShortMonths = function(){
-    return moment.monthsShort();
-  }
-
-  $scope.dobFieldChange = function(fld){
-    var fldVal = $('#' + fld + 'Field')[0].value;
-
-    switch(fld){
-      case "day":
-        if(fldVal && (!isNaN(fldVal)) && fldVal.length === 2 && fldVal <= 31) $('#monthField').focus();
-        break;
-      case "month":
-        if(fldVal && (!isNaN(fldVal)) && fldVal.length === 2 && fldVal <= 12) $('#yearField').focus();
-        break;
-      default:
-        break;
-    }
+    $scope.root.savedUserDetails = userDetails;
   };
 });

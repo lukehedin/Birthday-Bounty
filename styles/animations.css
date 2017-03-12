@@ -3,7 +3,7 @@
   100% { background-position: 512px 0; }
 }
 
-.dob-splash, .feature-strip{
+.moving-background{
    animation: animatedBackground 16s linear infinite;
 }
 

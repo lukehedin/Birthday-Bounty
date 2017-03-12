@@ -1,69 +1,21 @@
 birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBountyFactory) {
   $scope.root = BirthdayBountyFactory;
 
-  $scope.sorters = {
-    ValueHighLow: 1,
-    ValueLowHigh: 2,
-    AvailEarlyLate: 3,
-    AvailLateEarly: 4,
-    OrgNameAZ: 5,
-    CloseBy: 6
-  };
-
-  $scope.defaultFilters = {
-      searchString: null,
-      includeTypes: [1,2,3,4,5,6],
-      minValue: 0,
-      maxValue: 200,
-      showUnknownValue: true,
-      monthStart: null,
-      dayStart: null,
-      monthFinish: null,
-      dayFinish: null,
-      includeRegistrationReq: true,
-      includeIdentificationReq: true,
-      includeDigitalVoucherReq: true,
-      includePaperVoucherReq: true,
-      showNotPlundered: true,
-      showPlundered: true,
-      sortBy: $scope.sorters.CloseBy
-  };
-
   $scope.bountyItemClicked = function(item){
     //$scope.root.homeScroll = window.pageYOffset;
     window.location = "#/bounty?bountyId=" + item.bountyId;
   };
 
-  $scope.resetBountyFilters = function(){
-    //clone deault filters to active ones
-    $scope.bountyFilters = jQuery.extend(true, {}, $scope.defaultFilters);
-  };
-  
-  $scope.resetBountyFilters();
-
   var existingBday = localStorage.getItem("birthday");
-
-  if(existingBday){
-    $scope.dob = new Date(existingBday);
-    
-    var plunderPeriod = getFullPlunderPeriod();
-
-    $scope.defaultFilters.monthStart = moment(plunderPeriod.start).format('MMM');
-    $scope.defaultFilters.monthFinish = moment(plunderPeriod.finish).format('MMM');
-    $scope.defaultFilters.dayStart = moment(plunderPeriod.start).date();
-    $scope.defaultFilters.dayFinish = moment(plunderPeriod.finish).date();
-
-    $scope.resetBountyFilters();
-  };
 
   $scope.getSorterString = function(sorter){
     switch(sorter){
-      case $scope.sorters.ValueHighLow: return "Max Value (High to Low)";
-      case $scope.sorters.ValueLowHigh: return "Max Value (Low to High)";
-      case $scope.sorters.AvailEarlyLate: return "Availability (Early to Late)";
-      case $scope.sorters.AvailLateEarly: return "Availability (Late to Early)";
-      case $scope.sorters.OrgNameAZ: return "Organisation Name (A-Z)";
-      case $scope.sorters.CloseBy: return "Nearest to Me";
+      case $scope.root.sorters.ValueHighLow: return "Max Value (High to Low)";
+      case $scope.root.sorters.ValueLowHigh: return "Max Value (Low to High)";
+      case $scope.root.sorters.AvailEarlyLate: return "Availability (Early to Late)";
+      case $scope.root.sorters.AvailLateEarly: return "Availability (Late to Early)";
+      case $scope.root.sorters.OrgNameAZ: return "Organisation Name (A-Z)";
+      case $scope.root.sorters.CloseBy: return "Nearest to Me";
     }
   };
 
@@ -83,27 +35,19 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
     return total;
   };
 
-  $scope.getPlunderPeriodString = function(){
-      var filterStart = new Date(moment().year(), moment($scope.bountyFilters.monthStart, 'MMM').month(), $scope.bountyFilters.dayStart);
-      var filterFinish = new Date(moment().year(), moment($scope.bountyFilters.monthFinish, 'MMM').month(), $scope.bountyFilters.dayFinish);
-      
-      if(filterStart.getTime() === filterFinish.getTime()) return "on " + moment(filterStart).format('dddd Do MMMM');
-      return "between " + moment(filterStart).format('dddd Do MMMM') + ' and ' + moment(filterFinish).format('dddd Do MMMM');
-  };
-
   $scope.toggleBountyType = function(type){
-      var index = $scope.bountyFilters.includeTypes.indexOf(type);
+      var index = $scope.root.filters.includeTypes.indexOf(type);
 
       if(index === -1){
-        $scope.bountyFilters.includeTypes.push(type);
+        $scope.root.filters.includeTypes.push(type);
       } else{
-        $scope.bountyFilters.includeTypes.splice(index, 1);
+        $scope.root.filters.includeTypes.splice(index, 1);
       }
   };
 
   $scope.getDistanceToItem = function(item){
-      var nearestLocation = $scope.root.getNearestLocation($scope.root.address, item.organisation.locations);
-      return $scope.root.getKmBetweenPlaces($scope.root.address.lat, $scope.root.address.lng, nearestLocation.lat, nearestLocation.lng);
+      var nearestLocation = $scope.root.getNearestLocation($scope.root.savedUserDetails.address, item);
+      return $scope.root.getKmBetweenPlaces($scope.root.savedUserDetails.address.lat, $scope.root.savedUserDetails.address.lng, nearestLocation.lat, nearestLocation.lng);
   };
 
   $scope.getBountyAvailabilityMessage = function(bountyItem){
@@ -124,29 +68,11 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
     }
   };
 
-  function getFullPlunderPeriod(){
-    var bdayDate = new Date($scope.dob);
-
-    var minDate = new Date(bdayDate);
-    var maxDate = new Date(bdayDate);
-
-    $scope.root.bountyData.forEach(function(item){
-        var itemPeriod = getItemAvailablePeriod(item);
-        var possibleMin = itemPeriod.start;
-        if(possibleMin < minDate) minDate = possibleMin;
-
-        var possibleMax = itemPeriod.finish;
-        if(possibleMax > maxDate) maxDate = possibleMax;
-    });
-
-    return {
-      start: minDate,
-      finish: maxDate
-    };
-  };
-
   function getItemAvailablePeriod(item){
-    var bdayDate = new Date($scope.dob);
+    var savedMonth = moment($scope.root.savedUserDetails.bdayMonth, 'MMM').month();
+    var bdayDate = new Date(new Date().getFullYear(), savedMonth, $scope.root.savedUserDetails.bdayDay);
+
+    moment($scope.root.savedUserDetails.bdayMonth, 'MMM')
     
     var itemStart = moment(bdayDate);
     var itemFinish = moment(bdayDate);
@@ -166,52 +92,20 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
   };
 
   $scope.filteredBountyData = function() {
-    var options = $scope.bountyFilters;
+    var options = $scope.root.filters;
     
     var shouldPush = function(item) {
-
-        if(options.searchString){
-          var searchFor = options.searchString.toLowerCase().trim();
-            if(searchFor !== ""
-            && item.title.toLowerCase().indexOf(searchFor) === -1 
-            && item.organisation.name.toLowerCase().indexOf(searchFor) === -1) return false;
-        }
-      
         //Included types
         if (options.includeTypes.indexOf(item.types[0]) === -1) return false;
 
-        // Monetary value
-        if(item.maxValue){
-          if ((options.minValue || options.minValue === 0) && item.maxValue < options.minValue) return false;
-          if ((options.maxValue || options.maxValue === 0) && item.maxValue > options.maxValue) return false;
-        } else if(!options.showUnknownValue) {
-          return false;
-        }
-
         //Availability
-        if(options.monthStart && options.dayStart && options.monthFinish && options.dayFinish){
-          var filterStart = new Date(moment().year(), moment(options.monthStart, 'MMM').month(), options.dayStart);
-          var filterFinish = new Date(moment().year(), moment(options.monthFinish, 'MMM').month(), options.dayFinish);
-
-          if(filterStart > filterFinish) filterStart.setFullYear(filterStart.getFullYear() - 1);
-
+        if(options.availableMonth && options.availableDay){
+          var filterDate = new Date(moment().year(), moment(options.availableMonth, 'MMM').month(), options.availableDay);
           var itemAvail = getItemAvailablePeriod(item);
 
-          if((itemAvail.start < filterFinish && itemAvail.finish < filterStart)) return false;
-          if((itemAvail.start > filterFinish && itemAvail.finish > filterStart)) return false;
+          if((itemAvail.start < filterDate && itemAvail.finish < filterDate)) return false;
+          if((itemAvail.start > filterDate && itemAvail.finish > filterDate)) return false;
         }
-
-
-        // Eligibility rules
-        if(!options.includeRegistrationReq && item.conditions.registrationRequiredUrl) return false;
-        if(!options.includeIdentificationReq && item.conditions.identificationRequired) return false;
-        if(!options.includeDigitalVoucherReq && item.conditions.digitalVoucherRequired) return false;
-        if(!options.includePaperVoucherReq && item.conditions.paperVoucherRequired) return false;
-
-        //Show Me
-        var inPlunder = $scope.root.myPlunder.indexOf(item.bountyId) !== -1;
-        if(inPlunder && !options.showPlundered) return false;
-        if(!inPlunder && !options.showNotPlundered) return false;
 
         return true;
     };
@@ -224,21 +118,21 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
 
      //Sort
       switch(parseInt(options.sortBy)){
-          case $scope.sorters.ValueHighLow:
+          case $scope.root.sorters.ValueHighLow:
             filteredData.sort(function(b1, b2){
               if(b1.maxValue === b2.maxValue) return 0;
               if(b1.maxValue < b2.maxValue) return 1;
               return -1;
             });
           break;
-          case $scope.sorters.ValueLowHigh:
+          case $scope.root.sorters.ValueLowHigh:
             filteredData.sort(function(b1, b2){
               if(b1.maxValue === b2.maxValue) return 0;
               if(b1.maxValue < b2.maxValue) return -1;
               return 1;
             });
           break;
-          case $scope.sorters.AvailEarlyLate:
+          case $scope.root.sorters.AvailEarlyLate:
             filteredData.sort(function(b1, b2){
               var b1Period = getItemAvailablePeriod(b1);
               var b2Period = getItemAvailablePeriod(b2);
@@ -248,7 +142,7 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
               return 0;
             });
           break;
-          case $scope.sorters.AvailLateEarly:
+          case $scope.root.sorters.AvailLateEarly:
             filteredData.sort(function(b1, b2){
               var b1Period = getItemAvailablePeriod(b1);
               var b2Period = getItemAvailablePeriod(b2);
@@ -258,20 +152,20 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
               return 0;
             });
           break;
-          case $scope.sorters.OrgNameAZ:
+          case $scope.root.sorters.OrgNameAZ:
             filteredData.sort(function(b1, b2){
               if(b1.organisation.name > b2.organisation.name) return 1;
               if(b1.organisation.name < b2.organisation.name) return -1;
               return 0;
             });
           break;
-          case $scope.sorters.CloseBy:
+          case $scope.root.sorters.CloseBy:
             filteredData.sort(function(b1, b2){
-              var b1ClosestLoc = $scope.root.getNearestLocation($scope.root.address, b1.organisation.locations);
-              var b2ClosestLoc = $scope.root.getNearestLocation($scope.root.address, b2.organisation.locations);
+              var b1ClosestLoc = $scope.root.getNearestLocation($scope.root.savedUserDetails.address, b1);
+              var b2ClosestLoc = $scope.root.getNearestLocation($scope.root.savedUserDetails.address, b2);
 
-              var b1Distance = $scope.root.getKmBetweenPlaces($scope.root.address.lat, $scope.root.address.lng, b1ClosestLoc.lat, b1ClosestLoc.lng);
-              var b2Distance = $scope.root.getKmBetweenPlaces($scope.root.address.lat, $scope.root.address.lng, b2ClosestLoc.lat, b2ClosestLoc.lng);
+              var b1Distance = $scope.root.getKmBetweenPlaces($scope.root.savedUserDetails.address.lat, $scope.root.savedUserDetails.address.lng, b1ClosestLoc.lat, b1ClosestLoc.lng);
+              var b2Distance = $scope.root.getKmBetweenPlaces($scope.root.savedUserDetails.address.lat, $scope.root.savedUserDetails.address.lng, b2ClosestLoc.lat, b2ClosestLoc.lng);
 
               if(b1Distance > b2Distance) return 1;
               if(b1Distance < b2Distance) return -1;

@@ -1,46 +1,40 @@
-<div class="feature-strip">
+<div class="feature-strip moving-background">
 	<div class="summary-feature grow-appear">
 		<h2>Shiver me timbers!</h2>
-		</span>You could plunder </span> 
-		<h1>{{ getPlunderValue() | currency }}</h1>
-		<span>worth of free Birthday Bounty!</span> 
+		</span>You could plunder {{ getPlunderValue() | currency }} worth of free Birthday Bounty!</span> 
 		<br> 
 	</div>
 </div>
 <div class="summary-settings-container">
 	<div class="bounty-summary-settings">
-		<div class="settings-control col-lg-4 col-md-8 col-sm-6 col-xs-6">
+		<div class="settings-control col-lg-5 col-md-5 col-sm-6 col-xs-12">
 			<div class="settings-label"> 
 				Bounty Types: 
 			</div>
 			<div class="settings-input">
 				<div ng-repeat="bountyType in root.bountyTypes track by $index"> 
-					<img title="{{bountyType.name}}" ng-class="{ unselected: bountyFilters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/> 
+					<img title="{{bountyType.name}}" ng-class="{ unselected: root.filters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/> 
 				</div>
 			</div>
 		</div>
-        <div class="settings-control col-lg-3 hidden-md hidden-sm hidden-xs">
+        <div class="settings-control col-lg-3 col-md-3 hidden-sm hidden-xs">
 			<div class="settings-label"> 
 				Sort By: 
 			</div>
 			<div class="settings-input"> 
-				<select ng-model="bountyFilters.sortBy" ng-options="getSorterString(sorter) for sorter in sorters"></select> 
+				<select ng-model="root.filters.sortBy" ng-options="getSorterString(sorter) for sorter in root.sorters"></select> 
 			</div>
 		</div>
-		<div class="settings-control col-lg-3 hidden-md hidden-sm hidden-xs">
+		<div class="settings-control col-lg-2 col-md-2 hidden-sm hidden-xs">
 			<div class="settings-label"> 
-				Available Between: 
+				Available On: 
 			</div>
 			<div class="settings-input"> 
-				<select ng-model="bountyFilters.monthStart" ng-options="shortMonth for shortMonth in getShortMonths()"></select> 
-				<select ng-model="bountyFilters.dayStart" ng-options="day for day in getDaysInMonth(bountyFilters.monthStart)"></select> 
-				-  
-				<select ng-model="bountyFilters.monthFinish" ng-options="shortMonth for shortMonth in getShortMonths()"></select> 
-				<select ng-model="bountyFilters.dayFinish" ng-options="day for day in getDaysInMonth(bountyFilters.monthFinish)"></select> 
+				<select ng-model="root.filters.availableMonth" ng-options="shortMonth for shortMonth in root.getShortMonths()"></select> 
+				<select ng-model="root.filters.availableDay" ng-options="day for day in root.getDaysInMonth(root.filters.availableMonth)"></select> 
 			</div>
 		</div>
-        <div class="settings-control hidden-lg col-md-2 col-sm-2 col-xs-2"></div>
-		<div class="settings-control col-lg-2 col-md-2 col-sm-4 col-xs-4"> 
+		<div class="settings-control col-lg-2 col-md-2 col-sm-6 hidden-xs"> 
 		    <a class="standard-button"> 
 			    View on Map 
 			</a>
@@ -56,14 +50,16 @@
 			<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
 				<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
 					<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
-					<img class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(bountyItem.types[0]).iconPath}}" />                         
+					<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
+                        <img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
+                    </div>
 					</span> 
 					<div>
 						<div class="bounty-thumbnail-title">
-							<h1>{{ bountyItem.title }}</h1>
+							<h1>{{ bountyItem.organisation.name }}</h1>
 						</div>
 						<div class="bounty-thumbnail-subtitle-left">
-                            {{ bountyItem.organisation.name }}
+                            {{ bountyItem.title }}
 						</div>
                         <div class="bounty-thumbnail-subtitle-km">
                             {{ getDistanceToItem(bountyItem) | number : 1 }}km</span>

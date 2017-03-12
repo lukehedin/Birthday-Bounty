@@ -8,6 +8,9 @@ birthdayBountyApp.config(function($routeProvider) {
     .when("/bounty", {
         templateUrl: "bounty.html"
     })
+    .when("/map", {
+        templateUrl: "map.html"
+    })
     .otherwise("/", {
         redirectTo: "/"
     });
@@ -15,14 +18,33 @@ birthdayBountyApp.config(function($routeProvider) {
 
 // BirthdayBountyFactory full of shared js data/functions
 birthdayBountyApp.factory('BirthdayBountyFactory', function(){
+  var me = this;
+
+  var allDetailsCached = 
+    localStorage.getItem("bdayDay") &&
+    localStorage.getItem("bdayMonth") &&
+    localStorage.getItem("addressLat") &&
+    localStorage.getItem("addressLng") &&
+    localStorage.getItem("addressPlaceId");
+
+  var savedUserDetails = null;
+  if(allDetailsCached){
+    savedUserDetails = {
+      bdayDay: localStorage.getItem("bdayDay"),
+      bdayMonth: localStorage.getItem("bdayMonth"),
+      address: {
+        lat: localStorage.getItem("addressLat"),
+        lng: localStorage.getItem("addressLng"),
+        placeId: localStorage.getItem("addressPlaceId")  
+      }
+    };
+  }
+
+  //return factory scope
   return {
     //Shared data
-    dob: localStorage.getItem("birthday") ? new Date(localStorage.getItem("birthday")) : null,
-    address: {
-      lat: localStorage.getItem("addressLat"),
-      lng: localStorage.getItem("addressLng"),
-      placeId: localStorage.getItem("addressPlaceId")  
-    },
+    savedUserDetails: savedUserDetails,
+    nearestLocationLookup: {}, // this is filled as we load locations, formatted { bountyId: nearestPlaceId}
     bountyData: bountyData,
     bountyTypes: [{ 
         id: 1,
@@ -72,10 +94,37 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       "You are a pirate!",
       "Yay! Piracy!"
     ],
+    sorters: {
+      ValueHighLow: 1,
+      ValueLowHigh: 2,
+      AvailEarlyLate: 3,
+      AvailLateEarly: 4,
+      OrgNameAZ: 5,
+      CloseBy: 6
+    },
+    filters: {
+      searchString: null,
+      includeTypes: [1,2,3,4,5,6],
+      availableMonth: localStorage.getItem("bdayMonth"),
+      availableDay: parseInt(localStorage.getItem("bdayDay")),
+      sortBy: 6
+    },
     myPlunder: [],
     //homeScroll: 0,
 
     //Shared functions - these CANNOT change variables in the scope
+    getShortMonths: function(){
+      return moment.monthsShort();
+    },
+
+    getDaysInMonth: function(shortMonth){
+      if(!shortMonth) shortMonth = "Jan";
+      var days = moment(shortMonth, 'MMM').daysInMonth();
+      var daysArray = [];
+      for(var i = 1; i <= days; i++) daysArray.push(i);
+      return daysArray;
+    },
+
     getTypeById: function(typeId){
       var me = this;
 
@@ -98,9 +147,15 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       return requestedItem;
     },
 
-    getNearestLocation: function(toLocation, locations){
+    getNearestLocation: function(toLocation, bountyItem){
       var me = this;
       
+      //Check if we already have this bounty item's nearest location in the lookup
+      if(me.nearestLocationLookup[bountyItem.bountyId]) return me.nearestLocationLookup[bountyItem.bountyId];
+
+      //If not, calculate it
+      var locations = bountyItem.organisation.locations;
+
       if(!locations || locations.length === 0) return;
       
       var nearestLocation;
@@ -111,9 +166,11 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
         if(!nearestLocation || distanceToNearest > distanceTo){
           nearestLocation = location;
           distanceToNearest = distanceTo;
-        }  
+        }
       });
 
+      //Add it to the lookup for next time
+      me.nearestLocationLookup[bountyItem.bountyId] = nearestLocation;
       return nearestLocation;
     },
 

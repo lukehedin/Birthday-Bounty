@@ -16,13 +16,18 @@ birthdayBountyApp.controller('DefaultController', function($scope, BirthdayBount
 
   //Birthday displayed in footer, facts somewhere?
   $scope.getBirthdayString = function() {
-    return moment($scope.root.dob).format('DD/MM');
+    return "TODO THIS";
   };
 
   //Clear button is on header
   $scope.clearBirthday = function(){
-    $scope.root.dob = null;
-    localStorage.removeItem("birthday");
+    $scope.root.savedUserDetails = null;
+
+    localStorage.removeItem("addressLat");
+    localStorage.removeItem("addressLng");
+    localStorage.removeItem("addressPlaceId");
+    localStorage.removeItem("bdayDay");
+    localStorage.removeItem("bdayMonth");
 
     window.location = './';
   };
