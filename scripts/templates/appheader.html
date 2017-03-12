@@ -1,13 +1,14 @@
 <div class="top-navigation-bar" ng-controller="DefaultController">
-	<img class="flag-icon" src="images/flag.svg">
+	
 	<div class="nav-right hidden-xs" ng-if="root.savedUserDetails">
 		<h4 class="tagline">{{ tagline }}</h4>
 		<a class="standard-button" ng-click="clearBirthday()"> 
-		    Change Birthday/Postcode 
+		    Change Address/Birthday 
 		</a> 
 		<a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>
 	</div>
-	<div class="logo-text">
+    <img class="flag-icon" src="images/flag.svg" ng-click="logoClicked()">
+	<div class="logo-text" >
 		BIRTHDAY<br/>BOUNTY
 	</div>
 </div>

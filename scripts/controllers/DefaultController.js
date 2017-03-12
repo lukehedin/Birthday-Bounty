@@ -31,4 +31,8 @@ birthdayBountyApp.controller('DefaultController', function($scope, BirthdayBount
 
     window.location = './';
   };
+
+  $scope.logoClicked = function(){
+    window.location.href = "#";
+  }
 });

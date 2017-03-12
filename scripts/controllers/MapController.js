@@ -1,8 +1,26 @@
 birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFactory){
   $scope.root = BirthdayBountyFactory;
 
+  var bountyIdParam = $scope.root.getUrlParamByName('bountyId');
+  if(bountyIdParam && parseInt(bountyIdParam) !== NaN){
+         
+  }
+
   $scope.bountyMarkers = [];
   $scope.bountyMarkerTooltip = null;
+
+  $scope.root.loadGoogleMapsAndPlaces(function(){
+    var mapContainer = document.getElementById('bountyMapContainer');
+
+    var googleMap = new google.maps.Map(mapContainer, {
+      center: {lat: parseFloat($scope.root.savedUserDetails.address.lat), lng: parseFloat($scope.root.savedUserDetails.address.lng)},
+      zoom: 13,
+      disableDefaultUI: true,
+      styles: $scope.root.mapStyle
+    });
+
+    loadAllBountyMarkers(googleMap);
+  });
 
   function loadAllBountyMarkers(gMap){
     var placesService = new google.maps.places.PlacesService(gMap);
@@ -28,32 +46,13 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
         tooltip.style.left = (event.pageX + tipOffsetX) + 'px';
     };
 
-    var showDetailedTooltip = function(event, place){
-        var tooltip = $scope.bountyMarkerTooltip;
-
-        if(!tooltip){
-          tooltip = document.createElement('div');
-          tooltip.className = "bounty-marker-tooltip";
-
-          $scope.bountyMarkerTooltip = tooltip;
-          $(document.body).append($scope.bountyMarkerTooltip);     
-        }
-
-        tooltip.innerHTML = "";
-        tooltip.innerHTML += '<b>' + place.name + '</b><br/>';
-        tooltip.innerHTML += place.formatted_address;
-
-        tooltip.style.top = (event.pageY + tipOffsetY)+ 'px';
-        tooltip.style.left = (event.pageX + tipOffsetX) + 'px';
-    };
-
     var createBountyMarker = function(item, location, image) {
       var marker = new google.maps.OverlayView();
 
       // Explicitly call setMap on this overlay.
       marker.setMap(gMap);
 
-      var itemType = $.grep($scope.bountyTypes, function(type){ return type.id == item.types[0]; })[0];
+      var itemType = $.grep($scope.root.bountyTypes, function(type){ return type.id == item.types[0]; })[0];
       marker.bountyItem = item;
       marker.bountyLocation = location;
 
@@ -65,7 +64,7 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
           if (!div) {
               div = marker.div = document.createElement('div');
               div.className = "bounty-marker";
-              div.hidden = $scope.filteredBountyData().indexOf(item) === -1;
+              div.hidden = $scope.root.bountyData.indexOf(item) === -1;
               
               div.style.width = markerWidth + 'px';
               div.style.height = markerHeight + 'px';
@@ -75,23 +74,8 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
               
               google.maps.event.addDomListener(div, "click", function(event) {      
                   google.maps.event.trigger(marker, "click"); //todo: need this?
-
-                  //If we haven't already loaded this place's details
-                  if(!location.placeDetails){
-                      //Try to load them
-                      placesService.getDetails({placeId:location.placeId},function(placeResult, status){
-                        if(status == "OK"){
-                          //Set the place details so we have it
-                          location.placeDetails = placeResult;
-                          showDetailedTooltip(event, placeResult);
-                        } else{
-                          //No place details found
-                        }
-                    });
-                  } else {
-                    //We already have the place details
-                    showDetailedTooltip(event, location.placeDetails);
-                  }
+                   $scope.bountyMarkerTooltip.remove();
+                   window.location.href = '#/bounty?bountyId=' +  marker.bountyItem.bountyId + '&placeId=' + location.placeId;
               });
 
               google.maps.event.addDomListener(div, "mousemove", function(event) {
@@ -123,7 +107,7 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
       $scope.bountyMarkers.push(marker);
     }
 
-    $scope.bountyData.forEach(function(item){
+    $scope.root.bountyData.forEach(function(item){
       item.organisation.locations.forEach(function(location){
         var latLng = new google.maps.LatLng(location.lat, location.lng);
 

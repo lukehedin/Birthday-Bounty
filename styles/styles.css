@@ -43,6 +43,10 @@ select:focus, input:focus {
   text-align: left;
 }
 
+.feature-text .standard-button{
+  margin: 0 10px;
+}
+
 /*Top Nav Bar*/
 .top-navigation-bar {
   height: 80px;
@@ -58,6 +62,11 @@ select:focus, input:focus {
   font-size: 32px;
   line-height: 28px;
   padding-top: 10px;
+}
+
+.flag-icon:hover{
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 .top-navigation-bar .flag-icon{
@@ -106,7 +115,6 @@ select:focus, input:focus {
 }
 
 .footer-strip {
-  margin: 20px 0 0 0;
   padding: 20px 0 20px 0;
   font-size: 16px;
 }
@@ -172,46 +180,12 @@ select:focus, input:focus {
     padding: 2px;
 }
 
-.bounty-map-container {
-  position: relative;
-  background-color: #f2f2f2;
-  width: 100%;
-  height: 50vh;
-}
-
-.bounty-map-mini-container{
-  position: relative;
-  width: 100%;
-  height: 200px;
-}
-
-.bounty-map{
-  width: 100%;
-  height: 100%; 
-}
-
 .map-view-button{
   position: absolute;
   margin: 5px;
   width: 100px;
   top: 0;
   left: 0;
-}
-
-.plunder-options{
-  bottom: 0;
-  right: 0;
-
-  width: 340px;
-
-  position: absolute;
-  color: #444444;
-  background-color: white;
-  border-radius: 25px;
-  border: 1px solid #bcbbbb;
-  margin: 2px;
-  padding: 2px;
-  z-index: 999; 
 }
 
 .reset-filters-button{
@@ -258,19 +232,6 @@ select:focus, input:focus {
   width: 80%;
 }
 
-.plunder-button{
-  border: 1px solid #ee5588;
-  width: 150px;
-  margin: 10px auto;
-  padding: 10px;
-  cursor: pointer;
-  background-color: #ff6699;
-}
-
-.plunder-button:hover{
-  background-color: #ee5588;
-}
-
 .dob-splash select, .dob-splash input{
   color: black;
   margin: 6px;
@@ -310,12 +271,6 @@ select:focus, input:focus {
   margin: 30px 0 30px;
 }
 
-.bounty-summary-container{
-  width: 100%;
-  min-height: 80vh;
-  display: inline-block;
-}
-
 .bounty-summary-left{
   width: 30%;
   float: left;
@@ -337,6 +292,7 @@ select:focus, input:focus {
 }
 
 .content-wrapper{
+  padding: 20px 0;
   overflow: auto;
   font-family: 'Didact Gothic', sans-serif; 
   color: #797876;
@@ -357,7 +313,7 @@ select:focus, input:focus {
   overflow: auto;
 }
 
-.bounty-summary-map-mini, .bounty-map-container, .bounty-summary-settings, .bounty-summary-plunder{
+.bounty-summary-settings{
   font-family: 'Didact Gothic', sans-serif;    
   color: #797876;
 }
@@ -389,12 +345,6 @@ select:focus, input:focus {
 
 .filter-value input{
   max-width: 50px;
-}
-
-.bounty-summary-items-container, .bounty-detail-container{
-  width: 100%;
-  padding-top: 30px;
-  font-size: 16px;
 }
 
 .bounty-thumbnail h1{
@@ -447,15 +397,21 @@ select:focus, input:focus {
   width: 100%;
 }
 
-.bounty-viewing-item-map-container{
-  margin-top: 20px;
-}
-
-.bounty-feature-image, .bounty-viewing-item-map-container{
+.bounty-feature-image, .bounty-map-for-item{
   height: 300px;
 }
 
-.bounty-thumbnail-image, .bounty-feature-image, .bounty-viewing-item-map-container{
+.bounty-map-for-item{
+  margin-top: 20px;
+}
+
+.bounty-full-map{
+  height: 70vh;
+  min-height: 400px;
+}
+
+.bounty-thumbnail-image, .bounty-feature-image, .bounty-map-container{
+  display: block;
   background: #F5F7F9 url(../images/background-trans.svg) no-repeat 50% 50%;
   background-size: cover;
   border-radius: 10px;
@@ -535,27 +491,7 @@ select:focus, input:focus {
   fill: #ee5588;
 }
 
-/* My Plunder */
-.bounty-summary-plunder{
-  overflow: auto;
-}
-
-.my-plunder-item{
-  margin: 5px 0 5px 0;
-}
-
-.my-plunder-item .my-plunder-item-left{
-  width: 80%;
-  float: left;
-}
-
-.my-plunder-item .my-plunder-item-right{
-  width: 20%;
-  float: right;
-}
-
-.plunder-total{
-  font-weight: bold;
-  text-align: right;
-  padding-right: 10px;
+#bountyMapContainer{
+  height: 100%;
+  width: 100%;
 }

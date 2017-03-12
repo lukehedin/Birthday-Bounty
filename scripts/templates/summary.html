@@ -1,5 +1,5 @@
 <div class="feature-strip moving-background">
-	<div class="summary-feature grow-appear">
+	<div class="feature-text">
 		<h2>Shiver me timbers!</h2>
 		</span>You could plunder {{ getPlunderValue() | currency }} worth of free Birthday Bounty!</span> 
 		<br> 
@@ -35,38 +35,34 @@
 			</div>
 		</div>
 		<div class="settings-control col-lg-2 col-md-2 col-sm-6 hidden-xs"> 
-		    <a class="standard-button"> 
+		    <a class="standard-button" href="#/map"> 
 			    View on Map 
 			</a>
 		</div>
 	</div>
 </div>
 <div class="content-wrapper">
-	<div class="bounty-summary-container">
-		<div class="bounty-summary-items-container">
-			<div ng-if="filteredBountyData().length < 1" class="no-bounty-message"> 
-				Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters above. 
-			</div>
-			<div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
-				<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
-					<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
-					<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
-                        <img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
-                    </div>
-					</span> 
-					<div>
-						<div class="bounty-thumbnail-title">
-							<h1>{{ bountyItem.organisation.name }}</h1>
-						</div>
-						<div class="bounty-thumbnail-subtitle-left">
-                            {{ bountyItem.title }}
-						</div>
-                        <div class="bounty-thumbnail-subtitle-km">
-                            {{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
-                        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div ng-if="filteredBountyData().length < 1" class="no-bounty-message"> 
+    	Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters above. 
+    </div>
+    <div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
+    	<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
+    		<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
+    		<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
+                <img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
+            </div>
+    		</span> 
+    		<div>
+    			<div class="bounty-thumbnail-title">
+    				<h1>{{ bountyItem.organisation.name }}</h1>
+    			</div>
+    			<div class="bounty-thumbnail-subtitle-left">
+                    {{ bountyItem.title }}
+    			</div>
+                <div class="bounty-thumbnail-subtitle-km">
+                    {{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
+                </div>
+    		</div>
+    	</div>
+    </div>
 </div>

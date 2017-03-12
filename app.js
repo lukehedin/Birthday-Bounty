@@ -147,6 +147,17 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       return requestedItem;
     },
 
+    getLocationByPlaceId: function(placeId, bountyItem){
+      var me = this;
+      var place = null;
+
+      bountyItem.organisation.locations.forEach(function(location){
+        if(location.placeId === placeId) place = location;
+      });
+
+      return place;
+    },
+
     getNearestLocation: function(toLocation, bountyItem){
       var me = this;
       
@@ -192,6 +203,18 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
 
       return d;
     },
+
+    //Function to get query params
+    getUrlParamByName: function(name) {
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(window.location.href);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    },
+  
+    mapStyle: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#bcbbbb"},{"visibility":"on"}]}],
 
     loadGoogleMapsAndPlaces: function(callbackFn){
       $.getScript('https://www.google.com/jsapi', function() {
