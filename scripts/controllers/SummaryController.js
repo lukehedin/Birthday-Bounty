@@ -69,8 +69,13 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
   };
 
   function getItemAvailablePeriod(item){
+    var now = new Date();
+    var thisYear = new Date().getFullYear();
+
     var savedMonth = moment($scope.root.savedUserDetails.bdayMonth, 'MMM').month();
-    var bdayDate = new Date(new Date().getFullYear(), savedMonth, $scope.root.savedUserDetails.bdayDay);
+    var bdayDate = new Date(thisYear, savedMonth, $scope.root.savedUserDetails.bdayDay);
+
+    if(now > bdayDate) bdayDate.setFullYear(thisYear + 1);
 
     moment($scope.root.savedUserDetails.bdayMonth, 'MMM')
     
@@ -100,7 +105,12 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
 
         //Availability
         if(options.availableMonth && options.availableDay){
-          var filterDate = new Date(moment().year(), moment(options.availableMonth, 'MMM').month(), options.availableDay);
+          var now = new Date();
+          var thisYear = new Date().getFullYear();
+
+          var filterDate = new Date(thisYear, moment(options.availableMonth, 'MMM').month(), options.availableDay);
+          if(now > filterDate) filterDate.setFullYear(thisYear + 1);
+
           var itemAvail = getItemAvailablePeriod(item);
 
           if((itemAvail.start < filterDate && itemAvail.finish < filterDate)) return false;
