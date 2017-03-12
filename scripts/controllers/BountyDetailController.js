@@ -20,29 +20,37 @@ birthdayBountyApp.controller('BountyDetailController', function($scope, Birthday
 
     if(!focusLocation) return;
 
-    var mapContainer = document.getElementById('bountyMapContainer');
-    var nearestLocLatLong = {lat: parseFloat(focusLocation.lat), lng: parseFloat(focusLocation.lng)};
+    var renderMapWhenViewReady = function(){
+      var mapContainer = document.getElementById('bountyMapContainer');
 
-    var googleMap = new google.maps.Map(mapContainer, {
-      center: nearestLocLatLong,
-      zoom: 14,
-      disableDefaultUI: true,
-      styles: $scope.root.mapStyle
-    });
-    
-    var placesService = new google.maps.places.PlacesService(googleMap);
-    placesService.getDetails({placeId:focusLocation.placeId},function(placeResult, status){
-        if(status == "OK"){
-          $scope.nearestBountyPlace = placeResult;
+      if(!mapContainer){
+          window.setTimeout(renderMapWhenViewReady, 300);
+      } else{
+          var nearestLocLatLong = {lat: parseFloat(focusLocation.lat), lng: parseFloat(focusLocation.lng)};
 
-          var marker = new google.maps.Marker({
-              position: nearestLocLatLong,
-              map: googleMap
+          var googleMap = new google.maps.Map(mapContainer, {
+          center: nearestLocLatLong,
+          zoom: 14,
+          disableDefaultUI: true,
+          styles: $scope.root.mapStyle
           });
 
-          $scope.$apply();
-        } else{ /*No place details found*/ }
-    });
+          var placesService = new google.maps.places.PlacesService(googleMap);
+          placesService.getDetails({placeId:focusLocation.placeId},function(placeResult, status){
+            if(status == "OK"){
+                $scope.nearestBountyPlace = placeResult;
+                var marker = new google.maps.Marker({
+                    position: nearestLocLatLong,
+                    map: googleMap
+                });
+
+                $scope.$apply();
+            }
+        });
+      }
+    };
+
+    window.setTimeout(renderMapWhenViewReady, 300);
   });
 
   $scope.viewingBountyItem = bountyItem;

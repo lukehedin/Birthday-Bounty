@@ -10,16 +10,24 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
   $scope.bountyMarkerTooltip = null;
 
   $scope.root.loadGoogleMapsAndPlaces(function(){
-    var mapContainer = document.getElementById('bountyMapContainer');
+      var renderMapWhenViewReady = function(){
+        var mapContainer = document.getElementById('bountyMapContainer');
 
-    var googleMap = new google.maps.Map(mapContainer, {
-      center: {lat: parseFloat($scope.root.savedUserDetails.address.lat), lng: parseFloat($scope.root.savedUserDetails.address.lng)},
-      zoom: 13,
-      disableDefaultUI: true,
-      styles: $scope.root.mapStyle
-    });
+        if(!mapContainer){
+            window.setTimeout(renderMapWhenViewReady, 300);
+        } else{
+            var googleMap = new google.maps.Map(mapContainer, {
+            center: {lat: parseFloat($scope.root.savedUserDetails.address.lat), lng: parseFloat($scope.root.savedUserDetails.address.lng)},
+            zoom: 13,
+            disableDefaultUI: true,
+            styles: $scope.root.mapStyle
+            });
 
-    loadAllBountyMarkers(googleMap);
+            loadAllBountyMarkers(googleMap);
+        }
+      };
+
+      window.setTimeout(renderMapWhenViewReady, 300);
   });
 
   function loadAllBountyMarkers(gMap){
