@@ -39,7 +39,7 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
     var showBountyIconTooltip = function(event, bountyItem){
         var tooltip = $scope.bountyMarkerTooltip;
 
-        if(!tooltip){
+        if(!tooltip) {
           tooltip = document.createElement('div');
           tooltip.className = "bounty-marker-tooltip";
           tooltip.innerHTML = "";
@@ -60,7 +60,7 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
       // Explicitly call setMap on this overlay.
       marker.setMap(gMap);
 
-      var itemType = $.grep($scope.root.bountyTypes, function(type){ return type.id == item.types[0]; })[0];
+      var itemType = $scope.root.getTypeById(item.types[0]);
       marker.bountyItem = item;
       marker.bountyLocation = location;
 

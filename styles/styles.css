@@ -32,18 +32,29 @@ select:focus, input:focus {
 }
 
 /*Keeping things inside 80vw*/
-.content-wrapper, .top-navigation-bar, .feature-strip .feature-text, .footer-strip .footer-text, .bounty-summary-settings{
+.content-wrapper, .top-navigation-bar, .feature-strip .feature-text, .feature-nav, .footer-strip .footer-text, .bounty-summary-settings{
   min-width: 280px;
   max-width: 1100px;
   width: 80vw;
   margin: auto;
 }
 
-.feature-text{
+@media screen and (min-width: 768px) {
+  .feature-text{
+    text-align: left;
+  }
+}
+@media screen and (max-width: 767px) {
+  .feature-text{
+    text-align: center;
+  }
+}
+
+.feature-nav{
   text-align: left;
 }
 
-.feature-text .standard-button{
+.feature-nav .standard-button{
   margin: 0 10px;
 }
 
@@ -62,11 +73,12 @@ select:focus, input:focus {
   font-size: 32px;
   line-height: 28px;
   padding-top: 10px;
+  cursor: default;
 }
 
 .flag-icon:hover{
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .top-navigation-bar .flag-icon{
@@ -90,9 +102,15 @@ select:focus, input:focus {
   margin-top: 15px;
 }
 
-.nav-right .standard-button{
+.nav-right a{
   font-size: 12px;
   margin-left: 10px;
+}
+
+.nav-right .standard-button{
+  font-size: 12px;
+  margin-top: 10px;
+  padding: 5px;
 }
 
 /*feature-strip & footer*/
@@ -111,11 +129,11 @@ select:focus, input:focus {
 
 .feature-strip{
   font-size: 22px;
-  padding: 30px 0 30px 0;
+  padding: 15px 0 15px 0;
 }
 
 .footer-strip {
-  padding: 20px 0 20px 0;
+  padding: 5px 0 5px 0;
   font-size: 16px;
 }
 
@@ -350,14 +368,14 @@ select:focus, input:focus {
 .bounty-thumbnail h1{
   font-family: 'Didact Gothic', sans-serif;  
   color: #ee5588;
-  font-size: 20px;
+  font-size: 19px;
   margin: 0;
   font-weight: bold;
 }
 
 .bounty-thumbnail{
   cursor: pointer;
-  height: 240px; /*this needs consideration for scaling*/
+  height: 220px;
   font-family: 'Didact Gothic', sans-serif;  
   color: #797876;
   margin-bottom: 20px;
@@ -410,7 +428,7 @@ select:focus, input:focus {
   min-height: 400px;
 }
 
-.bounty-thumbnail-image, .bounty-feature-image, .bounty-map-container{
+.bounty-thumbnail-image, .bounty-feature-image, .bounty-map-container, #bountyMapContainer{
   display: block;
   background: #F5F7F9 url(../images/background-trans.svg) no-repeat 50% 50%;
   background-size: cover;
@@ -433,8 +451,26 @@ select:focus, input:focus {
   top: 134px;
 }
 
+.bounty-new-image{
+  color: white;
+  padding: 0 4px;
+  background-color: #ee5588;
+  font-size: 10px;
+  border-radius: 2px;
+  display: inline;
+}
+
 .bounty-summary-row hr {
   margin: 16px 0;
+}
+
+.bounty-viewing-item-org{
+  line-height: 42px;
+}
+
+.bounty-viewing-item-title{
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .bounty-item-details b, .nearest-organisation-info b{
@@ -458,7 +494,6 @@ select:focus, input:focus {
 
 .bounty-item-org-social{
   text-align: right;
-  margin-top: 10px;
 }
 
 .bounty-item-org-social a:hover{

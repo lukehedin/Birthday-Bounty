@@ -7,6 +7,11 @@
 		</a> 
 		<a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>
 	</div>
+    <div class="nav-right hidden-sm hidden-md hidden-lg" ng-if="root.savedUserDetails">
+       <div class="standard-button" style="padding: 2px;" ng-click="clearBirthday()"> 
+		    Change<br/>Address</br>or Bday<br/>
+		</div> 
+    </div>
     <img class="flag-icon" src="images/flag.svg" ng-click="logoClicked()">
 	<div class="logo-text" >
 		BIRTHDAY<br/>BOUNTY

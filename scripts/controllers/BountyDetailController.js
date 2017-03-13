@@ -53,5 +53,17 @@ birthdayBountyApp.controller('BountyDetailController', function($scope, Birthday
     window.setTimeout(renderMapWhenViewReady, 300);
   });
 
+  var availablePeriod = $scope.root.getItemAvailablePeriod(bountyItem);
+  var start = moment(availablePeriod.start);
+  var finish = moment(availablePeriod.finish);
+
+  if(bountyItem.conditions.wholeMonth){
+    $scope.availablePeriodString = 'Anytime during ' + start.format('MMMM');
+  } else{
+    $scope.availablePeriodString = start.diff(finish) === 0
+    ? 'Only on your birthday - ' + start.format('dddd DD MMM')
+    : 'Between ' + start.format('dddd DD MMM') + " - " + finish.format('dddd DD MMM');
+  }
+
   $scope.viewingBountyItem = bountyItem;
 });

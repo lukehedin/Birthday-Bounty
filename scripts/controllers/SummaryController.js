@@ -45,6 +45,14 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
       }
   };
 
+  $scope.isNew = function(bountyItem){
+      var created = moment(bountyItem.created);
+      var now = moment();
+
+      var daysDiff = moment.duration(now.diff(created)).asDays();
+      return daysDiff < 7;
+  };
+
   $scope.getDistanceToItem = function(item){
       var nearestLocation = $scope.root.getNearestLocation($scope.root.savedUserDetails.address, item);
       return $scope.root.getKmBetweenPlaces($scope.root.savedUserDetails.address.lat, $scope.root.savedUserDetails.address.lng, nearestLocation.lat, nearestLocation.lng);
@@ -68,34 +76,6 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
     }
   };
 
-  function getItemAvailablePeriod(item){
-    var now = new Date();
-    var thisYear = new Date().getFullYear();
-
-    var savedMonth = moment($scope.root.savedUserDetails.bdayMonth, 'MMM').month();
-    var bdayDate = new Date(thisYear, savedMonth, $scope.root.savedUserDetails.bdayDay);
-
-    if(now > bdayDate) bdayDate.setFullYear(thisYear + 1);
-
-    moment($scope.root.savedUserDetails.bdayMonth, 'MMM')
-    
-    var itemStart = moment(bdayDate);
-    var itemFinish = moment(bdayDate);
-
-    if(item.conditions.wholeMonth){
-      itemStart = itemStart.startOf('month').toDate();
-      itemFinish = itemFinish.endOf('month').toDate();
-    } else{
-      itemStart = itemStart.subtract(item.conditions.daysBefore, 'days').toDate();
-      itemFinish = itemFinish.add(item.conditions.daysAfter, 'days').toDate();
-    }
-
-    return {
-      start: new Date(itemStart),
-      finish: new Date(itemFinish)
-    }
-  };
-
   $scope.filteredBountyData = function() {
     var options = $scope.root.filters;
     
@@ -111,7 +91,7 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
           var filterDate = new Date(thisYear, moment(options.availableMonth, 'MMM').month(), options.availableDay);
           if(now > filterDate) filterDate.setFullYear(thisYear + 1);
 
-          var itemAvail = getItemAvailablePeriod(item);
+          var itemAvail = $scope.root.getItemAvailablePeriod(item);
 
           if((itemAvail.start < filterDate && itemAvail.finish < filterDate)) return false;
           if((itemAvail.start > filterDate && itemAvail.finish > filterDate)) return false;
@@ -144,8 +124,8 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
           break;
           case $scope.root.sorters.AvailEarlyLate:
             filteredData.sort(function(b1, b2){
-              var b1Period = getItemAvailablePeriod(b1);
-              var b2Period = getItemAvailablePeriod(b2);
+              var b1Period = $scope.root.getItemAvailablePeriod(b1);
+              var b2Period = $scope.root.getItemAvailablePeriod(b2);
 
               if(b1Period.start > b2Period.start) return 1;
               if(b1Period.start < b2Period.start) return -1;
@@ -154,8 +134,8 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
           break;
           case $scope.root.sorters.AvailLateEarly:
             filteredData.sort(function(b1, b2){
-              var b1Period = getItemAvailablePeriod(b1);
-              var b2Period = getItemAvailablePeriod(b2);
+              var b1Period = $scope.root.getItemAvailablePeriod(b1);
+              var b2Period = $scope.root.getItemAvailablePeriod(b2);
 
               if(b1Period.finish > b2Period.finish) return -1;
               if(b1Period.finish < b2Period.finish) return 1;

@@ -147,6 +147,36 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       return requestedItem;
     },
 
+    getItemAvailablePeriod: function(item){
+      var me = this;
+
+      var now = new Date();
+      var thisYear = new Date().getFullYear();
+
+      var savedMonth = moment(me.savedUserDetails.bdayMonth, 'MMM').month();
+      var bdayDate = new Date(thisYear, savedMonth, me.savedUserDetails.bdayDay);
+
+      if(now > bdayDate) bdayDate.setFullYear(thisYear + 1);
+
+      moment(me.savedUserDetails.bdayMonth, 'MMM')
+      
+      var itemStart = moment(bdayDate);
+      var itemFinish = moment(bdayDate);
+
+      if(item.conditions.wholeMonth){
+        itemStart = itemStart.startOf('month').toDate();
+        itemFinish = itemFinish.endOf('month').toDate();
+      } else{
+        itemStart = itemStart.subtract(item.conditions.daysBefore, 'days').toDate();
+        itemFinish = itemFinish.add(item.conditions.daysAfter, 'days').toDate();
+      }
+
+      return {
+        start: new Date(itemStart),
+        finish: new Date(itemFinish)
+      }
+    },
+
     getLocationByPlaceId: function(placeId, bountyItem){
       var me = this;
       var place = null;
@@ -222,6 +252,42 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
             callbackFn();
           }});
       });
+    },
+
+    //Tooltips
+    typeTip: null,
+    hideTypeTip: function(){
+      var me = this;
+      if(me.typeTip){
+        me.typeTip.remove();
+        me.typeTip = null;
+      }
+    },
+    getTypeTip: function(hoverEvent, typeId, delay){
+      var me = this;
+      var type = me.getTypeById(typeId);
+
+      if(type){
+        if(!me.typeTip) {
+          me.typeTip = document.createElement('div');
+          document.body.append(me.typeTip);     
+        }
+
+        me.typeTip.className = "bounty-marker-tooltip";
+        me.typeTip.innerHTML = "";
+        me.typeTip.innerHTML += '<b>' + type.name + '</b>';
+        me.typeTip.style.visibility = 'hidden'
+
+        var targetRect = event.currentTarget.getBoundingClientRect();
+        me.typeTip.style.top = event.currentTarget.y + targetRect.height + 4;
+        me.typeTip.style.left = event.currentTarget.x - (targetRect.width / 2);
+
+        var show = function(){
+          if(me.typeTip) me.typeTip.style.visibility = 'visible';
+        };
+
+        (delay ? window.setTimeout(show, delay) : show());
+      }
     }
   };
 });

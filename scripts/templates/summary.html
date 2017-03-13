@@ -1,7 +1,7 @@
 <div class="feature-strip moving-background">
-	<div class="feature-text">
-		<h2>Shiver me timbers!</h2>
-		</span>You could plunder {{ getPlunderValue() | currency }} worth of free Birthday Bounty!</span> 
+	<div class="feature-text row">
+		<h2 class="col-xs-12">Shiver me timbers!</h2>
+		<span class="col-xs-12">You could plunder {{ getPlunderValue() | currency }} worth of free Birthday Bounty!</span> 
 		<br> 
 	</div>
 </div>
@@ -13,7 +13,7 @@
 			</div>
 			<div class="settings-input">
 				<div ng-repeat="bountyType in root.bountyTypes track by $index"> 
-					<img title="{{bountyType.name}}" ng-class="{ unselected: root.filters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)"/> 
+					<img ng-class="{ unselected: root.filters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)" ng-mouseenter="root.getTypeTip($event, bountyType.id, 500)" ng-mouseleave="root.hideTypeTip()"/> 
 				</div>
 			</div>
 		</div>
@@ -48,9 +48,9 @@
     <div ng-if="!!filteredBountyData()" ng-repeat="bountyItem in filteredBountyData() track by $index">
     	<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
     		<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
-    		<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
-                <img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
-            </div>
+                <div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
+                    <img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
+                </div>
     		</span> 
     		<div>
     			<div class="bounty-thumbnail-title">
@@ -58,6 +58,9 @@
     			</div>
     			<div class="bounty-thumbnail-subtitle-left">
                     {{ bountyItem.title }}
+                    <div ng-if="isNew(bountyItem)" class="bounty-new-image">
+                        NEW
+                    </div>
     			</div>
                 <div class="bounty-thumbnail-subtitle-km">
                     {{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
