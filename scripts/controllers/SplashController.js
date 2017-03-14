@@ -5,7 +5,7 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
   var autocomplete;
   $scope.root.loadGoogleMapsAndPlaces(function(){
     //bounds: defaultBounds, default to melb?
-    var options = { types: ['address'] };
+    var options = { types: ['address'], componentRestrictions: {country: 'au'} };
     var input = document.getElementById('addressField');    
     if(input){
         autocomplete = new google.maps.places.Autocomplete(input, options);

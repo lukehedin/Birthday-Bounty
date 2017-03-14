@@ -310,6 +310,7 @@ select:focus, input:focus {
 }
 
 .content-wrapper{
+  min-height: 90vh;
   padding: 20px 0;
   overflow: auto;
   font-family: 'Didact Gothic', sans-serif; 
