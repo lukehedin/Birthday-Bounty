@@ -35,14 +35,14 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
 
       if(input.value.toLowerCase() === "melbourne"){
         userAddress = {
-            lat: -37.8274851,
-            lng: 144.9527565,
+            lat: -37.813783,
+            lng: 144.962947,
             placeId: "ChIJgf0RD69C1moR4OeMIXVWBAU"
         };
       } else if (input.value.toLowerCase() === "sydney"){
         userAddress = {
-            lat: -33.847973,
-            lng: 150.6517824,
+            lat: -33.868879,
+            lng: 151.209090,
             placeId: "ChIJP5iLHkCuEmsRwMwyFmh9AQU"
         };
       } else {
