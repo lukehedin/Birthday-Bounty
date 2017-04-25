@@ -45,7 +45,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     //Shared data
     savedUserDetails: savedUserDetails,
     nearestLocationLookup: {}, // this is filled as we load locations, formatted { bountyId: nearestPlaceId}
-    bountyData: bountyData,
+    bountyData: [].concat(bountyDataVic, bountyDataNsw),
     bountyTypes: [{ 
         id: 1,
         ordinal: 1,

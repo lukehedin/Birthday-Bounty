@@ -7,6 +7,7 @@
 			<h1>Ahoy there, matey!</h1>
 			<h2>Enter your address and birthday to find birthday deals in your area:</h2>
             <input id="addressField" placeholder="Start typing to find your address..."></input>
+            <div>or select a city <div class="standard-button" ng-click="autoAddress('Melbourne')">Melbourne</div> <div class="standard-button" ng-click="autoAddress('Sydney')">Sydney</div></div>
             <h2>and your birthday:</h2>
             <select ng-model="splashInput.day" ng-options="day for day in root.getDaysInMonth(splashInput.month)"></select>
 			<select ng-model="splashInput.month" ng-options="shortMonth for shortMonth in root.getShortMonths()"></select>

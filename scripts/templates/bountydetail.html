@@ -55,7 +55,7 @@
 			</div>
 			<div ng-if="viewingBountyItem.conditions.identificationRequired" class="ng-scope">
 				<img class="condition-icon" src="images/idrequired.svg">
-				Provide ID to verify your date of birth
+				Provide ID to verify your date of birth, or prove you are a member
 			</div>
 			<div ng-if="viewingBountyItem.conditions.digitalVoucherRequired" class="ng-scope">
 				<img class="condition-icon" src="images/digitalvoucher.svg">
@@ -65,10 +65,14 @@
 				<img class="condition-icon" src="images/papervoucher.svg">
 				Print off and present a paper voucher
 			</div>
-			<b ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">Additional Conditions:</b>
 			<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
-				<div ng-repeat="note in viewingBountyItem.conditions.notes track by $index">
-					<div>{{ note }}</div>
+				<b ng-if="viewingBountyItem.conditions.registrationRequiredUrl || viewingBountyItem.conditions.identificationRequired || viewingBountyItem.conditions.digitalVoucherRequired || viewingBountyItem.conditions.paperVoucherRequired">
+					Additional Conditions:
+				</b>
+				<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
+					<div ng-repeat="note in viewingBountyItem.conditions.notes track by $index">
+						<div>{{ note }}</div>
+					</div>
 				</div>
 			</div>
 		</div>
