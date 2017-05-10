@@ -21,7 +21,7 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
 
   $scope.getPlunderValue = function(){
     var amount = 0;
-    $scope.filteredBountyData().forEach(function(bountyItem){
+    $scope.filteredBountyData.forEach(function(bountyItem){
       amount = amount + bountyItem.maxValue;
     });
     return amount;
@@ -43,6 +43,8 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
       } else{
         $scope.root.filters.includeTypes.splice(index, 1);
       }
+
+      $scope.filterBountyData();
   };
 
   $scope.isNew = function(bountyItem){
@@ -76,7 +78,10 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
     }
   };
 
-  $scope.filteredBountyData = function() {
+  //Initially the filteredBountyData is just a copy of bountyData.
+  $scope.filteredBountyData = $scope.root.bountyData.slice()
+
+  $scope.filterBountyData = function() {
     var options = $scope.root.filters;
     
     var shouldPush = function(item) {
@@ -165,6 +170,8 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
           break;
       }
 
-      return filteredData;
+      $scope.filteredBountyData = filteredData;
   };
+
+  //TODO: here we should apply distances and isNew and other properties
 });

@@ -19,19 +19,6 @@ birthdayBountyApp.controller('DefaultController', function($scope, BirthdayBount
     return "TODO THIS";
   };
 
-  //Clear button is on header
-  $scope.clearBirthday = function(){
-    $scope.root.savedUserDetails = null;
-
-    localStorage.removeItem("addressLat");
-    localStorage.removeItem("addressLng");
-    localStorage.removeItem("addressPlaceId");
-    localStorage.removeItem("bdayDay");
-    localStorage.removeItem("bdayMonth");
-
-    window.location = './';
-  };
-
   $scope.logoClicked = function(){
     window.location.href = "#";
   }

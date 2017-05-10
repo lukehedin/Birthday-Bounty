@@ -2,13 +2,15 @@
 	
 	<div class="nav-right hidden-xs" ng-if="root.savedUserDetails">
 		<h4 class="tagline">{{ tagline }}</h4>
-		<a class="standard-button" ng-click="clearBirthday()"> 
+		<a class="standard-button" ng-click="root.clearBirthday()"> 
 		    Change Address/Birthday 
 		</a> 
-		<a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>
+		<!--<a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>-->
+		<a class="standard-button" target="_blank" href="https://www.facebook.com/birthdaybounty/">Like us on Facebook</a>
 	</div>
+	<!-- real small mobile button -->
     <div class="nav-right hidden-sm hidden-md hidden-lg" ng-if="root.savedUserDetails">
-       <div class="standard-button" style="padding: 2px;" ng-click="clearBirthday()"> 
+       <div class="standard-button" style="padding: 2px;" ng-click="root.clearBirthday()"> 
 		    Change<br/>Address</br>or Bday<br/>
 		</div> 
     </div>

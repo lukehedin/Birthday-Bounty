@@ -256,6 +256,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
 
     //Tooltips
     typeTip: null,
+    tipTimeout: null,
     hideTypeTip: function(){
       var me = this;
       if(me.typeTip){
@@ -288,6 +289,18 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
 
         (delay ? window.setTimeout(show, delay) : show());
       }
+    },
+
+    clearBirthday: function(){
+      me.savedUserDetails = null;
+
+      localStorage.removeItem("addressLat");
+      localStorage.removeItem("addressLng");
+      localStorage.removeItem("addressPlaceId");
+      localStorage.removeItem("bdayDay");
+      localStorage.removeItem("bdayMonth");
+
+      window.location = './';
     }
   };
 });
