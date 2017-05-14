@@ -4,16 +4,24 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
   var latParam = $scope.root.getUrlParamByName('lat');
   var lngParam = $scope.root.getUrlParamByName('lng');
 
-  var zoom = (latParam && parseFloat(latParam) !== NaN && lngParam && parseFloat(lngParam) !== NaN)
-        ? 15
-        : 13;
+    //Australia default
+    var zoom = 4;
+    var lat = -25.274398;
+    var lng = 133.775136;
 
-    var lat = latParam && parseFloat(latParam) !== NaN 
-        ? parseFloat(latParam) 
-        : parseFloat($scope.root.savedUserDetails.address.lat);
-    var lng = lngParam && parseFloat(lngParam) !== NaN 
-        ? parseFloat(lngParam) 
-        : parseFloat($scope.root.savedUserDetails.address.lng);
+    if($scope.root.savedUserDetails){
+        //If we have saved address we either show the address centered, or the query string bounty location centered
+        zoom = (latParam && parseFloat(latParam) !== NaN && lngParam && parseFloat(lngParam) !== NaN)
+            ? 15
+            : 13;
+
+        lat = latParam && parseFloat(latParam) !== NaN 
+            ? parseFloat(latParam) 
+            : parseFloat($scope.root.savedUserDetails.address.lat);
+        lng = lngParam && parseFloat(lngParam) !== NaN 
+            ? parseFloat(lngParam) 
+            : parseFloat($scope.root.savedUserDetails.address.lng);
+    }
 
   $scope.bountyMarkers = [];
   $scope.bountyMarkerTooltip = null;
