@@ -19,18 +19,19 @@ birthdayBountyApp.controller('DefaultController', function($scope, BirthdayBount
     window.location.href = "#";
   };
 
+  $scope.isSplash = function(){
+    return location.hash.endsWith('#/');
+  };
+
     //Nav menu
   var navItems = [];
-
   var gt = {  name: ">" };
-  
   var getSummaryLink = function(isLink){
     return {
       name: "Bounty Results", //+ ($scope.root.savedUserDetails && $scope.root.savedUserDetails.address.formatted ? $scope.root.savedUserDetails.address.formatted : 'you')
       link: isLink ? '#/' : null
     };
   };
-
   var getBountyLink = function(isLink){
     var bountyIdParam = $scope.root.getUrlParamByName('bountyId');
     if(bountyIdParam && parseInt(bountyIdParam) !== NaN){
@@ -42,8 +43,7 @@ birthdayBountyApp.controller('DefaultController', function($scope, BirthdayBount
       });
     }
   };
-
-  getMapLink = function(){
+  var getMapLink = function(){
     return {
       name: 'Bounty Map',
       link: null

@@ -12,12 +12,19 @@
 		</div>
 	</div>
 </div>
-<div ng-if="root.savedUserDetails" class="pale-gray-strip row" ng-controller="DefaultController">
-	<div class="strip-inner">
-		<a ng-click="root.clearBirthday()" href="">Enter Birthday &amp; Address</a>
-		<span ng-repeat="navItem in navItems track by $index">
-			<a ng-if="navItem.link" ng-href="{{ navItem.link}}">{{ navItem.name }}</a>
-			<span ng-if="!navItem.link">{{ navItem.name }}</span>
-		</span>
+<div ng-controller="DefaultController">
+	<div ng-if="root.savedUserDetails" class="pale-gray-strip row">
+		<div class="strip-inner">
+			<a ng-click="root.clearBirthday()" href="">Enter Birthday &amp; Address</a>
+			<span ng-repeat="navItem in navItems track by $index">
+				<a ng-if="navItem.link" ng-href="{{ navItem.link}}">{{ navItem.name }}</a>
+				<span ng-if="!navItem.link">{{ navItem.name }}</span>
+			</span>
+		</div>
+	</div>
+	<div ng-if="!root.savedUserDetails && !isSplash()" class="pale-gray-strip row">
+		<div class="strip-inner">
+			You're using Birthday Bounty without an address or birthday! <a ng-click="root.clearBirthday()" href="">Click here </a>if you want to see more free stuff!
+		</div>
 	</div>
 </div>

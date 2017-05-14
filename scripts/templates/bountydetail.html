@@ -28,7 +28,8 @@
 	        </div>
 			<div class="col-xs-12">
 	            <b>Available to You:</b>
-	            <span>{{ availablePeriodString }}</span>
+	            <span ng-if="root.savedUserDetails">{{ availablePeriodString }}</span>
+	            <a ng-click="root.clearBirthday()" href="" ng-if="!root.savedUserDetails">Enter your birthday to find out!</a>
 	        </div>
 	        <div class="col-xs-12" ng-if="viewingBountyItem.additionalDetails">
 	            <b>Additional Details:</b>
@@ -94,7 +95,8 @@
 	        </div>
 	    </div>
 	    <div ng-if="!nearestBountyPlace" class="nearest-organisation-info">
-	        <span>Loading {{ viewingBountyItem.organisation.name }} location... </span>
+	        <span ng-if="root.savedUserDetails">Loading {{ viewingBountyItem.organisation.name }} location... </span>
+			<a ng-click="root.clearBirthday()" href="" ng-if="!root.savedUserDetails">Enter your address to find the closest location!</a>
 	    </div>
 	</div>
 	<div class="col-md-6">

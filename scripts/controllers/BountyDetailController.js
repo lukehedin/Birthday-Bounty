@@ -14,9 +14,13 @@ birthdayBountyApp.controller('BountyDetailController', function($scope, Birthday
   var placeIdParam = $scope.root.getUrlParamByName('placeId');
 
   $scope.root.loadGoogleMapsAndPlaces(function(){
-    var focusLocation = !!placeIdParam 
+    var focusLocation = null;
+
+    if($scope.root.savedUserDetails){
+      focusLocation = !!placeIdParam 
         ? $scope.root.getLocationByPlaceId(placeIdParam, bountyItem)
-        : $scope.root.getNearestLocation($scope.root.savedUserDetails.address, bountyItem);
+        : $scope.root.getNearestLocation($scope.root.savedUserDetails.address, bountyItem)
+    }
 
     if(!focusLocation) return;
 
@@ -59,16 +63,18 @@ birthdayBountyApp.controller('BountyDetailController', function($scope, Birthday
   };
 
   //Available period string
-  var availablePeriod = $scope.root.getItemAvailablePeriod(bountyItem);
-  var start = moment(availablePeriod.start);
-  var finish = moment(availablePeriod.finish);
+  if($scope.root.savedUserDetails){
+    var availablePeriod = $scope.root.getItemAvailablePeriod(bountyItem);
+    var start = moment(availablePeriod.start);
+    var finish = moment(availablePeriod.finish);
 
-  if(bountyItem.conditions.wholeMonth){
-    $scope.availablePeriodString = 'Anytime during ' + start.format('MMMM');
-  } else{
-    $scope.availablePeriodString = start.diff(finish) === 0
-    ? 'Only on your birthday - ' + start.format('dddd DD MMM')
-    : 'Between ' + start.format('dddd DD MMM') + " - " + finish.format('dddd DD MMM');
+    if(bountyItem.conditions.wholeMonth){
+      $scope.availablePeriodString = 'Anytime during ' + start.format('MMMM');
+    } else{
+      $scope.availablePeriodString = start.diff(finish) === 0
+      ? 'Only on your birthday - ' + start.format('dddd DD MMM')
+      : 'Between ' + start.format('dddd DD MMM') + " - " + finish.format('dddd DD MMM');
+    }
   }
 
   $scope.viewingBountyItem = bountyItem;
