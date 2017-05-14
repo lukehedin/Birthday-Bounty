@@ -256,40 +256,39 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     },
 
     //Tooltips
-    typeTip: null,
+    tip: null,
     tipTimeout: null,
-    hideTypeTip: function(){
+    getTip: function(hoverEvent, tipValue, delay){
       var me = this;
-      if(me.typeTip){
-        me.typeTip.remove();
-        me.typeTip = null;
-      }
-    },
-    getTypeTip: function(hoverEvent, typeId, delay){
-      var me = this;
-      var type = me.getTypeById(typeId);
 
-      if(type){
-        if(!me.typeTip) {
-          me.typeTip = document.createElement('div');
-          document.body.append(me.typeTip);     
+      //Add a listener to remove the tip from the el on mouseout
+      hoverEvent.target.onmouseout = function(){
+        if(me.tip){
+          me.tip.remove();
+          me.tip = null;
         }
-
-        me.typeTip.className = "bounty-marker-tooltip";
-        me.typeTip.innerHTML = "";
-        me.typeTip.innerHTML += '<b>' + type.name + '</b>';
-        me.typeTip.style.visibility = 'hidden'
-
-        var targetRect = event.currentTarget.getBoundingClientRect();
-        me.typeTip.style.top = event.currentTarget.y + targetRect.height + 4;
-        me.typeTip.style.left = event.currentTarget.x - (targetRect.width / 2);
-
-        var show = function(){
-          if(me.typeTip) me.typeTip.style.visibility = 'visible';
-        };
-
-        (delay ? window.setTimeout(show, delay) : show());
       }
+
+      if(!me.tip) {
+        me.tip = document.createElement('div');
+        document.body.append(me.tip);     
+      }
+
+      me.tip.className = "bounty-marker-tooltip";
+      me.tip.innerHTML = "";
+      me.tip.innerHTML += '<b>' + tipValue + '</b>';
+      me.tip.style.visibility = 'hidden'
+
+      var targetRect = hoverEvent.currentTarget.getBoundingClientRect();
+      me.tip.style.top = targetRect.top + targetRect.height + 4;
+      me.tip.style.left = targetRect.left - (targetRect.width / 2);
+
+      var show = function(){
+        if(me.tip) me.tip.style.visibility = 'visible';
+      };
+
+      (delay ? window.setTimeout(show, delay) : show());
+      
     },
 
     clearBirthday: function(){

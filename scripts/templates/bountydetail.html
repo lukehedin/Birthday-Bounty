@@ -26,7 +26,7 @@
 	   <div class="col-xs-12">
 	            <b>Bounty Types:</b>
 	            <div class="bounty-types" ng-repeat="typeId in viewingBountyItem.types.slice().reverse() track by $index">
-	                <img class="bounty-type-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" ng-mouseenter="root.getTypeTip($event, typeId, 500)" ng-mouseleave="root.hideTypeTip($event, typeId)"/>
+	                <img class="bounty-type-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" ng-mouseenter="getTypeTip($event, typeId, 0)"/>
 	            </div>
 	        </div>
 	        <div class="col-xs-12">

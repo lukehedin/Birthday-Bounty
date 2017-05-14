@@ -14,7 +14,7 @@
 			<div class="settings-input">
 				<div ng-repeat="bountyType in root.bountyTypes track by $index"> 
 					<img ng-class="{ unselected: root.filters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="toggleBountyType(bountyType.id)" 
-					ng-mouseenter="root.getTypeTip($event, bountyType.id, 500)" ng-mouseleave="root.hideTypeTip()"/> 
+					ng-mouseenter="root.getTip($event, bountyType.name, 300)"/> 
 				</div>
 			</div>
 		</div>
@@ -23,16 +23,17 @@
 				Sort By: 
 			</div>
 			<div class="settings-input"> 
-				<select ng-model="root.filters.sortBy" ng-options="getSorterString(sorter) for sorter in root.sorters" ng-change="filterBountyData()"></select> 
+				<select ng-model="root.filters.sortBy" ng-options="getSorterString(sorter) for sorter in root.sorters" ng-change="filterBountyData()"></select>
 			</div>
 		</div>
 		<div class="settings-control col-lg-2 col-md-2 hidden-sm hidden-xs">
 			<div class="settings-label"> 
-				Available On: 
+				Available On:
+				<div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 'Many bounty offers are available to you days before your birthday.<br/>Some are even available for your whole birthday month!', 0)">?</div> 
 			</div>
 			<div class="settings-input"> 
 				<select ng-model="root.filters.availableMonth" ng-options="shortMonth for shortMonth in root.getShortMonths()" ng-change="filterBountyData()" ></select> 
-				<select ng-model="root.filters.availableDay" ng-options="day for day in root.getDaysInMonth(root.filters.availableMonth)" ng-change="filterBountyData()"></select> 
+				<select ng-model="root.filters.availableDay" ng-options="day for day in root.getDaysInMonth(root.filters.availableMonth)" ng-change="filterBountyData()"></select>
 			</div>
 		</div>
 		<div class="settings-control col-lg-2 col-md-2 col-sm-6 hidden-xs"> 
@@ -66,7 +67,7 @@
 					</div>
 					<div class="bounty-thumbnail-subtitle-left">
 						{{ bountyItem.title }}
-						<div ng-if="isNew(bountyItem)" class="bounty-new-image">
+						<div ng-if="isNew(bountyItem)" class="bounty-mini-label">
 							NEW
 						</div>
 					</div>

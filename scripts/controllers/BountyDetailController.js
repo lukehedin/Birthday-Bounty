@@ -53,6 +53,12 @@ birthdayBountyApp.controller('BountyDetailController', function($scope, Birthday
     window.setTimeout(renderMapWhenViewReady, 300);
   });
 
+  $scope.getTypeTip = function(hoverEvent, typeId, delay){
+      var type = $scope.root.getTypeById(typeId);
+      if(type) $scope.root.getTip(hoverEvent, type.name, delay);
+  };
+
+  //Available period string
   var availablePeriod = $scope.root.getItemAvailablePeriod(bountyItem);
   var start = moment(availablePeriod.start);
   var finish = moment(availablePeriod.finish);
