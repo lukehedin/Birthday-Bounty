@@ -1,10 +1,19 @@
 birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFactory){
   $scope.root = BirthdayBountyFactory;
 
-  var bountyIdParam = $scope.root.getUrlParamByName('bountyId');
-  if(bountyIdParam && parseInt(bountyIdParam) !== NaN){
-         
-  }
+  var latParam = $scope.root.getUrlParamByName('lat');
+  var lngParam = $scope.root.getUrlParamByName('lng');
+
+  var zoom = (latParam && parseFloat(latParam) !== NaN && lngParam && parseFloat(lngParam) !== NaN)
+        ? 15
+        : 13;
+
+    var lat = latParam && parseFloat(latParam) !== NaN 
+        ? parseFloat(latParam) 
+        : parseFloat($scope.root.savedUserDetails.address.lat);
+    var lng = lngParam && parseFloat(lngParam) !== NaN 
+        ? parseFloat(lngParam) 
+        : parseFloat($scope.root.savedUserDetails.address.lng);
 
   $scope.bountyMarkers = [];
   $scope.bountyMarkerTooltip = null;
@@ -17,8 +26,8 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
             window.setTimeout(renderMapWhenViewReady, 300);
         } else{
             var googleMap = new google.maps.Map(mapContainer, {
-            center: {lat: parseFloat($scope.root.savedUserDetails.address.lat), lng: parseFloat($scope.root.savedUserDetails.address.lng)},
-            zoom: 13,
+            center: {lat: lat, lng: lng},
+            zoom: zoom,
             disableDefaultUI: true,
             styles: $scope.root.mapStyle
             });
@@ -35,24 +44,6 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
 
     var tipOffsetY = -10;
     var tipOffsetX = 15;
-
-    var showBountyIconTooltip = function(event, bountyItem){
-        var tooltip = $scope.bountyMarkerTooltip;
-
-        if(!tooltip) {
-          tooltip = document.createElement('div');
-          tooltip.className = "bounty-marker-tooltip";
-          tooltip.innerHTML = "";
-          tooltip.innerHTML += '<b>' + bountyItem.organisation.name + '</b><br/>';
-          tooltip.innerHTML += bountyItem.title;
-
-          $scope.bountyMarkerTooltip = tooltip;
-          $(document.body).append($scope.bountyMarkerTooltip);     
-        }
-
-        tooltip.style.top = (event.pageY + tipOffsetY)+ 'px';
-        tooltip.style.left = (event.pageX + tipOffsetX) + 'px';
-    };
 
     var createBountyMarker = function(item, location, image) {
       var marker = new google.maps.OverlayView();
@@ -81,23 +72,18 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
               div.dataset.marker_id = item.bountyId;
               
               google.maps.event.addDomListener(div, "click", function(event) {      
-                  google.maps.event.trigger(marker, "click"); //todo: need this?
-                   $scope.bountyMarkerTooltip.remove();
-                   window.location.href = '#/bounty?bountyId=' +  marker.bountyItem.bountyId + '&placeId=' + location.placeId;
+                google.maps.event.trigger(marker, "click"); //todo: need this?
+                
+            
+                var tipMsg = "<a href='#/bounty?bountyId=" +  marker.bountyItem.bountyId + "&placeId=" + location.placeId + "'>View Details</a>";
+
+                $scope.root.getTip(event, 0, item.organisation.name, tipMsg, true);
               });
 
-              google.maps.event.addDomListener(div, "mousemove", function(event) {
-                  google.maps.event.trigger(marker, "mousemove"); //todo: need this?
-                  showBountyIconTooltip(event, item);
-              });
-
-              google.maps.event.addDomListener(div, "mouseout", function(event) {      
-                  google.maps.event.trigger(marker, "mouseout"); //todo: need this?
-                  if($scope.bountyMarkerTooltip){
-                    $scope.bountyMarkerTooltip.remove();
-                    $scope.bountyMarkerTooltip = null;
-                  }
-              });              
+              google.maps.event.addDomListener(div, "mouseenter", function(event) {
+                  google.maps.event.trigger(marker, "mouseenter"); //todo: need this?
+                  $scope.root.getTip(event, 0, item.organisation.name, item.title);
+              });       
               
               var panes = marker.getPanes();
               panes.overlayImage.appendChild(div);

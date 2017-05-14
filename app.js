@@ -25,7 +25,8 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     localStorage.getItem("bdayMonth") &&
     localStorage.getItem("addressLat") &&
     localStorage.getItem("addressLng") &&
-    localStorage.getItem("addressPlaceId");
+    localStorage.getItem("addressPlaceId") &&
+    localStorage.getItem("addressFormatted");
 
   var savedUserDetails = null;
   if(allDetailsCached){
@@ -33,6 +34,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       bdayDay: localStorage.getItem("bdayDay"),
       bdayMonth: localStorage.getItem("bdayMonth"),
       address: {
+        formatted: localStorage.getItem("addressFormatted"),
         lat: localStorage.getItem("addressLat"),
         lng: localStorage.getItem("addressLng"),
         placeId: localStorage.getItem("addressPlaceId")  
@@ -258,16 +260,20 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     //Tooltips
     tip: null,
     tipTimeout: null,
-    getTip: function(hoverEvent, tipValue, delay){
+    hideTip: function(){
+      var me = this;
+      if(me.tip){
+        me.tip.remove();
+        me.tip = null;
+      }
+    },
+    getTip: function(hoverEvent, delay, tipTitle, tipContent, dontHide){
       var me = this;
 
       //Add a listener to remove the tip from the el on mouseout
-      hoverEvent.target.onmouseout = function(){
-        if(me.tip){
-          me.tip.remove();
-          me.tip = null;
-        }
-      }
+      hoverEvent.target.onmouseout = dontHide 
+        ? null
+        : function(){me.hideTip()};
 
       if(!me.tip) {
         me.tip = document.createElement('div');
@@ -276,12 +282,16 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
 
       me.tip.className = "bounty-marker-tooltip";
       me.tip.innerHTML = "";
-      me.tip.innerHTML += '<b>' + tipValue + '</b>';
+      if(tipTitle) me.tip.innerHTML += '<b>' + tipTitle + '</b><br/>';
+      if(tipContent) me.tip.innerHTML += tipContent;
       me.tip.style.visibility = 'hidden'
 
       var targetRect = hoverEvent.currentTarget.getBoundingClientRect();
-      me.tip.style.top = targetRect.top + targetRect.height + 4;
-      me.tip.style.left = targetRect.left - (targetRect.width / 2);
+      me.tip.style.top = targetRect.top + window.scrollY + targetRect.height;
+      me.tip.style.left = targetRect.left + window.scrollX - (targetRect.width / 2);
+
+      //Clicking anything on the tip hides it
+      me.tip.onclick = function(){me.hideTip()};
 
       var show = function(){
         if(me.tip) me.tip.style.visibility = 'visible';

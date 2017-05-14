@@ -1,10 +1,3 @@
-<div class="feature-strip">
-	<div class="feature-nav"> 
-		<a onclick="(function(e){ window.history.back(); })(event)" class="standard-button"> 
-			Back
-		</a> 
-	</div>
-</div>
 <div class="content-wrapper">
 	<div class="col-md-6">
 		<div class="bounty-item-header row">
@@ -26,7 +19,7 @@
 	   <div class="col-xs-12">
 	            <b>Bounty Types:</b>
 	            <div class="bounty-types" ng-repeat="typeId in viewingBountyItem.types.slice().reverse() track by $index">
-	                <img class="bounty-type-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" ng-mouseenter="getTypeTip($event, typeId, 0)"/>
+	                <img class="bounty-type-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" ng-mouseenter="getTypeTip($event, 0, typeId)"/>
 	            </div>
 	        </div>
 	        <div class="col-xs-12">
@@ -84,8 +77,8 @@
 	            {{ nearestBountyPlace.formatted_address }}
 	        </div>
 			<div>
-				<a class="standard-button" target="_blank" ng-href="{{ 'https://google.com/maps/place/' + nearestBountyPlace.geometry.location.lat() + ',' + nearestBountyPlace.geometry.location.lng() }}"> 
-		        	View on Google Maps 
+				<a class="standard-button" ng-href="{{ '#/map?lat=' + nearestBountyPlace.geometry.location.lat() + '&lng=' + nearestBountyPlace.geometry.location.lng() }}"> 
+		        	View on Map 
 		        </a>
 			</div>
 	        <div>
@@ -101,7 +94,7 @@
 	        </div>
 	    </div>
 	    <div ng-if="!nearestBountyPlace" class="nearest-organisation-info">
-	        <span>Loading {{ viewingBountyItem.organisation.name }}... </span>
+	        <span>Loading {{ viewingBountyItem.organisation.name }} location... </span>
 	    </div>
 	</div>
 	<div class="col-md-6">
