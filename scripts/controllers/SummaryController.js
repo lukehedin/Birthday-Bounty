@@ -1,6 +1,9 @@
 birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBountyFactory) {
   $scope.root = BirthdayBountyFactory;
 
+  //Inner varisables
+  $scope.moreBountyFurther = false;
+
   $scope.bountyItemClicked = function(item){
     //$scope.root.homeScroll = window.pageYOffset;
     window.location = "#/bounty?bountyId=" + item.bountyId;
@@ -78,12 +81,20 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
     }
   };
 
+  $scope.setMaxKm = function(val){
+    $scope.root.filters.maxKm = val;
+    $scope.filterBountyData();
+  };
+
   //Initially the filteredBountyData is just a copy of bountyData.
   $scope.filteredBountyData = $scope.root.bountyData.slice()
 
   $scope.filterBountyData = function() {
     var options = $scope.root.filters;
-    
+
+    //Reset inner variables
+    $scope.moreBountyFurther = false;
+
     var shouldPush = function(item) {
         //Included types
         if (options.includeTypes.indexOf(item.types[0]) === -1) return false;
@@ -100,6 +111,13 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
 
           if((itemAvail.start < filterDate && itemAvail.finish < filterDate)) return false;
           if((itemAvail.start > filterDate && itemAvail.finish > filterDate)) return false;
+        }
+
+        
+        var itemClosestLoc = $scope.root.getNearestLocation($scope.root.savedUserDetails.address, item);
+        if($scope.root.getKmBetweenPlaces($scope.root.savedUserDetails.address.lat, $scope.root.savedUserDetails.address.lng, itemClosestLoc.lat, itemClosestLoc.lng) > options.maxKm){
+          $scope.moreBountyFurther = true;
+          return false;
         }
 
         return true;
@@ -173,5 +191,6 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
       $scope.filteredBountyData = filteredData;
   };
 
-  //TODO: here we should apply distances and isNew and other properties
+  //Initial bounty data filtering and sorting
+  $scope.filterBountyData();
 });

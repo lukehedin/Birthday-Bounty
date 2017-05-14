@@ -107,7 +107,8 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       includeTypes: [1,2,3,4,5,6],
       availableMonth: localStorage.getItem("bdayMonth"),
       availableDay: parseInt(localStorage.getItem("bdayDay")),
-      sortBy: 6
+      sortBy: 6,
+      maxKm: 100
     },
     myPlunder: [],
     //homeScroll: 0,

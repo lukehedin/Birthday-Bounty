@@ -282,7 +282,7 @@ select:focus, input:focus {
   background-color:#ee5588;
 }
 
-.no-bounty-message{
+.bounty-summary-message{
   text-align: center;
   font-family: 'Didact Gothic', sans-serif;    
   color: #797876;

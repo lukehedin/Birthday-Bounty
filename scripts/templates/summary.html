@@ -43,7 +43,7 @@
 	</div>
 </div>
 <div class="content-wrapper">
-    <div ng-if="filteredBountyData.length < 1" class="no-bounty-message">
+    <div ng-if="filteredBountyData.length < 1" class="bounty-summary-message">
     	<div>
 			Could not find any Birthday Bounty! Try to adjust your filters using the Bounty Filters above.
     	</div>
@@ -52,27 +52,39 @@
 			Want to try a different birthday? <a href="" ng-click="root.clearBirthday()">Click here</a> to change.			
 		</div>
     </div>
-    <div ng-if="!!filteredBountyData" ng-repeat="bountyItem in filteredBountyData track by $index">
-    	<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
-    		<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
-                <div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
-                    <img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
-                </div>
-    		</span> 
-    		<div>
-    			<div class="bounty-thumbnail-title">
-    				<h1>{{ bountyItem.organisation.name }}</h1>
-    			</div>
-    			<div class="bounty-thumbnail-subtitle-left">
-                    {{ bountyItem.title }}
-                    <div ng-if="isNew(bountyItem)" class="bounty-new-image">
-                        NEW
-                    </div>
-    			</div>
-                <div class="bounty-thumbnail-subtitle-km">
-                    {{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
-                </div>
-    		</div>
-    	</div>
-    </div>
+	<div ng-if="filteredBountyData.length > 0">
+		<div ng-repeat="bountyItem in filteredBountyData track by $index">
+			<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
+				<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
+					<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
+						<img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
+					</div>
+				</span> 
+				<div>
+					<div class="bounty-thumbnail-title">
+						<h1>{{ bountyItem.organisation.name }}</h1>
+					</div>
+					<div class="bounty-thumbnail-subtitle-left">
+						{{ bountyItem.title }}
+						<div ng-if="isNew(bountyItem)" class="bounty-new-image">
+							NEW
+						</div>
+					</div>
+					<div class="bounty-thumbnail-subtitle-km">
+						{{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 bounty-summary-message">
+			Showing {{ filteredBountyData.length }} offers within {{ root.filters.maxKm }}km.
+			<div ng-if="moreBountyFurther">
+				<br/>
+				<a class="standard-button" ng-click="setMaxKm(root.filters.maxKm * 10)">Expand your search area to {{ root.filters.maxKm * 10 }}km.</a>
+			</div>
+			<div ng-if="!moreBountyFurther" ng-if="root.bountyData.length > filterBountyData.length">
+				Check back for more soon.
+			</div>
+		</div>
+	</div>
 </div>
