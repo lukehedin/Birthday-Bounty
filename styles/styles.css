@@ -471,7 +471,8 @@ select:focus, input:focus {
   font-size: 10px;
   border-radius: 2px;
   display: inline;
-  cursor: pointer;
+  vertical-align: middle;
+  cursor: default;
 }
 
 .bounty-summary-row hr {
@@ -516,9 +517,8 @@ select:focus, input:focus {
 }
 
 .social-button, .condition-icon{
-  width: 42px;
-  height: 42px;
-  padding: 0 4px;
+  width: 32px;
+  height: 32px;
 }
 
 .bounty-types div {

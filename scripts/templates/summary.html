@@ -28,7 +28,7 @@
 		<div class="settings-control col-lg-2 col-md-2 hidden-sm hidden-xs">
 			<div class="settings-label"> 
 				Available On:
-				<div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Available On','Many bounty offers are available to you days before your birthday.<br/>Some are even available for your whole birthday month!')">?</div> 
+				<div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Available On','Many bounty offers are available to you days before your birthday.<br/>Some are even available for your whole birthday month!')">?</div>
 			</div>
 			<div class="settings-input"> 
 				<select ng-model="root.filters.availableMonth" ng-options="shortMonth for shortMonth in root.getShortMonths()" ng-change="filterBountyData()" ></select> 
