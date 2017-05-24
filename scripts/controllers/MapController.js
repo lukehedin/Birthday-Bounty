@@ -59,10 +59,6 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
       // Explicitly call setMap on this overlay.
       marker.setMap(gMap);
 
-      var itemType = $scope.root.getTypeById(item.types[0]);
-      marker.bountyItem = item;
-      marker.bountyLocation = location;
-
       marker.draw = function() {
           var div = marker.div;
           const markerHeight = 26;
@@ -71,11 +67,13 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
           if (!div) {
               div = marker.div = document.createElement('div');
               div.className = "bounty-marker";
-              div.hidden = $scope.root.bountyData.indexOf(item) === -1;
+              div.setAttribute('data-bounty-id', item.bountyId);
+
+              div.hidden = $scope.root.filteredData.indexOf(item) === -1;
               
               div.style.width = markerWidth + 'px';
               div.style.height = markerHeight + 'px';
-              div.style.backgroundImage = 'url(' + itemType.iconPath + ')';
+              div.style.backgroundImage = 'url(' + $scope.root.getTypeById(item.types[0]).iconPath + ')';
               div.style.backgroundSize =  markerWidth + 'px ' + markerHeight + 'px';
               div.dataset.marker_id = item.bountyId;
               
@@ -83,7 +81,7 @@ birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFac
                 google.maps.event.trigger(marker, "click"); //todo: need this?
                 
             
-                var tipMsg = "<a href='#/bounty?bountyId=" +  marker.bountyItem.bountyId + "&placeId=" + location.placeId + "'>View Details</a>";
+                var tipMsg = "<a href='#/bounty?bountyId=" +  item.bountyId + "&placeId=" + location.placeId + "'>View Details</a>";
 
                 $scope.root.getTip(event, 0, item.organisation.name, tipMsg, true);
               });

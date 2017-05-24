@@ -112,6 +112,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       sortBy: 6,
       maxKm: 100
     },
+    filteredData: bountyData.slice(), //initially copy data to filteredData
     myPlunder: [],
     //homeScroll: 0,
 
@@ -137,6 +138,19 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       });
 
       return requestedType;
+    },
+
+    getSorterString: function(sorter){
+      var me = this;
+
+      switch(sorter){
+        case me.sorters.ValueHighLow: return "Max Value (High to Low)";
+        case me.sorters.ValueLowHigh: return "Max Value (Low to High)";
+        case me.sorters.AvailEarlyLate: return "Availability (Early to Late)";
+        case me.sorters.AvailLateEarly: return "Availability (Late to Early)";
+        case me.sorters.OrgNameAZ: return "Organisation Name (A-Z)";
+        case me.sorters.CloseBy: return "Nearest to Me";
+      }
     },
 
     getBountyItemById: function(bountyId){
@@ -180,6 +194,137 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       }
     },
 
+    //Filtering Stuff
+    filterBountyData: function() {
+      var me = this;
+
+      //Reset inner variables
+      moreBountyFurther = false;
+
+      //Should we add this item to the filtered list?
+      var shouldPush = function(item) {
+          //Included types
+          if (me.filters.includeTypes.indexOf(item.types[0]) === -1) return false;
+
+          //Availability
+          if(me.filters.availableMonth && me.filters.availableDay){
+            var now = new Date();
+            var thisYear = new Date().getFullYear();
+
+            var filterDate = new Date(thisYear, moment(me.filters.availableMonth, 'MMM').month(), me.filters.availableDay);
+            if(now > filterDate) filterDate.setFullYear(thisYear + 1);
+
+            var itemAvail = me.getItemAvailablePeriod(item);
+
+            if((itemAvail.start < filterDate && itemAvail.finish < filterDate)) return false;
+            if((itemAvail.start > filterDate && itemAvail.finish > filterDate)) return false;
+          }
+
+          
+          var itemClosestLoc = me.getNearestLocation(me.savedUserDetails.address, item);
+          if(me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, itemClosestLoc.lat, itemClosestLoc.lng) > me.filters.maxKm){
+            moreBountyFurther = true;
+            return false;
+          }
+
+          return true;
+      };
+
+      var filteredData = [];
+
+      me.bountyData.forEach(function(bountyItem) {  
+          if(shouldPush(bountyItem)) filteredData.push(bountyItem);
+      });
+
+        //Sort
+      switch(parseInt(me.filters.sortBy)){
+        case me.sorters.ValueHighLow:
+          filteredData.sort(function(b1, b2){
+            if(b1.maxValue === b2.maxValue) return 0;
+            if(b1.maxValue < b2.maxValue) return 1;
+            return -1;
+           });
+        break;
+        case me.sorters.ValueLowHigh:
+          filteredData.sort(function(b1, b2){
+            if(b1.maxValue === b2.maxValue) return 0;
+            if(b1.maxValue < b2.maxValue) return -1;
+            return 1;
+          });
+        break;
+        case me.sorters.AvailEarlyLate:
+          filteredData.sort(function(b1, b2){
+            var b1Period = me.getItemAvailablePeriod(b1);
+            var b2Period = me.getItemAvailablePeriod(b2);
+
+            if(b1Period.start > b2Period.start) return 1;
+            if(b1Period.start < b2Period.start) return -1;
+            return 0;
+          });
+        break;
+        case me.sorters.AvailLateEarly:
+          filteredData.sort(function(b1, b2){
+            var b1Period = me.getItemAvailablePeriod(b1);
+            var b2Period = me.getItemAvailablePeriod(b2);
+
+            if(b1Period.finish > b2Period.finish) return -1;
+            if(b1Period.finish < b2Period.finish) return 1;
+            return 0;
+          });
+        break;
+        case me.sorters.OrgNameAZ:
+          filteredData.sort(function(b1, b2){
+            if(b1.organisation.name > b2.organisation.name) return 1;
+            if(b1.organisation.name < b2.organisation.name) return -1;
+            return 0;
+          });
+        break;
+        case me.sorters.CloseBy:
+          filteredData.sort(function(b1, b2){
+            var b1ClosestLoc = me.getNearestLocation(me.savedUserDetails.address, b1);
+            var b2ClosestLoc = me.getNearestLocation(me.savedUserDetails.address, b2);
+
+            var b1Distance = me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, b1ClosestLoc.lat, b1ClosestLoc.lng);
+            var b2Distance = me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, b2ClosestLoc.lat, b2ClosestLoc.lng);
+
+            if(b1Distance > b2Distance) return 1;
+            if(b1Distance < b2Distance) return -1;
+            return 0;
+          });
+        default:
+        break;
+      }
+
+      me.filteredData = filteredData;
+      me.toggleMapMarkers();
+    },
+
+    toggleBountyType: function(type){
+      var me = this;
+
+      var index = me.filters.includeTypes.indexOf(type);
+      index === -1
+        ? me.filters.includeTypes.push(type)
+        : me.filters.includeTypes.splice(index, 1);
+
+      me.filterBountyData();
+    },
+
+    toggleMapMarkers: function(){
+      var me = this;
+
+      var filteredBountyIds = me.filteredData.map(function(item){ return item.bountyId});
+
+      $('div.bounty-marker').each(function(idx, markerEl){
+        var bountyIdAttr = markerEl.getAttribute('data-bounty-id');
+        if(bountyIdAttr && !isNaN(parseInt(bountyIdAttr))){
+          var bountyId = parseInt(bountyIdAttr);
+          markerEl.hidden = filteredBountyIds.indexOf(bountyId) === -1;
+        }
+      })
+    },
+
+    //Location Stuff
     getLocationByPlaceId: function(placeId, bountyItem){
       var me = this;
       var place = null;
