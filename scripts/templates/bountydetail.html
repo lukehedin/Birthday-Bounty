@@ -42,7 +42,7 @@
 	    <hr/>
 		<div class="condition-list">
 	        <h3>Conditions <div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Conditions','The conditions section explains exactly what you need to do to claim this bounty.<br/>Read them carefully!')">?</div></h3>
-	        <b>To claim this Birthday Bounty, you will need to:</b>
+	        <b>To claim this Birthday Bounty:</b>
 			<div ng-if="viewingBountyItem.conditions.registrationRequiredUrl" class="ng-scope">
 				<img class="condition-icon" src="images/registrationurl.svg">
 				<a target="_blank" ng-href="{{viewingBountyItem.conditions.registrationRequiredUrl}}">Sign up here</a><span ng-if="viewingBountyItem.conditions.minimumRegistrationDays"> at least <b>{{ viewingBountyItem.conditions.minimumRegistrationDays }} days</b> before your birthday</span>
@@ -61,7 +61,7 @@
 			</div>
 			<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
 				<b ng-if="viewingBountyItem.conditions.registrationRequiredUrl || viewingBountyItem.conditions.identificationRequired || viewingBountyItem.conditions.digitalVoucherRequired || viewingBountyItem.conditions.paperVoucherRequired">
-					Additional Conditions:
+					Additional notes for claiming:
 				</b>
 				<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
 					<div ng-repeat="note in viewingBountyItem.conditions.notes track by $index">

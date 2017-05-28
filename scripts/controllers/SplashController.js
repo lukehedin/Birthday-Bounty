@@ -38,14 +38,14 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
             lat: -37.813783,
             lng: 144.962947,
             placeId: "ChIJgf0RD69C1moR4OeMIXVWBAU",
-            formattedAddress: "Melbourne"
+            formatted: "Melbourne"
         };
       } else if (input.value.toLowerCase() === "sydney"){
         userAddress = {
             lat: -33.868879,
             lng: 151.209090,
             placeId: "ChIJP5iLHkCuEmsRwMwyFmh9AQU",
-            formattedAddress: "Sydney"
+            formatted: "Sydney"
         };
       } else {
         return; // alert user to provide address
@@ -57,7 +57,7 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
           lat: address.geometry.location.lat(),
           lng: address.geometry.location.lng(),
           placeId: address.place_id,
-          formattedAddress: address.address_formatted
+          formatted: address.name
       };  
     }
 
@@ -69,7 +69,7 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
     localStorage.setItem("addressLat", userDetails.address.lat);
     localStorage.setItem("addressLng", userDetails.address.lng);
     localStorage.setItem("addressPlaceId", userDetails.address.placeId);
-    localStorage.setItem("addressFormatted", userDetails.address.formattedAddress);
+    localStorage.setItem("addressFormatted", userDetails.address.formatted);
     localStorage.setItem("bdayDay", dayVal);
     localStorage.setItem("bdayMonth", monthVal);
 
@@ -80,5 +80,6 @@ birthdayBountyApp.controller('SplashController', function($scope, BirthdayBounty
     $scope.root.filters.availableDay = dayVal;
 
     $scope.root.savedUserDetails = userDetails;
+    window.location.href = '#/summary';
   };
 });

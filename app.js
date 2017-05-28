@@ -1,5 +1,6 @@
 var birthdayBountyApp = angular.module('BirthdayBountyApp', ['ngRoute']);
 
+//Routes
 birthdayBountyApp.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -7,6 +8,9 @@ birthdayBountyApp.config(function($routeProvider) {
     })
     .when("/bounty", {
         templateUrl: "bounty.html"
+    })
+    .when("/summary", {
+        templateUrl: "summary.html"
     })
     .when("/map", {
         templateUrl: "map.html"
@@ -109,8 +113,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       includeTypes: [1,2,3,4,5,6],
       availableMonth: localStorage.getItem("bdayMonth"),
       availableDay: parseInt(localStorage.getItem("bdayDay")),
-      sortBy: 6,
-      maxKm: 100
+      sortBy: 6
     },
     filteredData: bountyData.slice(), //initially copy data to filteredData
     myPlunder: [],
@@ -198,9 +201,6 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     filterBountyData: function() {
       var me = this;
 
-      //Reset inner variables
-      moreBountyFurther = false;
-
       //Should we add this item to the filtered list?
       var shouldPush = function(item) {
           //Included types
@@ -220,13 +220,6 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
             if((itemAvail.start > filterDate && itemAvail.finish > filterDate)) return false;
           }
 
-          
-          var itemClosestLoc = me.getNearestLocation(me.savedUserDetails.address, item);
-          if(me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, itemClosestLoc.lat, itemClosestLoc.lng) > me.filters.maxKm){
-            moreBountyFurther = true;
-            return false;
-          }
-
           return true;
       };
 
@@ -236,8 +229,12 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
           if(shouldPush(bountyItem)) filteredData.push(bountyItem);
       });
 
+      var sortBy = !me.savedUserDetails 
+        ? me.sorters.ValueHighLow
+        : parseInt(me.filters.sortBy);
+
         //Sort
-      switch(parseInt(me.filters.sortBy)){
+      switch(sortBy){
         case me.sorters.ValueHighLow:
           filteredData.sort(function(b1, b2){
             if(b1.maxValue === b2.maxValue) return 0;
@@ -334,6 +331,11 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       });
 
       return place;
+    },
+
+    getFormattedAddress: function(){
+      var me = this;
+      return me.savedUserDetails.address.formatted;
     },
 
     getNearestLocation: function(toLocation, bountyItem){

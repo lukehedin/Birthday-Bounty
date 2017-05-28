@@ -1,6 +1,5 @@
 <div class="app-container" ng-controller="SplashController" ng-cloak>
     <appheader></appheader>
-    <div ng-if="!root.savedUserDetails" class="dob-splash moving-background">
         <!-- <div>Enter ye postcode:</div>
             <input placeholder="Postcode" />-->
 		<div class="splash-text">
@@ -16,10 +15,5 @@
 				Plunder some Birthday Bounty!
 			</div>
 		</div>
-    </div>
-    <div ng-if="root.savedUserDetails">
-        <filter></filter>
-        <summary ng-controller="SummaryController"></summary>
-        <appfooter></appfooter>
     </div>
 </div>     
