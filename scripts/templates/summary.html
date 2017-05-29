@@ -1,8 +1,8 @@
 <div class="content-wrapper" ng-controller="SummaryController">
 	<div ng-if="root.filteredData.length > 0">
 		<div ng-repeat="bountyItem in root.filteredData track by $index">
-			<div class="bounty-item-summary-container col-lg-4 col-sm-6 col-xs-12">
-				<a class="bounty-thumbnail" ng-if="root.getDistanceToNearestLocation(bountyItem) < 50" ng-href="{{ '#/bounty?bountyId=' + bountyItem.bountyId; }}">
+			<div ng-if="root.getDistanceToNearestLocation(bountyItem) < 50" class="bounty-item-summary-container col-lg-4 col-sm-6 col-xs-12">
+				<a class="bounty-thumbnail" ng-href="{{ '#/bounty?bountyId=' + bountyItem.bountyId; }}">
 					<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
 						<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
 							<img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
