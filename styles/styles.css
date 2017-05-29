@@ -217,6 +217,7 @@ select:focus, input:focus {
   .bounty-type-icon{
     width: 32px;
     height: 32px;
+    margin: 1px;
   }
 }
 
