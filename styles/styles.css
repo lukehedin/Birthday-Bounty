@@ -361,6 +361,11 @@ select:focus, input:focus {
   max-width: 50px;
 }
 
+.bounty-item-summary-container {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
 .bounty-thumbnail h1{
   font-family: 'Didact Gothic', sans-serif;  
   color: #ee5588;
@@ -370,46 +375,27 @@ select:focus, input:focus {
 }
 
 .bounty-thumbnail, .bounty-thumbnail:hover{
-  cursor: pointer;
   height: 220px;
   font-family: 'Didact Gothic', sans-serif;  
   color: #797876;
   text-decoration: none;
-  margin-bottom: 20px;
-}
-
-.bounty-thumbnail-image{
-  height: 250px;
 }
 
 .bounty-thumbnail-image{
   height: 150px;
 }
 
-.bounty-thumbnail:hover{
+.bounty-item-summary-container:hover{
   opacity: 0.8;
   text-decoration: none;
 }
 
 .bounty-thumbnail-title{
   padding: 5px 0;
-  width: 60%;
-}
-
-.bounty-thumbnail-subtitle-left{
-  width: 80%;
-  float: left;
 }
 
 .bounty-thumbnail-subtitle-km{
   text-align: center;
-  width: 12%;
-  margin: 0 5px;
-  float: right;
-}
-
-.bounty-thumbnail-subtitle-km span{
-  width: 100%;
 }
 
 .bounty-feature-image, .bounty-map-for-item{
@@ -430,11 +416,6 @@ select:focus, input:focus {
   background: #F5F7F9 url(../images/background-trans.svg) no-repeat 50% 50%;
   background-size: cover;
   border-radius: 10px;
-}
-
-.bounty-thumbnail-image, .bounty-feature-image{
-  display: block;
-  width: 100%;
 }
 
 .bounty-thumbnail-icon{
