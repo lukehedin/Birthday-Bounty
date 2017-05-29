@@ -7,6 +7,7 @@ birthdayBountyApp.controller('NavigationController', function($scope, BirthdayBo
   var getSummaryLink = function(isLink){
     return {
       name: "Bounty Results", //+ ($scope.root.savedUserDetails && $scope.root.savedUserDetails.address.formatted ? $scope.root.savedUserDetails.address.formatted : 'you')
+      link: isLink ? '#/summary' : null
     };
   };
   var getBountyLink = function(isLink){

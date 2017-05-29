@@ -278,8 +278,8 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
         break;
         case me.sorters.CloseBy:
           filteredData.sort(function(b1, b2){
-            var b1ClosestLoc = me.getNearestLocation(me.savedUserDetails.address, b1);
-            var b2ClosestLoc = me.getNearestLocation(me.savedUserDetails.address, b2);
+            var b1ClosestLoc = me.getNearestLocation(b1);
+            var b2ClosestLoc = me.getNearestLocation(b2);
 
             var b1Distance = me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, b1ClosestLoc.lat, b1ClosestLoc.lng);
             var b2Distance = me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, b2ClosestLoc.lat, b2ClosestLoc.lng);
@@ -338,22 +338,35 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       return me.savedUserDetails.address.formatted;
     },
 
-    getNearestLocation: function(toLocation, bountyItem){
+    getNearestLocation: function(bountyItem){
       var me = this;
       
-      //Check if we already have this bounty item's nearest location in the lookup
-      if(me.nearestLocationLookup[bountyItem.bountyId]) return me.nearestLocationLookup[bountyItem.bountyId];
+      //Check if we already have this bounty item's nearest location in the lookup. If not, find it
+      return (me.nearestLocationLookup[bountyItem.bountyId])
+          ? me.nearestLocationLookup[bountyItem.bountyId].location
+          : me.findNearestLocation(bountyItem).location;
+    },
 
-      //If not, calculate it
+    getDistanceToNearestLocation: function(bountyItem){
+      var me = this;
+      
+      //Check if we already have this bounty item's nearest location in the lookup. If not, find it
+      return (me.nearestLocationLookup[bountyItem.bountyId])
+          ? me.nearestLocationLookup[bountyItem.bountyId].distance
+          : me.findNearestLocation(bountyItem).distance;
+    }, 
+
+    findNearestLocation: function(bountyItem){
+      var me = this;
+
       var locations = bountyItem.organisation.locations;
-
-      if(!locations || locations.length === 0) return;
+      if(!locations || locations.length === 0) return {};
       
       var nearestLocation;
       var distanceToNearest;
 
      locations.forEach(function(location){
-        var distanceTo = me.getKmBetweenPlaces(toLocation.lat, toLocation.lng, location.lat, location.lng);
+        var distanceTo = me.getKmBetweenPlaces(me.savedUserDetails.address.lat, me.savedUserDetails.address.lng, location.lat, location.lng);
         if(!nearestLocation || distanceToNearest > distanceTo){
           nearestLocation = location;
           distanceToNearest = distanceTo;
@@ -361,8 +374,12 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       });
 
       //Add it to the lookup for next time
-      me.nearestLocationLookup[bountyItem.bountyId] = nearestLocation;
-      return nearestLocation;
+      me.nearestLocationLookup[bountyItem.bountyId] = { 
+        location: nearestLocation,
+        distance: distanceToNearest
+      };
+
+      return me.nearestLocationLookup[bountyItem.bountyId];
     },
 
     getKmBetweenPlaces: function(lat1, lng1, lat2, lng2){

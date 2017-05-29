@@ -1,10 +1,4 @@
-<div class="nav-strip moving-background row">
-	<div style="text-align: center;">
-		<h3 class="col-xs-12">Shiver me timbers!</h3>
-		<span class="col-xs-12">You could plunder {{ getPlunderValue() | currency }} worth of free Birthday Bounty!</span> 
-	</div>
-</div>
-<div class="pale-gray-strip row">
+<div class="pale-gray-strip row"  ng-controller="DefaultController">
 	<div class="strip-inner">
 		<div class="settings-control col-lg-5 col-md-5 col-sm-6 col-xs-10">
 			<div class="settings-label"> 
@@ -18,10 +12,10 @@
 			</div>
 		</div>
         <div class="settings-control col-lg-3 col-md-3 hidden-sm hidden-xs">
-			<div class="settings-label"> 
+			<div class="settings-label" ng-if="!isMap()"> 
 				Sort By: 
 			</div>
-			<div class="settings-input"> 
+			<div class="settings-input" ng-if="!isMap()"> 
 				<select ng-model="root.filters.sortBy" ng-options="root.getSorterString(sorter) for sorter in root.sorters" ng-change="root.filterBountyData()"></select>
 			</div>
 		</div>
@@ -36,8 +30,11 @@
 			</div>
 		</div>
 		<div class="settings-control col-lg-2 col-md-2 col-sm-6 col-xs-2"> 
-		    <a class="standard-button" href="#/map"> 
+		    <a class="standard-button" ng-href="#/map" ng-if="!isMap()"> 
 			    View Map 
+			</a>
+            <a class="standard-button" ng-href="#/summary" ng-if="isMap()"> 
+			    Hide Map 
 			</a>
 		</div>
 	</div>

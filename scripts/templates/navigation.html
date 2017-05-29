@@ -1,13 +1,17 @@
 <div ng-controller="NavigationController">
+	<div ng-if="root.savedUserDetails" class="nav-strip moving-background row">
 		<div class="strip-inner">
+			<span class="col-md-7 col-sm-12">
 				<a class="nav-item-link" ng-click="root.clearBirthday()" href="">Enter Birthday &amp; Address</a>
 				<span ng-repeat="navItem in navItems track by $index">
 					<a class="nav-item-link" ng-if="navItem.link" ng-href="{{ navItem.link}}">{{ navItem.name }}</a>
 					<span ng-if="!navItem.link">{{ navItem.name }}</span>
 				</span>
 			</span>
+			<span style="text-align: right;" class="col-md-5 hidden-sm hidden-xs">Displaying results for <a class="nav-item-link" ng-click="root.clearBirthday()" href="" ng-mouseenter="root.getTip($event, 300, 'Click to change')">{{ root.getFormattedAddress() }}</a></span>
 		</div>
 	</div>
+	<div ng-if="!root.savedUserDetails" class="pale-gray-strip row">
 		<div class="strip-inner">
 			You're using Birthday Bounty without an address or birthday! <a ng-click="root.clearBirthday()" href="">Click here </a>if you want to see more free stuff!
 		</div>

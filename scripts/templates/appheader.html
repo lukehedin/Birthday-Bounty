@@ -1,30 +1,15 @@
-<div class="top-navigation-bar" ng-controller="DefaultController">
-	
-	<div class="nav-right hidden-xs" ng-if="root.savedUserDetails">
-		<h4 class="tagline">{{ tagline }}</h4>
-		<!--<a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>-->
-		<a class="standard-button" target="_blank" href="https://www.facebook.com/birthdaybounty/">Like us on Facebook</a>
-	</div>
-	<div class="home-link" ng-click="logoClicked()">
-		<img class="flag-icon" src="images/flag.svg">
-		<div class="logo-text">
-			BIRTHDAY<br/>BOUNTY
+<div class="header-strip" ng-controller="DefaultController">
+	<div class="strip-inner">
+		<div class="nav-right hidden-xs" ng-if="root.savedUserDetails">
+			<h4 class="tagline">{{ tagline }}</h4>
+			<!--<a class="standard-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fbirthdaybounty.com.au%2F&amp;src=sdkpreparse">Share on Facebook</a>-->
+			<a class="standard-button" target="_blank" href="https://www.facebook.com/birthdaybounty/">Like us on Facebook</a>
 		</div>
-	</div>
-</div>
-<div ng-controller="DefaultController">
-	<div ng-if="root.savedUserDetails" class="pale-gray-strip row">
-		<div class="strip-inner">
-			<a ng-click="root.clearBirthday()" href="">Enter Birthday &amp; Address</a>
-			<span ng-repeat="navItem in navItems track by $index">
-				<a ng-if="navItem.link" ng-href="{{ navItem.link}}">{{ navItem.name }}</a>
-				<span ng-if="!navItem.link">{{ navItem.name }}</span>
-			</span>
-		</div>
-	</div>
-	<div ng-if="!root.savedUserDetails && !isSplash()" class="pale-gray-strip row">
-		<div class="strip-inner">
-			You're using Birthday Bounty without an address or birthday! <a ng-click="root.clearBirthday()" href="">Click here </a>if you want to see more free stuff!
-		</div>
+		<a class="home-link" ng-href="#/summary">
+			<img class="flag-icon" src="images/flag.svg">
+			<div class="logo-text">
+				BIRTHDAY<br/>BOUNTY
+			</div>
+		</a>
 	</div>
 </div>

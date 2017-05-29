@@ -32,60 +32,43 @@ select:focus, input:focus {
 }
 
 /*Keeping things inside 80vw*/
-.content-wrapper, .top-navigation-bar, .nav-strip .nav-nav, .nav-nav, .footer-strip .footer-text, .strip-inner{
+.content-wrapper, .header-strip, .nav-strip .nav-nav, .nav-nav, .footer-strip .footer-text, .strip-inner{
   min-width: 280px;
   max-width: 1100px;
   width: 80vw;
   margin: auto;
 }
 
-@media screen and (min-width: 768px) {
-  .nav-text{
-    text-align: right;
-  }
-}
-
 @media screen and (max-width: 767px) {
-  .content-wrapper, .top-navigation-bar, .nav-strip .nav-nav, .nav-nav, .footer-strip .footer-text, .strip-inner{
-    width: 100vw;
+  .content-wrapper, .header-strip, .nav-strip .nav-nav, .nav-nav, .footer-strip .footer-text, .strip-inner{
+    width: 95vw;
   }
-
-  .nav-text{
-    text-align: center;
-  }
-}
-
-.nav-nav{
-  text-align: left;
-}
-
-.nav-nav .standard-button{
-  margin: 0 10px;
 }
 
 /*Top Nav Bar*/
-.top-navigation-bar {
+.header-strip {
   height: 80px;
 
   text-align: center;
   background-color: white;
-  color: #ff6699;;
+  color: #ff6699;
 }
 
-.top-navigation-bar .logo-text{
+.header-strip .logo-text{
   float: left;
   font-family: 'Caveat Brush', cursive;
+  color: #ff6699;
   font-size: 32px;
   line-height: 28px;
   padding-top: 10px;
 }
 
-.home-link:hover{
+.logo-text:hover, .flag-icon:hover{
   cursor: pointer;
   opacity: 0.7;
 }
 
-.top-navigation-bar .flag-icon{
+.header-strip .flag-icon{
   height: 80%;
   margin: 8px;
   float: left;
@@ -95,7 +78,7 @@ select:focus, input:focus {
   float: right;
 }
 
-.top-navigation-bar .nav-right{ 
+.header-strip .nav-right{ 
   font-size: 18px;
   font-family: 'Didact Gothic', sans-serif; 
   font-size: 12px;
@@ -125,8 +108,7 @@ select:focus, input:focus {
   background-repeat: repeat-x;
 }
 
-.nav-strip, .footer-strip{
-  text-align: center;
+.nav-strip, .footer-strip, .nav-item-link, .nav-item-link:hover{
   color: white;
   font-family: 'Didact Gothic', sans-serif;  
 }
@@ -137,6 +119,7 @@ select:focus, input:focus {
 }
 
 .footer-strip {
+  text-align: center;
   padding: 5px 0 5px 0;
   font-size: 16px;
 }
@@ -340,13 +323,13 @@ select:focus, input:focus {
 
 .pale-gray-strip{
   background-color: #f3f3f3;
+  color: #797876;
   padding: 10px 0;
   overflow: auto;
 }
 
 .strip-inner{
   font-family: 'Didact Gothic', sans-serif;    
-  color: #797876;
   padding: 0 10px;
 }
 
@@ -361,7 +344,7 @@ select:focus, input:focus {
 
 .settings-label{
   font-weight: bold;
-  padding-bottom:5px;
+  padding-bottom:2px;
   color: #717171;
 }
 
@@ -386,11 +369,12 @@ select:focus, input:focus {
   font-weight: bold;
 }
 
-.bounty-thumbnail{
+.bounty-thumbnail, .bounty-thumbnail:hover{
   cursor: pointer;
   height: 220px;
   font-family: 'Didact Gothic', sans-serif;  
   color: #797876;
+  text-decoration: none;
   margin-bottom: 20px;
 }
 

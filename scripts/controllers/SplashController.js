@@ -1,6 +1,12 @@
 birthdayBountyApp.controller('SplashController', function($scope, BirthdayBountyFactory) {
   $scope.root = BirthdayBountyFactory;
 
+  //Redirect (use saved user details)
+  if($scope.root.savedUserDetails){
+      window.location.href = '#/summary';
+      return;
+  }
+
   //Set up the address input and places service
   var autocomplete;
   $scope.root.loadGoogleMapsAndPlaces(function(){

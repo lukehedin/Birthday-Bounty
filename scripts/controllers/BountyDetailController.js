@@ -19,7 +19,7 @@ birthdayBountyApp.controller('BountyDetailController', function($scope, Birthday
     if($scope.root.savedUserDetails){
       focusLocation = !!placeIdParam 
         ? $scope.root.getLocationByPlaceId(placeIdParam, bountyItem)
-        : $scope.root.getNearestLocation($scope.root.savedUserDetails.address, bountyItem)
+        : $scope.root.getNearestLocation(bountyItem)
     }
 
     if(!focusLocation) return;

@@ -1,7 +1,7 @@
-<div class="content-wrapper">
+<div class="content-wrapper" ng-controller="SummaryController">
 	<div ng-if="root.filteredData.length > 0">
 		<div ng-repeat="bountyItem in root.filteredData track by $index">
-			<div class="bounty-thumbnail col-lg-4 col-sm-6" ng-click="bountyItemClicked(bountyItem)">
+			<a class="bounty-thumbnail col-lg-4 col-sm-6" ng-if="root.getDistanceToNearestLocation(bountyItem) < 50" ng-href="{{ '#/bounty?bountyId=' + bountyItem.bountyId; }}">
 				<span class="bounty-thumbnail-image" ng-style="{ 'background-image': !!bountyItem.thumbnail ? 'url(images/bountypix/' + bountyItem.thumbnail + ')' : ''}"> 
 					<div class="bounty-types" ng-repeat="typeId in bountyItem.types.slice().reverse() track by $index">
 						<img style="right: {{ 5 + ($index * 11)}}%;" class="bounty-thumbnail-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" />
@@ -21,21 +21,13 @@
 						{{ getDistanceToItem(bountyItem) | number : 1 }}km</span>
 					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 	<div class="col-sm-12 bounty-summary-message">
-		Showing {{ root.filteredData.length }} offers within {{ root.filters.maxKm }}km.
-		<div ng-if="moreBountyFurther">
-			<br/>
-			<a class="standard-button" ng-click="setMaxKm(root.filters.maxKm * 10)">Expand your search area to {{ root.filters.maxKm * 10 }}km.</a>
-			<br/>
-		</div>
-		<div ng-if="!moreBountyFurther" ng-if="root.bountyData.length > root.filteredData.length">
-			Check back for more soon.
-			<div>
-				Want to try a different birthday or address? <a href="" ng-click="root.clearBirthday()">Click here</a> to change.			
-			</div>
+		Showing bounty within 50km. Check back for more soon.
+		<div>
+			Want to try a different birthday or address? <a href="" ng-click="root.clearBirthday()">Click here</a> to change.			
 		</div>
 	</div>
 </div>

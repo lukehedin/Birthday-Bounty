@@ -1,10 +1,11 @@
 birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBountyFactory) {
   $scope.root = BirthdayBountyFactory;
 
-  $scope.bountyItemClicked = function(item){
-    //$scope.root.homeScroll = window.pageYOffset;
-    window.location = "#/bounty?bountyId=" + item.bountyId;
-  };
+  //Redirect (cant see unless birthday provided)
+  if(!$scope.root.savedUserDetails){
+      window.location.href = '#/';
+      return;
+  }
 
   var existingBday = localStorage.getItem("birthday");
 
@@ -33,7 +34,7 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
   };
 
   $scope.getDistanceToItem = function(item){
-      var nearestLocation = $scope.root.getNearestLocation($scope.root.savedUserDetails.address, item);
+      var nearestLocation = $scope.root.getNearestLocation(item);
       return $scope.root.getKmBetweenPlaces($scope.root.savedUserDetails.address.lat, $scope.root.savedUserDetails.address.lng, nearestLocation.lat, nearestLocation.lng);
   };
 
@@ -53,11 +54,6 @@ birthdayBountyApp.controller('SummaryController', function($scope, BirthdayBount
     } else{
       return 'Claim this Birthday Bounty between ' + moment(itemStart).format('dddd Do MMM') + ' and ' + moment(itemFinish).format('dddd Do MMM');
     }
-  };
-
-  $scope.setMaxKm = function(val){
-    $scope.root.filters.maxKm = val;
-    $scope.root.filterBountyData();
   };
 
   //Initial bounty data filtering and sorting
