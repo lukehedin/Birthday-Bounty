@@ -15,6 +15,9 @@ birthdayBountyApp.config(function($routeProvider) {
     .when("/map", {
         templateUrl: "map.html"
     })
+    .when("/faq", {
+        templateUrl: "faq.html"
+    })
     .otherwise("/", {
         redirectTo: "/"
     });

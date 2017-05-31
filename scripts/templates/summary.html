@@ -1,4 +1,4 @@
-<div class="content-wrapper" ng-controller="SummaryController">
+<div class="content-wrapper container" ng-controller="SummaryController">
 	<div ng-if="root.filteredData.length > 0">
 		<div ng-repeat="bountyItem in root.filteredData track by $index">
 			<div ng-if="root.getDistanceToNearestLocation(bountyItem) < 50" class="bounty-item-summary-container col-lg-4 col-sm-6 col-xs-12">
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-12 bounty-summary-message">
+	<div class="col-xs-12 bounty-summary-message">
 		Showing bounty within 50km. Check back for more soon.
 		<div>
 			Want to try a different birthday or address? <a href="" ng-click="root.clearBirthday()">Click here</a> to change.			

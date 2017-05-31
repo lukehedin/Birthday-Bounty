@@ -27,6 +27,12 @@ birthdayBountyApp.controller('NavigationController', function($scope, BirthdayBo
       link: null
     }
   }
+var getFAQLink = function(){
+    return {
+      name: 'FAQ',
+      link: null
+    }
+  }
 
   //always show link back to summary
   if(location.hash.endsWith("#/")){
@@ -43,10 +49,15 @@ birthdayBountyApp.controller('NavigationController', function($scope, BirthdayBo
     navItems.push(getBountyLink(false));
   }
 
-    if(location.hash.indexOf("#/map") !== -1){
+  if(location.hash.indexOf("#/map") !== -1){
     navItems.push(gt);
     navItems.push(getMapLink(false));
   }
   
+  if(location.hash.indexOf("#/faq") !== -1){
+    navItems.push(gt);
+    navItems.push(getFAQLink(false));
+  }
+
   $scope.navItems = navItems;
 });

@@ -16,10 +16,6 @@ select:focus, input:focus {
   box-shadow: 0 0 2px #ee5588;
 }
 
-.app-container{
-  min-width: 280px;
-}
-
 /*Splash screen*/
 .dob-splash{
   width: 100vw;
@@ -113,7 +109,7 @@ select:focus, input:focus {
   font-family: 'Didact Gothic', sans-serif;  
 }
 
-.nav-strip{
+.nav-strip, .pale-gray-strip{
   font-size: 16px;
   padding: 15px 0 15px 0;
 }
@@ -325,7 +321,6 @@ select:focus, input:focus {
 .pale-gray-strip{
   background-color: #f3f3f3;
   color: #797876;
-  padding: 10px 0;
   overflow: auto;
 }
 
@@ -509,4 +504,15 @@ select:focus, input:focus {
 #bountyMapContainer{
   height: 100%;
   width: 100%;
+}
+
+/*FAQ*/
+.faq-item h4{
+  color: #ff6699;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.faq-item span{
+  font-size: 16px;
 }
