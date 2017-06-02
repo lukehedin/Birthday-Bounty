@@ -134,6 +134,10 @@ select:focus, input:focus {
   font-size: 12px;
 }
 
+.bottom-nav{
+  margin-bottom: 15px;
+}
+
 /*Window controls*/
 .whole-page-mask{
   background-color: rgba(105, 105, 105, 0.6);
