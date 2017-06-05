@@ -1,12 +1,6 @@
 birthdayBountyApp.controller('MapController', function($scope, BirthdayBountyFactory){
   $scope.root = BirthdayBountyFactory;
 
-  //Redirect (cant see unless birthday provided)
-  if(!$scope.root.savedUserDetails){
-      window.location.href = '#/';
-      return;
-  }
-
   var latParam = $scope.root.getUrlParamByName('lat');
   var lngParam = $scope.root.getUrlParamByName('lng');
 

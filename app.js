@@ -4,13 +4,16 @@ var birthdayBountyApp = angular.module('BirthdayBountyApp', ['ngRoute']);
 birthdayBountyApp.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl: "splash.html"
+        templateUrl: "home.html"
+    })
+    .when("/home", {
+        templateUrl: "home.html"
+    })
+    .when("/summary", {
+        templateUrl: "home.html"
     })
     .when("/bounty", {
         templateUrl: "bounty.html"
-    })
-    .when("/summary", {
-        templateUrl: "summary.html"
     })
     .when("/map", {
         templateUrl: "map.html"
@@ -123,7 +126,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
     },
     filteredData: bountyData.slice(), //initially copy data to filteredData
     myPlunder: [],
-    //homeScroll: 0,
+    //summaryScroll: 0,
 
     //Shared functions - these CANNOT change variables in the scope
     getShortMonths: function(){
@@ -210,7 +213,11 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
       //Should we add this item to the filtered list?
       var shouldPush = function(item) {
           //Included types
-          if (me.filters.includeTypes.indexOf(item.types[0]) === -1) return false;
+          var isIncluded = false;
+          me.filters.includeTypes.forEach(function(includedType){
+               if (!isIncluded && item.types.indexOf(includedType) !== -1) isIncluded = true;
+          });
+          if(!isIncluded) return false;
 
           //Availability
           if(me.filters.availableMonth && me.filters.availableDay){
@@ -450,7 +457,7 @@ birthdayBountyApp.factory('BirthdayBountyFactory', function(){
         document.body.append(me.tip);     
       }
 
-      me.tip.className = "bounty-marker-tooltip";
+      me.tip.className = "birthday-bounty-tooltip";
       me.tip.innerHTML = "";
       if(tipTitle) me.tip.innerHTML += '<b>' + tipTitle + '</b><br/>';
       if(tipContent) me.tip.innerHTML += tipContent;

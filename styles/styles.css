@@ -1,9 +1,9 @@
-body {
-	margin: 0;
+html{
+  overflow-y: scroll; 
 }
 
-html {
-  background-color: #fff;
+body {
+  background-color: #f3f3f3 !important;
 }
 
 select, input{
@@ -16,35 +16,77 @@ select:focus, input:focus {
   box-shadow: 0 0 2px #ee5588;
 }
 
+.root-view{
+  min-height: 80vh;
+  background-color: #fff;
+}
+
+.white-link{
+  color: white;
+  text-decoration: none;
+}
+
+.white-link:hover{
+  color:white;
+}
+
 /*Splash screen*/
 .dob-splash{
-  width: 100vw;
   text-align: center;
   background-color: #ff6699;
   background-image: url(../images/background-trans.svg);
   color: white;
   font-family: 'Didact Gothic', sans-serif;    
-  padding: 40px 0 40px 0;  
+  height: 100vh;
+  min-height: 400px;
+  max-height: 800px;
+  padding-top: 20vh;
 }
 
-/*Keeping things inside 80vw*/
-.content-wrapper, .header-strip, .nav-strip .nav-nav, .nav-nav, .footer-strip .footer-text, .strip-inner{
-  min-width: 280px;
-  max-width: 1100px;
-  width: 80vw;
-  margin: auto;
+.splash-info {
+  padding: 20px 0;
+  text-align: center;
 }
 
-@media screen and (max-width: 767px) {
-  .content-wrapper, .header-strip, .nav-strip .nav-nav, .nav-nav, .footer-strip .footer-text, .strip-inner{
-    width: 95vw;
-  }
+.splash-info-title{
+  font-family: 'Didact Gothic', sans-serif; 
+  color: #ff6699;
+  font-weight: bold;
+}
+
+.splash-type-info {
+  height: 180px;
+  text-align: center;
+}
+
+.splash-type-title{
+  line-height: 16px;
+  padding-left: 5px;
 }
 
 /*Top Nav Bar*/
+.header-strip, .nav-strip{
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+
+-webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+}
+
+.nav-strip{
+  margin-top: 80px;
+}
+
+.nav-text, .nav-link{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .header-strip {
   height: 80px;
-
   text-align: center;
   background-color: white;
   color: #ff6699;
@@ -65,8 +107,8 @@ select:focus, input:focus {
 }
 
 .header-strip .flag-icon{
-  height: 80%;
-  margin: 8px;
+  height: 60px;
+  margin: 10px 0;
   float: left;
 }
 
@@ -97,6 +139,10 @@ select:focus, input:focus {
 }
 
 /*nav-strip & footer*/
+.nav-strip {
+  padding: 10px 0;
+}
+
 .nav-strip, .footer-strip {
   background-color: #ff6699; 
   background-image: url(../images/background-trans.svg);
@@ -104,14 +150,9 @@ select:focus, input:focus {
   background-repeat: repeat-x;
 }
 
-.nav-strip, .footer-strip, .nav-item-link, .nav-item-link:hover{
+.nav-strip, .footer-strip, .nav-link, .nav-link:hover{
   color: white;
   font-family: 'Didact Gothic', sans-serif;  
-}
-
-.nav-strip, .pale-gray-strip{
-  font-size: 16px;
-  padding: 15px 0 15px 0;
 }
 
 .footer-strip {
@@ -138,33 +179,6 @@ select:focus, input:focus {
   margin-bottom: 15px;
 }
 
-/*Window controls*/
-.whole-page-mask{
-  background-color: rgba(105, 105, 105, 0.6);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  width: 100vw;
-  height: 100vh;
-}
-
-.mobile-window{
-  background-color: white;
-  border: 2px solid #ee5588;
-  width: 90%;
-  margin: 5%;
-  height: 90%;
-  font-size: 32px;
-  overflow: scroll;
-  padding: 20px;
-}
-
-.close-window-button{
-  bottom: 0;
-  width: 50%;
-}
-
 /*GoogleMap*/
 .bounty-marker{
     position: absolute;
@@ -176,7 +190,8 @@ select:focus, input:focus {
   z-index: 99;
 }
 
-.bounty-marker-tooltip {
+.birthday-bounty-tooltip {
+    z-index: 100;
     position:absolute;
     font-family: 'Didact Gothic', sans-serif;  
     background-color:white;
@@ -191,10 +206,6 @@ select:focus, input:focus {
   width: 100px;
   top: 0;
   left: 0;
-}
-
-.reset-filters-button{
-  width: 50%;
 }
 
 .option-label{
@@ -290,27 +301,14 @@ select:focus, input:focus {
   float: left;
 }
 
-.page-controls{
-  display: inline-block;
-  width: 100%;
-}
-
-.page-controls div {  
-  width: 60%;
-  text-align: center;
-  float:left;
-}
-
-.page-controls .standard-button {  
-  width: 20%;
-}
-
 .content-wrapper{
   min-height: 90vh;
-  padding: 20px 0;
+  padding-top: 140px;
+  padding-bottom: 20px;
   overflow: auto;
   font-family: 'Didact Gothic', sans-serif; 
   color: #797876;
+  background-color: #fff;
 }
 
 .content-wrapper h2{
@@ -322,15 +320,11 @@ select:focus, input:focus {
   margin: 7px 0;
 }
 
-.pale-gray-strip{
-  background-color: #f3f3f3;
+.filter-strip{
   color: #797876;
-  overflow: auto;
-}
-
-.strip-inner{
-  font-family: 'Didact Gothic', sans-serif;    
-  padding: 0 10px;
+  font-size: 14px;
+  padding-bottom: 20px;
+  font-family: 'Didact Gothic', sans-serif;
 }
 
 .settings-control{
@@ -407,11 +401,11 @@ select:focus, input:focus {
 }
 
 .bounty-full-map{
-  height: 75vh;
+  height: 60vh;
   min-height: 400px;
 }
 
-.bounty-thumbnail-image, .bounty-feature-image, .bounty-map-container, #bountyMapContainer{
+.bounty-thumbnail-image, .bounty-feature-image, .bounty-map-container {
   display: block;
   background: #F5F7F9 url(../images/background-trans.svg) no-repeat 50% 50%;
   background-size: cover;

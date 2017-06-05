@@ -1,19 +1,15 @@
-<div ng-controller="NavigationController">
-	<div ng-if="root.savedUserDetails" class="nav-strip moving-background row">
-		<div class="strip-inner">
-			<span class="col-md-7 col-sm-12">
-				<a class="nav-item-link" ng-click="root.clearBirthday()" href="">Enter Birthday &amp; Address</a>
-				<span ng-repeat="navItem in navItems track by $index">
-					<a class="nav-item-link" ng-if="navItem.link" ng-href="{{ navItem.link}}">{{ navItem.name }}</a>
-					<span ng-if="!navItem.link">{{ navItem.name }}</span>
-				</span>
-			</span>
-			<span style="text-align: right;" class="col-md-5 hidden-sm hidden-xs">Displaying results for <a class="nav-item-link" ng-click="root.clearBirthday()" href="" ng-mouseenter="root.getTip($event, 300, 'Click to change')">{{ root.getFormattedAddress() }}</a></span>
-		</div>
+<div class="nav-strip moving-background" ng-controller="NavigationController">
+	<div ng-if="root.savedUserDetails" class="container">
+		<span class="nav-text row">
+            <span class="nav-link col-xs-8" href="">
+                Results for {{ root.savedUserDetails.bdayMonth }} {{ root.savedUserDetails.bdayDay }} near {{ root.getFormattedAddress() }}
+            </span>
+            <a style="text-align: right;" class="nav-link col-xs-4" ng-click="root.clearBirthday()" href="">
+                Change <span class="hidden-xs">Address or Birthday</span>
+            </a>
+        </span>
 	</div>
-	<div ng-if="!root.savedUserDetails" class="pale-gray-strip row">
-		<div class="strip-inner">
-			You're using Birthday Bounty without an address or birthday! <a ng-click="root.clearBirthday()" href="#/">Click here </a>if you want to find freebies near you!
-		</div>
-	</div>
+    <div ng-if="!root.savedUserDetails" class="container" style="text-align: center;">
+        <a class="white-link" ng-click="root.clearBirthday()" href="#/">Click here </a>if you want to find freebies near you!
+    </div>
 </div>

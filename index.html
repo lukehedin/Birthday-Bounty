@@ -53,13 +53,14 @@
 		</script>
     </head>
     <body ng-app="BirthdayBountyApp">
-        <div class="container-fluid" ng-view></div>
+        <appheader></appheader>
+        <div class="root-view" ng-view></div>
+        <appfooter></appfooter>
     </body>
     <!-- App -->
     <script src="app.js"></script>
     <!-- Controllers -->
     <script src="scripts/controllers/DefaultController.js"></script>
-    <script src="scripts/controllers/SplashController.js"></script>
     <script src="scripts/controllers/SummaryController.js"></script>
     <script src="scripts/controllers/BountyDetailController.js"></script>
     <script src="scripts/controllers/MapController.js"></script>

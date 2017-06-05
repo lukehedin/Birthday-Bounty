@@ -1,0 +1,83 @@
+<div ng-controller="SummaryController" ng-cloak>
+    <div ng-if="root.savedUserDetails">
+        <navigation></navigation>
+        <div class="content-wrapper container">
+            <filter></filter>
+            <summary ng-cloak></summary>
+        </div>
+    </div>
+    <div ng-if="!root.savedUserDetails">
+        <div class="dob-splash moving-background row">
+            <h1>Ahoy there, matey!</h1>
+            <h3>Find birthday freebies close to:</h3>
+            <input id="addressField" placeholder="Start typing to find an address..."></input>
+            <div>or select a city <div class="standard-button" ng-click="autoAddress('Melbourne')">Melbourne</div> <div class="standard-button" ng-click="autoAddress('Sydney')">Sydney</div></div>
+            <h3>for someone with a birthday on:</h3>
+            <select ng-model="splashInput.day" ng-options="day for day in root.getDaysInMonth(splashInput.month)"></select>
+            <select ng-model="splashInput.month" ng-options="shortMonth for shortMonth in root.getShortMonths()"></select>
+            <br/>
+            <div class="standard-button" ng-click="submitBirthday()">
+                Plunder some Birthday Bounty!
+            </div>
+        </div>
+        <div class="splash-info row">
+            <span class="col-lg-2 col-md-1 hidden-sm hidden-xs"></span>
+            <div class="col-md-5 col-sm-12">
+                <h2 class="splash-info-title">Find free stuff for your birthday</h2>
+                <span>
+                    Birthday Bounty is a website which finds free birthday deals close to you!
+                    <br/><br/>
+                    If your birthday is coming up, it's the perfect time to check out what's on offer. You can find deals from all kinds of businesses. Your favourite food outlet, bar or store might have a birthday offer you don't even know about!
+                    <br/><br/>
+                    Don't worry, it doesn't cost anything to claim any of these deals. They're all <b>freebies</b>.
+                    <br/><br/>
+                    For more information, check out our <a href="#/faq">Frequently Asked Questions</a>.
+                </span>
+            </div>
+            <span class="bounty-feature-image col-lg-3 col-md-5 hidden-sm hidden-xs" style="background-image: url(images/bountypix/jamaciablue_cake.jpg)"/>
+            <span class="col-lg-2 col-md-1 hidden-sm hidden-xs"></span>
+        </div>
+        <div class="splash-info row">
+            <span class="col-lg-1 hidden-md hidden-sm hidden-xs"></span>
+            <div class="splash-type-info col-lg-10 col-md-12">
+                <div class="splash-type-info col-md-2 col-sm-4 col-xs-6">
+                    <img class="bounty-type-icon" src="images/marker_sweets.svg"/><span class="splash-type-title">Sweets</span>
+                    <div class="splash-type-description">
+                        If you have a sweet tooth, there's plenty of places to get free donuts, ice-cream, or bonus slice of birthday cake...
+                    </div>   
+                </div>
+                <div class="splash-type-info col-md-2 col-sm-4 col-xs-6">
+                    <img class="bounty-type-icon" src="images/marker_food.svg"/><span class="splash-type-title">Meals</span>
+                    <div class="splash-type-description">
+                        Hungry for something in particular? Fries? Chicken? Pizza?... Grab yourself a bite to eat! Or five...
+                    </div>   
+                </div>
+                <div class="splash-type-info col-md-2 col-sm-4 col-xs-6">
+                    <img class="bounty-type-icon" src="images/marker_voucher.svg"/><span class="splash-type-title">Vouchers</span>
+                    <div class="splash-type-description">
+                        If you like a bit of option with your freebies, we have vouchers worth in-store credit. $10 off a new pair of underwear ain't bad!
+                    </div>   
+                </div>
+                <div class="splash-type-info col-md-2 col-sm-4 col-xs-6">
+                    <img class="bounty-type-icon" src="images/marker_drink.svg"/><span class="splash-type-title">Drinks</span>
+                    <div class="splash-type-description">
+                        If you have thirst - there's some Birthday Bounty to quench it. It's the perfect time for a free drink on the go!
+                    </div>   
+                </div>
+                <div class="splash-type-info col-md-2 col-sm-4 col-xs-6">
+                    <img class="bounty-type-icon" src="images/marker_activity.svg"/><span class="splash-type-title">Activities</span>
+                    <div class="splash-type-description">
+                        Have a spare afternoon? Not sure what to do for your birthday night? Find something free to do!
+                    </div>   
+                </div>
+                <div class="splash-type-info col-md-2 col-sm-4 col-xs-6">
+                    <img class="bounty-type-icon" src="images/marker_alcohol.svg"/><span class="splash-type-title">Alcohol</span>
+                    <div class="splash-type-description">
+                        For those of you looking to have a boozy birthday... Get started with a free birthday round! 
+                    </div>   
+                </div>
+            </div>
+            <span class="col-lg-1 hidden-md hidden-sm hidden-xs"></span>
+        </div>
+    </div>
+</div>     

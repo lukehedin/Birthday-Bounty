@@ -1,106 +1,112 @@
 <div class="content-wrapper container" ng-controller="BountyDetailController">
-	<div class="col-md-6">
-		<div class="bounty-item-header row">
-			<h2 class="bounty-viewing-item-org col-md-8 col-md-8 col-sm-8 col-xs-12">{{ viewingBountyItem.organisation.name }}</h2>
-			<div class="bounty-item-org-social col-sm-4 hidden-xs">
-				<a ng-if="viewingBountyItem.organisation.social.facebook" target="_blank" ng-href="{{viewingBountyItem.organisation.social.facebook}}">
-				    <img class="social-button" src="images/facebook.svg" />
-				</a>
-				<a ng-if="viewingBountyItem.organisation.social.twitter" target="_blank" ng-href="{{viewingBountyItem.organisation.social.twitter}}">
-				    <img class="social-button" src="images/twitter.svg" />
-				</a>
-				<a ng-if="viewingBountyItem.organisation.social.instagram" target="_blank" ng-href="{{viewingBountyItem.organisation.social.instagram}}">
-				    <img class="social-button" src="images/instagram.svg" />
-				</a>
+	<div class="bounty-detail-container">
+		<div class="col-md-6">
+			<div class="bounty-item-header row">
+				<h2 class="bounty-viewing-item-org col-md-8 col-md-8 col-sm-8 col-xs-12">{{ viewingBountyItem.organisation.name }}</h2>
+				<div class="bounty-item-org-social col-sm-4 hidden-xs">
+					<a ng-if="viewingBountyItem.organisation.social.facebook" target="_blank" ng-href="{{viewingBountyItem.organisation.social.facebook}}">
+						<img class="social-button" src="images/facebook.svg" />
+					</a>
+					<a ng-if="viewingBountyItem.organisation.social.twitter" target="_blank" ng-href="{{viewingBountyItem.organisation.social.twitter}}">
+						<img class="social-button" src="images/twitter.svg" />
+					</a>
+					<a ng-if="viewingBountyItem.organisation.social.instagram" target="_blank" ng-href="{{viewingBountyItem.organisation.social.instagram}}">
+						<img class="social-button" src="images/instagram.svg" />
+					</a>
+				</div>
 			</div>
-		</div>
-		<h3 class="bounty-viewing-item-title">{{ viewingBountyItem.title }}</h3>
-	    <div class="bounty-item-details row">
-	   <div class="col-xs-12">
-	            <b>Bounty Types:</b>
-	            <div class="bounty-types" ng-repeat="typeId in viewingBountyItem.types.slice().reverse() track by $index">
-	                <img class="bounty-type-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" ng-mouseenter="getTypeTip($event, 0, typeId)"/>
-	            </div>
-	        </div>
-	        <div class="col-xs-12">
-	            <b>Approximate Value:</b>
-	            <span>{{ viewingBountyItem.maxValue | currency }}</span>
-	        </div>
-			<div class="col-xs-12">
-	            <b>Available to You:</b>
-	            <span ng-if="root.savedUserDetails">{{ availablePeriodString }}</span>
-	            <a ng-click="root.clearBirthday()" href="" ng-if="!root.savedUserDetails">Enter your birthday to find out!</a>
-	        </div>
-	        <div class="col-xs-12" ng-if="viewingBountyItem.additionalDetails">
-	            <b>Additional Details:</b>
-	            <span>{{ viewingBountyItem.additionalDetails }}</span>
-	        </div>
-	        <div class="col-xs-12">
-	            <b>{{ getBountyAvailabilityMessage(viewingBountyItem) }}</b>
-	        </div>
-	    </div>
-	    <hr/>
-		<div class="condition-list">
-	        <h3>Conditions <div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Conditions','The conditions section explains exactly what you need to do to claim this bounty.<br/>Read them carefully!')">?</div></h3>
-	        <b>To claim this Birthday Bounty:</b>
-			<div ng-if="viewingBountyItem.conditions.registrationRequiredUrl" class="ng-scope">
-				<img class="condition-icon" src="images/registrationurl.svg">
-				<a target="_blank" ng-href="{{viewingBountyItem.conditions.registrationRequiredUrl}}">Sign up here</a><span ng-if="viewingBountyItem.conditions.minimumRegistrationDays"> at least <b>{{ viewingBountyItem.conditions.minimumRegistrationDays }} days</b> before your birthday</span>
+			<h3 class="bounty-viewing-item-title">{{ viewingBountyItem.title }}</h3>
+			<div class="bounty-item-details row">
+				<div class="col-xs-12">
+					<b>Bounty Types:</b>
+					<div class="bounty-types" ng-repeat="typeId in viewingBountyItem.types.slice().reverse() track by $index">
+						<img class="bounty-type-icon" ng-src="{{root.getTypeById(typeId).iconPath}}" ng-mouseenter="getTypeTip($event, 0, typeId)"/>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<b>Approximate Value:</b>
+					<span>{{ viewingBountyItem.maxValue | currency }}</span>
+				</div>
+				<div class="col-xs-12">
+					<b>Available to You:</b>
+					<span ng-if="root.savedUserDetails">{{ availablePeriodString }}</span>
+					<a ng-click="root.clearBirthday()" href="" ng-if="!root.savedUserDetails">Enter your birthday to find out!</a>
+				</div>
+				<div class="col-xs-12" ng-if="viewingBountyItem.additionalDetails">
+					<b>Additional Details:</b>
+					<span>{{ viewingBountyItem.additionalDetails }}</span>
+				</div>
+				<div class="col-xs-12">
+					<b>{{ getBountyAvailabilityMessage(viewingBountyItem) }}</b>
+				</div>
 			</div>
-			<div ng-if="viewingBountyItem.conditions.identificationRequired" class="ng-scope">
-				<img class="condition-icon" src="images/idrequired.svg">
-				Provide ID to verify your date of birth, or prove you are a member
-			</div>
-			<div ng-if="viewingBountyItem.conditions.digitalVoucherRequired" class="ng-scope">
-				<img class="condition-icon" src="images/digitalvoucher.svg">
-				Present a digital voucher on a phone or tablet
-			</div>
-			<div ng-if="viewingBountyItem.conditions.paperVoucherRequired" class="ng-scope">
-				<img class="condition-icon" src="images/papervoucher.svg">
-				Print off and present a paper voucher
-			</div>
-			<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
-				<b ng-if="viewingBountyItem.conditions.registrationRequiredUrl || viewingBountyItem.conditions.identificationRequired || viewingBountyItem.conditions.digitalVoucherRequired || viewingBountyItem.conditions.paperVoucherRequired">
-					Additional notes for claiming:
-				</b>
+			<hr/>
+			<div class="condition-list">
+				<h3>Conditions <div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Conditions','The conditions section explains exactly what you need to do to claim this bounty.<br/>Read them carefully!')">?</div></h3>
+				<b>To claim this Birthday Bounty:</b>
+				<div ng-if="viewingBountyItem.conditions.registrationRequiredUrl">
+					<img class="condition-icon" src="images/registrationurl.svg">
+					<a target="_blank" ng-href="{{viewingBountyItem.conditions.registrationRequiredUrl}}">Sign up here</a><span ng-if="viewingBountyItem.conditions.minimumRegistrationDays"> at least <b>{{ viewingBountyItem.conditions.minimumRegistrationDays }} days</b> before your birthday</span>
+				</div>
+				<div ng-if="viewingBountyItem.conditions.cardActivationUrl">
+					<img class="condition-icon" src="images/instore.svg">
+					Go in-store to pick up a {{ viewingBountyItem.conditions.cardClubName }} card, then <a target="_blank" ng-href="{{viewingBountyItem.conditions.cardActivationUrl}}">activate it here</a><span ng-if="viewingBountyItem.conditions.minimumRegistrationDays"> at least <b>{{ viewingBountyItem.conditions.minimumRegistrationDays }} days</b> before your birthday</span>
+				</div>
+				<div ng-if="viewingBountyItem.conditions.identificationRequired">
+					<img class="condition-icon" src="images/idrequired.svg">
+					Provide ID to verify your date of birth, or prove you are a member
+				</div>
+				<div ng-if="viewingBountyItem.conditions.digitalVoucherRequired">
+					<img class="condition-icon" src="images/digitalvoucher.svg">
+					Present a digital voucher on a phone or tablet
+				</div>
+				<div ng-if="viewingBountyItem.conditions.paperVoucherRequired">
+					<img class="condition-icon" src="images/papervoucher.svg">
+					Print off and present a paper voucher
+				</div>
 				<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
-					<div ng-repeat="note in viewingBountyItem.conditions.notes track by $index">
-						<div>{{ note }}</div>
+					<b ng-if="viewingBountyItem.conditions.registrationRequiredUrl || viewingBountyItem.conditions.identificationRequired || viewingBountyItem.conditions.digitalVoucherRequired || viewingBountyItem.conditions.paperVoucherRequired">
+						Additional notes for claiming:
+					</b>
+					<div ng-if="viewingBountyItem.conditions.notes && viewingBountyItem.conditions.notes.length > 0">
+						<div ng-repeat="note in viewingBountyItem.conditions.notes track by $index">
+							<div>{{ note }}</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	    <hr/>
-	    <h3>Location</h3>
-	    <div ng-if="nearestBountyPlace" class="nearest-organisation-info">
-	        <div>
-	            <b>Address:</b>
-	            {{ nearestBountyPlace.formatted_address }}
-	        </div>
-			<div>
-				<a class="standard-button" ng-href="{{ '#/map?lat=' + nearestBountyPlace.geometry.location.lat() + '&lng=' + nearestBountyPlace.geometry.location.lng() }}"> 
-		        	View on Map 
-		        </a>
+			<hr/>
+			<h3>Location</h3>
+			<div ng-if="nearestBountyPlace" class="nearest-organisation-info">
+				<div>
+					<b>Address:</b>
+					{{ nearestBountyPlace.formatted_address }}
+				</div>
+				<div>
+					<a class="standard-button" ng-href="{{ '#/map?lat=' + nearestBountyPlace.geometry.location.lat() + '&lng=' + nearestBountyPlace.geometry.location.lng() }}"> 
+						View on Map 
+					</a>
+				</div>
+				<div>
+					<b>Phone:</b>
+					{{ nearestBountyPlace.formatted_phone_number ? nearestBountyPlace.formatted_phone_number : '-'}}
+				</div>
+				<div>
+					<b>Opening Hours:</b>
+					<span ng-repeat="weekdayText in nearestBountyPlace.opening_hours.weekday_text track by $index">
+						{{ weekdayText }}
+						<br/>
+					</span>
+				</div>
 			</div>
-	        <div>
-	            <b>Phone:</b>
-	            {{ nearestBountyPlace.formatted_phone_number ? nearestBountyPlace.formatted_phone_number : '-'}}
-	        </div>
-			<div>
-	            <b>Opening Hours:</b>
-				<span ng-repeat="weekdayText in nearestBountyPlace.opening_hours.weekday_text track by $index">
-					{{ weekdayText }}
-					<br/>
-				</span>
-	        </div>
-	    </div>
-	    <div ng-if="!nearestBountyPlace" class="nearest-organisation-info">
-	        <span ng-if="root.savedUserDetails">Loading {{ viewingBountyItem.organisation.name }} location... </span>
-			<a ng-click="root.clearBirthday()" href="" ng-if="!root.savedUserDetails">Enter your address to find the closest location!</a>
-	    </div>
-	</div>
-	<div class="col-md-6">
-		<span class="bounty-feature-image" ng-style="{ 'background-image': !!viewingBountyItem.thumbnail ? 'url(images/bountypix/' + viewingBountyItem.thumbnail + ')' : ''}"/>
-		<bountymap class="bounty-map-container bounty-map-for-item hidden-sm hidden-xs"></bountymap>
+			<div ng-if="!nearestBountyPlace" class="nearest-organisation-info">
+				<span ng-if="root.savedUserDetails">Loading {{ viewingBountyItem.organisation.name }} location... </span>
+				<a ng-click="root.clearBirthday()" href="" ng-if="!root.savedUserDetails">Enter your address to find the closest location!</a>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<span class="bounty-feature-image" ng-style="{ 'background-image': !!viewingBountyItem.thumbnail ? 'url(images/bountypix/' + viewingBountyItem.thumbnail + ')' : ''}"/>
+			<bountymap class="bounty-map-container bounty-map-for-item hidden-sm hidden-xs"></bountymap>
+		</div>
 	</div>
 </div>

@@ -1,41 +1,41 @@
-<div class="pale-gray-strip row"  ng-controller="DefaultController">
-	<div class="strip-inner">
-		<div class="settings-control col-lg-5 col-md-5 col-sm-6 col-xs-10">
-			<div class="settings-label"> 
-				Bounty Types: 
-			</div>
-			<div class="settings-input">
-				<div ng-repeat="bountyType in root.bountyTypes track by $index"> 
-					<img ng-class="{ unselected: root.filters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="root.toggleBountyType(bountyType.id)" 
-					ng-mouseenter="root.getTip($event, 300, bountyType.name)"/> 
-				</div>
-			</div>
-		</div>
+<div class="filter-strip row"  ng-controller="DefaultController">
+    <div class="col-xs-12">
+        <div class="settings-control col-lg-5 col-md-5 col-sm-6 col-xs-10">
+            <div class="settings-label"> 
+                Bounty Types: 
+            </div>
+            <div class="settings-input">
+                <div ng-repeat="bountyType in root.bountyTypes track by $index"> 
+                    <img ng-class="{ unselected: root.filters.includeTypes.indexOf(bountyType.id) === -1 }" class="bounty-type-icon toggle-bounty-type-button" ng-src="{{bountyType.iconPath}}" ng-click="root.toggleBountyType(bountyType.id)" 
+                    ng-mouseenter="root.getTip($event, 300, bountyType.name)"/> 
+                </div>
+            </div>
+        </div>
         <div class="settings-control col-lg-3 col-md-3 hidden-sm hidden-xs">
-			<div class="settings-label" ng-if="!isMap()"> 
-				Sort By: 
-			</div>
-			<div class="settings-input" ng-if="!isMap()"> 
-				<select ng-model="root.filters.sortBy" ng-options="root.getSorterString(sorter) for sorter in root.sorters" ng-change="root.filterBountyData()"></select>
-			</div>
-		</div>
-		<div class="settings-control col-lg-2 col-md-2 hidden-sm hidden-xs">
-			<div class="settings-label"> 
-				Available On:
-				<div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Available On','Many bounty offers are available to you days before your birthday.<br/>Some are even available for your whole birthday month!')">?</div>
-			</div>
-			<div class="settings-input"> 
-				<select ng-model="root.filters.availableMonth" ng-options="shortMonth for shortMonth in root.getShortMonths()" ng-change="root.filterBountyData()" ></select> 
-				<select ng-model="root.filters.availableDay" ng-options="day for day in root.getDaysInMonth(root.filters.availableMonth)" ng-change="root.filterBountyData()"></select>
-			</div>
-		</div>
-		<div class="settings-control col-lg-2 col-md-2 col-sm-6 col-xs-2"> 
-		    <a class="standard-button" ng-href="#/map" ng-if="!isMap()"> 
-			    View Map 
-			</a>
-            <a class="standard-button" ng-href="#/summary" ng-if="isMap()"> 
-			    Hide Map 
-			</a>
-		</div>
-	</div>
+            <div class="settings-label" ng-if="!isMap()"> 
+                Sort By: 
+            </div>
+            <div class="settings-input" ng-if="!isMap()"> 
+                <select ng-model="root.filters.sortBy" ng-options="root.getSorterString(sorter) for sorter in root.sorters" ng-change="root.filterBountyData()"></select>
+            </div>
+        </div>
+        <div class="settings-control col-lg-2 col-md-2 hidden-sm hidden-xs">
+            <div class="settings-label"> 
+                Available On:
+                <div class="bounty-mini-label" ng-mouseenter="root.getTip($event, 0, 'Available On','Many bounty offers are available to you days before your birthday.<br/>Some are even available for your whole birthday month!')">?</div>
+            </div>
+            <div class="settings-input"> 
+                <select ng-model="root.filters.availableMonth" ng-options="shortMonth for shortMonth in root.getShortMonths()" ng-change="root.filterBountyData()" ></select> 
+                <select ng-model="root.filters.availableDay" ng-options="day for day in root.getDaysInMonth(root.filters.availableMonth)" ng-change="root.filterBountyData()"></select>
+            </div>
+        </div>
+        <div class="settings-control col-lg-2 col-md-2 col-sm-6 col-xs-2"> 
+            <a class="standard-button" ng-href="#/map" ng-if="!isMap()"> 
+                View Map 
+            </a>
+        <a class="standard-button" ng-href="#/summary" ng-if="isMap()"> 
+                Hide Map 
+            </a>
+        </div>
+    </div>
 </div>
